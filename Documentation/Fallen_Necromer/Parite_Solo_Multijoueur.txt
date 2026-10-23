@@ -1,3 +1,5 @@
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
@@ -10,17 +12,41 @@ L’ours conserve sa posture debout à proximité de la cible, avec marche et ro
 
 Contrôles automatisés V27 : Menu 18/18, Resources 10/10, Network 38/38, Capacity 50/50. Chargement et compilation de 1233 packages conservés ; aucune dépendance manquante ni ancien chemin dans cet audit. Les essais réseau utilisent des pairs PIE locaux et un délai de paquets simulé de 80 ms. Ils ne remplacent pas une partie entre deux PC via Internet/Steam et ne prouvent pas une égalité de FPS avec le solo. Aucun nouvel exécutable distribuable n’a été produit.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
-Documentation / Jouer / Solo et multijoueur
-
-MISE À JOUR DU 20 OCTOBRE 2026 · V14
+MISE À JOUR DU 21 OCTOBRE 2026 · V17
 
 Solo et multijoueur
 
 Les évolutions récentes de l’ours, de l’aigle, du pelage, de l’arc et de la réanimation sont intégrées aux créatures réseau. Quatre ours et quatre aigles peuplent les abords des forts.
+
+21 octobre — Barres de vie et noms V17
+
+Barres des mobs et adversaires alignées sur le solo, noms centrés en Roboto Medium avec contour sombre. Les créatures invoquées portent leur nom et une ligne [Pseudo] identifiant leur propriétaire. Bleu, orangé, violet ou vert menthe : chaque joueur garde la même couleur pour son pseudo et les mentions au-dessus de ses mobs, chez tous les participants.
+
+161 contrôles réussis à quatre joueurs locaux avec latence simulée. Captures et résultats V17. Changements actifs après redémarrage d’Unreal et de la partie, exécutable V14 livré inchangé.
+
+21 octobre — Disparition du cercle d'invocation
+
+Le cercle au sol s'arrête à la fin des trois secondes du rituel chez l'hôte et les invités. Les dernières particules sont supprimées au plus tard 0,35 seconde après cette fin. Le rappel et la destruction du mob nettoient immédiatement l'effet ; rejoindre après un rituel terminé ne le relance pas.
+
+39 contrôles réussis à deux joueurs locaux avec latence simulée de 60 ms et 3 % de pertes, sur loup et ours. Captures et rapport du correctif. Le projet local est mis à jour ; l'exécutable V14 distribué reste inchangé.
+
+21 octobre 2026 — Réanimation et correctifs V15
+
+Le panneau de réanimation multijoueur reprend les ressources du solo : M_HologrammeReanimationCompact, M_CercleReanimation et police du titre. Cadre de sélection, progression sur trois secondes, succès à 100 %, échec rouge à 0 % puis disparition. La sélection R correspond au panneau visible ; les droits, le coût et le résultat restent validés par le serveur.
+
+La carte des quatre forts avait une navigation inutilisable : les créatures détectaient le joueur mais n'avançaient pas. Navigation reconstruite, sauvegardée et vérifiée après chargement neuf sur les 24 loups et ours. Les trois alliés suivent le recruteur, se répartissent autour de lui, s'orientent dans leur sens de déplacement et reprennent le suivi après T/Y. Les dégâts du joueur, y compris par flèche, désignent la cible aux alliés.
+
+Collisions explicites entre joueurs ; animation du joueur distant actualisée à chaque image sur l'hôte, déplacements interpolés. Nouveau menu Échap → Caméra et souris : inversion verticale optionnelle et sensibilités normale/visée séparées. Les personnages ne repoussent plus la caméra ; les murs restent bloquants avec retour amorti. En solo, les barres de vie du monde sont masquées pendant le rappel, le déploiement et la réanimation.
+
+Le code du salon est sauvegardé et réutilisé à la reprise par le même hôte. Une sauvegarde V14 n'avait pas de code enregistré : sa première reprise V15 doit en créer un, conservé ensuite. Sauvegarde finale avant destruction des joueurs, sortie répétée ignorée et retour au menu différé hors rappel réseau.
+
+99 contrôles réussis : 16 créatures réseau, 4 déplacement/collision des joueurs, 13 interface de réanimation, 36 caméra solo/multi, 19 alliés solo, 9 sortie/reprise et 2 tests natifs de sauvegarde/compatibilité. Test créatures à deux joueurs avec 60 ms de latence simulée et 3 % de pertes. Le crash signalé n'a pas été reproduit ; ces tests locaux ne garantissent pas un résultat entre deux PC Steam ni un gain global de FPS.
+
+Captures et preuves V15. Correctifs installés dans le projet local. L'exécutable V14 précédemment livré reste inchangé ; aucune nouvelle distribution n'est créée par ce lot.
 
 20 octobre — Aggro, interface et FPS V14
 
@@ -36,29 +62,29 @@ Les règles de ressources étaient déjà présentes : endurance 200, course −
 
 État du rapprochement
 
-SystèmeÉtat actuel en multijoueur
+| Système | État actuel en multijoueur
 
-OursPelage V6, matériaux et griffes corrigés, charge pourpre prolongée, deux griffes amples en X avec contacts bas, suivi debout et rotation progressive, dégâts, mort, version nécromancienne et portrait d’allié.
+| Ours | Pelage V6, matériaux et griffes corrigés, charge pourpre prolongée, deux griffes amples en X avec contacts bas, suivi debout et rotation progressive, dégâts, mort, version nécromancienne et portrait d’allié.
 
-AiglePostures actuelles et plumage V12, altitude variable, piqué avec contrôle du trajet et sortie de charge, vol ralenti, budget de 20 s en l’air puis atterrissage physique et 8 s de repos vulnérable, mort au sol. Les animations de pose sont actualisées à chaque image chez les invités.
+| Aigle | Postures actuelles et plumage V12, altitude variable, piqué avec contrôle du trajet et sortie de charge, vol ralenti, budget de 20 s en l’air puis atterrissage physique et 8 s de repos vulnérable, mort au sol. Les animations de pose sont actualisées à chaque image chez les invités.
 
-ŒufLargage et dégâts décidés par le serveur ; explosion basse, jaune sur le sol et les entités, deux moitiés de coquille. Les effets sont reconstruits localement sur chaque poste.
+| Œuf | Largage et dégâts décidés par le serveur ; explosion basse, jaune sur le sol et les entités, deux moitiés de coquille. Les effets sont reconstruits localement sur chaque poste.
 
-LoupsPelage optimisé V5, palettes nécromanciennes et ornements actuels ; rotation pendant les attaques, contrôle de face et limitation des attaquants simultanés. Le décideur d’IA reste natif et différent du Blueprint solo.
+| Loups | Pelage optimisé V5, palettes nécromanciennes et ornements actuels ; rotation pendant les attaques, contrôle de face et limitation des attaquants simultanés. Le décideur d’IA reste natif et différent du Blueprint solo.
 
-ArcDisponible dans le lobby et sur les forts. Visée et charge prédites localement, consommation serveur, flèches récupérables, caméra haute et optimisations d’effets partagées avec le solo.
+| Arc | Disponible dans le lobby et sur les forts. Visée et charge prédites localement, consommation serveur, flèches récupérables, caméra haute et optimisations d’effets partagées avec le solo.
 
-PoingsCombo initial puis enchaînement maintenu, animation répliquée, endurance et dégâts gérés par le serveur.
+| Poings | Combo initial puis enchaînement maintenu, animation répliquée, endurance et dégâts gérés par le serveur.
 
-InventaireSix cases, ramassage et lancer d’objets par G, piles de flèches, retrait unique lors d’un ramassage concurrent. Équipement déterminé par le contenu réel de la case.
+| Inventaire | Six cases, ramassage et lancer d’objets par G, piles de flèches, retrait unique lors d’un ramassage concurrent. Équipement déterminé par le contenu réel de la case.
 
-AlliésR : recrutement ; F : ordre ; T : rappel ; Y : déploiement. Limite de trois et coût de 25 mana conservés. Niveau, expérience, santé maximale, apparence nécromancienne et rappel sauvegardés.
+| Alliés | R : recrutement ; F : ordre ; T : rappel ; Y : déploiement. Limite de trois et coût de 25 mana conservés. Niveau, expérience, santé maximale, apparence nécromancienne et rappel sauvegardés.
 
-Mort du joueur3 s immobile, retour sur sa plaque, relevé de 2,8 s puis restitution des commandes. Inventaire conservé ; attaques et esquive bloquées pendant le relevé.
+| Mort du joueur | 3 s immobile, retour sur sa plaque, relevé de 2,8 s puis restitution des commandes. Inventaire conservé ; attaques et esquive bloquées pendant le relevé.
 
-Réanimation des mobsPalette nécromancienne appliquée avant la présentation du rituel ; systèmes Niagara préparés au chargement. Les alliés rappelés ne font plus tourner leur animation cachée.
+| Réanimation des mobs | Palette nécromancienne appliquée avant la présentation du rituel ; systèmes Niagara préparés au chargement. Les alliés rappelés ne font plus tourner leur animation cachée.
 
-Réglages et ressourcesMenu de résolution utilisable en jeu, réglages graphiques partagés, règles d’endurance et de mana du précédent rapprochement conservées.
+| Réglages et ressources | Menu de résolution utilisable en jeu, réglages graphiques partagés, règles d’endurance et de mana du précédent rapprochement conservées.
 
 Créatures à l’extérieur des bases
 
@@ -70,27 +96,27 @@ Performances et latence
 
 2560 × 1440, résolution interne 100 %, réglages élevés conservés, ray tracing actif, VSync et limite de FPS désactivées uniquement pour la vue mesurée. Ordre solo / multi / multi / solo, puis un passage à quatre joueurs. Une vue rendue à la fois, caméra fixe avec même position relative et champ de vision ; serveur séparé sans rendu sur ce PC. Pour quatre joueurs, trois clients sans rendu, limités à 15 images/s pour éviter une saturation artificielle du processeur, sont connectés aux autres forts. Deux séquences de 15 secondes par passage, après chauffe. Le personnage solo est rendu invulnérable dans ce test et le client réseau du premier lot est soigné par le banc pour éviter qu’une mort interrompe la mesure.
 
-PassageScénarioFPS médians1 % basTemps p99Images > 33,3 ms
+| Passage | Scénario | FPS médians | 1 % bas | Temps p99 | Images > 33,3 ms
 
-Multijoueur · 2Au repos91.158.315.16 ms0
+| Multijoueur · 2 | Au repos | 91.1 | 58.3 | 15.16 ms | 0
 
-Multijoueur · 2Arc bandé / tirs répétés85.159.315.25 ms0
+| Multijoueur · 2 | Arc bandé / tirs répétés | 85.1 | 59.3 | 15.25 ms | 0
 
-Multijoueur · 3Au repos95.364.013.93 ms0
+| Multijoueur · 3 | Au repos | 95.3 | 64.0 | 13.93 ms | 0
 
-Multijoueur · 3Arc bandé / tirs répétés90.564.014.20 ms0
+| Multijoueur · 3 | Arc bandé / tirs répétés | 90.5 | 64.0 | 14.20 ms | 0
 
-Multijoueur · 4 joueursAu repos131.8103.59.06 ms0
+| Multijoueur · 4 joueurs | Au repos | 131.8 | 103.5 | 9.06 ms | 0
 
-Multijoueur · 4 joueursArc bandé / tirs répétés127.296.19.68 ms0
+| Multijoueur · 4 joueurs | Arc bandé / tirs répétés | 127.2 | 96.1 | 9.68 ms | 0
 
-Solo · 1Au repos117.859.510.91 ms1
+| Solo · 1 | Au repos | 117.8 | 59.5 | 10.91 ms | 1
 
-Solo · 1Arc bandé / tirs répétés105.545.018.60 ms1
+| Solo · 1 | Arc bandé / tirs répétés | 105.5 | 45.0 | 18.60 ms | 1
 
-Solo · 4Au repos77.723.528.94 ms10
+| Solo · 4 | Au repos | 77.7 | 23.5 | 28.94 ms | 10
 
-Solo · 4Arc bandé / tirs répétés76.127.819.48 ms5
+| Solo · 4 | Arc bandé / tirs répétés | 76.1 | 27.8 | 19.48 ms | 5
 
 « 1 % bas » = inverse du temps moyen des 1 % d’images les plus lentes. Les scènes sont les cartes réellement utilisées, pas une image identique : végétation, IA active et interface diffèrent. Ces mesures ne prouvent ni un gain dû au seul réseau, ni 144 FPS constants, ni les performances d’une bataille à quatre joueurs : les trois clients supplémentaires restent dans leur fort. Les essais fonctionnels et de latence à quatre joueurs sont distincts.
 
@@ -100,15 +126,15 @@ Un à-coup de 375 ms subsiste dans la série corrigée à 60 ms ; la médiane ne
 
 Vérifications réalisées
 
-33 contrôles de créatures et de réanimation : suivi de l’ours, dégâts sur le loup, recrutement, palette, rappel/déploiement, repos de l’aigle, œuf, coquilles, flèches et relevé.
+- 33 contrôles de créatures et de réanimation : suivi de l’ours, dégâts sur le loup, recrutement, palette, rappel/déploiement, repos de l’aigle, œuf, coquilles, flèches et relevé.
 
-26 contrôles de régression de l’arc : visée, caméra, charge, tirs, dégâts entre joueurs, consommation, changement d’arme, menus, pertes de paquets et mort.
+- 26 contrôles de régression de l’arc : visée, caméra, charge, tirs, dégâts entre joueurs, consommation, changement d’arme, menus, pertes de paquets et mort.
 
-13 contrôles à quatre joueurs : inventaire, ramassage concurrent, poings et visée avec latence.
+- 13 contrôles à quatre joueurs : inventaire, ramassage concurrent, poings et visée avec latence.
 
-13 contrôles de sauvegarde/reprise en deux processus : arc déplacé dans une autre case, munitions, ours nécromancien rappelé et progression, aigle mort.
+- 13 contrôles de sauvegarde/reprise en deux processus : arc déplacé dans une autre case, munitions, ours nécromancien rappelé et progression, aigle mort.
 
-Les quatre joueurs apparaissent sur la plaque de leur fort, y compris en rejoignant directement la carte. Le point temporaire choisi avant attribution du fort est corrigé.
+- Les quatre joueurs apparaissent sur la plaque de leur fort, y compris en rejoignant directement la carte. Le point temporaire choisi avant attribution du fort est corrigé.
 
 Rapports, captures et mesures détaillées. Les tests utilisent des sessions isolées ; aucun exécutable distribuable n’est créé.
 
@@ -120,32 +146,4 @@ L’IA native des loups n’est pas une copie complète des décisions du Bluepr
 
 L’équilibrage des deux décideurs doit rester synchronisé lors des prochaines modifications. Le scénario réseau à forte latence est un test local contrôlé, pas une validation d’Internet ou de Steam entre deux PC.
 
-Projet local · 20 octobre 2026 · Module MultiplayerParityV13
-
-
-21 OCTOBRE 2026 — CORRECTIFS MULTIJOUEUR V15 (ÉTAT COURANT)
-Après essai du jeu distribué, Florian signale collisions joueurs, caméra/sensibilités, recrutement/suivi, aggro, animation distante, sorties/reprise, barres fantômes et moonwalk. Dernier ajout : panneau de réanimation multi identique au solo.
-Panneau réseau actuel : mêmes M_HologrammeReanimationCompact et M_CercleReanimation, typographie et formule de cadrage que RectangleCadavre du Blueprint solo actuel (audit en lecture). Progression de 3 s, succès à 100 %, échec rouge à 0 %, dissolution. Horodatage RecruitmentStarted répliqué, sélection correspondant au panneau visible, autorité serveur préservée.
-Cause immobilité loups/ours confirmée : navigation inutilisable sur L_Quatre_Forts (0/24 avant). Carte reconstruite et sauvegardée, ForceRebuildOnLoad activé, navigation dynamique conservée. Sonde native en instance neuve : 24/24 projections+chemins. La temporisation de 20 s appartient uniquement au banc PIE qui attend la fin du chargement/rebuild éditeur, aucun délai ajouté au jeu.
-Déplacement réactivé après recrutement/reprise/déploiement, trois positions distinctes autour du maître, orientation selon vélocité réelle après évitement. Les impacts du joueur à l'arc/épée commandent les alliés. Solo : UAvatarSoloAllySubsystem et branche HUD filtrent les barres monde des acteurs cachés/en passage/invocation/morts; les cartes d'alliés restent visibles en réserve. Sauvegarde binaire du HUD avant modification.
-Joueurs : collision Pawn bloquante explicite, pas de montée sur les capsules ; personnage distant animé par image sur l'hôte au lieu des seuls paquets reçus (sauf root motion). Réplication joueur à 60 Hz maximum, interpolation exponentielle conservée. Aucune promesse de 250 FPS ou benchmark global associé.
-Menu Échap/Caméra et souris commun : normale 100 %, visée 45 %, réglables de 10 à 300 %, inversion verticale désactivée par défaut; sauvegarde locale. Caméra ignore les Pawns dans le balayage, conserve les murs, rétraction immédiate et retour amorti. Décalage de visée haute conservé.
-Code salon optionnel persisté dans la sauvegarde V1. Reprise réutilise le code ; anciennes sauvegardes V14 sans code doivent en générer un à la première reprise V15. Snapshot avant destruction du monde, chemin de sauvegarde mémorisé avant arrêt de Steam, Leave idempotent et ReturnToMenu différé. Crash utilisateur non reproduit : ne pas affirmer que sa cause exacte a été prouvée.
-Validation nouvelle : 99 contrôles réussis (16 mobs,4 joueurs,13 panneau,36 caméra,19 alliés solo,9 lifecycle,2 natifs). Deux joueurs PIE avec 60 ms de latence et 3 % de pertes pour créatures ; poursuite de 784 cm, trois recrues suivies/rappelées/redéployées,0/573 échantillons de marche arrière, cible atteinte et endommagée. Animation distante modifiée sur 251/251 images observées. Pas de nouveau benchmark global ni essai Steam sur deux PC.
-Sources/backups/tests : Saved/CodexTools/MultiplayerFixV15. Captures et rapports publiés Art/Multijoueur_Correctifs_V15/Apercu.html. Module courant UnrealEditor-AvatarRuntime-MultiplayerFixV15.dll, NetBuild 26102115 ; conserver DLL V14b en retour arrière. Root projet et BuildHost alignés.
-RECTIFICATION LIVRAISON PRÉCÉDENTE : à la demande explicite de Florian, l'exécutable V14 et son ZIP avaient bien été livrés le 20 octobre dans Builds/Fallen_Necromer_Test_2026-10-20_V14. Les mentions « aucun exécutable créé » des notes V14 antérieures précèdent cette livraison. V15 ne recrée pas de distribuable sans nouvelle demande.
-
-
-21 OCTOBRE 2026 — CERCLE D'INVOCATION MULTI V16 (ÉTAT COURANT)
-Le cercle Niagara du recrutement réseau persistait après le rituel, y compris après rappel ou destruction du mob. Cause reproduite sur loup hôte et ours invité : aucun arrêt explicite du composant créé dans WorldSettings ; User.Lifetime ne fait pas partie des paramètres de NS_SummonVFX.
-Correction : arrêt à l'échéance répliquée RitualUntil (rituel de 3 s), queue de particules bornée à 0,35 s puis destruction du composant. Timer local indépendant du Tick du mob, un lancement par rituel. Nettoyage immédiat sur rappel, mort, restauration et EndPlay ; pas de nouveau cercle pour un état déjà expiré. Asset visuel et panneau de réanimation V15 conservés.
-Validation : 39 contrôles réussis en deux mondes PIE locaux avec 60 ms de délai simulé et 3 % de pertes. Recrutement réel par hôte et invité, présence pendant le rituel, absence après échéance+0,65 s, rappel/redéploiement, destruction en cours et arrivée d'un état expiré. Le même banc avant correctif reproduisait 17 échecs sur 39 contrôles. Les composants Niagara du monde et leurs références sont inspectés pour détecter les effets orphelins. Pas d'essai Steam entre deux PC.
-Module installé : UnrealEditor-AvatarRuntime-InvocationCleanupV16.dll, NetBuild 26102115 inchangé. V15 conservé pour retour arrière. Sources, sauvegardes et rapports : Saved/CodexTools/InvocationCleanupV16 ; aperçu et preuves ajoutés à Art/Multijoueur_Correctifs_V15/Apercu.html. Aucun exécutable distribuable recréé ; la livraison V14 reste inchangée.
-
-
-21 OCTOBRE 2026 — BARRES MONDE ET IDENTITÉS V17 (ÉTAT COURANT)
-Demande : barres mobs/joueurs adverses alignées sur solo, vrai nom des mobs invoqués et [Pseudo] du propriétaire, couleur par joueur commune à son pseudo et ses mobs, jolie police contourée.
-Renderer commun AvatarWorldHealthHUD.cpp : géométrie exacte du HUD solo actuel (80x8, bordure 2, échelle hauteur/720), couleurs identiques bordure/fond/vie. Ancrage head+28 cm et aigle head+78 ; adversaire au-dessus de sa capsule. Filtres vivant/visible, moins de 20 m, ligne de vue, mob hors rappel/invocation. Noms Loup/Ours/Aigle des cimes, Loup ombre céleste/Ours ombre céleste recrutés, propriétaire [GetPlayerName] sur une ligne séparée.
-Police existante F_Hologramme_Titre_Font (Roboto Medium), hauteur cible 14 px pour titre et 13 px propriétaire en 720p, centrage, contour sombre FCanvasTextItem, largeur maximale 220 px avant réduction du texte. Noms sauvages et noms d'espèce blancs ; pseudos joueurs et propriétaires colorés par FortIndex répliqué/persisté : bleu, orangé, violet, vert menthe. Aucun nouveau paquet réseau ni chargement d'asset par image.
-Tests : 161 contrôles réussis, 4 mondes PIE avec vrais clients, 60 ms de délai simulé/3 % pertes ; 4 recrutements réels dont 2 ours, noms/couleurs cohérents, renommage, dégâts, rappel/redéploiement/morts. Déplacements/IA gelés dans ce banc de présentation, pas de benchmark FPS ni essai Steam sur deux PC.
-Module actif après redémarrage vérifié de l’éditeur et de la partie sur L_Base_Nexus : UnrealEditor-AvatarRuntime-WorldHealthBarsV17.dll ; NetBuild 26102115 conservé, corrections V16 incluses. Retour V16 préservé. Sources/rapports/sauvegardes Saved/CodexTools/WorldHealthBarsV17 ; captures Art/Barres_Vie_Multijoueur_V17/Apercu.html. Aucun distribuable recréé.
+Projet local · 21 octobre 2026 · Correctifs V17

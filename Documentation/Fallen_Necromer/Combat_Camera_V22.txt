@@ -1,12 +1,12 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+Combat et caméra · état courant
 
-Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+Le deuxième geste d’épée a été compacté pour limiter le recul du bras et de l’épaule. L’ours garde sa posture debout si la cible reste à portée. Les raccords sol / vol de l’aigle comprennent l’atterrissage, le repos et le décollage après réanimation.
 
-Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
+La transparence d’une créature est liée à l’occultation entre caméra et avatar, pas à la seule proximité du joueur. Les murs gardent leurs collisions caméra. Les détails d’intervention V22 restent datés ci-dessous ; commandes actuelles dans Commandes, modèles et IA dans le Bestiaire.
 
-Guide courant : Projet_V27.html
+Guide détaillé et historique antérieur à V27
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Combat et caméra V22
 
 22 octobre 2026 — Combat et caméra V22, solo
 
@@ -19,3 +19,5 @@ Caméra : les créatures qui masquent le personnage deviennent progressivement t
 Les essais utilisent une session solo temporaire avec des créatures positionnées et une IA gelée pour les comparaisons. Aucun benchmark global ni nouvel essai réseau. Aucun exécutable distribuable créé.
 
 Captures natives : Art/Combat_Camera_V22. Rapports et sauvegardes : Saved/CodexTools/CombatCameraV22. Retour récupérable avant modification des animations et des 64 matériaux parents. Le module V22a contient ces corrections ; elles sont incluses dans le module V23 ultérieur.
+
+Caméra : rapport · Épée : commandes · Ours : rapport

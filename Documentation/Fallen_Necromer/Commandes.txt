@@ -1,100 +1,103 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+Commandes actuelles · 23 octobre 2026. Les gestes ci-dessous dépendent du contexte : la molette change d’objet en jeu, mais règle le zoom dans l’aperçu des ombres.
 
-Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
+Déplacement et menus
 
-Maintenir Pivoter entraîne progressivement la plateforme et le mob ensemble, autour du centre des appuis ; le décor et les lumières restent fixes. Maintenir Zoom + ou Zoom − zoome continuellement ; les boutons sont grisés aux limites. Le cadrage coordonne la crypte et le sujet, sans modifier la taille de l’allié dans le monde. La seule nouvelle chaussure plate est affichée devant Déplacement. Portraits, cadres dorés, badges KO rouges, dégâts compacts, fissures cyan et ambiance de crypte sont conservés.
+| Commande | Action
 
-Guide courant : Projet_V27.html
+| ZQSD | Se déplacer.
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+| Souris | Orienter la caméra.
 
-Documentation
-/
-Jouer
-/
-Commandes et repères
-CAMÉRA MISE À JOUR LE 21 OCTOBRE 2026
-Commandes et repères
-Les commandes documentées du solo, avec les différences réseau signalées.
-Résolution pendant la partie
-Échap → Résolution : cliquer pour alterner entre 1920 × 1080 et 2560 × 1440. Application immédiate et choix mémorisé. Le menu se réadapte à la taille de l’écran.
-Voir les captures et la vidéo
-.
-Réglages caméra et souris — mise à jour du 21 octobre 2026
-En solo comme en multijoueur : Échap → Caméra et souris. Les changements s’appliquent immédiatement et sont mémorisés sur ce PC pour les prochaines parties.
-- Sensibilité caméra : 10 à 300 %, valeur par défaut 100 %. Règle la vitesse de rotation hors visée.
-- Sensibilité en visée : 10 à 300 %, valeur par défaut 45 %. Se règle indépendamment de la sensibilité normale.
-- Inverser l’axe vertical : désactivé par défaut. Sans inversion, baisser la souris fait regarder vers le bas. Avec inversion, baisser la souris fait regarder vers le haut ; l’axe horizontal reste inchangé.
-- Rétablir les valeurs par défaut : remet 100 % / 45 % et désactive l’inversion, puis mémorise ces choix.
-Au contact d’un obstacle du décor, la caméra se rapproche pour éviter de traverser le mur ou le sol, puis revient progressivement à sa distance normale lorsque le passage se dégage. Les joueurs et les créatures ne repoussent plus la caméra. Les décalages de visée en hauteur sont conservés.
-Vérification : 18 contrôles réussis en solo et 18 côté invité multijoueur dans des sessions de test isolées : direction verticale, inversion, sensibilités indépendantes, sauvegarde, menu et collisions. Ces essais vérifient le fonctionnement ; ils ne mesurent pas les performances.
-Capture : Saved/CodexTools/MultiplayerFixV15/Camera_Menu_solo.png.
-Rapports : Saved/CodexTools/MultiplayerFixV15/camera_solo.json et camera_multi.json.
-1. Déplacement et menus
-Commande
-Action
-ZQSD
-Se déplacer
-Souris
-Orienter la caméra
-Maj
-Basculer la course
-Espace
-Sauter
-Ctrl gauche
-S’accroupir
-E
-Esquiver
-Échap
-Menu partagé et accès au studio
-Tab
-Accès au curseur, notamment dans le lobby
-La caméra solo peut maintenant regarder jusqu’à 85° vers le haut pour suivre ce qui passe au-dessus de l’avatar, même au sol. La limite vers le bas reste à 60°. Les collisions avec le sol et les murs restent actives ; les limites de visée du corps et la caméra du studio sont conservées.
-2. Combat et inventaire
-Contexte
-Commande
-Action
-Épée
-Clic gauche
-Un geste si clic court ; enchaînement de quatre gestes si maintien.
-Épée
-Clic droit
-Combo secondaire avec onde de choc.
-En l’air, épée
-Clic gauche
-Attaque plongeante, impact puis relèvement.
-Arc
-Clic droit
-Viser.
-Arc en visée
-Maintenir puis relâcher clic gauche
-Charger puis tirer.
-Inventaire
-Molette
-Changer d’emplacement.
-Objet
-A
-Préparer/lâcher/lancer ; la molette règle la distance pendant la préparation.
-3. Nécromancie, alliés et vagues
-Commande
-Solo
-Réseau
-R
-Tenter le recrutement du cadavre sélectionné : 25 mana, 50 %, une tentative, trois alliés maximum.
-Recrutement validé par le serveur ; réservé au tueur pendant 35 s.
-T : rappeler · Y : déployer
-Solo : rappeler / déployer ses alliés, trois maximum.
-Réseau : mêmes commandes pour ses propres alliés, trois maximum.
-F
-Voir les consignes propres au système utilisé.
-Donner une cible autorisée aux alliés.
-Verr. Maj, maintien 2 s
-Déclencher une vague.
-Pas de vagues solo en multijoueur.
-4. Repères de ressources
-Avatar : 300 PV, 100 mana, 200 endurance. Solo : mana +5/minute et +5 par élimination ; course −12,5 endurance/s et récupération 15/s. Les règles réseau ne sont pas encore toutes identiques. Voir
-Solo
-et
-Multijoueur
-pour les conditions détaillées.
-Projet local · Réglages caméra mis à jour le 21 octobre 2026 · Les autres repères et résultats historiques gardent leur date.
+| Maj | Basculer la course.
+
+| Espace | Sauter.
+
+| Ctrl gauche | S’accroupir.
+
+| E | Esquiver.
+
+| I | Ouvrir / fermer le menu Gestion des ombres : équipe de 3, réserve de 20, aperçu 3D et fiche de statistiques.
+
+| Échap | Ouvrir le menu de jeu ; accéder au studio, à la résolution et aux réglages caméra. Dans la collection, fermer le menu ; si une confirmation de suppression est ouverte, l’annuler d’abord.
+
+| Tab | Afficher / libérer le curseur, notamment dans le lobby.
+
+Dans Gestion des ombres
+
+| Geste | Résultat
+
+| Clic gauche sur une vignette | Sélectionner l’ombre et afficher son modèle, son niveau, ses PV, son XP et ses attaques.
+
+| Glisser-déposer | Déplacer vers une case libre ou échanger deux ombres. Hors d’une case, la vignette revient à sa place par une courte animation.
+
+| Clic droit sur une vignette | Équipe → première case libre de réserve ; réserve → première case libre d’équipe. Sans place libre, aucun transfert.
+
+| Placer en réserve / Placer dans l’équipe | Même transfert vers la première case libre de l’autre espace.
+
+| Sélection multiple | Activer le choix de plusieurs ombres ; cliquer sur les vignettes à supprimer.
+
+| Supprimer l’ombre / Supprimer la sélection | Supprimer définitivement les fiches, uniquement après confirmation.
+
+| Maintenir Pivoter / glisser sur la scène | Tourner la plateforme et la créature ensemble ; le décor et l’éclairage restent fixes.
+
+| Maintenir Zoom + / Zoom − ; molette sur l’aperçu | Zoomer continuellement ou par crans. Boutons désactivés aux limites ; aucune modification de la taille réelle du mob.
+
+| I ou Échap | Fermer la collection et revenir au jeu. Le menu solo suspend la partie ; la partie multijoueur continue.
+
+Les attaques sont décrites et illustrées : aucun bouton ne lance leur animation. Les niveaux des vignettes sont affichés en chiffres seuls. Une ombre KO conserve sa place et sa progression ; la déplacer ne la réanime pas.
+
+Combat et inventaire
+
+| Contexte | Commande | Action
+
+| Épée | Clic gauche | Coup court ; maintien pour enchaîner les quatre gestes.
+
+| Épée | Clic droit | Combo secondaire avec onde de choc.
+
+| Épée en l’air | Clic gauche | Attaque plongeante, impact et relèvement.
+
+| Arc | Clic droit | Viser.
+
+| Arc en visée | Maintenir puis relâcher clic gauche | Charger puis tirer.
+
+| Inventaire | Molette | Changer d’emplacement.
+
+| Objet | A | Préparer / lâcher / lancer ; molette pour la distance pendant la préparation.
+
+Recrutement, alliés et vagues
+
+| Commande | Action et limites
+
+| R | Tenter le recrutement du cadavre sélectionné, 25 mana. Équipe pleine : nouvelle recrue en réserve. Les 23 places occupées empêchent un recrutement supplémentaire sans dépenser de mana.
+
+| T / Y | Rappeler / déployer ses alliés d’équipe. Le rappel ne déplace pas automatiquement les fiches vers les 20 cases de réserve. Un KO ne revient pas à la vie par un simple déploiement.
+
+| F | Désigner une cible aux alliés, sous réserve de validité et d’hostilité de la cible. En réseau, le serveur vérifie la demande.
+
+| Verr. Maj, maintien 2 s | Déclencher une vague en solo. Les vagues solo ne sont pas actives dans la partie multijoueur.
+
+Réglage temporaire du projet : la réussite du recrutement est forcée à 100 % par Avatar.Recruitment.ChanceOverride=1.0. Le pourcentage affiché fait foi ; -1 rétablit les chances propres aux espèces / instances. Les anciens tableaux à 50 % décrivent l’équilibrage antérieur. En réseau, le cadavre est réservé au tueur pendant 35 secondes.
+
+Vie, mana et endurance
+
+| Ressource | Valeurs actuelles
+
+| Vie avatar | 300 PV de base. Après 3 s sans dégâts : +1 PV/s, jusqu’au maximum ; de nouveaux dégâts relancent le délai. Aucun soin automatique d’un avatar mort.
+
+| Endurance | 2 000 maximum ; course −12,5/s ; récupération +45/s dans les états autorisés (au sol ou en descente de saut), hors consommation de course.
+
+| Mana | 100 maximum ; +5 par minute et +5 par élimination. Recrutement : 25 mana.
+
+Les règles de ressources sont partagées entre solo et multijoueur ; en réseau, le serveur les applique. La pause solo suspend le temps de récupération.
+
+Résolution
+
+Échap → Résolution : alterner entre 1 920 × 1 080 et 2 560 × 1 440. Choix mémorisé sur ce PC.
+
+Caméra et souris
+
+Échap → Caméra et souris : sensibilité normale 10–300 % (défaut 100 %), sensibilité en visée 10–300 % (défaut 45 %), inversion verticale désactivée par défaut. Application immédiate, mémorisation locale et bouton de réinitialisation.
+
+La caméra solo monte jusqu’à 85° et descend jusqu’à 60°. Les murs et le sol gardent leurs collisions caméra. Les créatures n’écourtent pas le bras de caméra ; leur occultation est traitée séparément.
+
+Voir Gestion des ombres, Personnalisation et Comparaison solo / multijoueur. Référence : entrées du menu et du personnage, règles de ressources et configuration du projet vérifiées le 23 octobre 2026.

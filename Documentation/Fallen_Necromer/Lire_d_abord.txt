@@ -1,6 +1,6 @@
 FALLEN NECROMER — DOCUMENTATION
 Ouvrir index.html, ou https://safylos.github.io/FallenNecroma-docs/.
-41 pages HTML/TXT, organisées par dossiers et sous-pages.
+44 pages HTML/TXT, organisées par dossiers et sous-pages.
 Vue d’ensemble ; Jouer et gérer ses ombres ; Avatar ; Bestiaire ; Monde et développement ; Médias et archives.
 Loup, Ours, Aigle : chaque dossier contient Modèle et apparence, Attaques, Animations, IA et alliés.
 Avatar : Modèle et tenues, Personnalisation, Attaques et armes, Animations et déplacement, Retouches dans Blender.

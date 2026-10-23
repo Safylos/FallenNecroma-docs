@@ -1,3 +1,23 @@
+Reconnaître une ombre KO
+
+Une ombre KO reste visible dans son emplacement d’équipe en haut à droite et dans la collection. Le fond bleu d’origine est conservé, avec un voile rouge léger sur les bords (opacité maximale 24 %) et le petit badge KO. La teinte disparaît pour une fiche vivante. Niveau et XP sont conservés ; une case KO ne devient pas un emplacement libre.
+
+[Image : Collection de test : les trois espèces KO avec leur fond bleu et le voile rouge discret.] Images/Actuel/Ombres_KO_Menu.png
+
+Collection de test : les trois espèces KO avec leur fond bleu et le voile rouge discret. Cliquez sur l’image pour l’agrandir.
+
+[Image : HUD de test : les trois emplacements restent occupés après le KO. Les créatures figées du banc de test ne représentent pas une animation de mort au combat.] Images/Actuel/Allies_KO_HUD.png
+
+HUD de test : les trois emplacements restent occupés après le KO. Les créatures figées du banc de test ne représentent pas une animation de mort au combat. Cliquez sur l’image pour l’agrandir.
+
+Le menu en jeu
+
+[Image : Menu V27 : équipe, réserve, aperçu dans la crypte et fiche des statistiques. Le voile KO des portraits a évolué depuis cette capture.] ../../Art/Projet_V27/Validation/Ours_V27_UI.png
+
+Menu V27 : équipe, réserve, aperçu dans la crypte et fiche des statistiques. Le voile KO des portraits a évolué depuis cette capture. Cliquez sur l’image pour l’agrandir.
+
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
@@ -6,13 +26,62 @@ Maintenir Pivoter entraîne progressivement la plateforme et le mob ensemble, au
 
 En multijoueur, le serveur valide les transferts et suppressions de la collection personnelle. Les autres joueurs ne peuvent pas déplacer vos ombres. Les alliés en réserve ne restent pas simulés sur le terrain. Le menu ne met pas la partie réseau en pause. Les identifiants, niveaux, XP et KO sont conservés dans la sauvegarde et lors de la reconnexion. Les animations de l’ours et de l’aigle et les matériaux ombraux utilisent les mêmes assets que le solo.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
-23 octobre 2026 — Gestion des ombres, finitions V25h activées
+Gestion des ombres
+
+V26 préparée — nouvelle finition
+
+Maintien pour pivoter, zoom + et − désactivés aux limites, boutons encadrés, sélection centrée et chaussure plate revue depuis la référence. Fissures latérales ajoutées ; texture du socle maintenue nette.
+
+Voir les captures natives V26. La version active reste V25h jusqu’au redémarrage autorisé de la partie.
+
+Finitions V25h activées · Solo · I pour ouvrir · 3 places d’équipe + 20 places de réserve
+
+La V25 ajoute les indications KO, affine la fiche et révise le déploiement ainsi que la présentation dans la crypte.
+
+Finitions V25h activées dans l’éditeur habituel : nouveau socle fissuré et halo bleu diffus, commandes superposées à la scène. La galerie présente les trois espèces dans le menu réel. Le niveau habituel est ouvert en solo ; la collection du joueur est conservée.
+
+[Image : Menu natif de gestion des ombres avec l’ours ombral, son socle de pierre dans la crypte, équipe et réserve à gauche et statistiques à droite] ../../Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Ours_Apres_H_Natif_UI.png
+
+Menu natif V25h : pierre fissurée et halo bleu diffus, commandes directement sur la scène, cadres arrondis et cartes d’attaque lisibles. Le compteur de cette session de test isolée ne constitue pas un benchmark des performances du jeu.
+
+[Image : Loup ombral dans le véritable menu, scène de crypte et fiche de caractéristiques] ../../Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Loup_Apres_H_Natif_UI.png
+
+Loup ombral — capture native V25h ; ouvrir en grand.
+
+[Image : Ours ombral dans le véritable menu, scène de crypte et fiche de caractéristiques] ../../Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Ours_Apres_H_Natif_UI.png
+
+Ours ombral — capture native V25h ; ouvrir en grand.
+
+[Image : Aigle ombral dans le véritable menu, scène de crypte et fiche de caractéristiques] ../../Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Aigle_Apres_H_Natif_UI.png
+
+Aigle ombral — capture native V25h ; ouvrir en grand.
+
+[Image : Le modèle tourne ; la crypte et le socle restent fixes.] ../../Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Ours_H_Tourne45_Natif_UI.png
+
+V25h — Le modèle tourne ; la crypte et le socle restent fixes.
+
+[Image : Vue rapprochée : le cadrage change sans modifier la taille réelle du mob.] ../../Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Ours_H_Zoom_Natif_UI.png
+
+V25h — Vue rapprochée : le cadrage change sans modifier la taille réelle du mob.
+
+Les anciennes captures KO et de glisser-déposer ci-dessous proviennent de la campagne V25e ; elles ne représentent pas le nouveau socle V25h.
+
+[Image : Ours ombral KO conservé en troisième place, badge KO sur le portrait, vie à zéro et boutons de gestion visibles] ../../Art/Gestion_Ombres_V25/UI/KO_Fiche_KO_Troisieme_Place.png
+
+Ombre KO conservée : fiche et portrait portent le même état.
+
+[Image : Portrait de l’ours ombral déplacé vers la réserve avec son niveau et son badge KO] ../../Art/Gestion_Ombres_V25/UI/KO_Portrait_En_Deplacement.png
+
+Le portrait déplacé conserve le chiffre du niveau et son badge KO.
+
+Voir les trois propositions générées · Origine du décor et de la pierre
 
 Ouverture et invocation
+
 Ouvrir avec I pendant une partie solo. I ou Échap ferme le menu. La partie est en pause pendant la gestion ; les commandes et la caméra sont rendues au joueur à la fermeture.
 
 Si une réanimation, une invocation, un rappel ou un retour est encore en cours, un bandeau annonce que le menu s’ouvrira à la fin. Le jeu continue normalement pendant cette attente : le rituel peut donc se terminer. Appuyer de nouveau sur I annule l’ouverture demandée. Après douze secondes sans fin de transition, la demande est annulée et un message invite à réessayer avec I.
@@ -20,6 +89,7 @@ Si une réanimation, une invocation, un rappel ou un retour est encore en cours,
 Cette ouverture différée corrige le blocage qui pouvait survenir en ouvrant le menu pendant un rituel : la pause figeait sa progression alors que le déplacement et la suppression attendaient sa fin. L’ancien message d’invocation est effacé à l’ouverture réussie.
 
 Équipe et réserve
+
 Trois places d’équipe en haut à gauche ; vingt places de réserve en bas à gauche, disposées en cinq colonnes et quatre lignes. La réserve désigne ces vingt cases, et non les alliés temporairement rappelés avec T. Les portraits de style animé approuvés V21 restent utilisés.
 
 Les trois grands panneaux bleu nuit sont entourés d’un contour doré discret et continu, avec les mêmes coins arrondis et motifs d’angle. Le cadre de la crypte suit désormais cet arrondi. Les capitales espacées blanc bleuté, les textes secondaires bleu doux et les accents cyan/or sont conservés. Roboto Medium et Regular restent les polices du menu, sans contour noir. Le vrai niveau reste flouté autour des panneaux ; la crypte demeure dans le cadre 3D. Les couleurs des portraits et des illustrations d’attaque approuvés restent inchangées.
@@ -29,6 +99,7 @@ En V25, le badge en bas à droite du portrait affiche uniquement le nombre du ni
 Les numéros de place « 01 », « 02 » et « 03 » ont été retirés du haut gauche des portraits de l’équipe. Le chiffre du niveau en bas à droite, le badge KO et les indicateurs de sélection ou de transition sont conservés.
 
 Déplacer et échanger
+
 Maintenir le clic gauche sur un portrait et le glisser sur une case de l’équipe ou de la réserve. Le portrait et son cadre doré suivent le pointeur ; son emplacement d’origine s’atténue pendant le déplacement. La case visée se souligne pour aider au dépôt.
 
 Une case vide reçoit l’ombre ; une case occupée échange les deux ombres. Un dépôt hors des cases ou un déplacement refusé fait revenir visuellement le portrait à son emplacement d’origine en 0,28 seconde, sans modifier la collection. Le bouton principal affiche « Placer en réserve » pour une ombre de l’équipe et « Placer dans l’équipe » pour une ombre de réserve. Il utilise la première place libre de destination. Son fond bleu nuit, son contour doré à coins coupés et son icône de flèche sortant d’un plateau reprennent la référence choisie. Il est désactivé si la sélection est vide ou en transition.
@@ -38,9 +109,11 @@ La V25 conserve la taille réelle enregistrée de l’allié au déploiement. Le
 Les niveaux, l’XP, la vie et les dégâts sont conservés. Une ombre KO peut être rangée, échangée ou supprimée après confirmation ; un déplacement ou un rechargement ne la réanime pas automatiquement. Le glisser-déposer reste suspendu pendant la sélection multiple et lorsqu’une confirmation de suppression est ouverte.
 
 Recrutement
+
 Lorsque les trois places d’équipe sont occupées, la prochaine ombre rejoint une case libre de réserve à la fin du rituel. Le coût en mana, le choix de l’espèce et l’animation existante sont conservés. Équipe et réserve pleines, le recrutement est bloqué. La capacité reste de vingt-trois ombres au total.
 
 Fiche et scène 3D
+
 La fiche de droite reprend le fond et la bordure du badge KO approuvé sur les portraits. Son texte KO blanc est séparé des PV, qui gardent leur couleur normale. Les vignettes et leur version déplacée restent inchangées. Le sous-texte d’équipe est « Les trois places de votre équipe. », car une place occupée par une ombre KO n’implique pas sa présence sur le terrain. Cette retouche est validée dans V25c.
 
 Sélectionner une case affiche le vrai modèle 3D, le niveau, les PV actuels et maximaux, l’XP acquise et son seuil, l’XP restante avant le niveau suivant, ainsi que les deux attaques et leurs dégâts. La fiche indique si l’ombre appartient à l’équipe ou à la réserve.
@@ -59,7 +132,36 @@ Icônes d’attaque : chaque attaque possède désormais une illustration carré
 
 Les six illustrations sources sont conservées dans Art/Gestion_Ombres_V25/Attaques : Loup_Griffe.png, Loup_Morsure.png, Ours_Griffes_Croisees.png, Ours_Ruee.png, Aigle_Pique.png et Aigle_Oeuf.png. Leur origine est décrite dans Generation.txt. Les textures de destination sont /Game/UI/ShadowRosterV24/AttackIconsV25/T_<nom>. La petite galerie montre les illustrations générées ; les grandes captures natives V25h montrent leur intégration réelle dans le menu.
 
+Illustrations d’attaque — sources V25c
+
+[Image : Loup · Coup de griffe — illustration utilisée dans le menu] ../../Art/Gestion_Ombres_V25/Attaques/Loup_Griffe.png
+
+Loup · Coup de griffe
+
+[Image : Loup · Morsure — illustration utilisée dans le menu] ../../Art/Gestion_Ombres_V25/Attaques/Loup_Morsure.png
+
+Loup · Morsure
+
+[Image : Ours · Griffes croisées — illustration utilisée dans le menu] ../../Art/Gestion_Ombres_V25/Attaques/Ours_Griffes_Croisees.png
+
+Ours · Griffes croisées
+
+[Image : Ours · Ruée — illustration utilisée dans le menu] ../../Art/Gestion_Ombres_V25/Attaques/Ours_Ruee.png
+
+Ours · Ruée
+
+[Image : Aigle · Piqué — illustration utilisée dans le menu] ../../Art/Gestion_Ombres_V25/Attaques/Aigle_Pique.png
+
+Aigle · Piqué
+
+[Image : Aigle · Œuf — illustration utilisée dans le menu] ../../Art/Gestion_Ombres_V25/Attaques/Aigle_Oeuf.png
+
+Aigle · Œuf
+
+Origine et briefs des six illustrations
+
 Supprimer une ou plusieurs ombres
+
 Pour une seule ombre, la sélectionner puis utiliser « Supprimer l’ombre », placé sous le bouton de transfert dans la fiche à droite.
 
 Pour plusieurs ombres, activer « Sélection multiple » en bas à gauche, puis cliquer sur les portraits voulus. Une coche identifie chaque choix et un compteur indique leur nombre. « Supprimer la sélection », juste à droite de « Sélection multiple », devient disponible lorsqu’au moins une ombre est sélectionnée. « Terminer la sélection » quitte ce mode.
@@ -67,6 +169,7 @@ Pour plusieurs ombres, activer « Sélection multiple » en bas à gauche, puis 
 Les deux actions ouvrent une confirmation précisant le nombre d’ombres concernées. Annuler ou Échap ne retire rien. « Oui, supprimer » les retire définitivement de la collection avec leur progression. Une invocation encore en cours reste protégée contre la suppression.
 
 Sauvegarde et coût du menu
+
 La collection solo conserve le fichier Saved/SaveGames/Ombres_Solo_V23.sav et sa copie de récupération .bak. La V25 fait évoluer le format interne vers la version 2 en conservant les fiches existantes, y compris les ombres KO. Une ombre KO n’est pas recréée vivante au chargement. Les rappels avec T conservent leur état ; une créature cachée pendant son rituel ne devient pas un allié rappelé par erreur.
 
 Une migration ciblée répare les tailles de loups qui correspondent exactement à l’ancien agrandissement répété. Avant cette réparation, le fichier original est conservé dans une copie suffixée .before-scale-v25, distincte de la sauvegarde tournante .bak. Les tailles personnalisées qui ne correspondent pas à ce défaut ne sont pas remplacées. La mise à jour n’efface ni la collection ni sa progression.
@@ -76,6 +179,7 @@ Les vingt ombres de réserve restent des données stockées, sans vingt IA suppl
 Le socle V25h utilise un seul maillage temporaire de 7 593 triangles, dont 2 025 pour le halo local aux fissures, répartis en trois sections. Il ne reçoit ni collision, ni simulation, ni nouvelle lumière. La texture de pierre existante et un masque de fissures de 1 024 pixels alimentent ses matériaux ; aucun nouveau système de particules ni traitement par image n’est ajouté. Six anciens assets sont préservés pour permettre un retour. Le matériau de crypte réutilise l’image de fond existante. Ces retouches ne constituent pas un nouveau benchmark des performances du jeu.
 
 Vérifications
+
 FINITIONS V25h VALIDÉES ET ACTIVÉES — La compilation a réussi. Le comparatif local du socle passe 16 contrôles ; l’affectation automatique du nouveau socle et de ses matériaux dans la version native V25h passe 19 contrôles. Les captures du loup, de l’ours et de l’aigle ont été inspectées à 1 280 × 720 : fissures ramifiées et halo visibles, ancien anneau retiré, commandes superposées et boutons lisibles. Les changements du socle restent limités à la copie de présentation. L’éditeur habituel a été relancé et son module V25h chargé a été vérifié : L_Base_Nexus, hors partie, un joueur, aucun asset ni carte non enregistré. La collection du joueur et sa copie de récupération restent identiques à la sauvegarde prise avant activation.
 
 Les campagnes fonctionnelles V25a restent valables avec leur portée d’origine : 199 contrôles sur les transferts, les cycles, les retours et la réanimation réelle ; 33 sur le rechargement KO ; 38 sur la migration d’une copie du profil existant. Quatre identifiants, les PV, l’XP et les statistiques ont été conservés, avec deux loups ramenés des échelles 9,1125 et 6,075 à 1,2 et des transferts réels d’ours/aigle réussis. Le profil original du joueur est resté inchangé. Ces campagnes ne sont pas présentées comme réexécutées sur V25h.
@@ -103,9 +207,11 @@ Icônes V25e : 69 contrôles réussis. Les six images affichées résolvent la b
 Aigle V25c : 18 contrôles réussis sur la seule copie de présentation. La section de brume qui produisait une forme gênante sous l’aigle est masquée sur ses trois niveaux de détail ; les flammes, les côtes lumineuses, les yeux, le duvet et l’animation de vol au repos sont conservés. L’aigle présent dans la carte garde ses sections d’origine. Rapport Validation_Aigle_Brume.json ; captures dans Art/Gestion_Ombres_V25/Reflet_Aigle/Correction.
 
 Portée
+
 Solo d’abord, conformément au choix de Florian. Le menu n’est pas porté au multijoueur à ce stade. Aucun exécutable distribuable recréé. Git dans Unreal reste désactivé (Provider=None), avec le dépôt et son historique conservés.
 
 Fichiers de référence
+
 Sources V25 : Plugins/AvatarRuntime/Source/AvatarRuntime/AvatarShadow*. Retours récupérables, scripts et rapports : Saved/CodexTools/ShadowMenuV25. Module final compilé, testé et chargé dans l’éditeur normal : UnrealEditor-AvatarRuntime-ShadowMenuV25h.dll. Activation confirmée le 23 octobre 2026, PID 28004, L_Base_Nexus, hors partie et un joueur ; rapports Activation_Finale.json et Preferences_Finales.json. L’activation V25c avait été vérifiée le 23 octobre 2026 après minuit. Les rapports et captures précédents restent conservés avec leurs versions ; les campagnes V25a, V25e, V25f, V25g et V24 gardent leurs dates et portées.
 
 Décor V25 : /Game/UI/ShadowRosterV24/M_CryptBackdrop_V25, préparé par Saved/CodexTools/ShadowMenuV25/animate_crypt.py. Socle courant : /Game/UI/ShadowRosterV24/SM_CryptPlinth_V25h, avec M_CryptStone_V25h, MI_CryptStone et M_CryptHalo_V25h ; masque T_CryptFractureMask_V25h. Les anciens SM_CryptPlinth, M_CryptStone, MI_CryptStone, MI_CryptCrevice, T_CryptStone et M_CryptCrevice_Glow_V25d sont préservés. Le dossier Unreal ShadowRosterV24 est volontairement réutilisé : son suffixe n’indique pas une ancienne copie du modèle.
@@ -118,23 +224,14 @@ Les sauvegardes initiales restent sous Saved/CodexTools/ShadowRosterV23. Les cor
 
 Captures natives finales V25h : Art/Gestion_Ombres_V25/Socle_Naturel_V25h/Validation/Loup_Apres_H_Natif_UI.png, Ours_Apres_H_Natif_UI.png et Aigle_Apres_H_Natif_UI.png ; Ours_H_Tourne45_Natif_UI.png et Ours_H_Zoom_Natif_UI.png montrent la rotation et le rapprochement. Les captures V25f restent dans Finitions_F et celles V25e dans Attaques/Validation. Les illustrations d’attaque sources de 1 254 × 1 254 pixels sont intactes ; textures Unreal BC7, groupe UI, 512 × 512, mipmaps et filtrage trilinéaire. Import attesté dans Import_Attack_Icons.json ; provenance dans Art/Gestion_Ombres_V25/Attaques/Generation.txt.
 
+73 contrôles de glisser-déposer V24g · 35 contrôles de recrutement et gestion V24a · Retour animé observé dans V24a · 40 contrôles caméra · 37 contrôles de réanimation · 48 contrôles de présentation V24g · Relais enregistré
+
+Portraits ombraux et références · Corrections combat et caméra V22 · Capacité et reprise V23
+
+26 contrôles du bouton de transfert V25f · 10 contrôles des boutons de l’aperçu V25e · 73 contrôles natifs de présentation V25e · 19 contrôles des captures finales V25f
+
 Les niveaux, PV, statistiques et l’ours KO des captures sont des données de test isolées, distinctes de la collection du joueur.
 
-V26 PRÉPARÉE — 23 OCTOBRE 2026
-23 octobre 2026 — Gestion des ombres V26, préparée en test isolé
+16 contrôles du comparatif local du socle · 19 contrôles natifs V25h · Import du socle et anciens assets préservés · Provenance du nouveau socle · 10 contrôles des commandes superposées V25g
 
-Commandes : maintien de Pivoter pour une rotation continue à 60 degrés/seconde, arrêt au relâchement. Trois petits boutons encadrés superposés à l’image : Pivoter, Zoom + et Zoom −, avec glyphes vectoriels. Chaque zoom est grisé et désactivé à sa limite. Molette et glissement dans la scène conservés. La caméra et la crypte restent fixes pendant la rotation ; le zoom coordonne le cadrage 3D et celui du fond sans modifier l’échelle du mob.
-
-Sélection : deux boutons de même largeur, ensemble sur les 568 unités du panneau Équipe ; libellés centrés dans les deux axes. Texte « Les trois places de votre équipe. » supprimé. La suppression exige toujours sa confirmation.
-
-Chaussure : la variante détaillée a été rejetée. Nouvelle silhouette plate bleu doux, pointe vers la gauche et semelle séparée, générée depuis la petite référence fournie par Florian. Affichée à côté de l’ancienne icône, conformément à sa demande de comparaison. Source et prompt : Art/Gestion_Ombres_V26/Icones/Generation.txt. Texture /Game/UI/ShadowRosterV24/T_MovementBoot_V26.
-
-Socle : SM_CryptPlinth_V26, 7 431 triangles, quatre sections dont un contact diffus sous la pierre. Réseau de fissures enrichi sur les côtés, halo plus étroit, pierre refroidie et tranche légèrement épaissie. Le flou a été reproduit après démarrage à froid puis supprimé en forçant la résidence de la texture du socle. Le masque utilitaire 1 024 px est désormais NeverStream ; le composant temporaire demande aussi la pleine définition de sa pierre. Les versions précédentes restent intactes.
-
-Portée : menu solo, collection de test séparée. Pas de modification des statistiques, des attaques ou des sauvegardes du joueur. Aucun benchmark global, portage multijoueur ni exécutable distribuable dans ce lot. La session habituelle reste sur V25h tant que le redémarrage de sa partie n’a pas été autorisé et vérifié.
-
-Validation finale V26c : 38 contrôles (presentation), 22 contrôles (controls), 46 contrôles (fx_final). Captures natives des trois espèces, puis quatre angles de l’ours et de l’aigle inspectés. Les niveaux/statistiques affichés appartiennent à la collection de test.
-
-Traces de rendu : le comparatif à pose figée a montré des points cyan persistants après six secondes et après recréation des ornements. Ils disparaissent avec l’anticrénelage spatial. Le menu désactive donc la reprojection temporelle dans sa seule SceneCapture, qui utilise FXAA sur une cible suréchantillonnée ; le rendu du jeu n’est pas modifié. Reflets de l’environnement et réfraction de la capture désactivés. Les matériaux originaux de flammes, de pelage, d’os et de duvet restent utilisés. Le masquage local de la brume croisée de l’aigle déjà présent en V25 est conservé. Les essais de matériaux M_ShadowFlames_V26, M_ShadowEagleFlames_V26 et M_ShadowHidden_V26 ne sont pas référencés par la version finale. Comparatifs de diagnostic dans Validation/History ; captures finales dans Validation/Rotation_Finale. Ne pas présenter les essais a/b comme le correctif final.
-
-La comparaison du socle confirme séparément le flou causé par les mipmaps non résidentes : Ours_ForceMip_UI.png redevient net après la seule demande de pleine définition. Nouveau masque résident et halo plus étroit dans la version finale.
+Activation finale V25h vérifiée · Préférences solo et collection préservées

@@ -1,0 +1,33 @@
+Ours ombral
+
+Ours ombral · apparence, comportement d’allié et collection. État du 23 octobre 2026.
+
+Apparence ombrale
+
+Silhouette massive de grizzly, petites oreilles rondes, fourrure bleu nuit et cyan, côtes et ornements spectraux lumineux. Le modèle 3D et le portrait illustré sont distincts : le portrait garde le style anime approuvé.
+
+[Image : Ours ombral dans le véritable menu 3D — capture V27. Les valeurs appartiennent à une collection de test ; le fond KO a été retouché depuis cette capture.] ../../Art/Projet_V27/Validation/Ours_V27_UI.png
+
+Ours ombral dans le véritable menu 3D — capture V27. Les valeurs appartiennent à une collection de test ; le fond KO a été retouché depuis cette capture. Cliquez sur l’image pour l’agrandir.
+
+IA de l’allié ombral
+
+L’ours suit son propriétaire au sol et utilise sa formation quand aucune cible valable n’est engagée. À proximité de l’ennemi, il se redresse pour les griffes croisées ; tant que la cible reste proche, il peut rester debout, marcher et pivoter entre les coups. Si elle s’éloigne ou devient invalide, il revient sur ses quatre appuis. La ruée sert à réduire une distance compatible avec son trajet.
+
+Les déplacements, le choix d’attaque et les dégâts sont calculés par le serveur en multijoueur. Les animations debout sont partagées avec le solo. L’appartenance au propriétaire et la fiche persistante empêchent d’utiliser les ombres d’un autre joueur.
+
+Attaques et progression
+
+Le répertoire est détaillé dans Attaques et les raccords dans Animations. La fiche de la collection affiche les dégâts de cette ombre, son niveau, son expérience acquise et l’XP restante. Les valeurs de base d’une espèce ne remplacent pas les statistiques de la fiche.
+
+Équipe, réserve et KO
+
+I ouvre la collection commune au solo et au multijoueur : trois places d’équipe et vingt en réserve. Une recrue rejoint la réserve si l’équipe est pleine. Clic droit ou glisser-déposer permet les transferts ; les fiches gardent leur identifiant, leur niveau, leur XP et leurs PV. Une ombre en réserve ne reste pas active sur le terrain.
+
+Un KO reste une ombre de la collection, avec zéro PV. Déplacement, sauvegarde et déploiement ne le réaniment pas. La prévisualisation 3D peut rester en idle même pour une fiche KO : elle représente son apparence, pas un allié vivant dans la partie. La suppression, simple ou multiple, est définitive après confirmation.
+
+Invocation et présentation
+
+Le recrutement applique l’apparence ombrale ; le rappel et l’invocation utilisent la dissolution et le portail. La surface sombre du portail se fissure avant de disparaître. L’aperçu du menu est une copie séparée : le zoom et la rotation du socle ne changent pas la taille de l’allié dans le monde.
+
+Modèle naturel · IA générale · Gestion des ombres · Méthode des portraits

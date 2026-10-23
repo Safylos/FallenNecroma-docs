@@ -1,17 +1,25 @@
-Ours · Animations
+Ours · Animations. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Locomotion
+
 Le repos, la marche et la course sont séparés. Le composant de mouvement déplace réellement l’ours ; les séquences sont jouées sur place. La cadence doit être accordée à la vitesse parcourue pour limiter le glissement des pattes.
 
 Posture debout
+
 La chaîne de poses comporte un premier combo avec montée, un combo continu, une garde avec respiration, une marche debout et une redescente. La garde conserve la fin du combo sortant afin que le fondu vers le coup suivant ne fasse pas réapparaître une pose à quatre pattes.
 
 Contrôler les raccords
+
 Inspecter les épaules et les poignets pendant les griffes, les appuis pendant la marche debout et le retour effectif aux quatre pattes. Les animations et matériaux communs sont repris en solo et en multijoueur dans V27 ; les campagnes de pose précédentes ne constituent pas un nouveau test réseau.
 
-RÉFÉRENCES ET DÉTAILS
-Séquences de garde, marche et redescente — Ours_Animation_IA.html#debout-v20
-Repos, marche et course : références techniques — Ours_Animation_IA.html#animations
-Squelette et poids — Ours_Animation_IA.html#rig
+Références et détails
 
-Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
+Les comptes rendus conservent leur date et leurs anciens chemins. L’état V27 prévaut sur leurs limites antérieures ; ces pages ne constituent pas une nouvelle campagne de tests du jeu.
+
+- Séquences de garde, marche et redescente
+
+- Repos, marche et course : références techniques
+
+- Squelette et poids
+
+Organisation documentaire du 23 octobre 2026 · État du projet V27.

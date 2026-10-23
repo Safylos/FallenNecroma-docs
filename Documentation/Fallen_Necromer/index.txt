@@ -1,3 +1,5 @@
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
@@ -8,95 +10,92 @@ Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs 
 
 Contrôles automatisés V27 : Menu 18/18, Resources 10/10, Network 38/38, Capacity 50/50. Chargement et compilation de 1233 packages conservés ; aucune dépendance manquante ni ancien chemin dans cet audit. Les essais réseau utilisent des pairs PIE locaux et un délai de paquets simulé de 80 ms. Ils ne remplacent pas une partie entre deux PC via Internet/Steam et ne prouvent pas une égalité de FPS avec le solo. Aucun nouvel exécutable distribuable n’a été produit.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
-22 octobre 2026 — Gestion des ombres V23 (solo)
-I ouvre la collection : trois places d’équipe et vingt cases de réserve en bas à gauche, portraits V21/niveaux, aperçu 3D, statistiques, échanges et suppression multiple confirmée. Le quatrième recrutement rejoint la réserve. Collection sauvegardée et niveaux restaurés. Le menu réseau reste à venir. Voir Gestion_Ombres.html et Gestion_Ombres.txt. Corrections épée/ours/caméra : Combat_Camera_V22.html. Git dans Unreal reste désactivé à la demande de Florian ; dépôt conservé.
+Gestion des ombres V23 · solo
 
-22 OCTOBRE 2026 — PORTRAITS OMBRAUX V21 (STYLE COURANT APPROUVÉ, INTÉGRATION EN COURS)
-Florian a choisi Loup_A bouche entrouverte, Ours_B plus frontal et l’aigle corrigé V2. Masters canoniques : Art/Portraits_Ombraux_V21/{Loup,Ours,Aigle}_Ombral.png,1254×1254 natifs conservés. Nouvelle référence de portraits UI : gros plans de tête illustrés fantasy/anime, matière bleu nuit, contour/lueurs cyan et anatomie propre à chaque modèle. Aucun modèle 3D, pelage, matériau de créature ou animation modifié pour ces portraits. Les captures V19 de la cour restent utiles pour l’identité 3D mais leur présentation photographiée n’est plus le style UI retenu.
-État à cette rédaction : choix artistique approuvé ; import, activation du HUD, compilation et essais runtime V21 à confirmer. Présentation visée : cartes d’alliés196×52, portrait44px à720p, groupe Alliés remonté ; FPS haut gauche toutes vues. Ne pas annoncer ces comportements comme validés à partir de la galerie.
-Guide réutilisable : Documentation/Fallen_Necromer/Portraits_Ombraux.html et .txt ; captures du vrai modèle pour identité +trio approuvé comme références de style pour image_gen, gabarit de consigne, contrôle44/88px, choix documenté, backup/import puis vérification en jeu. Aperçu Art/Portraits_Ombraux_V21/Apercu.html ; journal exact conservé par root dans Prompts.txt.
+I ouvre la collection : trois alliés dans l’équipe et vingt places en réserve, avec portraits, modèle 3D, statistiques, échanges et suppression multiple confirmée. Recrutement supplémentaire en réserve et reprise de la collection vérifiés.
+
+Guide et rendu réel du menu · Corrections épée, ours et caméra. Le menu multijoueur reste à venir. Git dans Unreal est laissé désactivé ; dépôt conservé.
+
+ÉTAT DU 21 OCTOBRE 2026
+
+Documentation de Fallen Necromer
+
+Le projet, les commandes et les guides techniques, organisés par système.
+
+Portraits ombraux V21 : style approuvé
+
+Florian a retenu le loup A bouche entrouverte, l’ours B plus frontal et l’aigle corrigé V2. Gros plans de tête en illustration fantasy/anime, bleu nuit et lumière cyan, avec une anatomie fidèle à chaque espèce. Les trois masters approuvés sont conservés ; aucun modèle 3D n’est modifié par ce choix.
+
+Style validé ; intégration et tests en jeu à confirmer. Le lot prépare aussi des cartes d’alliés de 196 × 52 pixels avec portrait de 44 pixels à 720p, une zone Alliés remontée et les FPS en haut à gauche. Ces éléments restent en cours d’activation.
+
+Références approuvées et méthode pour les prochains mobs · Galerie et lisibilité à 44/88 pixels.
 
 Transitions et combat V20 — état courant
-Aigle : raccords sol/vol et après réanimation, ouverture des ailes puis montée progressive.
-Ours : reste debout, marche et pivote entre ses combos quand la cible reste proche. Redescente distincte à la perte ou à l’éloignement de la cible. Deux griffes de 18 dégâts et cadence conservées.
-Avatar : deuxième mouvement d’épée plus compact ; préparation haute, impacts, appuis et autres frappes conservés.
-Portail : la surface bleu nuit se fissure et se sépare réellement (voir la section dédiée).
+
+- Aigle : raccords sol/vol et après réanimation, ouverture des ailes puis montée progressive.
+
+- Ours : reste debout, marche et pivote entre ses combos quand la cible reste proche. Redescente distincte à la perte ou à l’éloignement de la cible. Deux griffes de 18 dégâts et cadence conservées.
+
+- Avatar : deuxième mouvement d’épée plus compact ; préparation haute, impacts, appuis et autres frappes conservés.
+
+- Portail : la surface bleu nuit se fissure et se sépare réellement (voir la section dédiée).
+
 Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
+
 Aperçu général · Cycle de l’aigle · Ours debout · Épée avant/après
 
-Aperçu : Art/Transitions_Combat_V20/Apercu.html
-
-Documentation
-/
-Projet
-/
-Documentation de Fallen Necromer
-ÉTAT DU 19 OCTOBRE 2026
-Documentation de Fallen Necromer
-Le projet, les commandes et les guides techniques, organisés par système.
 Solo et multijoueur : audit et premier lot
-La
-comparaison détaillée
-distingue les fonctions déjà reprises, les manques et les différences de mode. Ce premier lot aligne les coûts d’endurance de l’esquive et de l’attaque lourde, la régénération en l’air et le mana passif. Poings, arc hors lobby, inventaire complet, ordres T/Y, ours et aigle restent à porter.
+
+La comparaison détaillée distingue les fonctions déjà reprises, les manques et les différences de mode. Ce premier lot aligne les coûts d’endurance de l’esquive et de l’attaque lourde, la régénération en l’air et le mana passif. Poings, arc hors lobby, inventaire complet, ordres T/Y, ours et aigle restent à porter.
+
 1. Commencer ici
 ÉTAT ACTUEL
 Ce qui fonctionne
+
 Fonctionnalités, différences solo/réseau et limites connues.
 JOUER
 Commandes et repères
+
 Déplacement, combat, inventaire, alliés et vagues.
 VÉRIFIÉ
 Derniers contrôles
+
 Résultats datés et scénarios restant à vérifier.
+
+Optimisation en 1440p
+
+Diagnostic, correction et mesures avant/après : conditions de test, régularité des images et limites des résultats dans l’éditeur.
+
 2. Dernières modifications
-Ours :
-double griffe en X, orientation plus fluide, dégâts et mort sur le flanc, recrutement Ombre céleste et pelage du visage corrigé.
-Aigle :
-poursuite plus réactive, posture de vol, duvet léger et largage d’œuf avec explosion jaune et projections sur le décor, l’avatar et les créatures.
-Voir les captures et vidéos actuelles
-·
-Combat de l’ours
-·
-Ours allié
-·
-Aigle
-.
+
+Ours : double griffe en X, orientation plus fluide, dégâts et mort sur le flanc, recrutement Ombre céleste et pelage du visage corrigé. Aigle : poursuite plus réactive, posture de vol, duvet léger et largage d’œuf avec explosion jaune et projections sur le décor, l’avatar et les créatures.
+
+Voir les captures et vidéos actuelles · Combat de l’ours · Ours allié · Aigle.
+
 3. Trouver le bon guide
-Besoin
-Guide
-Retoucher l’avatar, une tenue ou une animation
-Avatar
-·
-Sources et Blender
-Régler les animaux et la nécromancie
-Loups
-·
-Ours
-·
-Aigle
-Comprendre une partie
-Solo
-·
-Multijoueur et sauvegarde
-Modifier les cartes ou la base
-Environnement et remparts
-Reprendre ou transmettre le travail
-Installation
-·
-Maintenance et sources
-Retrouver les vidéos ou un ancien essai
-Communication
-·
-Catalogue des archives
+
+| Besoin | Guide
+
+| Retoucher l’avatar, une tenue ou une animation | Avatar · Sources et Blender
+
+| Régler les animaux et la nécromancie | Loups · Ours · Aigle
+
+| Comprendre une partie | Solo · Multijoueur et sauvegarde
+
+| Modifier les cartes ou la base | Environnement et remparts
+
+| Reprendre ou transmettre le travail | Installation · Maintenance et sources
+
+| Retrouver les vidéos ou un ancien essai | Communication · Catalogue des archives
+
 4. Lire cette documentation
+
 Le menu de gauche donne accès à toutes les rubriques. « Dans cette page » affiche les sections et sous-sections du guide ouvert. Sur petit écran, le menu se déplie avec le bouton de navigation. Les guides disposent d’une version texte et d’une mise en page d’impression.
-Les archives gardent leur date et leurs réglages historiques. Les médias volumineux restent dans
-Art
-et
-SourceArt
-: copier le seul dossier de documentation ne copie pas ces fichiers.
+
+Les archives gardent leur date et leurs réglages historiques. Les médias volumineux restent dans Art et SourceArt : copier le seul dossier de documentation ne copie pas ces fichiers.
+
 Projet local · Référence au 19 octobre 2026 · Les résultats historiques gardent leur date.

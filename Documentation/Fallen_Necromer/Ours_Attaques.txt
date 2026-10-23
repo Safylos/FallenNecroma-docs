@@ -1,17 +1,25 @@
-Ours · Attaques
+Ours · Attaques. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Griffes croisées
+
 Le combo comporte deux frappes distinctes de 18 dégâts. Chaque griffe possède sa fenêtre de contact ; la portée, la hauteur et les obstacles sont contrôlés. Une traînée visible ne garantit donc pas que la cible a reçu des dégâts.
 
 Enchaînement debout
+
 Le premier combo redresse l’ours. Si la cible reste proche, il conserve sa garde sur les pattes arrière, peut la suivre et enchaîne depuis cette posture. Il ne doit pas rejouer la montée debout entre deux combos. La perte ou l’éloignement de la cible déclenche la redescente.
 
 Charge et déplacement
+
 La charge est une action distincte des griffes. Son déplacement et son contact doivent rester cohérents avec la collision réelle ; la présentation du geste est décrite dans Animations et le choix de l’action dans IA. Les campagnes de combat ci-dessous gardent leurs dates et leurs limites de test.
 
-RÉFÉRENCES ET DÉTAILS
-Deux griffes, fenêtres de contact et enchaînement V20 — Ours_Animation_IA.html#debout-v20
-Charge : mise en place et contrôles historiques — Ours_Animation_IA.html#charge-v1
-Suivi pendant les coups et équilibrage — Ours_Animation_IA.html#equilibrage-v4
+Références et détails
 
-Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
+Les comptes rendus conservent leur date et leurs anciens chemins. L’état V27 prévaut sur leurs limites antérieures ; ces pages ne constituent pas une nouvelle campagne de tests du jeu.
+
+- Deux griffes, fenêtres de contact et enchaînement V20
+
+- Charge : mise en place et contrôles historiques
+
+- Suivi pendant les coups et équilibrage
+
+Organisation documentaire du 23 octobre 2026 · État du projet V27.

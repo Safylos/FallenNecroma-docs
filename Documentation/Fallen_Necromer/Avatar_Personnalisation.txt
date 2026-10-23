@@ -1,17 +1,31 @@
-Avatar · Personnalisation
+Le studio en image
+
+[Image : Capture de référence du studio de personnalisation ; les commandes et le profil sont décrits ci-dessous.] Images/Studio.png
+
+Capture de référence du studio de personnalisation ; les commandes et le profil sont décrits ci-dessous. Cliquez sur l’image pour l’agrandir.
+
+Avatar · Personnalisation. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Ouvrir le studio
+
 Le menu Échap donne accès à la personnalisation de l’avatar. Le studio reçoit l’apparence du personnage dans une scène de présentation séparée ; il ne remplace pas le personnage qui se déplace et combat dans le monde.
 
 Tenue, couleurs et aperçu
+
 Le studio permet de choisir la tenue, de sélectionner une zone de couleur et de regarder l’apparence au repos, en marche ou en course. La rotation reste sur l’axe vertical et le zoom est borné pour éviter de traverser le personnage.
 
 Enregistrer l’apparence
+
 Les palettes restent attachées à chaque tenue. L’enregistrement écrit le profil ; le retour au jeu applique le résultat au personnage. Les réglages de lumière et de cadrage du studio ne modifient pas toute la carte de jeu.
 
-RÉFÉRENCES ET DÉTAILS
-Studio : commandes et présentation — Avatar.html#s4
-Profil d’apparence et petits mouvements — Avatar.html#s5
-Créer une tenue supplémentaire — Blender_Avatar.html#s9
+Références et détails
 
-Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
+Les comptes rendus conservent leur date et leurs anciens chemins. L’état V27 prévaut sur leurs limites antérieures ; ces pages ne constituent pas une nouvelle campagne de tests du jeu.
+
+- Studio : commandes et présentation
+
+- Profil d’apparence et petits mouvements
+
+- Créer une tenue supplémentaire
+
+Organisation documentaire du 23 octobre 2026 · État du projet V27.

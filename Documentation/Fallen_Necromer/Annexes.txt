@@ -1,1477 +1,1384 @@
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
 
 Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
 ÉTAT DU PROJET · 16 OCTOBRE 2026
+
 Annexes techniques et preuves
+
 Catalogue de ressources, réglages relevés, contrôles exécutés et points d’entrée du code.
-Campagne complémentaire du 16 octobre
-·
-Relevé actuel des loups
+Campagne complémentaire du 16 octobre · Relevé actuel des loups
+
 Comment lire les sources
+
 Cette annexe complète les trois guides. L’audit des assets a été effectué dans l’éditeur du projet ; les fichiers de code cités sont ceux du plugin actif. Une propriété de classe est une valeur par défaut : une instance placée ou un événement de démarrage peut la remplacer.
+
 Les catalogues ne sont pas une preuve que chaque fichier est utilisé. Les dossiers Archives, les anciens montages Jaune/Rose/Simple et les sources de retarget peuvent être conservés sans participer au combo actuel. Les fonctions du réseau et du solo ont des points d’entrée distincts.
-Preuve
-Contenu
-Audit des Blueprints
-Valeurs, tenues, ressources et mappings d’entrée
-Audit des assets et de la map
-Sources FBX, durées/vitesses des montages, structures et mouvement
-Déploiement
-Module installé et activé ; absence d’export autonome
-Tests natifs
-Résultats exacts des quatre tests unitaires nommés
+
+| Preuve | Contenu
+
+| Audit des Blueprints | Valeurs, tenues, ressources et mappings d’entrée
+
+| Audit des assets et de la map | Sources FBX, durées/vitesses des montages, structures et mouvement
+
+| Déploiement | Module installé et activé ; absence d’export autonome
+
+| Tests natifs | Résultats exacts des quatre tests unitaires nommés
+
 Validation locale du 16 octobre 2026
-153 contrôles de scénarios et 4 tests natifs réussis.
-Le nombre de contrôles ne correspond pas à autant de parcours manuels indépendants : plusieurs assertions peuvent porter sur un même scénario.
-Campagne
-Contrôles réussis
-Rapport
-Flèche plantée et dormance
-6 / 6
-arrow_idle_validation.json
-Arc réseau
-26 / 26
-bow_validation.json
-Quatre joueurs et concurrence
-36 / 36
-four_player_validation.json
-Version chargée dans le projet
-11 / 11
-live_validation.json
-Optimisation des matériaux
-2 / 2
-optimization_validation.json
-Parité des contrôles et poses
-31 / 31
-parity_validation.json
-Reconnexion d’invité
-11 / 11
-reconnect_validation.json
-Reprise après crash
-21 / 21
-restore_validation.json
-Capture et crash hôte
-9 / 9
-save_validation.json
+
+153 contrôles de scénarios et 4 tests natifs réussis. Le nombre de contrôles ne correspond pas à autant de parcours manuels indépendants : plusieurs assertions peuvent porter sur un même scénario.
+
+| Campagne | Contrôles réussis | Rapport
+
+| Flèche plantée et dormance | 6 / 6 | arrow_idle_validation.json
+
+| Arc réseau | 26 / 26 | bow_validation.json
+
+| Quatre joueurs et concurrence | 36 / 36 | four_player_validation.json
+
+| Version chargée dans le projet | 11 / 11 | live_validation.json
+
+| Optimisation des matériaux | 2 / 2 | optimization_validation.json
+
+| Parité des contrôles et poses | 31 / 31 | parity_validation.json
+
+| Reconnexion d’invité | 11 / 11 | reconnect_validation.json
+
+| Reprise après crash | 21 / 21 | restore_validation.json
+
+| Capture et crash hôte | 9 / 9 | save_validation.json
+
 Les tests natifs sont RoomCodes, Nicknames, InviteCompatibility et SaveIntegrity. Les essais réseau sont locaux avec latence/pertes simulées selon la campagne. Les tests de sauvegarde utilisent des identités de test séparées, pas les comptes Steam réels.
+
 Le scénario de crash interrompt un processus d’éditeur de test puis recharge les données dans un nouveau processus. Le contrôle final confirme que le module déployé et le sous-système de reprise sont chargés dans le projet principal.
+
 Les logs de démarrage contiennent aussi des messages d’outils optionnels absents (profilage/SDK de plateformes non utilisées). Le résultat annoncé ici porte sur les tests nommés et les assertions, pas sur une promesse de log entièrement vide.
+
 Détail des contrôles automatisés
+
 Flèche plantée et dormance — 6 contrôles
-Contrôle
-Résultat
-Valeur relevée
-static_surface_hit
-Réussi
-[-2.400311855935876e-08, 0.0, -10.027349472045895]
-server_arrow_tick_disabled
-Réussi
-—
-static_arrow_network_dormant
-Réussi
-—
-arrow_visible_to_guest
-Réussi
-—
-guest_received_impact_and_stopped_tick
-Réussi
-—
-embedded_position_converged
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| static_surface_hit | Réussi | [-2.400311855935876e-08, 0.0, -10.027349472045895]
+
+| server_arrow_tick_disabled | Réussi | —
+
+| static_arrow_network_dormant | Réussi | —
+
+| arrow_visible_to_guest | Réussi | —
+
+| guest_received_impact_and_stopped_tick | Réussi | —
+
+| embedded_position_converged | Réussi | —
+
 Arc réseau — 26 contrôles
-Contrôle
-Résultat
-Valeur relevée
-sword_selected_by_default
-Réussi
-—
-both_can_equip_bow
-Réussi
-—
-weapon_meshes_visible_remotely
-Réussi
-—
-bow_locomotion_selected
-Réussi
-—
-right_click_aims_without_charge
-Réussi
-—
-aim_speed_same_as_solo
-Réussi
-—
-aim_camera_zoomed
-Réussi
-—
-arrow_already_nocked
-Réussi
-—
-full_charge_visible_on_both_peers
-Réussi
-—
-red_charge_vfx_present
-Réussi
-—
-release_fires_one_arrow_per_player
-Réussi
-—
-arrows_replicated
-Réussi
-—
-server_derived_max_damage
-Réussi
-—
-arrows_damage_other_players
-Réussi
-—
-ammo_never_consumed
-Réussi
-—
-damage_numbers_expire
-Réussi
-—
-switch_to_sword_clears_bow_pose
-Réussi
-—
-normal_walk_speed_restored
-Réussi
-—
-can_aim_after_weapon_switch
-Réussi
-—
-cursor_cancels_aim_and_charge
-Réussi
-—
-can_aim_after_menu
-Réussi
-—
-releasing_aim_cancels_without_shot
-Réussi
-—
-aim_with_simulated_latency
-Réussi
-—
-one_shot_with_latency_and_loss
-Réussi
-—
-death_restores_sword_loadout
-Réussi
-—
-can_aim_after_respawn
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| sword_selected_by_default | Réussi | —
+
+| both_can_equip_bow | Réussi | —
+
+| weapon_meshes_visible_remotely | Réussi | —
+
+| bow_locomotion_selected | Réussi | —
+
+| right_click_aims_without_charge | Réussi | —
+
+| aim_speed_same_as_solo | Réussi | —
+
+| aim_camera_zoomed | Réussi | —
+
+| arrow_already_nocked | Réussi | —
+
+| full_charge_visible_on_both_peers | Réussi | —
+
+| red_charge_vfx_present | Réussi | —
+
+| release_fires_one_arrow_per_player | Réussi | —
+
+| arrows_replicated | Réussi | —
+
+| server_derived_max_damage | Réussi | —
+
+| arrows_damage_other_players | Réussi | —
+
+| ammo_never_consumed | Réussi | —
+
+| damage_numbers_expire | Réussi | —
+
+| switch_to_sword_clears_bow_pose | Réussi | —
+
+| normal_walk_speed_restored | Réussi | —
+
+| can_aim_after_weapon_switch | Réussi | —
+
+| cursor_cancels_aim_and_charge | Réussi | —
+
+| can_aim_after_menu | Réussi | —
+
+| releasing_aim_cancels_without_shot | Réussi | —
+
+| aim_with_simulated_latency | Réussi | —
+
+| one_shot_with_latency_and_loss | Réussi | —
+
+| death_restores_sword_loadout | Réussi | —
+
+| can_aim_after_respawn | Réussi | —
+
 Quatre joueurs et concurrence — 36 contrôles
-Contrôle
-Résultat
-Valeur relevée
-four_concurrent_connections
-Réussi
-—
-unique_fort_slots
-Réussi
-—
-all_four_attacks_received_under_120ms_rtt_3pct_loss
-Réussi
-—
-all_four_animations_visible_to_each_peer
-Réussi
-—
-sword_effects_created_on_each_peer
-Réussi
-—
-all_releases_finish
-Réussi
-—
-four_players_travel_together
-Réussi
-—
-four_fort_spawn_points
-Réussi
-—
-assigned_forts_used
-Réussi
-—
-twenty_shared_wolves_on_server
-Réussi
-20
-competing_attacks_kill_once
-Réussi
-—
-last_hit_attributed_to_one_attacker
-Réussi
-—
-same_killer_on_each_peer
-Réussi
-—
-only_killer_can_see_recruit_prompt
-Réussi
-—
-other_player_cannot_steal_corpse
-Réussi
-—
-unauthorized_attempt_costs_no_mana
-Réussi
-—
-one_recruit_owner_after_concurrent_requests
-Réussi
-—
-mana_debited_exactly_once
-Réussi
-—
-ally_owner_replicated_to_all
-Réussi
-—
-prompt_removed_after_recruitment
-Réussi
-—
-recruited_ally_moves_and_damages_enemy_player
-Réussi
-[508.91331925655356, 0.0, 55.14999794960022]
-mob_attack_animation_on_every_peer
-Réussi
-—
-ally_damage_health_converges
-Réussi
-—
-clients_have_no_mob_ai_controller
-Réussi
-—
-failed_pact_is_consumed
-Réussi
-—
-failed_pact_cannot_retry_or_charge_twice
-Réussi
-—
-second_player_recruits_own_ally
-Réussi
-—
-opposing_allies_fight_each_other
-Réussi
-—
-owner_cannot_damage_own_ally
-Réussi
-—
-distant_mob_sleeps_when_far_from_all_players
-Réussi
-—
-distant_mob_network_dormancy
-Réussi
-—
-distant_mob_irrelevant_to_every_connection
-Réussi
-—
-sleep_stops_ai_movement
-Réussi
-—
-remote_guest_alone_wakes_mob
-Réussi
-—
-only_near_connection_relevant
-Réussi
-—
-awakened_mob_visible_to_near_guest
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| four_concurrent_connections | Réussi | —
+
+| unique_fort_slots | Réussi | —
+
+| all_four_attacks_received_under_120ms_rtt_3pct_loss | Réussi | —
+
+| all_four_animations_visible_to_each_peer | Réussi | —
+
+| sword_effects_created_on_each_peer | Réussi | —
+
+| all_releases_finish | Réussi | —
+
+| four_players_travel_together | Réussi | —
+
+| four_fort_spawn_points | Réussi | —
+
+| assigned_forts_used | Réussi | —
+
+| twenty_shared_wolves_on_server | Réussi | 20
+
+| competing_attacks_kill_once | Réussi | —
+
+| last_hit_attributed_to_one_attacker | Réussi | —
+
+| same_killer_on_each_peer | Réussi | —
+
+| only_killer_can_see_recruit_prompt | Réussi | —
+
+| other_player_cannot_steal_corpse | Réussi | —
+
+| unauthorized_attempt_costs_no_mana | Réussi | —
+
+| one_recruit_owner_after_concurrent_requests | Réussi | —
+
+| mana_debited_exactly_once | Réussi | —
+
+| ally_owner_replicated_to_all | Réussi | —
+
+| prompt_removed_after_recruitment | Réussi | —
+
+| recruited_ally_moves_and_damages_enemy_player | Réussi | [508.91331925655356, 0.0, 55.14999794960022]
+
+| mob_attack_animation_on_every_peer | Réussi | —
+
+| ally_damage_health_converges | Réussi | —
+
+| clients_have_no_mob_ai_controller | Réussi | —
+
+| failed_pact_is_consumed | Réussi | —
+
+| failed_pact_cannot_retry_or_charge_twice | Réussi | —
+
+| second_player_recruits_own_ally | Réussi | —
+
+| opposing_allies_fight_each_other | Réussi | —
+
+| owner_cannot_damage_own_ally | Réussi | —
+
+| distant_mob_sleeps_when_far_from_all_players | Réussi | —
+
+| distant_mob_network_dormancy | Réussi | —
+
+| distant_mob_irrelevant_to_every_connection | Réussi | —
+
+| sleep_stops_ai_movement | Réussi | —
+
+| remote_guest_alone_wakes_mob | Réussi | —
+
+| only_near_connection_relevant | Réussi | —
+
+| awakened_mob_visible_to_near_guest | Réussi | —
+
 Version chargée dans le projet — 11 contrôles
-Contrôle
-Résultat
-Valeur relevée
-solo_animation_graph_loaded
-Réussi
-—
-solo_walk_speed
-Réussi
-—
-solo_acceleration
-Réussi
-—
-solo_air_control
-Réussi
-—
-animation_pose_bridge
-Réussi
-—
-save_subsystem_loaded
-Réussi
-—
-resume_menu_available
-Réussi
-—
-stamina_same_as_solo
-Réussi
-—
-nickname_menu
-Réussi
-—
-return_to_modes
-Réussi
-—
-base_level_loaded
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| solo_animation_graph_loaded | Réussi | —
+
+| solo_walk_speed | Réussi | —
+
+| solo_acceleration | Réussi | —
+
+| solo_air_control | Réussi | —
+
+| animation_pose_bridge | Réussi | —
+
+| save_subsystem_loaded | Réussi | —
+
+| resume_menu_available | Réussi | —
+
+| stamina_same_as_solo | Réussi | —
+
+| nickname_menu | Réussi | —
+
+| return_to_modes | Réussi | —
+
+| base_level_loaded | Réussi | —
+
 Optimisation des matériaux — 2 contrôles
-Contrôle
-Résultat
-Valeur relevée
-same_duration_fewer_redundant_material_updates
-Réussi
-—
-attack_exits_normally
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| same_duration_fewer_redundant_material_updates | Réussi | —
+
+| attack_exits_normally | Réussi | —
+
 Parité des contrôles et poses — 31 contrôles
-Contrôle
-Résultat
-Valeur relevée
-solo_pose_graph_in_use
-Réussi
-—
-same_max_walk_speed
-Réussi
-170.0
-same_max_walk_speed_crouched
-Réussi
-110.0
-same_max_acceleration
-Réussi
-500.0
-same_air_control
-Réussi
-0.05000000074505806
-same_jump_z_velocity
-Réussi
-500.0
-same_gravity_scale
-Réussi
-1.0
-same_braking_deceleration_walking
-Réussi
-2048.0
-same_rotation_rate
-Réussi
-[0.0, 420.0, 0.0]
-run_speed_replicated
-Réussi
-—
-running_jump_on_owner_and_observer
-Réussi
-—
-jump_pose_progresses
-Réussi
-—
-land_resets_air_pose
-Réussi
-—
-heavy_swings_allow_walking
-Réussi
-—
-only_shockwave_recovery_locks
-Réussi
-—
-heavy_finishes
-Réussi
-—
-all_four_strikes_play
-Réussi
-—
-loop_resumes_at_solo_join
-Réussi
-—
-solo_trail_timing
-Réussi
-—
-solo_blue_palette
-Réussi
-—
-release_completes
-Réussi
-—
-strike_1_authored_exit_and_fade
-Réussi
-—
-strike_1_walk_continues
-Réussi
-—
-strike_2_authored_exit_and_fade
-Réussi
-—
-strike_2_walk_continues
-Réussi
-—
-strike_3_authored_exit_and_fade
-Réussi
-—
-strike_3_walk_continues
-Réussi
-—
-strike_4_authored_exit_and_fade
-Réussi
-—
-strike_4_walk_continues
-Réussi
-—
-air_attack_and_landing_recovery
-Réussi
-—
-air_returns_to_walk
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| solo_pose_graph_in_use | Réussi | —
+
+| same_max_walk_speed | Réussi | 170.0
+
+| same_max_walk_speed_crouched | Réussi | 110.0
+
+| same_max_acceleration | Réussi | 500.0
+
+| same_air_control | Réussi | 0.05000000074505806
+
+| same_jump_z_velocity | Réussi | 500.0
+
+| same_gravity_scale | Réussi | 1.0
+
+| same_braking_deceleration_walking | Réussi | 2048.0
+
+| same_rotation_rate | Réussi | [0.0, 420.0, 0.0]
+
+| run_speed_replicated | Réussi | —
+
+| running_jump_on_owner_and_observer | Réussi | —
+
+| jump_pose_progresses | Réussi | —
+
+| land_resets_air_pose | Réussi | —
+
+| heavy_swings_allow_walking | Réussi | —
+
+| only_shockwave_recovery_locks | Réussi | —
+
+| heavy_finishes | Réussi | —
+
+| all_four_strikes_play | Réussi | —
+
+| loop_resumes_at_solo_join | Réussi | —
+
+| solo_trail_timing | Réussi | —
+
+| solo_blue_palette | Réussi | —
+
+| release_completes | Réussi | —
+
+| strike_1_authored_exit_and_fade | Réussi | —
+
+| strike_1_walk_continues | Réussi | —
+
+| strike_2_authored_exit_and_fade | Réussi | —
+
+| strike_2_walk_continues | Réussi | —
+
+| strike_3_authored_exit_and_fade | Réussi | —
+
+| strike_3_walk_continues | Réussi | —
+
+| strike_4_authored_exit_and_fade | Réussi | —
+
+| strike_4_walk_continues | Réussi | —
+
+| air_attack_and_landing_recovery | Réussi | —
+
+| air_returns_to_walk | Réussi | —
+
 Reconnexion d’invité — 11 contrôles
-Contrôle
-Résultat
-Valeur relevée
-host_stays_in_fort
-Réussi
-—
-ally_not_deleted
-Réussi
-—
-ally_waits_without_owner
-Réussi
-—
-nickname_can_change
-Réussi
-—
-same_health_after_guest_disconnect
-Réussi
-117.0
-same_mana_after_guest_disconnect
-Réussi
-—
-same_stamina_after_guest_disconnect
-Réussi
-47.748046875
-inventory_kept_after_guest_disconnect
-Réussi
-—
-same_fort_slot
-Réussi
-—
-ally_recognizes_returning_account
-Réussi
-—
-two_player_records_not_three
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| host_stays_in_fort | Réussi | —
+
+| ally_not_deleted | Réussi | —
+
+| ally_waits_without_owner | Réussi | —
+
+| nickname_can_change | Réussi | —
+
+| same_health_after_guest_disconnect | Réussi | 117.0
+
+| same_mana_after_guest_disconnect | Réussi | —
+
+| same_stamina_after_guest_disconnect | Réussi | 47.748046875
+
+| inventory_kept_after_guest_disconnect | Réussi | —
+
+| same_fort_slot | Réussi | —
+
+| ally_recognizes_returning_account | Réussi | —
+
+| two_player_records_not_three | Réussi | —
+
 Reprise après crash — 21 contrôles
-Contrôle
-Résultat
-Valeur relevée
-host_health_restored
-Réussi
-189.0
-guest_health_restored
-Réussi
-123.0
-guest_mana_restored
-Réussi
-37.0
-guest_stamina_restored
-Réussi
-45.427181243896484
-selected_slot_restored
-Réussi
-—
-inventory_quantity_restored
-Réussi
-—
-fort_assignment_restored
-Réussi
-—
-position_restored
-Réussi
-[0.0, 800.0, 90.0]
-expired_wolf_not_resurrected
-Réussi
-19
-ally_reconnected_to_same_player
-Réussi
-—
-structure_health_restored_BP_Nexus
-Réussi
-—
-structure_health_restored_BP_Rempart
-Réussi
-—
-destroyed_wall_not_resurrected
-Réussi
-—
-restored_health_reaches_client
-Réussi
-—
-restored_inventory_reaches_client
-Réussi
-—
-restored_ally_visible_on_client
-Réussi
-—
-client_ai_actor_tick_disabled
-Réussi
-—
-restored_structure_reaches_client_BP_Nexus
-Réussi
-—
-restored_structure_reaches_client_BP_Rempart
-Réussi
-—
-saved_game_menu_available
-Réussi
-—
-resume_button_available
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| host_health_restored | Réussi | 189.0
+
+| guest_health_restored | Réussi | 123.0
+
+| guest_mana_restored | Réussi | 37.0
+
+| guest_stamina_restored | Réussi | 45.427181243896484
+
+| selected_slot_restored | Réussi | —
+
+| inventory_quantity_restored | Réussi | —
+
+| fort_assignment_restored | Réussi | —
+
+| position_restored | Réussi | [0.0, 800.0, 90.0]
+
+| expired_wolf_not_resurrected | Réussi | 19
+
+| ally_reconnected_to_same_player | Réussi | —
+
+| structure_health_restored_BP_Nexus | Réussi | —
+
+| structure_health_restored_BP_Rempart | Réussi | —
+
+| destroyed_wall_not_resurrected | Réussi | —
+
+| restored_health_reaches_client | Réussi | —
+
+| restored_inventory_reaches_client | Réussi | —
+
+| restored_ally_visible_on_client | Réussi | —
+
+| client_ai_actor_tick_disabled | Réussi | —
+
+| restored_structure_reaches_client_BP_Nexus | Réussi | —
+
+| restored_structure_reaches_client_BP_Rempart | Réussi | —
+
+| saved_game_menu_available | Réussi | —
+
+| resume_button_available | Réussi | —
+
 Capture et crash hôte — 9 contrôles
-Contrôle
-Résultat
-Valeur relevée
-both_identities_registered
-Réussi
-2
-structure_exists_BP_Nexus
-Réussi
-—
-structure_health_readable_BP_Nexus
-Réussi
-—
-structure_takes_damage_BP_Nexus
-Réussi
-—
-structure_exists_BP_Rempart
-Réussi
-—
-structure_health_readable_BP_Rempart
-Réussi
-—
-structure_takes_damage_BP_Rempart
-Réussi
-—
-checkpoint_saved
-Réussi
-—
-resume_offered
-Réussi
-—
+
+| Contrôle | Résultat | Valeur relevée
+
+| both_identities_registered | Réussi | 2
+
+| structure_exists_BP_Nexus | Réussi | —
+
+| structure_health_readable_BP_Nexus | Réussi | —
+
+| structure_takes_damage_BP_Nexus | Réussi | —
+
+| structure_exists_BP_Rempart | Réussi | —
+
+| structure_health_readable_BP_Rempart | Réussi | —
+
+| structure_takes_damage_BP_Rempart | Réussi | —
+
+| checkpoint_saved | Réussi | —
+
+| resume_offered | Réussi | —
+
 Montages : durée source et vitesse relevée
+
 La durée source est celle du fichier de montage. Le RateScale est le facteur enregistré sur l’asset. Les portions de récupération, sauts de section et changements de vitesse à l’exécution peuvent donner une durée jouée différente. Les trois références d’épée actives sont indiquées ; les autres lignes sont un inventaire.
-Montage
-Durée source
-RateScale
-Statut dans ce guide
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Jaune
-1.2667 s
-1.4400
-Archive
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Rose
-1.2667 s
-1.4400
-Archive
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Simple
-1.9000 s
-1.4400
-Archive
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Aerien/AM_Attaque_Aerienne_Plongeante
-1.9667 s
-1.0000
-Plongeon actuel
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AM_Epee_Combo_Reference
-3.5333 s
-1.3800
-Secondaire actuel
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicDroit/AM_Attaque_Epee_ClicDroit
-3.5167 s
-1.5000
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Jaune
-1.2667 s
-1.4400
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Rose
-1.2667 s
-1.4400
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Simple
-1.9000 s
-1.4400
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain
-12.1500 s
-1.4256
-Combo gauche actuel à 4 gestes
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Combo_Poings
-2.1833 s
-1.0000
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Poings_Continu
-1.0000 s
-1.0000
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Arc
-0.4000 s
-1.0000
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Epee
-0.4000 s
-1.0000
-Autre ressource : suivre ses références
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_SansEpee
-0.4000 s
-1.0000
-Autre ressource : suivre ses références
+
+| Montage | Durée source | RateScale | Statut dans ce guide
+
+| /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Jaune | 1.2667 s | 1.4400 | Archive
+
+| /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Rose | 1.2667 s | 1.4400 | Archive
+
+| /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Simple | 1.9000 s | 1.4400 | Archive
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Aerien/AM_Attaque_Aerienne_Plongeante | 1.9667 s | 1.0000 | Plongeon actuel
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AM_Epee_Combo_Reference | 3.5333 s | 1.3800 | Secondaire actuel
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicDroit/AM_Attaque_Epee_ClicDroit | 3.5167 s | 1.5000 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Jaune | 1.2667 s | 1.4400 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Rose | 1.2667 s | 1.4400 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Simple | 1.9000 s | 1.4400 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain | 12.1500 s | 1.4256 | Combo gauche actuel à 4 gestes
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Combo_Poings | 2.1833 s | 1.0000 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Poings_Continu | 1.0000 s | 1.0000 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Arc | 0.4000 s | 1.0000 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Epee | 0.4000 s | 1.0000 | Autre ressource : suivre ses références
+
+| /Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_SansEpee | 0.4000 s | 1.0000 | Autre ressource : suivre ses références
+
 Actions et touches relevées dans les assets
-Les noms ci-dessous sont ceux d’Unreal.
-Ampersand
-= &,
-E_AccentAigu
-= é,
-Quote
-= ",
-Apostrophe
-= ’,
-LeftParantheses
-= (,
-CapsLock
-= Verr. Maj. Les bindings natifs supplémentaires du multi sont documentés dans son guide.
+
+Les noms ci-dessous sont ceux d’Unreal. Ampersand = &, E_AccentAigu = é, Quote = ", Apostrophe = ’, LeftParantheses = (, CapsLock = Verr. Maj. Les bindings natifs supplémentaires du multi sont documentés dans son guide.
+
 Une action au nom historique « Charge » peut aujourd’hui appeler la visée. Le nom du fichier ne suffit donc pas pour connaître la fonction réellement exécutée.
-Contexte
-Action
-Touche moteur
-IMC_Avatar
-AVATAR_MOVE
-Z
-IMC_Avatar
-AVATAR_MOVE
-S
-IMC_Avatar
-AVATAR_MOVE
-D
-IMC_Avatar
-AVATAR_MOVE
-Q
-IMC_Avatar
-AVATAR_JUMP
-SpaceBar
-IMC_Avatar
-AVATAR_LOOK
-Mouse2D
-IMC_Avatar
-AVATAR_CROUCH
-LeftControl
-IMC_Avatar
-AVATAR_SPRINT
-LeftShift
-IMC_Avatar
-AVATAR_ATTACK
-LeftMouseButton
-IMC_Avatar
-AVATAR_SECONDARY_ATTACK
-RightMouseButton
-IMC_Avatar
-AVATAR_DASH
-E
-IMC_InventoryBar
-IA_InventorySlot1
-Ampersand
-IMC_InventoryBar
-IA_InventorySlot2
-E_AccentAigu
-IMC_InventoryBar
-IA_InventorySlot3
-Quote
-IMC_InventoryBar
-IA_InventorySlot4
-Apostrophe
-IMC_InventoryBar
-IA_InventorySlot5
-LeftParantheses
-IMC_InventoryBar
-IA_DropItem
-A
-IMC_InventoryBar
-IA_ItemThrowDistance
-MouseWheelAxis
-IMC_InventoryBar
-IA_SelectFist
-R
-IMC_InventoryBar
-IA_AimFist
-RightMouseButton
-IMC_InventoryBar
-IA_RappelerAllies
-T
-IMC_InventoryBar
-IA_DeployerAllies
-Y
-IMC_Default
-IA_Jump
-SpaceBar
-IMC_Default
-IA_Jump
-Gamepad_FaceButton_Bottom
-IMC_Default
-IA_Move
-Z
-IMC_Default
-IA_Move
-S
-IMC_Default
-IA_Move
-Q
-IMC_Default
-IA_Move
-D
-IMC_Default
-IA_Move
-Up
-IMC_Default
-IA_Move
-Down
-IMC_Default
-IA_Move
-Right
-IMC_Default
-IA_Move
-Left
-IMC_Default
-IA_Move
-Gamepad_Left2D
-IMC_Default
-IA_Look
-Gamepad_Right2D
-IMC_MouseLook
-IA_MouseLook
-Mouse2D
-IMC_Arc
-IA_Arc_Charge
-RightMouseButton
-IMC_Arc
-IA_Arc_Tir
-LeftMouseButton
+
+| Contexte | Action | Touche moteur
+
+| IMC_Avatar | AVATAR_MOVE | Z
+
+| IMC_Avatar | AVATAR_MOVE | S
+
+| IMC_Avatar | AVATAR_MOVE | D
+
+| IMC_Avatar | AVATAR_MOVE | Q
+
+| IMC_Avatar | AVATAR_JUMP | SpaceBar
+
+| IMC_Avatar | AVATAR_LOOK | Mouse2D
+
+| IMC_Avatar | AVATAR_CROUCH | LeftControl
+
+| IMC_Avatar | AVATAR_SPRINT | LeftShift
+
+| IMC_Avatar | AVATAR_ATTACK | LeftMouseButton
+
+| IMC_Avatar | AVATAR_SECONDARY_ATTACK | RightMouseButton
+
+| IMC_Avatar | AVATAR_DASH | E
+
+| IMC_InventoryBar | IA_InventorySlot1 | Ampersand
+
+| IMC_InventoryBar | IA_InventorySlot2 | E_AccentAigu
+
+| IMC_InventoryBar | IA_InventorySlot3 | Quote
+
+| IMC_InventoryBar | IA_InventorySlot4 | Apostrophe
+
+| IMC_InventoryBar | IA_InventorySlot5 | LeftParantheses
+
+| IMC_InventoryBar | IA_DropItem | A
+
+| IMC_InventoryBar | IA_ItemThrowDistance | MouseWheelAxis
+
+| IMC_InventoryBar | IA_SelectFist | R
+
+| IMC_InventoryBar | IA_AimFist | RightMouseButton
+
+| IMC_InventoryBar | IA_RappelerAllies | T
+
+| IMC_InventoryBar | IA_DeployerAllies | Y
+
+| IMC_Default | IA_Jump | SpaceBar
+
+| IMC_Default | IA_Jump | Gamepad_FaceButton_Bottom
+
+| IMC_Default | IA_Move | Z
+
+| IMC_Default | IA_Move | S
+
+| IMC_Default | IA_Move | Q
+
+| IMC_Default | IA_Move | D
+
+| IMC_Default | IA_Move | Up
+
+| IMC_Default | IA_Move | Down
+
+| IMC_Default | IA_Move | Right
+
+| IMC_Default | IA_Move | Left
+
+| IMC_Default | IA_Move | Gamepad_Left2D
+
+| IMC_Default | IA_Look | Gamepad_Right2D
+
+| IMC_MouseLook | IA_MouseLook | Mouse2D
+
+| IMC_Arc | IA_Arc_Charge | RightMouseButton
+
+| IMC_Arc | IA_Arc_Tir | LeftMouseButton
+
 Catalogue de ressources relevées
+
 105 références relevées dans les familles ciblées, hors dossier Corbeille. Ce catalogue n’est pas une analyse exhaustive des dépendances de tout Content.
+
 Animations — 78 ressources
-/Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Idle.AN_Crouch_Idle
-/Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Idle_Sword.AN_Crouch_Idle_Sword
-/Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Walk.AN_Crouch_Walk
-/Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Walk_Sword.AN_Crouch_Walk_Sword
-/Game/Avatar_GardeRobe_V2/Animations/Accroupi/BS_Crouch.BS_Crouch
-/Game/Avatar_GardeRobe_V2/Animations/Accroupi/BS_Crouch_Sword.BS_Crouch_Sword
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimBack.AN_Arc_AimBack
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimForward.AN_Arc_AimForward
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimIdle.AN_Arc_AimIdle
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimLeft.AN_Arc_AimLeft
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimRight.AN_Arc_AimRight
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Charge.AN_Arc_Charge
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Idle.AN_Arc_Idle
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Portage_Aerien.AN_Arc_Portage_Aerien
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Recoil.AN_Arc_Recoil
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Run.AN_Arc_Run
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_RunBack.AN_Arc_RunBack
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_RunLeft.AN_Arc_RunLeft
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_RunRight.AN_Arc_RunRight
-/Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Walk.AN_Arc_Walk
-/Game/Avatar_GardeRobe_V2/Animations/Arc/BS_Arc_Locomotion.BS_Arc_Locomotion
-/Game/Avatar_GardeRobe_V2/Animations/Arc/BS_Arc_Visee.BS_Arc_Visee
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Jaune.AM_Hache_Base_Jaune
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Rose.AM_Hache_Base_Rose
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Simple.AM_Hache_Base_Simple
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AN_Hache_Base_Jaune.AN_Hache_Base_Jaune
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AN_Hache_Base_Rose.AN_Hache_Base_Rose
-/Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AN_Hache_Base_Simple.AN_Hache_Base_Simple
-/Game/Avatar_GardeRobe_V2/Animations/Chute/AN_Chute_Epee.AN_Chute_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Chute/AN_Chute_SansEpee.AN_Chute_SansEpee
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Aerien/AM_Attaque_Aerienne_Plongeante.AM_Attaque_Aerienne_Plongeante
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Aerien/AN_Attaque_Aerienne_Plongeante.AN_Attaque_Aerienne_Plongeante
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AM_Epee_Combo_Reference.AM_Epee_Combo_Reference
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AN_Epee_Combo_Reference.AN_Epee_Combo_Reference
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicDroit/AM_Attaque_Epee_ClicDroit.AM_Attaque_Epee_ClicDroit
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicDroit/AN_ClicDroit_Appuis.AN_ClicDroit_Appuis
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Jaune.AM_Attaque_Epee_Jaune
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Rose.AM_Attaque_Epee_Rose
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Simple.AM_Attaque_Epee_Simple
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AN_Attaque_Epee_Jaune.AN_Attaque_Epee_Jaune
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AN_Attaque_Epee_Rose.AN_Attaque_Epee_Rose
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AN_Attaque_Epee_Simple.AN_Attaque_Epee_Simple
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboQuatreCoups/AN_Epee_ComboQuatreCoups.AN_Epee_ComboQuatreCoups
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboQuatreCoups/Sources/AN_Epee_Revers_Mixamo_Source.AN_Epee_Revers_Mixamo_Source
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain.AM_Epee_ComboUneMain
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboDeuxCoups.AN_Epee_ComboDeuxCoups
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboDeuxCoups_AppuisStables.AN_Epee_ComboDeuxCoups_AppuisStables
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboUneMain_Sorties.AN_Epee_ComboUneMain_Sorties
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboUneMain_Source.AN_Epee_ComboUneMain_Source
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboUneMain_SurPlace.AN_Epee_ComboUneMain_SurPlace
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Combo_Poings.AM_Combo_Poings
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Poings_Continu.AM_Poings_Continu
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AN_Combo_Poings.AN_Combo_Poings
-/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AN_Poings_Continu.AN_Poings_Continu
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Arc.AM_Esquive_Arc
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Epee.AM_Esquive_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_SansEpee.AM_Esquive_SansEpee
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AN_Esquive_Arc.AN_Esquive_Arc
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AN_Esquive_Epee.AN_Esquive_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Esquives/AN_Esquive_SansEpee.AN_Esquive_SansEpee
-/Game/Avatar_GardeRobe_V2/Animations/Locomotion/Epee/AN_Run_Epee.AN_Run_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Locomotion/Epee/AN_Walk_Epee.AN_Walk_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Locomotion/Epee/BS_Avatar_V2_Locomotion_Epee.BS_Avatar_V2_Locomotion_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Locomotion/SansEpee/AN_Run_Mixamo_Corrige.AN_Run_Mixamo_Corrige
-/Game/Avatar_GardeRobe_V2/Animations/Locomotion/SansEpee/AN_Walk_Mixamo_Corrige.AN_Walk_Mixamo_Corrige
-/Game/Avatar_GardeRobe_V2/Animations/Locomotion/SansEpee/BS_Avatar_V2_Locomotion.BS_Avatar_V2_Locomotion
-/Game/Avatar_GardeRobe_V2/Animations/Mort/AN_Mort.AN_Mort
-/Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle.AN_Idle
-/Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle_Epee.AN_Idle_Epee
-/Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle_Mixamo_Corrige.AN_Idle_Mixamo_Corrige
-/Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle_SansEpee.AN_Idle_SansEpee
-/Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Free.AN_Jump_Moving_Free
-/Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Sword.AN_Jump_Moving_Sword
-/Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Tail_Free.AN_Jump_Moving_Tail_Free
-/Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Tail_Sword.AN_Jump_Moving_Tail_Sword
-/Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Standing_Free.AN_Jump_Standing_Free
-/Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Standing_Sword.AN_Jump_Standing_Sword
-/Game/Avatar_GardeRobe_V2/Animations/Sauts_V2/AN_SecondaryAttack_Clean_60fps.AN_SecondaryAttack_Clean_60fps
+
+- /Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Idle.AN_Crouch_Idle
+
+- /Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Idle_Sword.AN_Crouch_Idle_Sword
+
+- /Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Walk.AN_Crouch_Walk
+
+- /Game/Avatar_GardeRobe_V2/Animations/Accroupi/AN_Crouch_Walk_Sword.AN_Crouch_Walk_Sword
+
+- /Game/Avatar_GardeRobe_V2/Animations/Accroupi/BS_Crouch.BS_Crouch
+
+- /Game/Avatar_GardeRobe_V2/Animations/Accroupi/BS_Crouch_Sword.BS_Crouch_Sword
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimBack.AN_Arc_AimBack
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimForward.AN_Arc_AimForward
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimIdle.AN_Arc_AimIdle
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimLeft.AN_Arc_AimLeft
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_AimRight.AN_Arc_AimRight
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Charge.AN_Arc_Charge
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Idle.AN_Arc_Idle
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Portage_Aerien.AN_Arc_Portage_Aerien
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Recoil.AN_Arc_Recoil
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Run.AN_Arc_Run
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_RunBack.AN_Arc_RunBack
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_RunLeft.AN_Arc_RunLeft
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_RunRight.AN_Arc_RunRight
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/AN_Arc_Walk.AN_Arc_Walk
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/BS_Arc_Locomotion.BS_Arc_Locomotion
+
+- /Game/Avatar_GardeRobe_V2/Animations/Arc/BS_Arc_Visee.BS_Arc_Visee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Jaune.AM_Hache_Base_Jaune
+
+- /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Rose.AM_Hache_Base_Rose
+
+- /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AM_Hache_Base_Simple.AM_Hache_Base_Simple
+
+- /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AN_Hache_Base_Jaune.AN_Hache_Base_Jaune
+
+- /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AN_Hache_Base_Rose.AN_Hache_Base_Rose
+
+- /Game/Avatar_GardeRobe_V2/Animations/Archives/Hache_AttaqueEpeePrecedente/AN_Hache_Base_Simple.AN_Hache_Base_Simple
+
+- /Game/Avatar_GardeRobe_V2/Animations/Chute/AN_Chute_Epee.AN_Chute_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Chute/AN_Chute_SansEpee.AN_Chute_SansEpee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Aerien/AM_Attaque_Aerienne_Plongeante.AM_Attaque_Aerienne_Plongeante
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Aerien/AN_Attaque_Aerienne_Plongeante.AN_Attaque_Aerienne_Plongeante
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AM_Epee_Combo_Reference.AM_Epee_Combo_Reference
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AN_Epee_Combo_Reference.AN_Epee_Combo_Reference
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicDroit/AM_Attaque_Epee_ClicDroit.AM_Attaque_Epee_ClicDroit
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicDroit/AN_ClicDroit_Appuis.AN_ClicDroit_Appuis
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Jaune.AM_Attaque_Epee_Jaune
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Rose.AM_Attaque_Epee_Rose
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AM_Attaque_Epee_Simple.AM_Attaque_Epee_Simple
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AN_Attaque_Epee_Jaune.AN_Attaque_Epee_Jaune
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AN_Attaque_Epee_Rose.AN_Attaque_Epee_Rose
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/AN_Attaque_Epee_Simple.AN_Attaque_Epee_Simple
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboQuatreCoups/AN_Epee_ComboQuatreCoups.AN_Epee_ComboQuatreCoups
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboQuatreCoups/Sources/AN_Epee_Revers_Mixamo_Source.AN_Epee_Revers_Mixamo_Source
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain.AM_Epee_ComboUneMain
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboDeuxCoups.AN_Epee_ComboDeuxCoups
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboDeuxCoups_AppuisStables.AN_Epee_ComboDeuxCoups_AppuisStables
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboUneMain_Sorties.AN_Epee_ComboUneMain_Sorties
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboUneMain_Source.AN_Epee_ComboUneMain_Source
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AN_Epee_ComboUneMain_SurPlace.AN_Epee_ComboUneMain_SurPlace
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Combo_Poings.AM_Combo_Poings
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Poings_Continu.AM_Poings_Continu
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AN_Combo_Poings.AN_Combo_Poings
+
+- /Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AN_Poings_Continu.AN_Poings_Continu
+
+- /Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Arc.AM_Esquive_Arc
+
+- /Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_Epee.AM_Esquive_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Esquives/AM_Esquive_SansEpee.AM_Esquive_SansEpee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Esquives/AN_Esquive_Arc.AN_Esquive_Arc
+
+- /Game/Avatar_GardeRobe_V2/Animations/Esquives/AN_Esquive_Epee.AN_Esquive_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Esquives/AN_Esquive_SansEpee.AN_Esquive_SansEpee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Locomotion/Epee/AN_Run_Epee.AN_Run_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Locomotion/Epee/AN_Walk_Epee.AN_Walk_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Locomotion/Epee/BS_Avatar_V2_Locomotion_Epee.BS_Avatar_V2_Locomotion_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Locomotion/SansEpee/AN_Run_Mixamo_Corrige.AN_Run_Mixamo_Corrige
+
+- /Game/Avatar_GardeRobe_V2/Animations/Locomotion/SansEpee/AN_Walk_Mixamo_Corrige.AN_Walk_Mixamo_Corrige
+
+- /Game/Avatar_GardeRobe_V2/Animations/Locomotion/SansEpee/BS_Avatar_V2_Locomotion.BS_Avatar_V2_Locomotion
+
+- /Game/Avatar_GardeRobe_V2/Animations/Mort/AN_Mort.AN_Mort
+
+- /Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle.AN_Idle
+
+- /Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle_Epee.AN_Idle_Epee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle_Mixamo_Corrige.AN_Idle_Mixamo_Corrige
+
+- /Game/Avatar_GardeRobe_V2/Animations/Repos/AN_Idle_SansEpee.AN_Idle_SansEpee
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Free.AN_Jump_Moving_Free
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Sword.AN_Jump_Moving_Sword
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Tail_Free.AN_Jump_Moving_Tail_Free
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Moving_Tail_Sword.AN_Jump_Moving_Tail_Sword
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Standing_Free.AN_Jump_Standing_Free
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts/AN_Jump_Standing_Sword.AN_Jump_Standing_Sword
+
+- /Game/Avatar_GardeRobe_V2/Animations/Sauts_V2/AN_SecondaryAttack_Clean_60fps.AN_SecondaryAttack_Clean_60fps
+
 Arc, objets et interface — 15 ressources
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Input/IA_Arc_Charge.IA_Arc_Charge
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Input/IA_Arc_Tir.IA_Arc_Tir
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Input/IMC_Arc.IMC_Arc
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/M_Icone_Arc.M_Icone_Arc
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/M_Icone_Fleches.M_Icone_Fleches
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/T_Arc_Crosshair_Cartoon.T_Arc_Crosshair_Cartoon
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/T_Icone_Arc.T_Icone_Arc
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/T_Icone_Fleches.T_Icone_Fleches
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Items/BP_Item_Arc.BP_Item_Arc
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Items/BP_Item_Fleches.BP_Item_Fleches
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Items/DA_Item_Arc.DA_Item_Arc
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Items/DA_Item_Fleches.DA_Item_Fleches
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Modeles/SM_Arc_Noir.SM_Arc_Noir
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Modeles/SM_Fleche.SM_Fleche
-/Game/Avatar_GardeRobe_V2/Armes/Arc/Modeles/SM_Item_Arc.SM_Item_Arc
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Input/IA_Arc_Charge.IA_Arc_Charge
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Input/IA_Arc_Tir.IA_Arc_Tir
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Input/IMC_Arc.IMC_Arc
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/M_Icone_Arc.M_Icone_Arc
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/M_Icone_Fleches.M_Icone_Fleches
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/T_Arc_Crosshair_Cartoon.T_Arc_Crosshair_Cartoon
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/T_Icone_Arc.T_Icone_Arc
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Interface/T_Icone_Fleches.T_Icone_Fleches
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Items/BP_Item_Arc.BP_Item_Arc
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Items/BP_Item_Fleches.BP_Item_Fleches
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Items/DA_Item_Arc.DA_Item_Arc
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Items/DA_Item_Fleches.DA_Item_Fleches
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Modeles/SM_Arc_Noir.SM_Arc_Noir
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Modeles/SM_Fleche.SM_Fleche
+
+- /Game/Avatar_GardeRobe_V2/Armes/Arc/Modeles/SM_Item_Arc.SM_Item_Arc
+
 Gameplay et retarget — 8 ressources
-/Game/Avatar_GardeRobe_V2/Gameplay/ABP_Avatar_V2_Base.ABP_Avatar_V2_Base
-/Game/Avatar_GardeRobe_V2/Gameplay/BP_StudioGameMode.BP_StudioGameMode
-/Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/M_Avatar_Blink.M_Avatar_Blink
-/Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/MI_Avatar_Blink.MI_Avatar_Blink
-/Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901.texture_pbr_20250901
-/Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901_metallic.texture_pbr_20250901_metallic
-/Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901_normal.texture_pbr_20250901_normal
-/Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901_roughness.texture_pbr_20250901_roughness
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/ABP_Avatar_V2_Base.ABP_Avatar_V2_Base
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/BP_StudioGameMode.BP_StudioGameMode
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/M_Avatar_Blink.M_Avatar_Blink
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/MI_Avatar_Blink.MI_Avatar_Blink
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901.texture_pbr_20250901
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901_metallic.texture_pbr_20250901_metallic
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901_normal.texture_pbr_20250901_normal
+
+- /Game/Avatar_GardeRobe_V2/Gameplay/Retarget/Sources/AncienAvatar/MaterialCharacter/texture_pbr_20250901_roughness.texture_pbr_20250901_roughness
+
 Studio et interface — 4 ressources
-/Game/Avatar_GardeRobe_V2/UI/Studio/M_Studio_Galaxie.M_Studio_Galaxie
-/Game/Avatar_GardeRobe_V2/UI/Studio/M_Studio_Socle_Mat.M_Studio_Socle_Mat
-/Game/Avatar_GardeRobe_V2/UI/Studio/MI_Studio_Socle_Mat.MI_Studio_Socle_Mat
-/Game/Avatar_GardeRobe_V2/UI/Studio/T_Studio_Galaxie.T_Studio_Galaxie
+
+- /Game/Avatar_GardeRobe_V2/UI/Studio/M_Studio_Galaxie.M_Studio_Galaxie
+
+- /Game/Avatar_GardeRobe_V2/UI/Studio/M_Studio_Socle_Mat.M_Studio_Socle_Mat
+
+- /Game/Avatar_GardeRobe_V2/UI/Studio/MI_Studio_Socle_Mat.MI_Studio_Socle_Mat
+
+- /Game/Avatar_GardeRobe_V2/UI/Studio/T_Studio_Galaxie.T_Studio_Galaxie
+
 Valeurs de référence des Blueprints
+
 Instantané des valeurs sérialisées avant exécution, utile pour retrouver un réglage. Les valeurs transitoires à zéro ou à None ne décrivent pas nécessairement l’état après BeginPlay. Les propriétés de moteur héritées peuvent également apparaître ; la source JSON conserve l’audit complet.
+
 BP_AvatarCharacter — valeurs relevées
+
 /Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter
-Propriété
-Valeur sérialisée
-JumpAnticipation
-False
-Is Running
-False
-Stamina
-200.0
-MaxStamina
-200.0
-SprintDrainPerSecond
-12.5
-StaminaRegenPerSecond
-15.0
-JumpStaminaCost
-20.0
-MinStaminaToSprint
-10.0
-WalkSpeed
-170.0
-SprintSpeed
-500.0
-AttackMontage
-<Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AM_Epee_Combo_Reference.AM_Epee_Combo_Reference' Class 'AnimMontage'>
-UpperRightAttackMontage
-<Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain.AM_Epee_ComboUneMain' Class 'AnimMontage'>
-UpperLeftAttackMontage
-<Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain.AM_Epee_ComboUneMain' Class 'AnimMontage'>
-NextAttackLeft
-False
-UpperComboBlendTime
-7.749999618530273
-SecondaryAttackStaminaCost
-20.0
-MaxHealth
-300.0
-Health
-300.0
-SwordDamage
-20.0
-SwordPreviousPosition
-0.0
-IsDead
-False
-SwordWindowActive
-False
-SwordSwingSerial
-0.0
-IsSwordDrawn
-True
-DashDistance
-600.0
-DashTravelTime
-0.8
-DashAnticipation
-0.0
-DashRecoveryTime
-0.0
-DashStaminaCost
-20.0
-DashCooldown
-1.1
-DashHopHeight
-10.0
-DashFOVBoost
-5.0
-DashStartedAt
-0.0
-DashNextAllowedTime
-0.0
-DashBaseFOV
-90.0
-IsDashing
-False
-DashCameraActive
-False
-DashStartLocation
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-DashDirection
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-DashCarrySpeed
-0.0
-SelectedInventorySlot
-1
-InventoryItems
-["/Game/ElemntsForGame/Item/Definitions/BP_ItemDefinition.BP_ItemDefinition_C'/Game/ElemntsForGame/Item/Definitions/DA_Item_Epee.DA_Item_Epee'", "/Game/ElemntsForGame/Item/Definitions/BP_ItemDefinition.BP_ItemDefinition_C'/Game/Avatar_GardeRobe_V2/Armes/Arc/Items/DA_Item_Arc.DA_Item_Arc'", None, None, None]
-DropPickupDelay
-2.0
-ItemThrowActive
-False
-ItemThrowValid
-False
-ItemThrowStartedAt
-0.0
-ItemThrowSlot
-0
-ItemThrowDefinition
-None
-ItemThrowOrigin
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-ItemThrowVelocity
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-ItemThrowLanding
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-ItemThrowMaxDistance
-500.0
-ItemThrowMinDistance
-70.0
-ItemThrowChargeTime
-1.2
-ItemThrowAimDistance
-250.0
-ItemThrowWheelStep
-50.0
-ItemThrowInitialDistance
-250.0
-ItemThrowDashThickness
-3.5
-ItemThrowEndGap
-20.0
-ItemThrowPathVisibleCount
-0
-ItemThrowPreviousCustomDepth
-False
-PunchMontage
-<Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Combo_Poings.AM_Combo_Poings' Class 'AnimMontage'>
-PunchStaminaCost
-20.0
-PunchDamage
-8.0
-PunchContactRadius
-55.0
-PunchMaxDistance
-165.0
-PunchPreviousPosition
-0.0
-PunchCurrentStrike
--1
-PunchHitActors
-[]
-PunchCombosStarted
-0
-PunchHitsDealt
-0
-CameraPitchMin
--60.0
-CameraPitchMax
-35.0
-PunchAimDownLimit
-30.0
-PunchAimUpLimit
-25.0
-PunchAimInterpSpeed
-9.0
-PunchAimHeld
-False
-PunchAimActive
-False
-PunchAimPitch
-0.0
-PunchAimPoint
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-PunchAimOwnsFacing
-False
-PunchAimPreviousOrient
-True
-PunchLoopMontage
-<Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Poings_Continu.AM_Poings_Continu' Class 'AnimMontage'>
-PunchHeld
-False
-PunchLoopPreviousPosition
-0.0
-PunchLoopCycles
-0
-PunchAimZoomFactor
-0.78
-PunchAimZoomSpeed
-8.0
-PunchZoomCaptured
-False
-PunchZoomBaseDistance
-300.0
-PunchAimMouseSensitivity
-0.45
-PunchAimShoulderOffset
-0.0
-PunchZoomBaseOffset
-<Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
-CameraPitchMaxEnHauteur
-70.0
-CameraDegagementDebut
-85.0
-CameraDegagementComplet
-220.0
-CameraSondeRecul
-180.0
-CameraPitchEffectiveMax
-35.0
-Mana
-100.0
-ManaMaximum
-100.0
-ManaParMinute
-5.0
-ManaParElimination
-5.0
-ManaParEnergie
-25.0
-Allie1
-None
-Allie2
-None
-Allie3
-None
-CadavreCible
-None
-RecrutementChance
-0.5
-RecrutementCoutMana
-25.0
-RecrutementPortee
-450.0
-ProchainScanCadavre
-0.0
-DistanceCadavre
-450.0
-MessageRecrutement
-MessageRecrutementFin
-0.0
-RecrutementVise
-False
-RecrutementMaintien
-0.0
-CadavreMaintenu
-None
-CiblePrioritaireAllies
-None
-RecrutementInvocationRituelle
-True
-CadavreEnReanimation
-None
-DureeReanimation
-1.8
-AlliesRappeles
-False
-HologrammeCompact
-True
-BasePorteVisee
-False
-AirSwordAttackUsed
-False
-AirSwordImpactDone
-False
-PrimarySwordFX
-None
-SwordGroundRecoveryLocked
-False
-SwordGroundRecoveryEnds
-0.0
-PrimarySwordExitPoint
-0.0
-PrimarySwordRecovering
-False
-PrimarySwordExitEnd
-0.0
-PrimarySwordNextBuffered
-False
-PrimarySwordRestartBuffered
-False
-PrimarySwordLoopBuffered
-False
-Mesh
-<Object '/Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter.Default__BP_AvatarCharacter_C:CharacterMesh0' Class 'SkeletalMeshComponent'>
-CharacterMovement
-<Object '/Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter.Default__BP_AvatarCharacter_C:CharMoveComp' Class 'CharacterMovementComponent'>
-CapsuleComponent
-<Object '/Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter.Default__BP_AvatarCharacter_C:CollisionCylinder' Class 'CapsuleComponent'>
-CrouchedEyeHeight
-32.0
-bIsCrouched
-False
-bPressedJump
-False
-bWasJumping
-False
-JumpKeyHoldTime
-0.0
-JumpForceTimeRemaining
-0.0
-ProxyJumpForceStartedTime
-0.0
-JumpMaxHoldTime
-0.0
-JumpMaxCount
-1
-JumpCurrentCount
-0
-JumpCurrentCountPreJump
-0
-OnReachedJumpApex
-<Multicast delegate 'CharacterReachedApexSignature' <Unbound>>
-LandedDelegate
-<Multicast delegate 'LandedSignature' <Unbound>>
-MovementModeChangedDelegate
-<Multicast delegate 'MovementModeChangedSignature' <Unbound>>
-OnCharacterMovementUpdated
-<Multicast delegate 'CharacterMovementUpdatedSignature' <Unbound>>
-bUseControllerRotationPitch
-False
-bUseControllerRotationYaw
-False
-bUseControllerRotationRoll
-False
-bCanAffectNavigationGeneration
-False
-BaseEyeHeight
-64.0
-AutoPossessPlayer
-<AutoReceiveInput.PLAYER0: 1>
-AutoPossessAI
-<AutoPossessAI.PLACED_IN_WORLD: 1>
-AIControllerClass
-<Object '/Script/AIModule.AIController' Class 'Class'>
-PlayerState
-None
-LastHitBy
-None
-OverrideInputComponentClass
-None
-PrimaryActorTick
-<Struct 'ActorTickFunction' {}>
-bOnlyRelevantToOwner
-False
-bAlwaysRelevant
-False
+
+| Propriété | Valeur sérialisée
+
+| JumpAnticipation | False
+
+| Is Running | False
+
+| Stamina | 200.0
+
+| MaxStamina | 200.0
+
+| SprintDrainPerSecond | 12.5
+
+| StaminaRegenPerSecond | 15.0
+
+| JumpStaminaCost | 20.0
+
+| MinStaminaToSprint | 10.0
+
+| WalkSpeed | 170.0
+
+| SprintSpeed | 500.0
+
+| AttackMontage | <Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/Artstation/AM_Epee_Combo_Reference.AM_Epee_Combo_Reference' Class 'AnimMontage'>
+
+| UpperRightAttackMontage | <Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain.AM_Epee_ComboUneMain' Class 'AnimMontage'>
+
+| UpperLeftAttackMontage | <Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Epee/ClicGauche/ComboUneMain/AM_Epee_ComboUneMain.AM_Epee_ComboUneMain' Class 'AnimMontage'>
+
+| NextAttackLeft | False
+
+| UpperComboBlendTime | 7.749999618530273
+
+| SecondaryAttackStaminaCost | 20.0
+
+| MaxHealth | 300.0
+
+| Health | 300.0
+
+| SwordDamage | 20.0
+
+| SwordPreviousPosition | 0.0
+
+| IsDead | False
+
+| SwordWindowActive | False
+
+| SwordSwingSerial | 0.0
+
+| IsSwordDrawn | True
+
+| DashDistance | 600.0
+
+| DashTravelTime | 0.8
+
+| DashAnticipation | 0.0
+
+| DashRecoveryTime | 0.0
+
+| DashStaminaCost | 20.0
+
+| DashCooldown | 1.1
+
+| DashHopHeight | 10.0
+
+| DashFOVBoost | 5.0
+
+| DashStartedAt | 0.0
+
+| DashNextAllowedTime | 0.0
+
+| DashBaseFOV | 90.0
+
+| IsDashing | False
+
+| DashCameraActive | False
+
+| DashStartLocation | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| DashDirection | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| DashCarrySpeed | 0.0
+
+| SelectedInventorySlot | 1
+
+| InventoryItems | ["/Game/ElemntsForGame/Item/Definitions/BP_ItemDefinition.BP_ItemDefinition_C'/Game/ElemntsForGame/Item/Definitions/DA_Item_Epee.DA_Item_Epee'", "/Game/ElemntsForGame/Item/Definitions/BP_ItemDefinition.BP_ItemDefinition_C'/Game/Avatar_GardeRobe_V2/Armes/Arc/Items/DA_Item_Arc.DA_Item_Arc'", None, None, None]
+
+| DropPickupDelay | 2.0
+
+| ItemThrowActive | False
+
+| ItemThrowValid | False
+
+| ItemThrowStartedAt | 0.0
+
+| ItemThrowSlot | 0
+
+| ItemThrowDefinition | None
+
+| ItemThrowOrigin | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| ItemThrowVelocity | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| ItemThrowLanding | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| ItemThrowMaxDistance | 500.0
+
+| ItemThrowMinDistance | 70.0
+
+| ItemThrowChargeTime | 1.2
+
+| ItemThrowAimDistance | 250.0
+
+| ItemThrowWheelStep | 50.0
+
+| ItemThrowInitialDistance | 250.0
+
+| ItemThrowDashThickness | 3.5
+
+| ItemThrowEndGap | 20.0
+
+| ItemThrowPathVisibleCount | 0
+
+| ItemThrowPreviousCustomDepth | False
+
+| PunchMontage | <Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Combo_Poings.AM_Combo_Poings' Class 'AnimMontage'>
+
+| PunchStaminaCost | 20.0
+
+| PunchDamage | 8.0
+
+| PunchContactRadius | 55.0
+
+| PunchMaxDistance | 165.0
+
+| PunchPreviousPosition | 0.0
+
+| PunchCurrentStrike | -1
+
+| PunchHitActors | []
+
+| PunchCombosStarted | 0
+
+| PunchHitsDealt | 0
+
+| CameraPitchMin | -60.0
+
+| CameraPitchMax | 35.0
+
+| PunchAimDownLimit | 30.0
+
+| PunchAimUpLimit | 25.0
+
+| PunchAimInterpSpeed | 9.0
+
+| PunchAimHeld | False
+
+| PunchAimActive | False
+
+| PunchAimPitch | 0.0
+
+| PunchAimPoint | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| PunchAimOwnsFacing | False
+
+| PunchAimPreviousOrient | True
+
+| PunchLoopMontage | <Object '/Game/Avatar_GardeRobe_V2/Animations/Combat/Poings/AM_Poings_Continu.AM_Poings_Continu' Class 'AnimMontage'>
+
+| PunchHeld | False
+
+| PunchLoopPreviousPosition | 0.0
+
+| PunchLoopCycles | 0
+
+| PunchAimZoomFactor | 0.78
+
+| PunchAimZoomSpeed | 8.0
+
+| PunchZoomCaptured | False
+
+| PunchZoomBaseDistance | 300.0
+
+| PunchAimMouseSensitivity | 0.45
+
+| PunchAimShoulderOffset | 0.0
+
+| PunchZoomBaseOffset | <Struct 'Vector' {x: 0.000000, y: 0.000000, z: 0.000000}>
+
+| CameraPitchMaxEnHauteur | 70.0
+
+| CameraDegagementDebut | 85.0
+
+| CameraDegagementComplet | 220.0
+
+| CameraSondeRecul | 180.0
+
+| CameraPitchEffectiveMax | 35.0
+
+| Mana | 100.0
+
+| ManaMaximum | 100.0
+
+| ManaParMinute | 5.0
+
+| ManaParElimination | 5.0
+
+| ManaParEnergie | 25.0
+
+| Allie1 | None
+
+| Allie2 | None
+
+| Allie3 | None
+
+| CadavreCible | None
+
+| RecrutementChance | 0.5
+
+| RecrutementCoutMana | 25.0
+
+| RecrutementPortee | 450.0
+
+| ProchainScanCadavre | 0.0
+
+| DistanceCadavre | 450.0
+
+| MessageRecrutement |
+
+| MessageRecrutementFin | 0.0
+
+| RecrutementVise | False
+
+| RecrutementMaintien | 0.0
+
+| CadavreMaintenu | None
+
+| CiblePrioritaireAllies | None
+
+| RecrutementInvocationRituelle | True
+
+| CadavreEnReanimation | None
+
+| DureeReanimation | 1.8
+
+| AlliesRappeles | False
+
+| HologrammeCompact | True
+
+| BasePorteVisee | False
+
+| AirSwordAttackUsed | False
+
+| AirSwordImpactDone | False
+
+| PrimarySwordFX | None
+
+| SwordGroundRecoveryLocked | False
+
+| SwordGroundRecoveryEnds | 0.0
+
+| PrimarySwordExitPoint | 0.0
+
+| PrimarySwordRecovering | False
+
+| PrimarySwordExitEnd | 0.0
+
+| PrimarySwordNextBuffered | False
+
+| PrimarySwordRestartBuffered | False
+
+| PrimarySwordLoopBuffered | False
+
+| Mesh | <Object '/Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter.Default__BP_AvatarCharacter_C:CharacterMesh0' Class 'SkeletalMeshComponent'>
+
+| CharacterMovement | <Object '/Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter.Default__BP_AvatarCharacter_C:CharMoveComp' Class 'CharacterMovementComponent'>
+
+| CapsuleComponent | <Object '/Game/ElemntsForGame/AvatarMain/Animations/Another/Animations/BP_AvatarCharacter.Default__BP_AvatarCharacter_C:CollisionCylinder' Class 'CapsuleComponent'>
+
+| CrouchedEyeHeight | 32.0
+
+| bIsCrouched | False
+
+| bPressedJump | False
+
+| bWasJumping | False
+
+| JumpKeyHoldTime | 0.0
+
+| JumpForceTimeRemaining | 0.0
+
+| ProxyJumpForceStartedTime | 0.0
+
+| JumpMaxHoldTime | 0.0
+
+| JumpMaxCount | 1
+
+| JumpCurrentCount | 0
+
+| JumpCurrentCountPreJump | 0
+
+| OnReachedJumpApex | <Multicast delegate 'CharacterReachedApexSignature' <Unbound>>
+
+| LandedDelegate | <Multicast delegate 'LandedSignature' <Unbound>>
+
+| MovementModeChangedDelegate | <Multicast delegate 'MovementModeChangedSignature' <Unbound>>
+
+| OnCharacterMovementUpdated | <Multicast delegate 'CharacterMovementUpdatedSignature' <Unbound>>
+
+| bUseControllerRotationPitch | False
+
+| bUseControllerRotationYaw | False
+
+| bUseControllerRotationRoll | False
+
+| bCanAffectNavigationGeneration | False
+
+| BaseEyeHeight | 64.0
+
+| AutoPossessPlayer | <AutoReceiveInput.PLAYER0: 1>
+
+| AutoPossessAI | <AutoPossessAI.PLACED_IN_WORLD: 1>
+
+| AIControllerClass | <Object '/Script/AIModule.AIController' Class 'Class'>
+
+| PlayerState | None
+
+| LastHitBy | None
+
+| OverrideInputComponentClass | None
+
+| PrimaryActorTick | <Struct 'ActorTickFunction' {}>
+
+| bOnlyRelevantToOwner | False
+
+| bAlwaysRelevant | False
+
 ABP_Avatar_V2_Base — valeurs relevées
+
 /Game/Avatar_GardeRobe_V2/Gameplay/ABP_Avatar_V2_Base
-Propriété
-Valeur sérialisée
-Speed
-0.0
-InAir
-False
-SwordEquipped
-False
-UseFallPose
-False
-VerticalSpeed
-0.0
-JumpWasInAir
-False
-JumpMoving
-False
-JumpLaunchSpeed
-500.0
-JumpPoseTime
-0.0
-CrouchedV2
-False
-JumpTailLoop
-False
-JumpLoopTime
-0.0
-JumpStartTime
-0.0
-FistAimPosePitch
-0.0
-MovingPrimarySwordLayer
-False
-BowEquipped
-False
-BowAiming
-False
-BowRecoil
-False
-BowGroundLocomotion
-False
-BowChargeTime
-0.0
-BowRecoilTime
-0.0
-BowAimAlpha
-0.0
-BowOverlayAlpha
-0.0
-BowAimPitch
-0.0
-BowMoveForward
-0.0
-BowMoveRight
-0.0
-BowDashing
-False
-BowCharging
-False
-RootMotionMode
-<RootMotionMode.ROOT_MOTION_FROM_MONTAGES_ONLY: 3>
-bReceiveNotifiesFromLinkedInstances
-False
-bPropagateNotifiesToLinkedInstances
-False
-bUseMainInstanceMontageEvaluationData
-False
-OnMontageBlendingOut
-<Multicast delegate 'OnMontageBlendingOutStartedMCDelegate' <Unbound>>
-OnMontageBlendedIn
-<Multicast delegate 'OnMontageBlendedInEndedMCDelegate' <Unbound>>
-OnMontageStarted
-<Multicast delegate 'OnMontageStartedMCDelegate' <Unbound>>
-OnMontageEnded
-<Multicast delegate 'OnMontageEndedMCDelegate' <Unbound>>
-OnAllMontageInstancesEnded
-<Multicast delegate 'OnAllMontageInstancesEndedMCDelegate' <Unbound>>
-OnMontageSectionChanged
-<Multicast delegate 'OnMontageSectionChangedMCDelegate' <Unbound>>
+
+| Propriété | Valeur sérialisée
+
+| Speed | 0.0
+
+| InAir | False
+
+| SwordEquipped | False
+
+| UseFallPose | False
+
+| VerticalSpeed | 0.0
+
+| JumpWasInAir | False
+
+| JumpMoving | False
+
+| JumpLaunchSpeed | 500.0
+
+| JumpPoseTime | 0.0
+
+| CrouchedV2 | False
+
+| JumpTailLoop | False
+
+| JumpLoopTime | 0.0
+
+| JumpStartTime | 0.0
+
+| FistAimPosePitch | 0.0
+
+| MovingPrimarySwordLayer | False
+
+| BowEquipped | False
+
+| BowAiming | False
+
+| BowRecoil | False
+
+| BowGroundLocomotion | False
+
+| BowChargeTime | 0.0
+
+| BowRecoilTime | 0.0
+
+| BowAimAlpha | 0.0
+
+| BowOverlayAlpha | 0.0
+
+| BowAimPitch | 0.0
+
+| BowMoveForward | 0.0
+
+| BowMoveRight | 0.0
+
+| BowDashing | False
+
+| BowCharging | False
+
+| RootMotionMode | <RootMotionMode.ROOT_MOTION_FROM_MONTAGES_ONLY: 3>
+
+| bReceiveNotifiesFromLinkedInstances | False
+
+| bPropagateNotifiesToLinkedInstances | False
+
+| bUseMainInstanceMontageEvaluationData | False
+
+| OnMontageBlendingOut | <Multicast delegate 'OnMontageBlendingOutStartedMCDelegate' <Unbound>>
+
+| OnMontageBlendedIn | <Multicast delegate 'OnMontageBlendedInEndedMCDelegate' <Unbound>>
+
+| OnMontageStarted | <Multicast delegate 'OnMontageStartedMCDelegate' <Unbound>>
+
+| OnMontageEnded | <Multicast delegate 'OnMontageEndedMCDelegate' <Unbound>>
+
+| OnAllMontageInstancesEnded | <Multicast delegate 'OnAllMontageInstancesEndedMCDelegate' <Unbound>>
+
+| OnMontageSectionChanged | <Multicast delegate 'OnMontageSectionChangedMCDelegate' <Unbound>>
+
 BP_BaseControleur.BP_BaseControleur — valeurs relevées
+
 /Game/ElemntsForGame/Base/BP_BaseControleur.BP_BaseControleur
-Propriété
-Valeur sérialisée
-Nexus
-None
-Plaque
-None
-Joueur
-None
-PorteVisee
-None
-Defaite
-False
-RetourEnCours
-False
-RetourA
-0.0
-DelaiRespawn
-3.0
-PorteePorte
-600.0
-InterfaceInitialisee
-False
-PrimaryActorTick
-<Struct 'ActorTickFunction' {}>
-bOnlyRelevantToOwner
-False
-bAlwaysRelevant
-False
+
+| Propriété | Valeur sérialisée
+
+| Nexus | None
+
+| Plaque | None
+
+| Joueur | None
+
+| PorteVisee | None
+
+| Defaite | False
+
+| RetourEnCours | False
+
+| RetourA | 0.0
+
+| DelaiRespawn | 3.0
+
+| PorteePorte | 600.0
+
+| InterfaceInitialisee | False
+
+| PrimaryActorTick | <Struct 'ActorTickFunction' {}>
+
+| bOnlyRelevantToOwner | False
+
+| bAlwaysRelevant | False
+
 BP_Nexus.BP_Nexus — valeurs relevées
+
 /Game/ElemntsForGame/Base/BP_Nexus.BP_Nexus
-Propriété
-Valeur sérialisée
-VitesseRotation
-22.0
-VieMax
-3000.0
-Vie
-1000.0
-Detruit
-False
-Nom
-Nexus
-DernierCoup
--1.0
-FragmentsChaos
-<Object '/Game/ElemntsForGame/Base/Destruction/GC_Pierre.GC_Pierre' Class 'GeometryCollection'>
-FragmentsSecondaires
-None
-DecalageFragmentsSecondaires
-<Struct 'Vector' {x: 0.000000, y: -90.000000, z: 0.000000}>
-RotationFragmentsSecondaires
-<Struct 'Rotator' {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>
-PrimaryActorTick
-<Struct 'ActorTickFunction' {}>
-bOnlyRelevantToOwner
-False
-bAlwaysRelevant
-False
+
+| Propriété | Valeur sérialisée
+
+| VitesseRotation | 22.0
+
+| VieMax | 3000.0
+
+| Vie | 1000.0
+
+| Detruit | False
+
+| Nom | Nexus
+
+| DernierCoup | -1.0
+
+| FragmentsChaos | <Object '/Game/ElemntsForGame/Base/Destruction/GC_Pierre.GC_Pierre' Class 'GeometryCollection'>
+
+| FragmentsSecondaires | None
+
+| DecalageFragmentsSecondaires | <Struct 'Vector' {x: 0.000000, y: -90.000000, z: 0.000000}>
+
+| RotationFragmentsSecondaires | <Struct 'Rotator' {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>
+
+| PrimaryActorTick | <Struct 'ActorTickFunction' {}>
+
+| bOnlyRelevantToOwner | False
+
+| bAlwaysRelevant | False
+
 BP_Porte.BP_Porte — valeurs relevées
+
 /Game/ElemntsForGame/Base/BP_Porte.BP_Porte
-Propriété
-Valeur sérialisée
-Ouverte
-True
-HauteurOuverture
-0.0
-HauteurMax
-535.0
-AnglePont
-0.0
-DernierAnglePont
--999.0
-VitessePont
-30.0
-VieMax
-1200.0
-Vie
-1000.0
-Detruit
-False
-Nom
-Pont-levis de pierre
-DernierCoup
--1.0
-FragmentsChaos
-<Object '/Game/ElemntsForGame/Base/Destruction/GC_Porte.GC_Porte' Class 'GeometryCollection'>
-FragmentsSecondaires
-<Object '/Game/ElemntsForGame/Base/Destruction/GC_PontLevis.GC_PontLevis' Class 'GeometryCollection'>
-DecalageFragmentsSecondaires
-<Struct 'Vector' {x: 0.000000, y: -90.000000, z: 0.000000}>
-RotationFragmentsSecondaires
-<Struct 'Rotator' {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>
-PrimaryActorTick
-<Struct 'ActorTickFunction' {}>
-bOnlyRelevantToOwner
-False
-bAlwaysRelevant
-False
+
+| Propriété | Valeur sérialisée
+
+| Ouverte | True
+
+| HauteurOuverture | 0.0
+
+| HauteurMax | 535.0
+
+| AnglePont | 0.0
+
+| DernierAnglePont | -999.0
+
+| VitessePont | 30.0
+
+| VieMax | 1200.0
+
+| Vie | 1000.0
+
+| Detruit | False
+
+| Nom | Pont-levis de pierre
+
+| DernierCoup | -1.0
+
+| FragmentsChaos | <Object '/Game/ElemntsForGame/Base/Destruction/GC_Porte.GC_Porte' Class 'GeometryCollection'>
+
+| FragmentsSecondaires | <Object '/Game/ElemntsForGame/Base/Destruction/GC_PontLevis.GC_PontLevis' Class 'GeometryCollection'>
+
+| DecalageFragmentsSecondaires | <Struct 'Vector' {x: 0.000000, y: -90.000000, z: 0.000000}>
+
+| RotationFragmentsSecondaires | <Struct 'Rotator' {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>
+
+| PrimaryActorTick | <Struct 'ActorTickFunction' {}>
+
+| bOnlyRelevantToOwner | False
+
+| bAlwaysRelevant | False
+
 BP_Rempart.BP_Rempart — valeurs relevées
+
 /Game/ElemntsForGame/Base/BP_Rempart.BP_Rempart
-Propriété
-Valeur sérialisée
-VieMax
-1000.0
-Vie
-1000.0
-Detruit
-False
-Nom
-Rempart en pierre
-DernierCoup
--1.0
-FragmentsChaos
-<Object '/Game/ElemntsForGame/Base/Destruction/GC_Pierre.GC_Pierre' Class 'GeometryCollection'>
-FragmentsSecondaires
-None
-DecalageFragmentsSecondaires
-<Struct 'Vector' {x: 0.000000, y: -90.000000, z: 0.000000}>
-RotationFragmentsSecondaires
-<Struct 'Rotator' {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>
-PrimaryActorTick
-<Struct 'ActorTickFunction' {}>
-bOnlyRelevantToOwner
-False
-bAlwaysRelevant
-False
+
+| Propriété | Valeur sérialisée
+
+| VieMax | 1000.0
+
+| Vie | 1000.0
+
+| Detruit | False
+
+| Nom | Rempart en pierre
+
+| DernierCoup | -1.0
+
+| FragmentsChaos | <Object '/Game/ElemntsForGame/Base/Destruction/GC_Pierre.GC_Pierre' Class 'GeometryCollection'>
+
+| FragmentsSecondaires | None
+
+| DecalageFragmentsSecondaires | <Struct 'Vector' {x: 0.000000, y: -90.000000, z: 0.000000}>
+
+| RotationFragmentsSecondaires | <Struct 'Rotator' {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>
+
+| PrimaryActorTick | <Struct 'ActorTickFunction' {}>
+
+| bOnlyRelevantToOwner | False
+
+| bAlwaysRelevant | False
+
 Carte du code et des dossiers
-Fichier
-Responsabilité
-AvatarAppearanceComponent.cpp
-Apparence, profils, clignement et vent
-AvatarCustomizationStage.cpp
-Studio, scène, éclairage, caméra
-SAvatarPreviewSurface.h
-Interactions souris dans la présentation
-AvatarBowComponent.cpp
-Arc, flèche et interface de combat
-AvatarArrowSurface.cpp
-Recherche de la surface visible de l’impact
-AvatarBowMagicFX.cpp
-Effets magiques de l’arc
-AvatarSwordReferenceFX.cpp
-Traînée et onde de choc d’épée
-AvatarWaves.cpp
-Mode solo, vagues, siège et HUD des remparts
-AvatarSessions.cpp
-Steam, salons, code, invitations et départ
-AvatarNickname.cpp
-Pseudo et initialisation d’identité
-AvatarNetworkCharacter.cpp
-Personnage réseau et validation du combat
-AvatarNetworkAnimation.cpp
-Pose, locomotion et présentation des attaques
-AvatarLobbyUI.cpp
-HUD et commandes du lobby
-AvatarLobbyBow.cpp
-Arc de lobby et sélection d’inventaire
-AvatarNetworkMobs.cpp
-Loups partagés, IA, recrutement, alliés
-AvatarNetworkStructures.cpp
-Application des états de structures reçus
-AvatarMultiplayerSave.cpp
-Capture, disque et restauration
-AvatarSharedPauseMenu.cpp
-Menu Échap partagé
-Dossier
-Contenu / précaution
-Content/Avatar_GardeRobe_V2
-Avatar, animations, tenues, effets, arc et studio
-Content/Multiplayer
-Maps, animation et éléments réseau
-Plugins/AvatarRuntime/Source
-Code du plugin ; source de vérité pour le gameplay natif
-SourceArt
-Sources Blender/FBX et aperçus successifs ; pas tous actifs
-Saved/CodexTools
-Outils d’intégration, audits, sauvegardes de travail et tests
-Documentation/Fallen_Necromer
-Ces guides et leurs preuves copiées
-Saved/SaveGames
-Profils locaux et sauvegarde multijoueur ; à préserver
+
+| Fichier | Responsabilité
+
+| AvatarAppearanceComponent.cpp | Apparence, profils, clignement et vent
+
+| AvatarCustomizationStage.cpp | Studio, scène, éclairage, caméra
+
+| SAvatarPreviewSurface.h | Interactions souris dans la présentation
+
+| AvatarBowComponent.cpp | Arc, flèche et interface de combat
+
+| AvatarArrowSurface.cpp | Recherche de la surface visible de l’impact
+
+| AvatarBowMagicFX.cpp | Effets magiques de l’arc
+
+| AvatarSwordReferenceFX.cpp | Traînée et onde de choc d’épée
+
+| AvatarWaves.cpp | Mode solo, vagues, siège et HUD des remparts
+
+| AvatarSessions.cpp | Steam, salons, code, invitations et départ
+
+| AvatarNickname.cpp | Pseudo et initialisation d’identité
+
+| AvatarNetworkCharacter.cpp | Personnage réseau et validation du combat
+
+| AvatarNetworkAnimation.cpp | Pose, locomotion et présentation des attaques
+
+| AvatarLobbyUI.cpp | HUD et commandes du lobby
+
+| AvatarLobbyBow.cpp | Arc de lobby et sélection d’inventaire
+
+| AvatarNetworkMobs.cpp | Loups partagés, IA, recrutement, alliés
+
+| AvatarNetworkStructures.cpp | Application des états de structures reçus
+
+| AvatarMultiplayerSave.cpp | Capture, disque et restauration
+
+| AvatarSharedPauseMenu.cpp | Menu Échap partagé
+
+| Dossier | Contenu / précaution
+
+| Content/Avatar_GardeRobe_V2 | Avatar, animations, tenues, effets, arc et studio
+
+| Content/Multiplayer | Maps, animation et éléments réseau
+
+| Plugins/AvatarRuntime/Source | Code du plugin ; source de vérité pour le gameplay natif
+
+| SourceArt | Sources Blender/FBX et aperçus successifs ; pas tous actifs
+
+| Saved/CodexTools | Outils d’intégration, audits, sauvegardes de travail et tests
+
+| Documentation/Fallen_Necromer | Ces guides et leurs preuves copiées
+
+| Saved/SaveGames | Profils locaux et sauvegarde multijoueur ; à préserver
+
 Maintenance de cette documentation
-Modifier le comportement ou le réglage dans la source active.
-Vérifier la valeur effective en jeu, pas seulement le défaut natif.
-Rejouer les scénarios concernés, en solo et depuis un invité si le comportement est partagé.
-Mettre à jour le guide concerné, ses limites et le tableau de paramètres.
-Conserver les rapports de tests datés. Ne pas remplacer une preuve par une simple capture visuelle.
-Pour un changement de format de sauvegarde, de nom d’acteur ou de protocole, documenter la compatibilité avec les anciennes parties.
+
+- Modifier le comportement ou le réglage dans la source active.
+
+- Vérifier la valeur effective en jeu, pas seulement le défaut natif.
+
+- Rejouer les scénarios concernés, en solo et depuis un invité si le comportement est partagé.
+
+- Mettre à jour le guide concerné, ses limites et le tableau de paramètres.
+
+- Conserver les rapports de tests datés. Ne pas remplacer une preuve par une simple capture visuelle.
+
+- Pour un changement de format de sauvegarde, de nom d’acteur ou de protocole, documenter la compatibilité avec les anciennes parties.
+
 Éviter de transformer le nombre de contrôles réussis en garantie de « zéro bug ». Les essais couvrent les scénarios décrits, avec des limites explicites. Les prochaines validations prioritaires sont le vrai trajet Steam entre deux machines, la parité d’inventaire/ressources et les cas de migration de sauvegarde lors de futures modifications de maps.
+
+Document établi à partir du code, des assets et des essais locaux du projet. Les valeurs d’asset, de classe et d’instance sont distinguées lorsqu’elles diffèrent. Les évolutions ultérieures nécessitent une mise à jour de cette documentation.

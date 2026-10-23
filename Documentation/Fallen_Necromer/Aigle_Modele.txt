@@ -1,18 +1,35 @@
-Aigle · Modèle et apparence
+Modèle dans le jeu
+
+[Image : Aigle naturel — capture native du modèle chargé dans le projet, 23 octobre 2026. Pose préparée pour montrer la silhouette.] Images/Actuel/Aigle_Modele.png
+
+Aigle naturel — capture native du modèle chargé dans le projet, 23 octobre 2026. Pose préparée pour montrer la silhouette. Cliquez sur l’image pour l’agrandir.
+
+Voir aussi Aigle ombral : apparence et IA d’allié.
+
+Aigle · Modèle et apparence. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Plumage et silhouette
+
 Le plumage distingue les grandes plumes des ailes et un duvet court sur le corps, le cou et la tête. La passe V12 corrige la différence de couleur entre le duvet et le corps et conserve les matériaux propres au bec, aux serres et aux yeux.
 
 Aigle ombral
+
 La version ombrale reprend les matériaux et effets utilisés par le loup et l’ours : corps bleu nuit, contours cyan, nervures, flammes et brume. La révélation de la tête pendant la réanimation est raccordée à celle du corps.
 
 Portrait et présentation
+
 La vignette approuvée est un gros plan illustré de la tête, avec une forme de bec et une crête fidèles au modèle. Le menu de gestion utilise le modèle 3D dans une scène séparée ; son cadrage ne doit pas modifier la taille de la créature dans le monde.
 
-RÉFÉRENCES ET DÉTAILS
-Plumage V12 et niveaux de détail — Aigle.html#plumage-v12
-Apparence ombrale et révélation — Aigle.html#aigle-v19
-Portrait approuvé et méthode — Portraits_Ombraux.html
-Présentation dans la crypte — Gestion_Ombres.html
+Références et détails
 
-Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
+Les comptes rendus conservent leur date et leurs anciens chemins. L’état V27 prévaut sur leurs limites antérieures ; ces pages ne constituent pas une nouvelle campagne de tests du jeu.
+
+- Plumage V12 et niveaux de détail
+
+- Apparence ombrale et révélation
+
+- Portrait approuvé et méthode
+
+- Présentation dans la crypte
+
+Organisation documentaire du 23 octobre 2026 · État du projet V27.

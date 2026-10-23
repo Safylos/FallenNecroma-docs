@@ -1,334 +1,291 @@
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 L’ours conserve sa posture debout à proximité de la cible, avec marche et rotation entre ses attaques. L’aigle se repose trois secondes et utilise les raccords de pose entre sol et vol, y compris après recrutement. Son réglage de base est désormais de 150 PV et 20 dégâts de piqué dans les deux modes. La surface sombre du portail possède son effet de fissuration et une courte fin de disparition. Les noms, portraits et styles d’interface approuvés sont partagés.
 
 En multijoueur, le serveur valide les transferts et suppressions de la collection personnelle. Les autres joueurs ne peuvent pas déplacer vos ombres. Les alliés en réserve ne restent pas simulés sur le terrain. Le menu ne met pas la partie réseau en pause. Les identifiants, niveaux, XP et KO sont conservés dans la sauvegarde et lors de la reconnexion. Les animations de l’ours et de l’aigle et les matériaux ombraux utilisent les mêmes assets que le solo.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
-21 OCTOBRE 2026 — OURS DEBOUT V20 (ÉTAT COURANT SOLO)
+BESTIAIRE · SOLO V20 · GARDE DEBOUT · GRIFFES · CHARGE
 
-L’ours sauvage et l’Ours ombral allié restent debout après leurs deux griffes si leur cible est encore proche. Garde, marche sur les pattes arrière et pivot permettent de préparer le combo suivant ; seule la première attaque rejoue la montée. Les contacts bas, les effets et la charge existante sont conservés.
-Aperçu : Art/Ours_Debout_V20/Apercu.html
+Ours : animations, combat et IA
 
-GARDE, MARCHE ET REDESCENTE
-- État9 : premier combo ou combo continu debout, durée3,2s. Deux griffes de18 dégâts, une validation au maximum par griffe ; fenêtres inchangées1,18–1,48s et1,68–1,98s.
-- État12 : garde et marche à110cm/s, pieds alternés et cycle lié à la vitesse réelle. Pivot lissé limité à240°/s entre les combos. Déplacement par CharacterMovement et ses collisions normales.
-- Attaque suivante : cible visible et devant, à moins190cm pour le sauvage ou160cm pour l’allié, écart vertical inférieur125cm. Repos0,4s, soit cadence nominale3,6s. Le suivi pendant le geste conserve V4 : pas110cm/s dans les fenêtres prévues, rotation jusqu’à3,05s, plafonds140°/s aux contacts et300°/s hors contact.
-- État13 : redescente dédiée0,72s si cible invalide, distance>460cm, écart vertical>150cm ou vue perdue>0,65s. Fin de garde également si la cible reste>2,8s au-delà205cm sans revenir à courte portée.
-- Limites conservées : sauvage et cible dans les1600cm autour du point de départ ; cible alliée dans les1800cm autour du propriétaire. Mort, rappel et invocation gardent la priorité.
-- Même branche d’animation pour9/12/13 ; horloge sortante maintenue3,2s en garde et vraie pose finale basse à la sortie. Pas de retour caché aux quatre appuis entre deux combos.
+L’ours sauvage et allié reste debout entre les griffes, marche et pivote pour suivre sa cible ; sources, réglages et vérifications du solo.
 
-SÉQUENCES COURANTES
-Sous /Game/ElemntsForGame/Mobs/Ours/GrizzlyV2/Animations/DeboutV20 :
-A_Ours_Griffes_Maintien_V20 —3,2s : première montée, griffes et fin debout.
-A_Ours_Griffes_Continu_V20 —3,2s : nouveau combo depuis la garde.
-A_Ours_Debout_Garde_V20 —1,4s : garde avec respiration en boucle.
-A_Ours_Debout_Marche_V20 —0,96s : pas alternés sur les pattes arrière.
-A_Ours_Debout_Redescente_V20 —0,72s : retour aux quatre appuis.
-Source : Art/Ours_Debout_V20/Ours_Debout_V20.blend et les cinq FBX du même dossier.
-UAvatarBearStandingComponent est ajouté au BP_IA_Ours commun et hérité par BP_OursAllie_OmbreCeleste ; ABP_Ours reste l’animation solo. Corps, squelette24os, poids, morphs, pelage et matériaux conservés, sans root motion. Anciennes séquences A_Ours_Griffes_Naturelles et A_Ours_Griffes_Amples retenues.
-Scripts : Saved/CodexTools/BearStandingV20. Sauvegardes de BP_IA_Ours, ABP_Ours, Blueprint allié et squelette : Saved/CodexTools/BearStandingV20/Backup/Content. Installation exclusive hors PIE avec module natif V20 disponible ; rapport Art/Ours_Debout_V20/Installation.json.
+Actuel · maintien et marche debout — solo V20
 
-VÉRIFICATIONS ET LIMITES
-36/36 contrôles réussis sur sauvage et allié dans L_Base_Nexus solo : deux vrais combos,18 dégâts par griffe sur loups de l’équipe opposée, tête haute entre attaques, séquence continue, pivot vers cible passée dans le dos, marche debout, sortie après éloignement et évitement rétabli. Cadence mesurée environ3,62s ; aucun retour quadrupède entre les deux attaques.
-Rapports : Art/Ours_Debout_V20/Validation_Solo.json, Validation_Animations.json et Validation_Transitions.json. Captures natives : Debout_Garde_Jeu.png et Debout_Marche_Jeu.png, dans la lumière et les matériaux de la cour. Les images Blender sont des contrôles de pose sans le pelage et les effets du jeu.
-Les cibles sont immobilisées puis déplacées dans une fixture ; les ours conservent leur vraie IA, animation et collisions. Pas de benchmark FPS global, de placement adaptatif des pattes sur pentes ni de validation multijoueur dans ce lot. Animation réseau conservée et aucun exécutable distribuable recréé.
+L’ours sauvage et l’Ours ombral allié restent sur leurs pattes arrière après les deux griffes lorsque leur cible est encore proche. Ils conservent une garde, peuvent pivoter et faire quelques pas pour suivre un adversaire qui les contourne, puis enchaînent depuis cette posture. La montée debout n’est jouée qu’au premier combo. La charge, les contacts bas et les effets déjà présents sont conservés.
 
-HISTORIQUE DES ÉTAPES PRÉCÉDENTES
-Les valeurs et sources ci-dessous décrivent leur version d’origine. La section V20 ci-dessus prime pour le comportement courant debout et ses séquences.
+Avant/après, marche et captures en jeu V20 · 36 contrôles solo réussis · Assets activés et réglages conservés.
 
-21 OCTOBRE 2026 — SOLO V18 (ÉTAPE PRÉCÉDENTE)
-Interface : menus partagés, atelier, pause, réglages et textes du HUD solo en Roboto (titres Medium, texte Regular) avec contour. Nouveau UAvatarSoloPresentationSubsystem sur L_Base_Nexus standalone : barres monde fines biseautées, alliés turquoise/hostiles corail, traînée de vie perdue ; cartes 3slots avec noms Loup ombral/Ours ombral/Aigle ombral, niveau/vie/XP/réserve. Portraits réels 1024px, textures UI max512, mipmaps SHARPEN0/trilinear. Dégâts réels (plafonnés aux PV) agrandis, contour, impulsion/montée/fondu, marqueur bref de touche ; doré joueur/cyan allié/rouge reçu. Ancien rendu numérique de l’arc désactivé seulement quand ce sous-système est actif.
-Ours : A_Ours_Griffes_Naturelles remplace A_Ours_Griffes_Amples dans l’évaluateur SOLO ABP_Ours. Plan de flexion commun et poignets continus ; extrêmes réduits, durée3,2s et contacts bas1,30/1,80s conservés. Pas de réimport corps/squelette/poids/morphs ; ancien clip réseau retenu.
-Aigle : matériaux naturels affinés et variante ombrale sous /Game/ElemntsForGame/Mobs/Aigle/CimesV2/InterfaceV18, géométrie/LOD V12 préservés. BP_AigleAllie_Ombral et BP_InvocationAigle sous /Game/ElemntsForGame/Allies/Aigles. Cadavre recrutable10s, système R/mana25/chance/3slots conservé. UAvatarSoloEagleComponent suit en vol, sélectionne les hostiles/priorité du propriétaire, réutilise piqué/œuf, XP, T/Y et dissolution. Protection propriétaire/autres alliés ; les taches jaunes restent permises. Repos SOLO3s après20s en vol, vulnérable et pattes au sol.
-Validation : aigle sauvage placé17contrôles (cycle naturel20s, repos3,090s, dégâts au sol, matériaux V18) ; aigle allié39contrôles+4invariants continus ; ours7 ; interface43. Vrais dégâts/recrutement/TY ; fixtures figent d’autres créatures, pas de benchmark global FPS ni validation réseau pour ce lot. Aperçu Art/Solo_Polish_V18/Apercu.html et rapports liés. Composants de menu communs typographiés, nouveau HUD/combat solo d’abord ; pas de portage du nouveau HUD ombral/animations vers le réseau.
-Module actif pour nouvelles sessions UnrealEditor-AvatarRuntime-SoloPolishV18b.dll ; DLLV17 conservée, sauvegardes d’assets/code sous Saved/CodexTools/SoloPolishV18. Aucun distribuable recréé.
+Garde, déplacement et retour aux quatre appuis
 
+| Phase | Comportement courant
 
-MISE À JOUR VISUELLE V5 — 20 OCTOBRE 2026
+| Premier double geste · état 9 | Montée debout, deux griffes croisées basses et fin en garde. Durée de 3,2 s ; les gestes suivants commencent déjà debout.
+
+| Garde et marche · état 12 | Cible valable à 460 cm maximum. Marche à 110 cm/s, pieds alternés et cycle lié à la vitesse réelle ; orientation lissée, plafonnée à 240°/s entre les combos. Le déplacement passe par CharacterMovement et ses collisions normales.
+
+| Nouvelle attaque | Les conditions existantes sont recontrôlées : cible visible et devant l’ours, portée de 190 cm pour le sauvage ou 160 cm pour l’allié, écart vertical inférieur à 125 cm. Repos de 0,4 s après le geste, soit un minimum nominal de 3,6 s entre deux combos.
+
+| Redescente · état 13 | Transition dédiée de 0,72 s si la cible devient invalide, dépasse 460 cm ou un écart vertical de 150 cm, ou n’est plus visible pendant plus de 0,65 s. La garde s’arrête aussi si la cible reste plus de 2,8 s au-delà de 205 cm sans revenir à courte portée.
+
+| Limites de poursuite | Le sauvage conserve sa zone de 1 600 cm autour de son point de départ ; la cible de l’allié doit rester à moins de 1 800 cm du propriétaire. Mort, rappel et invocation gardent la priorité sur cette posture.
+
+Les deux griffes infligent toujours 18 dégâts chacune, au maximum une fois par coup. Les fenêtres de contact restent 1,18–1,48 s et 1,68–1,98 s, avec les mêmes contrôles géométriques et les mêmes obstacles bloquants. Le suivi pendant le geste conserve les réglages V4 : petits pas à 110 cm/s dans les fenêtres prévues et rotation jusqu’à 3,05 s, limitée à 140°/s pendant les contacts et à 300°/s hors contact.
+
+Le combo, la garde et la redescente partagent la même branche d’animation. L’horloge du combo sortant reste à 3,2 s en garde : le fondu vers l’attaque suivante ne réintroduit pas une pose à quatre pattes. La redescente se termine sur sa vraie pose basse avant la reprise de la locomotion ordinaire.
+
+Séquences actives, sources et sauvegardes
+
+Dans /Game/ElemntsForGame/Mobs/Ours/GrizzlyV2/Animations/DeboutV20 :
+
+| Séquence | Durée | Rôle
+
+| A_Ours_Griffes_Maintien_V20 | 3,2 s | Premier combo, avec montée et maintien debout.
+
+| A_Ours_Griffes_Continu_V20 | 3,2 s | Combo suivant depuis la garde.
+
+| A_Ours_Debout_Garde_V20 | 1,4 s | Garde avec respiration, en boucle.
+
+| A_Ours_Debout_Marche_V20 | 0,96 s | Pas alternés sur les pattes arrière.
+
+| A_Ours_Debout_Redescente_V20 | 0,72 s | Retour explicite aux quatre appuis.
+
+Source des cinq actions et FBX : Art/Ours_Debout_V20/Ours_Debout_V20.blend. Le composant UAvatarBearStandingComponent, ajouté au BP_IA_Ours commun, est hérité par BP_OursAllie_OmbreCeleste. L’animation solo reste dans IA/Animation/ABP_Ours. Corps, squelette à 24 os, poids, morphs, pelage et matériaux sont conservés ; aucun déplacement de racine n’est ajouté.
+
+Scripts de génération, installation et contrôle : Saved/CodexTools/BearStandingV20. Sauvegardes préalables de BP_IA_Ours, ABP_Ours, du Blueprint allié et du squelette dans Saved/CodexTools/BearStandingV20/Backup/Content. Les anciennes séquences A_Ours_Griffes_Naturelles et A_Ours_Griffes_Amples restent disponibles. L’importateur nécessite le module natif V20 chargé et un créneau d’écriture exclusif, hors partie en cours.
+
+Vérifications et portée de cette étape
+
+36/36 contrôles réussis dans une partie solo dédiée de L_Base_Nexus, sur l’ours sauvage et l’allié : deux vrais combos, dégâts de 18 par griffe sur des loups de l’équipe opposée, maintien de la tête haute entre attaques, sélection du combo continu, pivot vers une cible passée dans le dos, marche debout, redescente après éloignement et rétablissement de l’évitement. Période mesurée entre deux combos : environ 3,62 s. Aucune pose quadrupède n’a été réintroduite entre ces attaques.
+
+Contrôles des cinq animations · Raccords des poses · Garde réelle en jeu · Pivot et début de marche en jeu. Les images Blender de l’aperçu sont des contrôles de pose ; elles ne représentent pas le pelage et les effets du jeu. Les captures natives utilisent les matériaux et l’éclairage de la cour.
+
+V20 est activé en solo sur les deux ours. L’Animation Blueprint réseau et ses anciennes séquences sont conservés : ce lot ne valide pas le multijoueur. Les cibles sont immobilisées puis déplacées dans une fixture de contrôle ; les ours gardent leur vraie IA, leur animation et leurs collisions. Ce test ne mesure pas les FPS globaux et n’ajoute pas de placement adaptatif des pattes sur les pentes. Aucun exécutable distribuable n’a été recréé.
+
+Les sections suivantes retracent les versions précédentes. Pour le maintien debout, les séquences et les réglages courants du solo, se reporter à V20 en tête de page ; les valeurs historiques ne remplacent pas celles de V20.
+Étape précédente · interface et compagnons solo V18
+
+Polices harmonisées avec contour sombre, cartes d’alliés et barres de vie redessinées, dégâts plus grands et animés. Noms : Loup ombral, Ours ombral et Aigle ombral. Portraits des vrais modèles, textures adaptées à leur petite taille.
+
+Griffes de l’ours reconstruites avec un plan de flexion cohérent. Aigle ombral recrutable, suivi aérien, piqué/œuf, progression et rappel/invocation ; repos solo de 3 secondes après 20 secondes de vol. Rendu et vérifications V18. Cette étape cible le solo, sans nouvel exécutable distribué.
+
+Historique V5 · pattes, griffes et duvet — 20 octobre 2026
+
 A_Ours_Griffes_Amples remplace A_Ours_Griffes_Basses dans l’animation active. Ouverture des bras et rotation du buste accentuées : balayage latéral des pattes d’environ 116 cm contre 80 cm, soit +45 %. Durée 3,2 s ; contacts à 1,30 et 1,80 s, toujours bas, deux coups de 18 dégâts. Le suivi debout et les contre-attaques après contournement sont conservés. Essais réussis contre un loup. Les anciennes animations restent disponibles.
-Comparatif : Art/Combat_Visuel_V5/Apercu.html
 
-Documentation
-/
-Bestiaire
-/
-Ours : animations, combat et IA
-BESTIAIRE · COMBAT V2 · CHARGE · LOCOMOTION
-Ours : animations, combat et IA
-Double-griffe, charge, suivi de cible, mort et sources de l’ours solo.
-Suivi pendant les griffes et charge prolongée
+Comparatif visuel : base, ancien duvet et nouveau duvet · Validation V5.
+
+Historique V3 · suivi pendant les griffes et charge prolongée
+
 L’ours pivote jusqu’à 2,75 s dans son attaque debout et fait de petits pas vers sa cible. Rotation limitée à 180°/s, abaissée à 85°/s pendant les contacts ; pas à 55 cm/s, suspendus pendant les coups. Les deux contacts de 18 dégâts restent indépendants. La distance de charge est doublée : 13 à 27 m selon la distance initiale, à 650 cm/s. Délai de sécurité : 4,8 s. Obstacles et ruptures de terrain arrêtent toujours la charge. Essai à cible initialement distante de 6,5 m : environ 20 m parcourus au lieu de 10 m. Changements solo.
-Voir les captures et la vidéo
-.
-Combat et orientation V2 · 19 octobre 2026
-Après invocation et rappel, l’ours allié retrouve désormais les dimensions de l’ours sauvage : capsule de rayon 68 cm et demi-hauteur 85 cm, rotation de déplacement 155°/s et décalage du modèle de −85 cm. Le rituel hérité du loup imposait −44 cm, ce qui soulevait visuellement l’ours de 41 cm. La correction ne réapplique le décalage que lorsqu’il diffère.
-175 contrôles après recrutement et rappel T/Y
-passent ; 179 mesures à l’arrêt retrouvent les mêmes hauteurs de pattes que l’ours sauvage et la même capsule à 2 cm du sol.
+
+Voir les captures et la vidéo.
+
+Historique V2 · combat et orientation — 19 octobre 2026
+
+Après invocation et rappel, l’ours allié retrouve désormais les dimensions de l’ours sauvage : capsule de rayon 68 cm et demi-hauteur 85 cm, rotation de déplacement 155°/s et décalage du modèle de −85 cm. Le rituel hérité du loup imposait −44 cm, ce qui soulevait visuellement l’ours de 41 cm. La correction ne réapplique le décalage que lorsqu’il diffère. 175 contrôles après recrutement et rappel T/Y passent ; 179 mesures à l’arrêt retrouvent les mêmes hauteurs de pattes que l’ours sauvage et la même capsule à 2 cm du sol.
+
 À courte distance, l’ours se redresse sur ses pattes arrière et porte deux griffes diagonales alternées. Les trois traînées lumineuses de chaque bras se croisent en X. Il conserve sa charge rouge pourpre lorsque la cible est plus éloignée.
+
 Le double geste dure 3,2 s : préparation jusqu’à environ 1 s, contacts gauche puis droit autour de 1,3 et 1,8 s, retour progressif aux quatre appuis. Chaque griffe inflige 18 dégâts au maximum, une seule fois par cible et par geste. Le contrôle suit le segment parcouru par la patte entre deux images et le confronte à la capsule de la victime ; un obstacle bloque le contact. Il est possible d’esquiver les deux coups ou seulement le second.
+
 L’ours peut suivre du regard une cible même lorsqu’il est arrêté. La rotation ralentit à l’approche de l’orientation demandée, avec une limite de 165°/s à l’arrêt et pendant le début de préparation. Après 0,82 s, la double-griffe conserve sa direction : elle ne pivote pas instantanément vers une esquive. La charge ne réoriente plus brutalement l’ours lors de son déclenchement ; son anticipation tourne progressivement vers la direction engagée.
-L’invulnérabilité provenait du réglage
-can_be_damaged=False
-du prototype. Il est réactivé : l’ours dispose de 300 PV, reçoit les dégâts, termine ses attaques à la mort et joue une animation dédiée de 2,2 s. Le cadavre reste sélectionnable pendant la fenêtre de recrutement de 10 s et cesse de bloquer les personnages. Les références d’invocation sont désormais propres à l’espèce ; voir
-les règles communes des alliés
-.
-Réglage
-Valeur actuelle
-Déclenchement des griffes
-Cible à moins de 190 cm, visible et devant l’ours ; différence de hauteur inférieure à 125 cm.
-Fenêtres de contact
-1,18–1,48 s puis 1,68–1,98 s ; validation géométrique de la patte indispensable.
-Attente après le double geste
-0,7 s avant une nouvelle attaque de griffes ; direction et portée sont recontrôlées.
-Distance minimale de charge
-310 cm ; les autres règles de charge V1 restent en place.
-Déplacement ordinaire
-Accélération 550 cm/s² et rotation du mouvement 155°/s, navigation avec accélération.
+
+L’invulnérabilité provenait du réglage can_be_damaged=False du prototype. Il est réactivé : l’ours dispose de 300 PV, reçoit les dégâts, termine ses attaques à la mort et joue une animation dédiée de 2,2 s. Le cadavre reste sélectionnable pendant la fenêtre de recrutement de 10 s et cesse de bloquer les personnages. Les références d’invocation sont désormais propres à l’espèce ; voir les règles communes des alliés.
+
+| Réglage | Valeur actuelle
+
+| Déclenchement des griffes | Cible à moins de 190 cm, visible et devant l’ours ; différence de hauteur inférieure à 125 cm.
+
+| Fenêtres de contact | 1,18–1,48 s puis 1,68–1,98 s ; validation géométrique de la patte indispensable.
+
+| Attente après le double geste | 0,7 s avant une nouvelle attaque de griffes ; direction et portée sont recontrôlées.
+
+| Distance minimale de charge | 310 cm ; les autres règles de charge V1 restent en place.
+
+| Déplacement ordinaire | Accélération 550 cm/s² et rotation du mouvement 155°/s, navigation avec accélération.
+
 Les poids du ventre et du torse ont été corrigés pour le redressement : certains sommets suivaient auparavant les avant-bras. Le corps, le duvet et les ornements utilisent la même source de poids. La géométrie, les matériaux, le squelette et le morph de clignement sont conservés.
+
 Double-griffe dans Unreal, à vitesse de jeu. Capture en simulation fixe pour la présentation ; cette vidéo ne mesure pas les performances.
-Double-griffe en image
-·
-Pose finale de mort sur le flanc
-·
-31 contrôles fonctionnels validés
-. La campagne vérifie contacts à 60 et 30 images/s, esquives indépendantes, obstacle, charge existante, dégâts reçus, mort, sélection du cadavre et rotations ours/loup. Elle concerne les Blueprints solo ; elle ne constitue pas une validation des créatures natives du multijoueur. La mort finale de 2,2 s est stable dès 1,9 s, avec les pattes abaissées et les yeux fermés.
-Sources actuelles :
-Art/Combat_Creatures_V2/Ours/Ours_Poids_Combat.blend
-,
-A_Ours_Griffes_X.fbx
-et
-A_Ours_Mort.fbx
-. Dans
-GrizzlyV2
-: séquences
-Animations/CombatV2
-, effets
-Effets/CombatV2
-, fonctions dédiées dans
-IA/BP_IA_Ours
-, transitions dans
-IA/Animation/ABP_Ours
-. Sauvegardes préalables dans
-Saved/CodexTools/CreatureCombatV2/Ground/Backup
-.
-Reproduction des graphes :
-Ground/install_assets.py
-, puis fermer cette instance et exécuter
-Ground/install_logic.py
-dans un éditeur isolé neuf. La séparation évite le plantage natif constaté dans la bibliothèque d’édition des Blueprints après plusieurs recompilations dans une même session. Ne pas lancer ces opérations pendant une session de jeu ni réenregistrer une ancienne copie chargée dans un autre éditeur.
+
+Double-griffe en image · Pose finale de mort sur le flanc · 31 contrôles fonctionnels validés. La campagne vérifie contacts à 60 et 30 images/s, esquives indépendantes, obstacle, charge existante, dégâts reçus, mort, sélection du cadavre et rotations ours/loup. Elle concerne les Blueprints solo ; elle ne constitue pas une validation des créatures natives du multijoueur. La mort finale de 2,2 s est stable dès 1,9 s, avec les pattes abaissées et les yeux fermés.
+
+Sources actuelles : Art/Combat_Creatures_V2/Ours/Ours_Poids_Combat.blend, A_Ours_Griffes_X.fbx et A_Ours_Mort.fbx. Dans GrizzlyV2 : séquences Animations/CombatV2, effets Effets/CombatV2, fonctions dédiées dans IA/BP_IA_Ours, transitions dans IA/Animation/ABP_Ours. Sauvegardes préalables dans Saved/CodexTools/CreatureCombatV2/Ground/Backup.
+
+Reproduction des graphes : Ground/install_assets.py, puis fermer cette instance et exécuter Ground/install_logic.py dans un éditeur isolé neuf. La séparation évite le plantage natif constaté dans la bibliothèque d’édition des Blueprints après plusieurs recompilations dans une même session. Ne pas lancer ces opérations pendant une session de jeu ni réenregistrer une ancienne copie chargée dans un autre éditeur.
+
 Le « ! » de détection · 18 octobre 2026
+
 L’ours et l’aigle affichent désormais le même symbole rouge en volume que le loup lorsqu’ils acquièrent une nouvelle cible. Il reste visible 1,5 seconde, suit la créature et se tourne vers la caméra. Son placement est rehaussé pour dégager le dos de l’ours et les ailes de l’aigle.
+
 Le symbole disparaît à la perte de la cible ou à la mort, et réapparaît lors d’une nouvelle acquisition. Il ne se relance pas continuellement pendant une poursuite. Leurs matériaux, leur détection, la charge de l’ours et le vol/piqué V8 de l’aigle restent identiques.
-Capture des deux alertes
-·
-30 contrôles en session solo
-. Ce lot concerne les deux Blueprints du solo ; il n’ajoute pas ces créatures au multijoueur.
-Réglage de durée :
-WolfAlertDuration
-. Fonctions dédiées :
-InitializeCreatureAlert
-et
-UpdateCreatureAlert
-, sans appel aux changements de matériaux des yeux du loup. Sources et sauvegardes préalables :
-Saved/CodexTools/CreatureAlertsV1
-.
+
+Capture des deux alertes · 30 contrôles en session solo. Ce lot concerne les deux Blueprints du solo ; il n’ajoute pas ces créatures au multijoueur.
+
+Réglage de durée : WolfAlertDuration. Fonctions dédiées : InitializeCreatureAlert et UpdateCreatureAlert, sans appel aux changements de matériaux des yeux du loup. Sources et sauvegardes préalables : Saved/CodexTools/CreatureAlertsV1.
+
 Charge V1 — conservée avec le combat V2
-Voir la charge en jeu
-. L’ours baisse les épaules pendant 0,65 s, engage un galop à 650 cm/s maximum puis récupère pendant 0,75 s. La direction est annoncée et reste engagée : une esquive latérale permet d’éviter le contact. Temps minimal entre charges : 6 s après la fin.
+
+Voir la charge en jeu. L’ours baisse les épaules pendant 0,65 s, engage un galop à 650 cm/s maximum puis récupère pendant 0,75 s. La direction est annoncée et reste engagée : une esquive latérale permet d’éviter le contact. Temps minimal entre charges : 6 s après la fin.
+
 Le contact inflige 35 dégâts une seule fois. Si les dégâts sont acceptés, le joueur reçoit une projection de 950 cm/s horizontalement et 420 cm/s vers le haut. Il s’agit d’une projection physique utilisant les états de chute existants de l’avatar ; aucune nouvelle animation de chute au sol ou de relèvement n’a été ajoutée au joueur.
+
 Une spirale rouge pourpre accompagne la préparation et la course. Son matériau est propre à l’ours, sans collision, et l’effet disparaît au freinage. Un obstacle ou une rupture importante du terrain interrompt la charge.
-Sources :
-Art/Ours/Ours_Charge_V1/Ours_Charge.blend
-. Assets :
-Animations/ChargeV1/A_Ours_Anticipation
-,
-A_Ours_Charge
-,
-A_Ours_Freinage
-; matériau
-Effets/ChargeV1/MI_Ours_Charge
-. Le mesh V2, les paupières et les animations ordinaires restent utilisés.
+
+Sources : Art/Ours/Ours_Charge_V1/Ours_Charge.blend. Assets : Animations/ChargeV1/A_Ours_Anticipation, A_Ours_Charge, A_Ours_Freinage ; matériau Effets/ChargeV1/MI_Ours_Charge. Le mesh V2, les paupières et les animations ordinaires restent utilisés.
 État historique du prototype : la charge était la seule attaque et l’ours était invulnérable. Le combat V2 ci-dessus ajoute griffes, dégâts et mort. Les réactions dédiées aux coups et le portage réseau restent à compléter.
-Résultats de la campagne courante : 43 contrôles ours/aigle
-.
+Résultats de la campagne courante : 43 contrôles ours/aigle.
+
 État livré
-Le grizzly corrigé V3 possède désormais un squelette, des poids, trois animations, un Blend Space, un Animation Blueprint et une IA de locomotion. Un exemplaire remplace le modèle statique dans
-/Game/Level/L_Base_Nexus
-. Le comportement est dérivé de
-BP_IA_Loup
-, avec des fonctions propres à l’ours pour éviter de lancer les attaques et les corrections de terrain prévues pour un autre squelette.
-Aperçu des animations et du squelette
-·
-Historique des retouches du modèle
+
+Le grizzly corrigé V3 possède désormais un squelette, des poids, trois animations, un Blend Space, un Animation Blueprint et une IA de locomotion. Un exemplaire remplace le modèle statique dans /Game/Level/L_Base_Nexus. Le comportement est dérivé de BP_IA_Loup, avec des fonctions propres à l’ours pour éviter de lancer les attaques et les corrections de terrain prévues pour un autre squelette.
+
+Aperçu des animations et du squelette · Historique des retouches du modèle
 Cette section décrit le prototype de locomotion. L’état actuel du combat est indiqué dans la section V2 ; les anciennes limites d’invulnérabilité et d’absence de mort ne s’appliquent plus.
+
 Repos et clignement V2 · 18 octobre 2026
-Avant/après
-. Source du repos V2, conservée comme référence :
-Art/Ours/Ours_Idle_V2/Ours_Idle_Clignement.blend
-. Le squelette et les clips Walk/Run restent les mêmes.
-BP_IA_Ours
-utilise désormais
-SK_Ours_Grizzly_V2
-; l’échantillon de vitesse zéro du Blend Space utilise
-Animations/LocomotionV2/A_Ours_Idle_V2
-.
+
+Avant/après. Source du repos V2, conservée comme référence : Art/Ours/Ours_Idle_V2/Ours_Idle_Clignement.blend. Le squelette et les clips Walk/Run restent les mêmes. BP_IA_Ours utilise désormais SK_Ours_Grizzly_V2 ; l’échantillon de vitesse zéro du Blend Space utilise Animations/LocomotionV2/A_Ours_Idle_V2.
+
 Boucle de 6 s à 60 Hz, sans root motion : bassin latéral ±1 cm, respiration du tronc, tête jusqu’à ±7° dans sa composante propre, cou ±3,8°, oreilles ±3,2°. Les cibles des quatre pattes sont maintenues en place ; le raccord de boucle est continu.
-Les paupières ajoutent 4 096 triangles, soit 341 164 triangles au total. Les couleurs sont celles du pelage, avec un bord légèrement assombri. Le morph
-Blink
-va de 0 (ouvert) à 1 (fermé). Les quatre matériaux existants et le squelette sont réutilisés ; les triangles du modèle précédent sont conservés. Import FBX : morph targets activés, couleurs remplacées, seuils à zéro et suppression des dégénérés désactivée pour préserver les yeux.
-ABP_Ours
-conserve le calcul de vitesse et pilote les variables
-BlinkClock
-,
-BlinkNext
-,
-BlinkAlpha
-. Fermeture sur 0,085 s, maintien environ 0,025 s, réouverture sur 0,15 s avec interpolation douce. Premier clignement à 1,7 s, puis intervalle aléatoire de 2,6–5,4 s après la fin ; il continue pendant la locomotion. Le clignement n’est pas synchronisé à la boucle idle.
-34 contrôles en jeu passent, y compris stabilité des appuis, amplitude de tête, fermeture/réouverture réelle du morph, marche, course et IA.
-Rapport
-·
-Raccords Blender
-. Reproduction :
-Saved/CodexTools/OursIdleV2/animate.py
-dans Blender puis
-import.py
-dans Unreal, éditeur habituel fermé proprement ;
-test.py
-dans un éditeur isolé. Les sauvegardes des assets précédents sont dans
-Saved/CodexTools/OursIdleV2/Backup
-.
+
+Les paupières ajoutent 4 096 triangles, soit 341 164 triangles au total. Les couleurs sont celles du pelage, avec un bord légèrement assombri. Le morph Blink va de 0 (ouvert) à 1 (fermé). Les quatre matériaux existants et le squelette sont réutilisés ; les triangles du modèle précédent sont conservés. Import FBX : morph targets activés, couleurs remplacées, seuils à zéro et suppression des dégénérés désactivée pour préserver les yeux.
+
+ABP_Ours conserve le calcul de vitesse et pilote les variables BlinkClock, BlinkNext, BlinkAlpha. Fermeture sur 0,085 s, maintien environ 0,025 s, réouverture sur 0,15 s avec interpolation douce. Premier clignement à 1,7 s, puis intervalle aléatoire de 2,6–5,4 s après la fin ; il continue pendant la locomotion. Le clignement n’est pas synchronisé à la boucle idle.
+
+34 contrôles en jeu passent, y compris stabilité des appuis, amplitude de tête, fermeture/réouverture réelle du morph, marche, course et IA. Rapport · Raccords Blender. Reproduction : Saved/CodexTools/OursIdleV2/animate.py dans Blender puis import.py dans Unreal, éditeur habituel fermé proprement ; test.py dans un éditeur isolé. Les sauvegardes des assets précédents sont dans Saved/CodexTools/OursIdleV2/Backup.
+
 Fichiers et assets actuels
-Sources :
-Art/Ours/Ours_Animations_V1
-. Le maître de retouche détaillé V3 reste intact ; le rig utilise son export réduit.
-Fichier
-Usage
-Ours_Animations.blend
-Maillage et trois actions de locomotion V1, conservés pour référence. Le maître actuel avec les poids de combat est indiqué dans la section Combat V2.
-Ours_Squelette.blend
-Corps et yeux séparés, poids éditables et pose neutre.
-SK_Ours_Grizzly.fbx
-Maillage en pose de référence avec squelette et couleurs des sommets.
-A_Ours_Idle / Walk / Run.fbx
-Un FBX par animation, 60 échantillons/s.
-Dans
-/Game/ElemntsForGame/Mobs/Ours/GrizzlyV2
-:
-SkeletalMesh/SK_Ours_Grizzly_V2
-et
-SK_Ours_Grizzly_Skeleton
-.
-Animations/LocomotionV2/A_Ours_Idle_V2
-,
-A_Ours_Walk
-,
-A_Ours_Run
-.
-IA/Animation/BS_Ours_Locomotion
-: échantillons à 0, 80 et 300 cm/s.
-IA/Animation/ABP_Ours
-: vitesse horizontale réelle du Character vers le Blend Space ; interpolation des poids à 6/s.
-IA/BP_IA_Ours
-: Blueprint enfant du loup ; la rotation lissée et les références d’invocation communes sont partagées avec le parent.
-Les quatre instances de matériau V3 sont réutilisées ; le parent autorise maintenant les maillages squelettiques.
+
+Sources : Art/Ours/Ours_Animations_V1. Le maître de retouche détaillé V3 reste intact ; le rig utilise son export réduit.
+
+| Fichier | Usage
+
+| Ours_Animations.blend | Maillage et trois actions de locomotion V1, conservés pour référence. Le maître actuel avec les poids de combat est indiqué dans la section Combat V2.
+
+| Ours_Squelette.blend | Corps et yeux séparés, poids éditables et pose neutre.
+
+| SK_Ours_Grizzly.fbx | Maillage en pose de référence avec squelette et couleurs des sommets.
+
+| A_Ours_Idle / Walk / Run.fbx | Un FBX par animation, 60 échantillons/s.
+
+Dans /Game/ElemntsForGame/Mobs/Ours/GrizzlyV2 :
+
+- SkeletalMesh/SK_Ours_Grizzly_V2 et SK_Ours_Grizzly_Skeleton.
+
+- Animations/LocomotionV2/A_Ours_Idle_V2, A_Ours_Walk, A_Ours_Run.
+
+- IA/Animation/BS_Ours_Locomotion : échantillons à 0, 80 et 300 cm/s.
+
+- IA/Animation/ABP_Ours : vitesse horizontale réelle du Character vers le Blend Space ; interpolation des poids à 6/s.
+
+- IA/BP_IA_Ours : Blueprint enfant du loup ; la rotation lissée et les références d’invocation communes sont partagées avec le parent.
+
+- Les quatre instances de matériau V3 sont réutilisées ; le parent autorise maintenant les maillages squelettiques.
+
 Squelette et poids
-24 os dans le rig Blender : racine, bassin, colonne, poitrine, cou, tête, mâchoire, deux oreilles, trois segments par patte avant, quatre par patte arrière et queue. La mâchoire est réservée à une prochaine passe : le museau fermé reste solidaire de la tête. Le morph
-Blink
-ferme les paupières ajoutées au maillage V2 ; elles suivent la tête à 100 %, sans ajouter d’os.
+
+24 os dans le rig Blender : racine, bassin, colonne, poitrine, cou, tête, mâchoire, deux oreilles, trois segments par patte avant, quatre par patte arrière et queue. La mâchoire est réservée à une prochaine passe : le museau fermé reste solidaire de la tête. Le morph Blink ferme les paupières ajoutées au maillage V2 ; elles suivent la tête à 100 %, sans ajouter d’os.
+
 Les poids ont été calculés sur une copie fermée, puis transférés au maillage corrigé, avec quatre influences maximum par sommet. Les yeux suivent la tête à 100 %. Les appuis et les griffes ont été protégés contre les influences des autres pattes. La géométrie, les couleurs et les quatre slots du modèle réduit ont été conservés.
+
 L’échelle de référence ×2,3 est intégrée au maillage et au squelette. Dans Unreal, le Character est à l’échelle 1 et conserve une hauteur visuelle de l’ordre de 159 cm. Le mesh est décalé de −85 cm en Z et tourné de −90° en lacet par rapport au Character. La capsule a un rayon de 68 cm et une demi-hauteur de 85 cm. Elle sert au déplacement ; aucun Physics Asset de combat/ragdoll n’est encore installé.
-Dans Blender, sélectionner
-Ours_Rig
-, passer en Pose Mode puis choisir l’action dans l’Action Editor. Les poses de locomotion sont calculées avec deux segments articulés et des cibles de pattes, puis enregistrées image par image. Les fichiers livrés contiennent ces clés, pas des contrôleurs IK interactifs supplémentaires.
+
+Dans Blender, sélectionner Ours_Rig, passer en Pose Mode puis choisir l’action dans l’Action Editor. Les poses de locomotion sont calculées avec deux segments articulés et des cibles de pattes, puis enregistrées image par image. Les fichiers livrés contiennent ces clés, pas des contrôleurs IK interactifs supplémentaires.
+
 Animations
-Action
-Durée
-Clés
-Vitesse prévue
-Contenu
-Idle V2
-6 s
-361
-0
-Respiration renforcée, observation de la tête, oreilles mobiles, quatre appuis stables.
-Walk
-1,4 s
-85
-80 cm/s
-Ordre des appuis décalé entre les quatre pattes ; faible transfert du bassin.
-Run
-0,667 s
-41
-300 cm/s
-Galop avec regroupement et extension, compression du tronc, pattes davantage levées.
+
+| Action | Durée | Clés | Vitesse prévue | Contenu
+
+| Idle V2 | 6 s | 361 | 0 | Respiration renforcée, observation de la tête, oreilles mobiles, quatre appuis stables.
+
+| Walk | 1,4 s | 85 | 80 cm/s | Ordre des appuis décalé entre les quatre pattes ; faible transfert du bassin.
+
+| Run | 0,667 s | 41 | 300 cm/s | Galop avec regroupement et extension, compression du tronc, pattes davantage levées.
+
 La dernière clé reproduit la première. Les vidéos omettent cette clé redondante. Aucun déplacement de racine : le CharacterMovement pilote le déplacement réel. Les trajectoires d’appui ont été dimensionnées selon les vitesses ci-dessus pour réduire le glissement à vitesse constante. Leurs cibles restent atteignables par les pattes ; aucun allongement des os n’est utilisé.
+
 Le modèle est encore dense et issu d’un sculpt généré. Les épaules et les hanches se compriment dans la course ; une retopologie propre aux articulations permettra d’aller plus loin. Cette validation n’établit pas une absence de toute auto-intersection sur chaque triangle, ni un contact parfait sur terrain incliné. Le placement adaptatif des quatre pattes sur pentes reste à ajouter.
+
 IA : états et réglages
+
 Le Blueprint reprend l’héritage, les champs de cible et de statistiques du loup, ainsi que sa logique de déplacement par navigation. Son BeginPlay et son Tick n’appellent pas la logique d’attaque du parent. PawnSensing du loup est désactivé ; la vérification de portée et de ligne de vue de l’ours se fait à cadence réduite.
-État
-Comportement
-0 · Repos
-Pause de 2 à 4 secondes entre les déplacements.
-1 · Patrouille
-Point atteignable à 550 cm maximum du point de départ, marche à 80 cm/s. Abandon d’un trajet après 18 secondes et nouvelle pause.
-5 · Alerte
-Joueur visible à moins de 1 100 cm, dans la zone de poursuite. Courte attente de 0,7 s.
-2 · Poursuite
-Course à 300 cm/s avec navigation et cible mobile. Demandes de chemin espacées d’au moins 0,6 s.
-3 · Observation
-Arrêt proche du joueur. Seuil d’arrêt à 175 cm et reprise au-delà de 205 cm pour éviter les alternances marche/arrêt. La distance réelle dépend du freinage et des capsules.
-4 · Retour
-Retour à 80 cm/s lorsque l’ours ou sa cible dépasse 1 600 cm du point de départ, lorsque la vue est perdue plus de 3 s, ou lorsque la détection est désactivée. La cible est libérée.
+
+| État | Comportement
+
+| 0 · Repos | Pause de 2 à 4 secondes entre les déplacements.
+
+| 1 · Patrouille | Point atteignable à 550 cm maximum du point de départ, marche à 80 cm/s. Abandon d’un trajet après 18 secondes et nouvelle pause.
+
+| 5 · Alerte | Joueur visible à moins de 1 100 cm, dans la zone de poursuite. Courte attente de 0,7 s.
+
+| 2 · Poursuite | Course à 300 cm/s avec navigation et cible mobile. Demandes de chemin espacées d’au moins 0,6 s.
+
+| 3 · Observation | Arrêt proche du joueur. Seuil d’arrêt à 175 cm et reprise au-delà de 205 cm pour éviter les alternances marche/arrêt. La distance réelle dépend du freinage et des capsules.
+
+| 4 · Retour | Retour à 80 cm/s lorsque l’ours ou sa cible dépasse 1 600 cm du point de départ, lorsque la vue est perdue plus de 3 s, ou lorsque la détection est désactivée. La cible est libérée.
+
 Décisions toutes les 0,2 s. Accélération ordinaire 550 cm/s², freinage 600 cm/s², rotation du mouvement limitée à 155°/s. Les phases de charge utilisent leurs propres accélérations. Les vitesses sont plus basses et les distances d’arrêt plus grandes que celles du loup. Les 300 PV sont désormais actifs ; l’équilibrage reste ajustable après essais de combat.
-Réglages exposés sur l’instance :
-BearDetectionEnabled
-,
-BearPatrolRadius
-,
-BearAcquireDistance
-,
-BearLeashDistance
-. Le prototype cible le joueur solo local. Pour plusieurs joueurs, il faudra reprendre la sélection serveur et les états répliqués de l’IA réseau du loup, pas simplement activer Replicates sur ce Blueprint.
+
+Réglages exposés sur l’instance : BearDetectionEnabled, BearPatrolRadius, BearAcquireDistance, BearLeashDistance. Le prototype cible le joueur solo local. Pour plusieurs joueurs, il faudra reprendre la sélection serveur et les états répliqués de l’IA réseau du loup, pas simplement activer Replicates sur ce Blueprint.
+
 Placement et essai dans le solo
-Ouvrir
-L_Base_Nexus
-et lancer Solo. L’acteur
-Ours_Grizzly_Anime
-, dossier
-Base/Ours_Prototype
-, démarre à X 440, Y −650, Z 85,7 cm, près de la plaque de réapparition. La capsule se pose ensuite sur le sol. L’ancien exemplaire statique a été retiré de cette map ; une copie de la map précédente est conservée dans
-Saved/CodexTools/OursAnimationV1/Backup
-. L’ancien ours de gameplay et les autres cartes restent disponibles.
-S’éloigner pour observer la patrouille.
-Revenir à découvert à moins de 11 m pour provoquer la poursuite.
-Rester près de l’ours : observer son redressement et les deux griffes. Esquiver latéralement pendant la préparation, puis essayer de ne sortir qu’avant le second contact.
-Sortir de la zone de 16 m autour de son point de départ : il retourne à son ancrage.
-Pour inspecter uniquement les animations, désactiver BearDetectionEnabled sur l’instance avant de jouer.
+
+Ouvrir L_Base_Nexus et lancer Solo. L’acteur Ours_Grizzly_Anime, dossier Base/Ours_Prototype, démarre à X 440, Y −650, Z 85,7 cm, près de la plaque de réapparition. La capsule se pose ensuite sur le sol. L’ancien exemplaire statique a été retiré de cette map ; une copie de la map précédente est conservée dans Saved/CodexTools/OursAnimationV1/Backup. L’ancien ours de gameplay et les autres cartes restent disponibles.
+
+- S’éloigner pour observer la patrouille.
+
+- Revenir à découvert à moins de 11 m pour provoquer la poursuite.
+
+- Rester près de l’ours : observer son redressement et les deux griffes. Esquiver latéralement pendant la préparation, puis essayer de ne sortir qu’avant le second contact.
+
+- Sortir de la zone de 16 m autour de son point de départ : il retourne à son ancrage.
+
+- Pour inspecter uniquement les animations, désactiver BearDetectionEnabled sur l’instance avant de jouer.
+
 Contrôles réalisés
+
 22 contrôles fonctionnels validés dans une session PIE solo avec rendu : présence de l’unique ours, contrôleur, Animation Blueprint, vitesse de marche et de course, vitesse transmise aux animations, acquisition, arrêt à distance, immobilité au repos, libération de la cible et retour au point de départ. Une paroi de test masque ensuite le joueur ; la cible ne doit pas être acquise avant son retrait.
+
 Le modèle animé V1 extrait dans Unreal contient 337 068 triangles et les trois animations partagent le même squelette. Remove Degenerates est désactivé. Les boucles n’utilisent pas de root motion. Les contrôles Blender échantillonnent aussi l’étirement des arêtes et les points les plus bas : ils servent au diagnostic, pas à certifier toutes les déformations possibles.
+
 Les loups ont été désactivés uniquement dans la session de test pour isoler le comportement. Le menu de sélection du mode est réellement fermé par le choix Solo avant les mesures. Aucun chiffre de FPS ni test Internet n’est déduit de cette campagne.
-Poids et squelette
-Boucles et articulations
-Déformations échantillonnées
-Vérification du maillage et des animations dans Unreal
-Résultats et échantillons en jeu
+
+- Poids et squelette
+
+- Boucles et articulations
+
+- Déformations échantillonnées
+
+- Vérification du maillage et des animations dans Unreal
+
+- Résultats et échantillons en jeu
+
 Suite du travail
+
 La charge et les deux griffes sont intégrées, ainsi que les dégâts, la mort et les branchements d’invocation. Compléter les réactions visuelles et sonores aux coups et le portage multijoueur. Prévoir l’ouverture de bouche si de futures attaques l’utilisent ; les paupières sont déjà animées. Avant plusieurs ours actifs : retopologie ou LOD contrôlés, comparaison visuelle et profilage dans la scène cible. Ajouter ensuite le réseau, l’identité de propriétaire et la sauvegarde du mob.
-Reproduction dans
-Saved/CodexTools/OursAnimationV1
-: build_rig.py → animate.py → import_assets.py → build_ai.py → place_bear.py. Le script d’import évite de réimporter les assets déjà valides ; après une modification des FBX, faire un réimport explicite avec les mêmes paramètres. Les tests s’exécutent dans un éditeur isolé, sans compilation d’exécutable. Cette chaîne décrit l’intégration historique V1 ; ne pas la relancer sur l’état actuel. Les scripts Combat V2 préservent les systèmes du loup et adaptent les fonctions de rotation communes.
+
+Reproduction dans Saved/CodexTools/OursAnimationV1 : build_rig.py → animate.py → import_assets.py → build_ai.py → place_bear.py. Le script d’import évite de réimporter les assets déjà valides ; après une modification des FBX, faire un réimport explicite avec les mêmes paramètres. Les tests s’exécutent dans un éditeur isolé, sans compilation d’exécutable. Cette chaîne décrit l’intégration historique V1 ; ne pas la relancer sur l’état actuel. Les scripts Combat V2 préservent les systèmes du loup et adaptent les fonctions de rotation communes.
+
 Combat V2, locomotion et IA solo · Double-griffe et mort · Sources et sauvegardes conservées · Aucun exécutable créé.
 
+20 octobre — Combat et visée
 
-combat-polish-v3 — 20 octobre 2026
 L’ours allié approche davantage les petites cibles : rayon d’approche 75 cm, déclenchement des griffes à 160 cm et arrêt proche à 145 cm. Les os des pattes continuent de s’actualiser hors caméra pendant l’attaque uniquement. Les deux contacts restent à 18 dégâts chacun. Les essais autonomes confirment les dégâts sur un loup et sur un aigle posé. Les seuils de l’ours sauvage sont conservés. Un portrait spécifique de l’ours nécromancien apparaît dans les trois emplacements d’alliés, avec le niveau et les jauges existants.
 
+Captures et validation
 
-ÉQUILIBRAGE V4 — 20 octobre 2026
+20 octobre — Équilibrage et réanimation V4
+
 L’ours suit sa cible debout entre les coups, jusqu’à 110 cm/s. Sa rotation est limitée à 300°/s hors contact et 140°/s pendant les griffes, sans retournement instantané. L’évitement automatique des autres créatures est suspendu pendant ce combo, puis restauré ; les collisions physiques restent actives. La reprise après le combo passe de 0,7 à 0,4 s. L’animation A_Ours_Griffes_Basses conserve les deux coups en X mais abaisse les pattes d’environ 30 cm au contact et 24 cm en fin de balayage. Deux fenêtres de dégâts indépendantes de 18 points, portée physique des griffes et contrôle des obstacles conservés. L’ancienne animation reste disponible.
+
 Validation solo : 35 contrôles réussis, deux cycles complets de l’aigle avec dégâts pendant le repos, loup touché par les griffes et contre-attaque après contournement. 1400 images de réanimation échantillonnées. Aucun benchmark FPS ni essai réseau dans ce lot. Rapports : Art/Combat_Equilibrage_V4/Validation_Finale.json. Sauvegardes récupérables : Saved/CodexTools/CombatBalanceV4/Backup. Le module natif RitualPrewarmV1 reste inchangé. Aucun exécutable distribuable créé.
+
+Captures et résultats

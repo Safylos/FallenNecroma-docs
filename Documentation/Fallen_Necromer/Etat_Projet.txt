@@ -1,3 +1,11 @@
+Documentation vérifiée et illustrée
+
+La page Commandes est désormais une référence actuelle : I, transferts, clic droit, suppression confirmée, rotation et zoom, ressources et recrutement temporairement garanti. Les trois créatures possèdent une page Version ombrale et IA alliée. Les modèles naturels, le fort, le nexus, la porte, le studio et le menu sont illustrés ; les captures de référence plus anciennes gardent leur indication de version.
+
+La lecture des guides a également corrigé la publication GitHub Pages, maintenant active. Les sources de contenu, sommaires, versions texte et liens sont contrôlés ensemble. Les comptes rendus anciens restent accessibles et dépliés ; leurs valeurs datées ne remplacent pas les sections courantes.
+
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
@@ -10,17 +18,15 @@ Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs 
 
 Contrôles automatisés V27 : Menu 18/18, Resources 10/10, Network 38/38, Capacity 50/50. Chargement et compilation de 1233 packages conservés ; aucune dépendance manquante ni ancien chemin dans cet audit. Les essais réseau utilisent des pairs PIE locaux et un délai de paquets simulé de 80 ms. Ils ne remplacent pas une partie entre deux PC via Internet/Steam et ne prouvent pas une égalité de FPS avec le solo. Aucun nouvel exécutable distribuable n’a été produit.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
-22 octobre 2026 — Gestion des ombres V23 (solo)
-I ouvre la collection : trois places d’équipe et vingt cases de réserve en bas à gauche, portraits V21/niveaux, aperçu 3D, statistiques, échanges et suppression multiple confirmée. Le quatrième recrutement rejoint la réserve. Collection sauvegardée et niveaux restaurés. Le menu réseau reste à venir. Voir Gestion_Ombres.html et Gestion_Ombres.txt. Corrections épée/ours/caméra : Combat_Camera_V22.html. Git dans Unreal reste désactivé à la demande de Florian ; dépôt conservé.
+Gestion des ombres V23 · solo
 
-FALLEN NECROMER — ÉTAT DU PROJET
-22 OCTOBRE 2026
+I ouvre la collection : trois alliés dans l’équipe et vingt places en réserve, avec portraits, modèle 3D, statistiques, échanges et suppression multiple confirmée. Recrutement supplémentaire en réserve et reprise de la collection vérifiés.
 
-Documentation / Projet / État du projet
+Guide et rendu réel du menu · Corrections épée, ours et caméra. Le menu multijoueur reste à venir. Git dans Unreal est laissé désactivé ; dépôt conservé.
 
 ÉTAT DU 22 OCTOBRE 2026
 
@@ -49,8 +55,11 @@ Guide et méthode réutilisable · Galerie et prises natives. Aucun benchmark gl
 Transitions et combat V20 — état courant
 
 - Aigle : raccords sol/vol et après réanimation, ouverture des ailes puis montée progressive.
+
 - Ours : reste debout, marche et pivote entre ses combos quand la cible reste proche. Redescente distincte à la perte ou à l’éloignement de la cible. Deux griffes de 18 dégâts et cadence conservées.
+
 - Avatar : deuxième mouvement d’épée plus compact ; préparation haute, impacts, appuis et autres frappes conservés.
+
 - Portail : la surface bleu nuit se fissure et se sépare réellement (voir la section dédiée).
 
 Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
@@ -109,23 +118,13 @@ Griffes de l’ours reconstruites avec un plan de flexion cohérent. Aigle ombra
 
 20 octobre — Aggro, interface et FPS V14
 
- 
-
 Les trois jauges circulaires du solo (vie, endurance et mana) sont présentes en multijoueur, avec les mêmes matériaux, proportions et placement. Elles lisent les ressources du joueur local, calculées par le serveur. Les portraits d’alliés, leur niveau, leur vie, leur expérience et les trois emplacements reprennent les matériaux et la disposition du solo. Les commandes du salon passent derrière Tab pendant la partie pour dégager l’interface.
-
- 
 
 Le loup détecte à 15 m au lieu de 12 m ; sa mémoire est actualisée tant qu’il voit sa cible, ce qui corrige la perte artificielle après 12 secondes. L’aigle détecte à 36 m horizontalement au lieu de 22 m en distance 3D, avec une mémoire visuelle de 9 s. L’ours conserve sa portée réseau de 15 m, déjà supérieure aux 11 m du Blueprint solo. Les trois utilisent le contrôle de visibilité du contrôleur IA, comme le solo, et le symbole rouge 3D « ! » du solo. Les murs opaques continuent de bloquer la détection. L’alerte est transmise immédiatement aux invités ; les alliés nécromanciens n’affichent pas d’alerte hostile.
 
- 
-
 FPS V14 (historique, placement remplacé par V21 en haut à gauche) : compteur commun alors visible en haut à droite, en solo, salon, multijoueur, menus et pause. Un seul affichage par viewport, échantillonné sur 0,25 seconde de temps réel, indépendant de la vitesse de simulation. L’ancien compteur solo est masqué uniquement pendant l’exécution lorsque son remplacement est attaché ; le Blueprint solo n’est pas modifié.
 
- 
-
 Les règles de ressources étaient déjà présentes : endurance 200, course −12,5/s, récupération 15/s, saut 20 ; mana 100, récupération 5/min, élimination +5, réanimation −25. Les nouveaux contrôles couvrent leur consommation réelle et leur affichage chez l’invité.
-
- 
 
 33 contrôles réussis : hôte et invité avec 60 ms simulés par trajet et 3 % de pertes pour les fonctions réseau, plus vérifications FPS solo et salon. Ce lot ne constitue pas un nouveau benchmark ni un essai Steam entre deux PC. Le comportement de meute, les modes quatre forts/vagues et certaines interactions restent différents. Captures et résultats V14.
 
@@ -151,16 +150,34 @@ La comparaison détaillée distingue les fonctions déjà reprises, les manques 
 
 1. Fonctionnalités actuelles
 
-SystèmeSoloMultijoueurAvatarQuatre tenues, studio, palettes, clignements et mouvements.Apparence persistée et mouvements répliqués.Combat et inventaireÉpée, poings, arc, flèches, ramassage et lancer.Poings, arc, flèches, ramassage et lancer serveur présents depuis V13 ; les différences restantes sont détaillées dans la page de parité.Loups et alliésIA, recrutement, suivi, rappel T et déploiement Y.IA native distincte ; recrutement serveur, commande F. T/Y restent à porter.OursCharge pourpre, double griffe en X, orientation fluide, dégâts, mort sur le flanc et recrutement Ombre céleste ; rappel T et déploiement Y.Non intégré.AigleVol à altitude variable, posture plus naturelle, piqué et largage d’œuf explosif jaune. Projections sur sol, avatar et créatures. Mort avec chute puis affaissement, ailes relâchées et yeux fermés.Non intégré.Base et vaguesNexus, remparts, porte et vagues de six ennemis.Hub et quatre forts ; pas de vagues solo.SauvegardeProfil d’apparence ; pas de sauvegarde complète de campagne.Partie sauvegardée par l’hôte, reprise avec le même hôte et identité Steam.
+| Système | Solo | Multijoueur
+
+| Avatar | Quatre tenues, studio, palettes, clignements et mouvements. | Apparence persistée et mouvements répliqués.
+
+| Combat et inventaire | Épée, poings, arc, flèches, ramassage et lancer. | Poings, arc, flèches, ramassage et lancer serveur présents depuis V13 ; les différences restantes sont détaillées dans la page de parité.
+
+| Loups et alliés | IA, recrutement, suivi, rappel T et déploiement Y. | IA native distincte ; recrutement serveur, commande F. T/Y restent à porter.
+
+| Ours | Charge pourpre, double griffe en X, orientation fluide, dégâts, mort sur le flanc et recrutement Ombre céleste ; rappel T et déploiement Y. | Non intégré.
+
+| Aigle | Vol à altitude variable, posture plus naturelle, piqué et largage d’œuf explosif jaune. Projections sur sol, avatar et créatures. Mort avec chute puis affaissement, ailes relâchées et yeux fermés. | Non intégré.
+
+| Base et vagues | Nexus, remparts, porte et vagues de six ennemis. | Hub et quatre forts ; pas de vagues solo.
+
+| Sauvegarde | Profil d’apparence ; pas de sauvegarde complète de campagne. | Partie sauvegardée par l’hôte, reprise avec le même hôte et identité Steam.
 
 Réanimation de l’avatar solo validée : 3 s entre mort et retour à la plaque, puis animation de relevé de 2,8 s. Aucun déplacement ni attaque avant sa fin ; caméra et pause conservées. 71 contrôles en jeu couvrent notamment les morts au sol et en l’air, les tentatives de déplacement et la reprise des commandes. Voir la vidéo du cycle
 
 2. Limites connues
 
 - La fin de session de l’hôte coupe la partie des invités ; aucune migration d’hôte.
+
 - Les tests réseau locaux ne valident pas encore deux comptes Steam sur deux PC via Internet.
+
 - Ours et aigle présents en solo et multijoueur depuis V13. L’ours est endommageable et recrutable ; l’aigle est recrutable en solo depuis V18 ; son recrutement réseau reste à porter.
+
 - Les animaux restent denses : aucune promesse de performances globales ni de nombre maximal de créatures.
+
 - Les scripts locaux dans Saved/CodexTools sont exclus de Git : ils ne sont pas garantis dans un autre clone.
 
 3. Suite proposée, sans lancement automatique

@@ -1,18 +1,27 @@
-Avatar · Attaques et armes
+Avatar · Attaques et armes. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Épée
+
 Le combo principal comporte quatre mouvements. Un clic gauche engage un mouvement ; le relâchement termine le geste puis utilise une sortie dédiée, tandis que le maintien poursuit le combo. Le deuxième geste a été resserré pour limiter le recul excessif du bras et de l’épaule.
 
 Attaque secondaire et esquive
+
 Le clic droit avec l’épée utilise le combo secondaire. Une attaque principale en l’air déclenche le plongeon vers le sol. L’esquive dépend de l’équipement. Les déplacements de gameplay, fenêtres de dégâts et raccords de pose doivent rester cohérents.
 
 Arc
+
 Maintenir le clic droit permet de viser ; le clic gauche maintenu charge le tir et son relâchement libère la flèche. La flèche est un projectile soumis à la gravité. Une charge plus forte augmente sa vitesse et ses dégâts ; relâcher la visée annule la charge.
 
-RÉFÉRENCES ET DÉTAILS
-Combo principal, impacts et sorties — Avatar.html#s7
-Secondaire, plongeon et esquive — Avatar.html#s8
-Arc : charge et trajectoire — Avatar.html#s9
-Corrections de combat et de caméra — Combat_Camera_V22.html
+Références et détails
 
-Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
+Les comptes rendus conservent leur date et leurs anciens chemins. L’état V27 prévaut sur leurs limites antérieures ; ces pages ne constituent pas une nouvelle campagne de tests du jeu.
+
+- Combo principal, impacts et sorties
+
+- Secondaire, plongeon et esquive
+
+- Arc : charge et trajectoire
+
+- Corrections de combat et de caméra
+
+Organisation documentaire du 23 octobre 2026 · État du projet V27.

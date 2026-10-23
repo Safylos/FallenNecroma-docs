@@ -1,15 +1,30 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+Variante KO
 
-Maintenir Pivoter entraîne progressivement la plateforme et le mob ensemble, autour du centre des appuis ; le décor et les lumières restent fixes. Maintenir Zoom + ou Zoom − zoome continuellement ; les boutons sont grisés aux limites. Le cadrage coordonne la crypte et le sujet, sans modifier la taille de l’allié dans le monde. La seule nouvelle chaussure plate est affichée devant Déplacement. Portraits, cadres dorés, badges KO rouges, dégâts compacts, fissures cyan et ambiance de crypte sont conservés.
+Conserver les portraits approuvés et leur fond bleu. Le jeu ajoute un voile rouge translucide léger, concentré sur les bords, et le badge KO ; il n’utilise pas un autre dessin ni un fond orange opaque. Ce traitement est commun au HUD, à la collection et à la vignette déplacée.
 
-Guide courant : Projet_V27.html
+[Image : Voile KO final sur fond bleu ; collection de test du 23 octobre 2026.] Images/Actuel/Ombres_KO_Menu.png
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Voile KO final sur fond bleu ; collection de test du 23 octobre 2026. Cliquez sur l’image pour l’agrandir.
 
-Documentation / Bestiaire / Portraits ombraux
-22 OCTOBRE 2026
+Portraits de référence
 
-Documentation / Bestiaire / Portraits ombraux
+Les trois portraits approuvés sont des gros plans de tête au style anime : loup à bouche entrouverte, ours plus frontal et aigle à la couronne de plumes fidèle au modèle. Palette bleu nuit et cyan, yeux lumineux, fond sombre ; aucun numéro d’emplacement sur la vignette. Le niveau est un chiffre seul en bas à droite, le badge KO en bas à gauche.
+
+Sources carrées de 1 254 × 1 254 pixels, textures UI de 512 × 512. Pour une nouvelle espèce, partir de captures de son vrai modèle de face / trois quarts et des trois portraits approuvés ; préserver anatomie, museau ou bec, oreilles, plumage et ornements. Vérifier la lisibilité à la petite taille du HUD avant intégration.
+
+[Image : Portrait illustré approuvé : loup ombral (V21), distinct du modèle 3D.] ../../Art/Portraits_Ombraux_V21/Loup_Ombral.png
+
+Portrait illustré approuvé : loup ombral (V21), distinct du modèle 3D. Cliquez sur l’image pour l’agrandir.
+
+[Image : Portrait illustré approuvé : ours ombral (V21), distinct du modèle 3D.] ../../Art/Portraits_Ombraux_V21/Ours_Ombral.png
+
+Portrait illustré approuvé : ours ombral (V21), distinct du modèle 3D. Cliquez sur l’image pour l’agrandir.
+
+[Image : Portrait illustré approuvé : aigle ombral (V21), distinct du modèle 3D.] ../../Art/Portraits_Ombraux_V21/Aigle_Ombral.png
+
+Portrait illustré approuvé : aigle ombral (V21), distinct du modèle 3D. Cliquez sur l’image pour l’agrandir.
+
+Guide détaillé et historique antérieur à V27
 
 DIRECTION ARTISTIQUE APPROUVÉE · 22 OCTOBRE 2026
 
@@ -21,44 +36,50 @@ Le trio choisi pour l’interface et une méthode pour décliner les prochains c
 
 La nouvelle référence artistique est une série de portraits illustrés en style animé, principalement cadrés sur la tête. Ces dessins remplacent la direction des vignettes photographiées V19 dans l’interface ; les captures du jeu restent la référence d’identité des modèles.
 
+[Image : Loup ombral — portrait animé approuvé] ../../Art/Portraits_Ombraux_V21/Loup_Ombral.png
+
 Loup ombral
-
 Variante A, bouche entrouverte
-
 Museau allongé, oreilles triangulaires, regard vif et canines visibles.
 
+[Image : Loup ombral à 44 pixels] ../../Art/Portraits_Ombraux_V21/Loup_Ombral.png
 44 × 44 px
-
+[Image : Loup ombral à 88 pixels] ../../Art/Portraits_Ombraux_V21/Loup_Ombral.png
 88 × 88 px
+
+[Image : Ours ombral — portrait animé approuvé] ../../Art/Portraits_Ombraux_V21/Ours_Ombral.png
 
 Ours ombral
-
 Variante B, vue plus frontale
-
 Front large, petites oreilles rondes, museau court et massif ; regard puissant.
 
+[Image : Ours ombral à 44 pixels] ../../Art/Portraits_Ombraux_V21/Ours_Ombral.png
 44 × 44 px
-
+[Image : Ours ombral à 88 pixels] ../../Art/Portraits_Ombraux_V21/Ours_Ombral.png
 88 × 88 px
+
+[Image : Aigle ombral — portrait animé approuvé] ../../Art/Portraits_Ombraux_V21/Aigle_Ombral.png
 
 Aigle ombral
-
 Version corrigée V2
-
 Bec crochu d’aigle, œil cyan lisible et plumes de la tête cohérentes avec son identité.
 
+[Image : Aigle ombral à 44 pixels] ../../Art/Portraits_Ombraux_V21/Aigle_Ombral.png
 44 × 44 px
-
+[Image : Aigle ombral à 88 pixels] ../../Art/Portraits_Ombraux_V21/Aigle_Ombral.png
 88 × 88 px
-
 Trio approuvé et importé. Loup A bouche entrouverte, ours B plus frontal et aigle corrigé V2. Les simulations à 44 et 88 pixels servent à juger la lisibilité ; elles restent distinctes des captures natives du HUD.
 
 2. Direction artistique commune
 
 - Visage dominant, gros plan tête et un peu de cou ; silhouette identifiable immédiatement. Préserver les proportions et les traits caractéristiques du modèle utilisé dans le jeu.
+
 - Illustration fantasy/anime : trait sombre propre, ombrages nets, volumes lisibles et détail de poils ou de plumes concentré sur les contours et les zones utiles.
+
 - Matière noir bleuté et bleu nuit ; lumière cyan glacé sur les bords, yeux expressifs et quelques volutes spectrales. Le cyan souligne le visage sans le blanchir.
+
 - Fond sombre simple, sans décor chargé. Le visage doit se détacher en petit format sans ajouter un cadre ou un badge dans l’image.
+
 - Expression propre à chaque créature : loup vif avec bouche entrouverte ; ours massif plus frontal ; aigle au bec et au regard corrigés. La cohérence de série ne demande pas des anatomies identiques.
 
 Portée : une illustration d’interface. Les corps, squelettes, pelages, plumes, matériaux et animations des créatures en jeu ne changent pas pour produire ces portraits.
@@ -66,27 +87,38 @@ Portée : une illustration d’interface. Les corps, squelettes, pelages, plumes
 3. Règles de production
 
 - Conserver le fichier généré original et son cadrage carré. Les trois masters approuvés actuels mesurent 1 254 × 1 254 pixels ; ne pas les rééchantillonner pour le seul rangement des sources.
+
 - Garder le texte du nom, le niveau, les jauges, les bordures et l’état de sélection dans l’interface. Aucun de ces éléments ne doit être peint dans le portrait.
+
 - Éviter les yeux noyés dans la lumière, le pelage transformé en tache blanche, les particules devant le visage, les museaux raccourcis ou allongés et les becs d’une autre espèce.
+
 - Vérifier les visages à 44 × 44 pixels, puis à 88 × 88 pixels et en plein format. Sur la page, ces tailles sont des pixels CSS à zoom de navigateur 100 %.
+
 - Archiver séparément les variantes écartées. Une image initiale, une proposition B et le choix final ne doivent jamais partager une appellation « actuelle » ambiguë.
+
 - Préserver une copie récupérable des textures actives avant import, puis créer ou réimporter uniquement les textures d’interface prévues ; ne pas réimporter le modèle de la créature.
 
 4. Méthode réutilisable pour un nouveau mob
 
 - Identifier le vrai modèle. Ouvrir l’espèce et sa variante ombrale réellement utilisées. Prendre une capture de la tête en jeu ou dans une scène fidèle pour fixer l’anatomie, les volumes, les yeux et les ornements. Une ancienne galerie ne suffit pas à désigner l’asset courant.
+
 - Donner deux rôles distincts aux références. La capture 3D sert à l’identité du nouveau mob ; les trois portraits approuvés V21 servent au style. Fournir les images elles-mêmes au générateur image_gen, en précisant cette priorité.
+
 - Renseigner le gabarit ci-dessous. Décrire les traits qui distinguent l’espèce, l’angle et l’expression ; garder les règles communes de cadrage, palette et contraste.
+
 - Comparer plusieurs propositions si nécessaire. Examiner en premier la forme du visage et sa reconnaissance à petite taille, puis la cohérence avec le trio. Corriger la variante concernée avec les références ; éviter de régénérer les portraits déjà approuvés.
+
 - Faire choisir le résultat. Conserver le nom de la variante retenue, les références utilisées, la consigne exacte de génération ou de correction, la date et l’empreinte du master. Une proposition générée ne devient pas automatiquement une texture active.
+
 - Préparer l’import avec retour récupérable. Conserver le master intact. Pour cette série, les textures V21 ont un package distinct sous /Game/ElemntsForGame/Allies/Interface/Portraits/V21. Les anciennes textures V19 restent disponibles en archive ou fallback.
+
 - Contrôler l’interface en situation réelle. Vérifier les références de texture, le nom et l’espèce, les tailles, le filtrage et les mipmaps, puis les cartes d’alliés en solo et sur les interfaces réseau réellement ciblées. Vérifier menu, pause, rappel et redéploiement sans conclure à partir de cette seule page.
+
 - Mettre à jour la fiche et les preuves. Distinguer « style approuvé », « import effectué », « branché dans le HUD » et « validé en jeu », puis documenter les variantes remplacées.
 
 5. Gabarit de consigne à réutiliser
 
 Remplacer les champs entre crochets et joindre la capture d’identité ainsi que les trois références de style. Ce gabarit est une base pour les futurs mobs ; les consignes exactes des images déjà retenues restent conservées dans leur journal de génération.
-
 Créer un seul portrait carré 2D de [NOM / ESPÈCE], compagnon ombral de Fallen Necromer.
 
 RÉFÉRENCES ET PRIORITÉ
@@ -101,7 +133,6 @@ IDENTITÉ À CONSERVER
 
 LIVRABLE
 Une seule image carrée, source en pleine résolution native. Pas de texte, cadre, badge, interface, logo ou assemblage. Pas de corps complet, d’arme ni d’accessoire inventé. Garder la matière sombre et les traits du visage lisibles malgré les lueurs. Aucune modification du modèle 3D ou des matériaux du jeu. Décliner l’identité de cette nouvelle espèce dans la même série visuelle, sans copier la tête d’un autre compagnon.
-
 Consignes et journal de génération de la série V21.
 
 6. Intégration et vérifications V21
@@ -124,6 +155,8 @@ Quatre tests Automation natifs réussis : limites des cartes, compacité, sépar
 
 Les textes du Pacte d’ombre suivent la véritable créature ciblée : « Réanimer le loup », « Réanimer l’ours » ou « Réanimer l’aigle », avec titre adapté au nom. Leur mesure et leur centrage utilisent le même texte. Les 26 contrôles de la vraie fonction Blueprint InstructionRecrutement passent sur les trois cadavres réels ; les avertissements de portée, réanimation en cours, trois alliés maximum, mana insuffisant et panneau non visé sont conservés, ainsi que le retour vide pour une cible invalide. Ces appels utilisent des entrées de fixture et ne déclenchent pas de recrutement.
 
+[Image : Pacte d’ombre de l’aigle, action Réanimer l’aigle] ../../Art/Portraits_Ombraux_V21/Validation_UI/V21_Pacte_Aigle_UI.jpg
+
 Vrai panneau de l’aigle — JPEG natif 1280 × 720. Cadavre réellement produit par dégâts, cible fixée pour la prise et fonction de texte appelée avec des entrées contrôlées ; aucune réanimation lancée.
 
 La caméra protège la vue locale quand son objectif entre dans le volume du personnage : corps, vêtements, cheveux et équipement proches sont filtrés ensemble, puis leurs drapeaux antérieurs sont restaurés après dégagement. Le retrait contre un mur reste immédiat, le retour amorti ; une sonde démarrant dans le décor recherche une position sûre. Caméra solo : 39/39 contrôles réussis, 24 poses normales côté cour sans chevauchement de la caméra et protection active dans 16 d’entre elles. Les flancs extérieurs dans les remparts et le cas 15 avant/après restent des diagnostics contraints, exclus des preuves de déplacement normal. Aucune validation de caméra réseau ni mesure globale de FPS dans ce banc.
@@ -134,7 +167,11 @@ Import des trois textures · Solo 37/37 · Menu 12/12 · Automation 4/4 · Captu
 
 Deux captures natives de la vraie fenêtre PIE, interface Slate comprise, montrent les trois cartes puis l’état en réserve avec un emplacement libre.
 
+[Image : Trois alliés et portraits V21] ../../Art/Portraits_Ombraux_V21/Validation_UI/V21_Trois_Allies_UI.jpg
+
 Trois alliés et portraits V21 — JPEG natif 1280 × 720, sans recadrage hors moteur.
+
+[Image : Réserve et emplacement libre] ../../Art/Portraits_Ombraux_V21/Validation_UI/V21_Reserve_Emplacement_UI.jpg
 
 Réserve et emplacement libre — JPEG natif 1280 × 720, sans recadrage hors moteur.
 

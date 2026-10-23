@@ -6,510 +6,437 @@ Le réglage de base V27 est de 150 PV et 20 dégâts de piqué dans les deux mod
 
 L’aigle recruté suit les règles communes d’équipe et de réserve de Gestion des ombres. La portée des validations est indiquée dans le bilan V27.
 
-Dossier et sous-pages : Aigle.html
+Guide détaillé et historique antérieur à V27
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+BESTIAIRE · TRANSITIONS V20 · 21 OCTOBRE 2026
 
-Aigle V20 — transitions au sol et après réanimation
-L’aigle conserve sa pose finale d’atterrissage pendant le passage à l’attente. Le repli des ailes suit la descente réelle puis le contact au sol. Au décollage, les ailes s’ouvrent sur les pattes posées, la montée accélère progressivement et se raccorde au vol. Le repos solo reste de 3 secondes après 20 secondes en l’air.
-Après recrutement ou redéploiement, la véritable animation au sol est préparée pendant le rituel caché ; l’aigle visible passe ensuite par le décollage, sans apparition directe en pose de vol. Le pelage, les ornements et la palette ombrale sont conservés.
-Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
-Aperçu général · Cycle de l’aigle · Ours debout · Épée avant/après
-
-Aperçu : Art/Transitions_Combat_V20/Apercu.html
-
-21 OCTOBRE 2026 — VIGNETTES FAMILLE V19 (ESSAI STUDIO REMPLACÉ)
-À la demande de Florian, les vignettes du loup et de l'ours sont refaites avec leurs Blueprint alliés complets, pelage et Ornements/effets animés visibles. Captures natives HighResShot, cadrage tête et épaules, fond sombre cohérent avec l'aigle. T_LoupOmbral_Tete et T_OursOmbral_Tete réimportées avec sauvegardes préalables, max512+mipmaps/filtrage trilinear. Aucun shader/modèle ni règle de gameplay modifié. Sources et rapport sous Art/Aigle_Ombral_V19/Vignettes_Famille ; galerie des trois portraits et aperçu60px dans Art/Aigle_Ombral_V19/Apercu.html.
-
-
-21 OCTOBRE 2026 — AIGLE OMBRAL ET CHANCE V19 (ÉTAT COURANT)
-Aigle SOLO : nouveaux MP/RI sous /Game/ElemntsForGame/Allies/Aigles/OmbralV19/Materiaux dérivés des vrais shaders ombraux du loup/ours (pelage quasi noir, Fresnel cyan, Os, Flammes, BrumeEtEtincelles, Obsidienne/Iris). OrnementsNecromancie suit le corps en LeaderPose ; le rituel réactive son composant Ornements avec les variantes RI. Source Blender/FBX Art/Aigle_Ombral_V19 ; 1192/592/256triangles,24os, maxZ129,917cm ; pas de collision, ombre dédiée ou RT. Corps/squelette/duvet et assets sources loup/ours/aigle sauvage non modifiés. Emission des ailes externes atténuée à0,65 pour préserver le détail. Portrait aigle refait depuis le vrai rendu, texture UI T_AigleOmbral_Tete max512+mipmaps.
-Réanimation aigle : ancien H100cm inférieur au sommet mesh141,489cm provoquait une tête coupée jusqu’au saut du shader àReveal>=.999. H154cm×ActorScaleZ sur les3setters de BP_InvocationAigle.AnimerRituel, corps/duvet/ornements synchronisés. Couverture avantfin et T/Y validés ; aucun flash normal sur746frames.
-Chance temporaire commune : Config/DefaultEngine.ini [ConsoleVariables] Avatar.Recruitment.ChanceOverride=1.0 ; -1 restaure les valeurs propres aux acteurs/espèces. AuthoredChance/CDO0,5 préservé. Solo : UAvatarSoloAllySubsystem synchronise la propriété HUD et son vrai tirage TenterRecrutement appelle RollRecruitment ; la probabilité1 réussit explicitement même au point final FRand==1. Multi : tirage serveur commun et ServerRecruitmentChance répliqué vers le vrai panneau/cercle HUD. Coût25mana, propriété,3slots et autres conditions inchangés. Aigle multi reste inéligible : le style/IA ombrale aigle sont solo à ce stade.
-Validation : solo36, rituel/rappel38, réseau deux pairs PIE94, automation native réussis. Pas de benchmark FPS ni de Steam2PC. Aperçu Art/Aigle_Ombral_V19/Apercu.html. Module local UnrealEditor-AvatarRuntime-EagleOmbralV19.dll, V18b conservé. Sauvegardes sous Saved/CodexTools/EagleOmbralV19/Backup et RecruitmentChanceV19/Backup. Un rollback doit restaurer ensemble Blueprint joueur, assets d’aigle, configuration et manifeste, car V18b ne contient pas RollRecruitment. Aucun distribuable recréé.
-
-
-21 OCTOBRE 2026 — SOLO V18 (ÉTAT COURANT)
-Interface : menus partagés, atelier, pause, réglages et textes du HUD solo en Roboto (titres Medium, texte Regular) avec contour. Nouveau UAvatarSoloPresentationSubsystem sur L_Base_Nexus standalone : barres monde fines biseautées, alliés turquoise/hostiles corail, traînée de vie perdue ; cartes 3slots avec noms Loup ombral/Ours ombral/Aigle ombral, niveau/vie/XP/réserve. Portraits réels 1024px, textures UI max512, mipmaps SHARPEN0/trilinear. Dégâts réels (plafonnés aux PV) agrandis, contour, impulsion/montée/fondu, marqueur bref de touche ; doré joueur/cyan allié/rouge reçu. Ancien rendu numérique de l’arc désactivé seulement quand ce sous-système est actif.
-Ours : A_Ours_Griffes_Naturelles remplace A_Ours_Griffes_Amples dans l’évaluateur SOLO ABP_Ours. Plan de flexion commun et poignets continus ; extrêmes réduits, durée3,2s et contacts bas1,30/1,80s conservés. Pas de réimport corps/squelette/poids/morphs ; ancien clip réseau retenu.
-Aigle : matériaux naturels affinés et variante ombrale sous /Game/ElemntsForGame/Mobs/Aigle/CimesV2/InterfaceV18, géométrie/LOD V12 préservés. BP_AigleAllie_Ombral et BP_InvocationAigle sous /Game/ElemntsForGame/Allies/Aigles. Cadavre recrutable10s, système R/mana25/chance/3slots conservé. UAvatarSoloEagleComponent suit en vol, sélectionne les hostiles/priorité du propriétaire, réutilise piqué/œuf, XP, T/Y et dissolution. Protection propriétaire/autres alliés ; les taches jaunes restent permises. Repos SOLO3s après20s en vol, vulnérable et pattes au sol.
-Validation : aigle sauvage placé17contrôles (cycle naturel20s, repos3,090s, dégâts au sol, matériaux V18) ; aigle allié39contrôles+4invariants continus ; ours7 ; interface43. Vrais dégâts/recrutement/TY ; fixtures figent d’autres créatures, pas de benchmark global FPS ni validation réseau pour ce lot. Aperçu Art/Solo_Polish_V18/Apercu.html et rapports liés. Composants de menu communs typographiés, nouveau HUD/combat solo d’abord ; pas de portage du nouveau HUD ombral/animations vers le réseau.
-Module actif pour nouvelles sessions UnrealEditor-AvatarRuntime-SoloPolishV18b.dll ; DLLV17 conservée, sauvegardes d’assets/code sous Saved/CodexTools/SoloPolishV18. Aucun distribuable recréé.
-
-
-MISE À JOUR — PLUMAGE AIGLE V12
-Le plumage V12 remplace le duvet V11 jugé trop rayé. Cause corrigée : le matériau du duvet omettait le décodage sRGB vers linéaire présent sur le corps. Les petites plumes reprennent maintenant la même albédo. Nouvelles cartes courtes et orientées, masquées en plusieurs brins, plus fines sur la tête et le tronc, concentrées sur le col. Longueurs 0,65 à 2,42 cm ; faible effet de velours. Les grandes plumes ont un microrelief stable en coordonnées de peau au repos, filtré à distance. Le bec, les serres et les yeux gardent leurs matériaux. Trois LOD de 16 800 / 5 600 / 1 400 triangles, contre 23 400 / 7 800 / 1 950 pour V11, sans simulation, collision, ombre ni ray tracing du duvet. Le corps, le squelette et les règles de combat ne sont pas réimportés. Le Blueprint et l’aigle placé dans L_Base_Nexus sont mis à jour. L’aigle placé conservait encore un remplacement local par le duvet V9 ; ce remplacement a été corrigé explicitement. Les comportements de repos au sol et les animations antérieures sont conservés. Six contrôles de pose au sol et de composants réussis. Aperçu des battements de 4 secondes, échantillonné à 12 images/s ; cette cadence est celle de la vidéo et non celle du jeu. Captures avant/après avec la même pose, caméra, exposition et lumière de remplissage temporaire ; aucun changement d’éclairage enregistré dans la carte.
-Comparatif : Art/Aigle_Plumage_V12/Apercu.html
-
-MISE À JOUR VISUELLE V5 — 20 OCTOBRE 2026
-La pose de vol repliée ne subsiste plus pendant le repos : l’AnimGraph utilise GroundIdle en état 7, Land en état 6 et Takeoff en état 10, sous les couches de combat et de mort conservées. Les transitions prennent 0,22 à 0,28 s. Le duvet V11 remplace V9 sur DuvetVolume : mèches orientées sur la tête, le cou et le corps, de 1,35 à 3,12 cm. Trois niveaux de détail de 23 400 / 7 800 / 1 950 triangles, sans simulation indépendante, collision, ombre ni ray tracing. Les 20 s de vol et 8 s de repos V4 sont conservées. Le duvet reste discret à distance.
-Comparatif : Art/Combat_Visuel_V5/Apercu.html
-
-Documentation
-/
-Bestiaire
-/
 Aigle des cimes : modèle, vol et combat
-BESTIAIRE · COMBAT ET VOL V9 · 19 OCTOBRE 2026
-Aigle des cimes : modèle, vol et combat
+
 État actuel, sources, réglages et vérifications du prototype solo animé.
 
-21 OCTOBRE 2026 — PORTAIL SOMBRE V20 (ÉTAT COURANT, SOLO)
-La surface noire/bleu nuit du portail reste la même depuis l’ouverture : des fissures lumineuses la traversent, puis ses 20 morceaux sombres s’écartent et se dissipent en 0,7 seconde. Les éclats cyan accompagnent la fracture de la surface ; ils ne la remplacent plus. Le loup, l’ours et l’aigle terminent leur invocation au moment habituel, vers 6,2 secondes, pendant que le portail finit seul sa fermeture.
-Un seul maillage de 594 triangles réunit les 20 cellules et leurs fines tranches. Animation dans le matériau avec Time/PortailExitStart/Active, sans Tick CPU, simulation physique, collision, ombre ni ray tracing. SurfaceSombreV20 est présente dès le début dans BP_InvocationRituelle, BP_InvocationOurs et BP_InvocationAigle ; le seul émetteur Portal001 est désactivé sur leur composant avant activation. Le système Niagara et M_Portal d’origine, leurs autres effets et la préparation au chargement restent conservés. Le matériau dédié est M_PortailSombre_Fracture_V20.
-Validation réelle séparée des images : 75 contrôles réussis sur 75, trois morts/recrutements solo sans forcer leur résultat, aucune pause ni capture pendant le banc logique. Les invariants sont vérifiés sur toutes les images observées de fermeture : même surface et origine temporelle, proxies cachés, véritable allié visible, Tick arrêté et suppression complète. Douze PNG natifs de 1 280 × 688 pixels ont été pris et inspectés dans un banc distinct, avec des instants figés uniquement pour photographier intact/fissures/morceaux séparés/sol dégagé. Ce lot ne constitue ni un benchmark global des FPS ni une validation réseau.
-Portée : solo seulement ; le rituel réseau est distinct et inchangé. Aucun changement au coût, à la chance, aux emplacements d’alliés, au code C++ ou aux cartes. Sources, copies récupérables avant mutation et rapports : Saved/CodexTools/PortalClosureV20 (Validation_Final_Unpaused.json, Capture_Sequence.json, Backup_Manifest.json et Final_Asset_State.json). Aperçu actuel : Art/Portail_Surface_Sombre_V20/Apercu.html.
-Historique conservé : V19 ajoutait surtout les fissures et 32 petits éclats cyan, mais retirait le fond sombre au départ de la fermeture. V20 remplace cette présentation après la précision de Florian. Les 60 contrôles et les captures de cette étape restent des preuves datées sous Saved/CodexTools/PortalClosureV19 et Art/Portail_Fissure_V19 ; ils ne décrivent plus le rendu courant.
+Aigle V20 — transitions au sol et après réanimation
+
+L’aigle conserve sa pose finale d’atterrissage pendant le passage à l’attente. Le repli des ailes suit la descente réelle puis le contact au sol. Au décollage, les ailes s’ouvrent sur les pattes posées, la montée accélère progressivement et se raccorde au vol. Le repos solo reste de 3 secondes après 20 secondes en l’air.
+
+Après recrutement ou redéploiement, la véritable animation au sol est préparée pendant le rituel caché ; l’aigle visible passe ensuite par le décollage, sans apparition directe en pose de vol. Le pelage, les ornements et la palette ombrale sont conservés.
+
+Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
+
+Aperçu général · Cycle de l’aigle · Ours debout · Épée avant/après
+
+21 octobre — Le portail sombre se fissure et se sépare · V20
+
+La surface noire/bleu nuit reste la même depuis l’ouverture. Des fissures lumineuses la traversent, puis ses 20 morceaux sombres s’écartent et se dissipent en 0,7 seconde. Les petits éclats cyan accompagnent désormais la fracture du disque lui-même. Le véritable allié est libéré au moment habituel, vers 6,2 secondes.
+
+Un seul maillage de 594 triangles réunit les vingt cellules et leurs fines tranches. Leur mouvement utilise l’horloge du matériau sur le GPU, sans Tick de déplacement sur le processeur, simulation physique, collision, ombre ni ray tracing. La même surface est présente dans les trois rituels dès leur début ; seul leur émetteur sombre Portal001 est désactivé sur chaque composant. Le système Niagara et son matériau d’origine restent conservés, ainsi que la préparation au chargement.
+
+75 contrôles réussis sur 75 : trois vraies morts et réanimations solo, sans résultat forcé, sans pause et sans capture pendant ce banc logique. Toutes les images observées de fermeture contrôlent les proxies cachés, le véritable allié visible, la continuité de surface et d’horloge, l’arrêt du Tick et la suppression de l’effet. Les 12 PNG natifs de 1 280 × 688 pixels viennent d’un banc distinct, figé brièvement pour photographier les quatre étapes. Ils ont tous été inspectés.
+
+Solo seulement. Le rituel réseau utilise un effet distinct, inchangé ici. Ce contrôle ne mesure pas les FPS globaux et ne constitue pas une validation multijoueur. Les coûts, probabilités et limites d’alliés sont conservés ; aucune source C++ ni carte n’a été modifiée pour cette fermeture.
+
+Voir les trois séquences actuelles · Preuve logique sans pause · Captures séparées · Copies récupérables avant modification.
+
+Historique remplacé : la V19 ajoutait les fissures et les 32 petits éclats cyan, mais retirait le disque sombre au départ de la fermeture. La V20 corrige précisément cette surface. Les images V19 et ses 60 contrôles datés sont conservés comme historique.
+
+Historique V19 : fissures et éclats, remplacé par V20
+
+Cette première fermeture est remplacée par la fracture de la surface sombre V20. Les preuves et le rendu de cette étape restent consultables.
+
+Le portail solo se fissure puis se disperse en éclats cyan pendant 0,7 seconde. Le mob reprend ses mouvements au même moment qu’avant ; les effets temporaires sont ensuite supprimés. Vérifié sur loup, ours et aigle.
+
+Voir la fermeture et les contrôles.
+
+Vignettes fidèles au rendu du jeu
+
+Les portraits du loup, de l’ours et de l’aigle ont été repris après de vrais recrutements dans la cour, avec leurs effets animés et les réglages de la caméra joueur. Les anciennes prises de studio atténuaient les effets et grisaient le pelage. Les nouvelles textures de l’interface reprennent maintenant les captures du jeu ; les matériaux du loup et de l’ours restent conservés.
+
+Voir les trois portraits corrigés.
+
+21 octobre — Aigle ombral et réanimation V19
+
+L’aigle solo reprend les vrais matériaux et effets du loup/ours : corps sombre, contour cyan, nervures, flammes et brume. Nouvelles vignettes loup, ours et aigle avec effets visibles. Hauteur de révélation corrigée pour que la tête se forme progressivement avant la fin du rituel.
+
+Réanimation temporairement garantie pour les créatures réanimables, coûts et limite d’alliés conservés. Captures et vérifications V19.
+
+21 octobre — Interface et compagnons solo V18
+
+Polices harmonisées avec contour sombre, cartes d’alliés et barres de vie redessinées, dégâts plus grands et animés. Noms : Loup ombral, Ours ombral et Aigle ombral. Portraits des vrais modèles, textures adaptées à leur petite taille.
+
+Griffes de l’ours reconstruites avec un plan de flexion cohérent. Aigle ombral recrutable, suivi aérien, piqué/œuf, progression et rappel/invocation ; repos solo de 3 secondes après 20 secondes de vol. Rendu et vérifications V18. Cette étape cible le solo, sans nouvel exécutable distribué.
+
+Actuel · plumage de l’aigle V12 — 20 octobre 2026
+
+Le plumage V12 remplace le duvet V11 jugé trop rayé. Cause corrigée : le matériau du duvet omettait le décodage sRGB vers linéaire présent sur le corps. Les petites plumes reprennent maintenant la même albédo. Nouvelles cartes courtes et orientées, masquées en plusieurs brins, plus fines sur la tête et le tronc, concentrées sur le col. Longueurs 0,65 à 2,42 cm ; faible effet de velours. Les grandes plumes ont un microrelief stable en coordonnées de peau au repos, filtré à distance. Le bec, les serres et les yeux gardent leurs matériaux. Trois LOD de 16 800 / 5 600 / 1 400 triangles, contre 23 400 / 7 800 / 1 950 pour V11, sans simulation, collision, ombre ni ray tracing du duvet. Le corps, le squelette et les règles de combat ne sont pas réimportés. Le Blueprint et l’aigle placé dans L_Base_Nexus sont mis à jour. L’aigle placé conservait encore un remplacement local par le duvet V9 ; ce remplacement a été corrigé explicitement. Les comportements de repos au sol et les animations antérieures sont conservés. Six contrôles de pose au sol et de composants réussis. Aperçu des battements de 4 secondes, échantillonné à 12 images/s ; cette cadence est celle de la vidéo et non celle du jeu. Captures avant/après avec la même pose, caméra, exposition et lumière de remplissage temporaire ; aucun changement d’éclairage enregistré dans la carte.
+
+Comparatif et animation du plumage · Mesures du rendu.
+
+Actuel · pattes, griffes et duvet — 20 octobre 2026
+
+La pose de vol repliée ne subsiste plus pendant le repos : l’AnimGraph utilise GroundIdle en état 7, Land en état 6 et Takeoff en état 10, sous les couches de combat et de mort conservées. Les transitions prennent 0,22 à 0,28 s. Le duvet V11 remplace V9 sur DuvetVolume : mèches orientées sur la tête, le cou et le corps, de 1,35 à 3,12 cm. Trois niveaux de détail de 23 400 / 7 800 / 1 950 triangles, sans simulation indépendante, collision, ombre ni ray tracing. Les 20 s de vol et 8 s de repos V4 sont conservées. Le duvet reste discret à distance.
+
+Comparatif visuel : base, ancien duvet et nouveau duvet · Validation V5.
 
 Œuf : explosion basse et coquille brisée
+
 Le volume jaune reste près du sol, y compris lors d’un impact sur l’avatar. Sa vitesse et les règles de dégâts restent inchangées. La coquille se sépare en deux moitiés creuses à bord irrégulier : elles tournent, tombent, rebondissent légèrement et se posent. Elles disparaissent progressivement entre 5,5 et 6 secondes. Deux maillages de 1 152 triangles, sans collision bloquante, ombre ni ray tracing. Les taches jaunes sur les personnages et le sol sont conservées.
-Voir les captures et la vidéo
-.
+
+Voir les captures et la vidéo.
+
 Actuel · mort V10 — 19 octobre 2026
+
 À zéro point de vie, l’aigle ferme les yeux, perd sa portance et chute. Après la réception, il s’affaisse en 1,5 s, la tête baissée et les ailes relâchées de chaque côté. La pose finale reste immobile, duvet compris ; les effets du piqué sont arrêtés. Le corps est supprimé 4,5 s après le contact au sol, soit l’animation plus 3 s de maintien. Une chute sans sol garde sa sécurité de 20 s.
-Voir l’animation et les vues rapprochées
-. Clips actifs :
-A_Aigle_DeathFall_V10
-(0,25 s, état 14),
-A_Aigle_DeathGround_V10
-(1,5 s, état 15), dans
-/Game/ElemntsForGame/Mobs/Aigle/CimesV2/Animations/MortV10
-. Le composant
-PaupieresMort
-suit la tête grâce à LeaderPose et reste masqué vivant ; il n’ajoute ni collision, ni ombre, ni ray tracing.
-21/21 contrôles passés dans la session dédiée.
-Rapport
-·
-Références et sources actives
-. Le corps, le squelette, le piqué V8, le vol V9 et le combat restent conservés. Source :
-Art/Combat_Creatures_V2/Aigle/Mort/Aigle_Mort_V10.blend
-. Sauvegardes avant import :
-Saved/CodexTools/CreatureCombatV2/Eagle/Backup_MortV10
-.
+
+Voir l’animation et les vues rapprochées. Clips actifs : A_Aigle_DeathFall_V10 (0,25 s, état 14), A_Aigle_DeathGround_V10 (1,5 s, état 15), dans /Game/ElemntsForGame/Mobs/Aigle/CimesV2/Animations/MortV10. Le composant PaupieresMort suit la tête grâce à LeaderPose et reste masqué vivant ; il n’ajoute ni collision, ni ombre, ni ray tracing.
+
+21/21 contrôles passés dans la session dédiée. Rapport · Références et sources actives. Le corps, le squelette, le piqué V8, le vol V9 et le combat restent conservés. Source : Art/Combat_Creatures_V2/Aigle/Mort/Aigle_Mort_V10.blend. Sauvegardes avant import : Saved/CodexTools/CreatureCombatV2/Eagle/Backup_MortV10.
+
 Actuel · combat, posture et duvet V9 — 19 octobre 2026
-L’aigle repère plus loin, poursuit plus longtemps et alterne désormais piqué et largage d’un œuf explosif. Le vol continu et la sortie progressive du piqué V8 sont conservés. Ce lot concerne
-l’aigle du solo
-; il ne porte pas cette créature dans le système multijoueur.
-Voir les captures rapprochées du vol et de l’œuf
-·
-Notes du lot
-.
+
+L’aigle repère plus loin, poursuit plus longtemps et alterne désormais piqué et largage d’un œuf explosif. Le vol continu et la sortie progressive du piqué V8 sont conservés. Ce lot concerne l’aigle du solo ; il ne porte pas cette créature dans le système multijoueur.
+
+Voir les captures rapprochées du vol et de l’œuf · Notes du lot.
+
 Détection, poursuite et cadence
-Réglage
-Actuel V9
-Avant
-Portée horizontale de détection
-36 m
-24 m
-Mémoire après perte de vue
-9 s, dernière position vue
-3 s
-Limite du territoire
-78 m
-48 m
-Poursuite / orbite
-740 / 380 cm/s
-Approche moins insistante
-Premier engagement disponible
-0,55 s après acquisition
-Délai plus long
-Récupération réglée entre attaques
-2 s
-6 s
-Piqué
-1,9 s ; 11 m avant / 15 m après
-1,9 s ; 14 m / 17 m
+
+| Réglage | Actuel V9 | Avant
+
+| Portée horizontale de détection | 36 m | 24 m
+
+| Mémoire après perte de vue | 9 s, dernière position vue | 3 s
+
+| Limite du territoire | 78 m | 48 m
+
+| Poursuite / orbite | 740 / 380 cm/s | Approche moins insistante
+
+| Premier engagement disponible | 0,55 s après acquisition | Délai plus long
+
+| Récupération réglée entre attaques | 2 s | 6 s
+
+| Piqué | 1,9 s ; 11 m avant / 15 m après | 1,9 s ; 14 m / 17 m
+
 Deux contrôles de visibilité visent le torse et la tête. L’aigle n’actualise pas la position du joueur à travers un mur. Après un dégagement devant obstacle, il reprend la poursuite sans effacer immédiatement sa cible. La sortie du piqué garde son freinage sur 1,25 s et son raccord de pose sur 0,55 s ; les cinq angles de préparation et les contrôles de corridor V8 restent présents.
-Le délai de 2 s n’est pas une attaque toutes les 2 s : il faut également se replacer et effectuer le passage. Dans la séquence naturelle mesurée, les débuts d’attaque alternés sont espacés de
-7,77 à 8,49 s
-. La géométrie et le déplacement du joueur peuvent allonger cette durée.
+
+Le délai de 2 s n’est pas une attaque toutes les 2 s : il faut également se replacer et effectuer le passage. Dans la séquence naturelle mesurée, les débuts d’attaque alternés sont espacés de 7,77 à 8,49 s. La géométrie et le déplacement du joueur peuvent allonger cette durée.
+
 Œuf : survol, explosion et projections
+
 L’aigle prépare un passage vers 6 m au-dessus du point visé, survole environ 20,5 m en 1,5 s et lâche l’œuf pendant le passage. L’œuf suit ensuite une trajectoire balistique fixée : il peut être esquivé. La préparation refuse un trajet obstrué et peut revenir au piqué si le survol est impossible.
+
 L’impact produit une explosion jaune d’œuf : cœur lumineux de 0,16 s, cinq bouffées jaunes/orangées qui gonflent puis se dissolvent en 0,68 s, onde dorée et trente gouttes. Les dégâts sont appliqués une seule fois, de 24 au centre à environ 14,4 en bordure du rayon de 2,8 m. Le décor solide protège des dégâts et des projections. L’avatar et les mobs proches, alliés ou ennemis du joueur, peuvent être touchés ; l’aigle lanceur est exclu.
+
 Les taches irrégulières restent 7 s puis disparaissent sur 2,5 s. Celles des personnages suivent un os proche et se projettent sur les surfaces visibles, pelage compris. Ce sont des projections temporaires, pas une peinture persistante des textures : un léger glissement aux articulations reste possible. Leur position dépend de l’impact ; un coup sur la tête marque surtout les cheveux ou le haut du pelage.
+
 Budget : trente décalcomanies au maximum par explosion, huit effets simultanés conservés, gouttes supprimées en moins d’une seconde, arrêt du Tick après le burst, acteur détruit après 10 s. Aucun ray tracing, ombre ou collision physique n’est ajouté aux éléments visuels.
+
 Posture et duvet
-Trois nouvelles animations de vol V9 redressent la tête vers l’avant, allongent la posture et replient les pattes. Elles alimentent
-BS_Aigle_Locomotion_V9
-. Les grandes plumes restent distinctes ; le corps et les animations de piqué/mort ne sont pas réimportés. Le survol d’œuf utilise une vitesse d’animation de 1 350 cm/s pour garder un vol énergique.
+
+Trois nouvelles animations de vol V9 redressent la tête vers l’avant, allongent la posture et replient les pattes. Elles alimentent BS_Aigle_Locomotion_V9. Les grandes plumes restent distinctes ; le corps et les animations de piqué/mort ne sont pas réimportés. Le survol d’œuf utilise une vitesse d’animation de 1 350 cm/s pour garder un vol énergique.
+
 Un duvet très court couvre le corps, le cou et la tête : environ 0,42 à 1,19 cm. Il suit le squelette sans simulation indépendante. Ses trois niveaux de détail comptent 15 600 / 5 100 / 1 260 triangles ; il ne projette pas d’ombre et reste exclu du ray tracing.
+
 Validation réelle et limites
-36 contrôles sur 36 passent
-dans la campagne initiale V2b en session solo isolée : acquisition à 33 m, mémoire derrière un obstacle, séquence naturelle piqué/œuf, conservation de cible, dégâts uniques sur avatar/ennemi/allié, esquive, protection par un toit, taches au sol et sur entités, expiration des effets, plafond de huit effets, duvet et mort.
-Rapport complet
-.
+
+36 contrôles sur 36 passent dans la campagne initiale V2b en session solo isolée : acquisition à 33 m, mémoire derrière un obstacle, séquence naturelle piqué/œuf, conservation de cible, dégâts uniques sur avatar/ennemi/allié, esquive, protection par un toit, taches au sol et sur entités, expiration des effets, plafond de huit effets, duvet et mort. Rapport complet.
+
 Le premier test a révélé une portée de recherche du sol insuffisante lorsqu’un œuf frappait une tête. Le correctif porte la recherche sous l’impact à 8 m ; les vérifications de toit et d’occlusion restent actives. Le second test valide bien les traces au sol dans ce cas.
-Diagnostic de la première campagne V2b, avant l’ajout des cinq bouffées : 3 128 images valides ; GPU médian 6,21 ms ; mémoire de géométrie ray tracing demandée au maximum 193,65 Mio pour un budget inchangé de 400 Mio. La scène est limitée à 60 images/s et comporte des captures :
-ce relevé n’est pas un benchmark comparatif et ne prouve pas un gain de FPS
-.
-Mesures et limites
-. Les anciens avertissements de contenu hors lot, notamment herbe et NodeGuid de loups de vague, ne sont pas tous traités par ce travail.
-Six vérifications ciblées
-complètent la campagne sur la version volumineuse : taches au sol/sur entités, cinq bouffées, suppression, absence d’ombres et de ray tracing.
-Vidéo de l’explosion à vitesse normale
-.
+
+Diagnostic de la première campagne V2b, avant l’ajout des cinq bouffées : 3 128 images valides ; GPU médian 6,21 ms ; mémoire de géométrie ray tracing demandée au maximum 193,65 Mio pour un budget inchangé de 400 Mio. La scène est limitée à 60 images/s et comporte des captures : ce relevé n’est pas un benchmark comparatif et ne prouve pas un gain de FPS. Mesures et limites. Les anciens avertissements de contenu hors lot, notamment herbe et NodeGuid de loups de vague, ne sont pas tous traités par ce travail.
+
+Six vérifications ciblées complètent la campagne sur la version volumineuse : taches au sol/sur entités, cinq bouffées, suppression, absence d’ombres et de ray tracing. Vidéo de l’explosion à vitesse normale.
+
 Essayer et modifier l’effet
-Lancer le solo sur
-L_Base_Nexus
-et approcher l’aigle à moins de 36 m en terrain dégagé. Le « ! » doit apparaître.
-Attendre la séquence piqué puis œuf. Après le largage, sortir du point visé ; se mettre sous un toit doit protéger de l’explosion située au-dessus.
-Observer les traces jaunes sur le sol et les créatures proches, puis leur disparition en environ dix secondes.
-Pour régler l’aspect, utiliser
-Effets/OeufV2/M_Jaune
-,
-M_OndeJaune
-,
-M_TacheJaune
-,
-M_FlashJaune
-et
-M_BouffeeJaune
-. Garder les budgets et la séparation entre dégâts et effets.
-Mini-guide explosion : assembler un cœur de 0,16 s, cinq volumes à gonflement rapide et contour érodé, une onde de 0,5 s, des gouttes avec vitesse initiale et gravité, puis les projections posées sur les surfaces touchées. La référence artistique choisie est
-Stylized Explosion — Jaime Navarro / Secret6 Labs
-: adaptation de la silhouette en bouffées et du rythme, avec une teinte jaune d’œuf. Aucun asset de cette œuvre n’est importé. Le système actuel utilise des maillages instanciés bornés. Pour étudier une version Niagara, voir le
-tutoriel communautaire hébergé par Epic sur les explosions en plusieurs couches
-(UE 5.1, principes adaptables). La
-documentation officielle Epic sur les decals
-explique les projections sur meshes statiques/squelettiques, la réception des taches et leur fondu.
-Sources actuelles :
-Saved/CodexTools/CreatureCombatV2/Eagle
-,
-AvatarEagleEgg.h/.cpp
-dans AvatarRuntime et
-Art/Combat_Creatures_V2/Aigle/Posture/Aigle_Posture_V9.blend
-. Les sauvegardes préalables des assets remplacés sont dans
-Eagle/Backup
-.
+
+- Lancer le solo sur L_Base_Nexus et approcher l’aigle à moins de 36 m en terrain dégagé. Le « ! » doit apparaître.
+
+- Attendre la séquence piqué puis œuf. Après le largage, sortir du point visé ; se mettre sous un toit doit protéger de l’explosion située au-dessus.
+
+- Observer les traces jaunes sur le sol et les créatures proches, puis leur disparition en environ dix secondes.
+
+- Pour régler l’aspect, utiliser Effets/OeufV2/M_Jaune, M_OndeJaune, M_TacheJaune, M_FlashJaune et M_BouffeeJaune. Garder les budgets et la séparation entre dégâts et effets.
+
+Mini-guide explosion : assembler un cœur de 0,16 s, cinq volumes à gonflement rapide et contour érodé, une onde de 0,5 s, des gouttes avec vitesse initiale et gravité, puis les projections posées sur les surfaces touchées. La référence artistique choisie est Stylized Explosion — Jaime Navarro / Secret6 Labs : adaptation de la silhouette en bouffées et du rythme, avec une teinte jaune d’œuf. Aucun asset de cette œuvre n’est importé. Le système actuel utilise des maillages instanciés bornés. Pour étudier une version Niagara, voir le tutoriel communautaire hébergé par Epic sur les explosions en plusieurs couches (UE 5.1, principes adaptables). La documentation officielle Epic sur les decals explique les projections sur meshes statiques/squelettiques, la réception des taches et leur fondu.
+
+Sources actuelles : Saved/CodexTools/CreatureCombatV2/Eagle, AvatarEagleEgg.h/.cpp dans AvatarRuntime et Art/Combat_Creatures_V2/Aigle/Posture/Aigle_Posture_V9.blend. Les sauvegardes préalables des assets remplacés sont dans Eagle/Backup.
+
 Le « ! » de détection · 18 octobre 2026
+
 L’ours et l’aigle affichent désormais le même symbole rouge en volume que le loup lorsqu’ils acquièrent une nouvelle cible. Il reste visible 1,5 seconde, suit la créature et se tourne vers la caméra. Son placement est rehaussé pour dégager le dos de l’ours et les ailes de l’aigle.
+
 Le symbole disparaît à la perte de la cible ou à la mort, et réapparaît lors d’une nouvelle acquisition. Il ne se relance pas continuellement pendant une poursuite. Leurs matériaux, leur détection, la charge de l’ours et le vol/piqué V8 de l’aigle restent identiques.
-Capture des deux alertes
-·
-30 contrôles en session solo
-. Ce lot concerne les deux Blueprints du solo ; il n’ajoute pas ces créatures au multijoueur.
-Réglage de durée :
-WolfAlertDuration
-. Fonctions dédiées :
-InitializeCreatureAlert
-et
-UpdateCreatureAlert
-, sans appel aux changements de matériaux des yeux du loup. Sources et sauvegardes préalables :
-Saved/CodexTools/CreatureAlertsV1
-.
+
+Capture des deux alertes · 30 contrôles en session solo. Ce lot concerne les deux Blueprints du solo ; il n’ajoute pas ces créatures au multijoueur.
+
+Réglage de durée : WolfAlertDuration. Fonctions dédiées : InitializeCreatureAlert et UpdateCreatureAlert, sans appel aux changements de matériaux des yeux du loup. Sources et sauvegardes préalables : Saved/CodexTools/CreatureAlertsV1.
+
 Vol V8 : patrouille continue et sortie de piqué
+
 La patrouille avance à 300 cm/s, remplace son objectif avant de l’atteindre et privilégie des changements de direction progressifs. La pause entre deux points disparaît. Près du joueur, l’aigle décrit un mouvement orbital au lieu d’attendre sur place. Les variations de hauteur sont conservées.
+
 Le piqué reste à 1,9 s. La préparation essaie cinq angles (axe direct, ±30°, ±60°), avec un rayon de sécurité de 58 cm. La vérification préalable couvre l’approche et le passage sur la cible ; la fin du trajet reste protégée par la détection pendant le mouvement. Un obstacle tardif déclenche toujours le dégagement.
+
 La sortie conserve la vitesse horizontale, puis ralentit progressivement pendant 1,25 s. La transition de pose dure 0,55 s et conserve la dernière pose du piqué pendant le fondu.
-Tests de comportement V8
-·
-Attaque naturelle et orbite
-·
-Réglages
-. Les relevés V7 plus bas décrivent la version précédente.
+
+Tests de comportement V8 · Attaque naturelle et orbite · Réglages. Les relevés V7 plus bas décrivent la version précédente.
+
 Aperçus à vitesse normale
+
 Piqué et transition vers le vol, caméra rapprochée :
+
 Patrouille continue à altitude variable :
+
 1. Vol et attaque V7
-Référence V7 du 18 octobre ; les valeurs actuelles V9 sont indiquées plus haut.
-L’aigle vivant reste en vol. Ses destinations de patrouille varient entre 2,8 et 8,5 m au-dessus du terrain détecté. En poursuite, sa hauteur relative au joueur est renouvelée toutes les 3 à 6 secondes ; le mouvement assure une transition progressive.
-Le passage du piqué dure désormais
-1,9 s au lieu de 1,5 s
-, soit environ 21 % de vitesse horizontale en moins. La préparation dure 0,25 s. Le trajet conserve 14 m avant la cible, 17 m après et 6 m de relèvement. La pose V6 est resynchronisée avec cette nouvelle durée ; les effets restent blanc/bleuté.
+
+Référence V7 du 18 octobre ; les valeurs actuelles V9 sont indiquées plus haut. L’aigle vivant reste en vol. Ses destinations de patrouille varient entre 2,8 et 8,5 m au-dessus du terrain détecté. En poursuite, sa hauteur relative au joueur est renouvelée toutes les 3 à 6 secondes ; le mouvement assure une transition progressive.
+
+Le passage du piqué dure désormais 1,9 s au lieu de 1,5 s, soit environ 21 % de vitesse horizontale en moins. La préparation dure 0,25 s. Le trajet conserve 14 m avant la cible, 17 m après et 6 m de relèvement. La pose V6 est resynchronisée avec cette nouvelle durée ; les effets restent blanc/bleuté.
+
 2. Obstacles et dégagement
+
 La descente, la partie rasante et la remontée sont vérifiées en 18 segments avant la préparation et à nouveau avant le départ. Les sondes détectent le décor et les autres Pawns, y compris ceux qui ignorent le canal de visibilité. Seule la cible de l’attaque est exclue de ces contrôles.
+
 Une nouvelle vérification accompagne le déplacement. Un obstacle apparu après le départ annule le piqué et déclenche l’état de dégagement 16 : recul et montée, montée verticale ou sortie latérale selon l’espace disponible. L’IA reprend le retour après dégagement. Une surveillance de progression relance la récupération si le vol ordinaire reste bloqué.
+
 Le piqué suit une courbe fixée au-dessus du sol de la cible : il ne se réajuste plus sur le dessus d’un mob ou d’un mur en cours de passage. Les collisions physiques restent actives ; aucun déplacement de secours à travers un mur n’est utilisé.
+
 3. Assets, réglages et validation
-Blueprint :
-/Game/ElemntsForGame/Mobs/Aigle/CimesV2/IA/BP_IA_Aigle
-. Animation :
-Animations/AerialV6/A_Aigle_Dive
-. Effets :
-Effets/AerialV6
-. Réglages :
-EagleDiveDuration=1.9
-,
-EagleMinHeight=280
-,
-EagleMaxHeight=850
-. Vie 150 PV ; piqué 20 dégâts, un seul contact ; mort conservée.
-Campagne courante : 43 contrôles ours/aigle
-·
-Aperçu en jeu
-. Le recrutement, le comportement allié et le réseau restent à réaliser.
+
+Blueprint : /Game/ElemntsForGame/Mobs/Aigle/CimesV2/IA/BP_IA_Aigle. Animation : Animations/AerialV6/A_Aigle_Dive. Effets : Effets/AerialV6. Réglages : EagleDiveDuration=1.9, EagleMinHeight=280, EagleMaxHeight=850. Vie 150 PV ; piqué 20 dégâts, un seul contact ; mort conservée.
+
+Campagne courante : 43 contrôles ours/aigle · Aperçu en jeu. Le recrutement, le comportement allié et le réseau restent à réaliser.
+
 Historique technique V1 à V6 — anciens réglages et rapports
+
 Historique V6 · attaque aérienne et posture
-Voir la V6 en jeu, de près et comparée à la V5
-.
-Le piqué utilise
-Animations/AerialV6/A_Aigle_Dive
-, 1,5 s, 91 clés, sans root motion. La posture suit l'inclinaison de la trajectoire V5 ; cou et tête s'allongent dans l'axe, ailes balayées en arrière et jambes repliées pendant le passage, puis sortie vers le vol.
-Les ressources
-Effets/AerialV6
-ajoutent un vent hélicoïdal blanc/bleuté et des lignes de vitesse.
-EagleUpdateAerialFX
-suit la direction du passage et masque l'effet hors attaque.
-EagleSpawnAerialImpact
-crée un éclat uniquement si les dégâts acceptés sont positifs ; durée de vie 0,26 s. Le mesh de vent n'a pas de collision. L'aigle vivant ne se pose plus et ne saute plus ; sa mort au sol reste disponible.
-Nouvelle campagne du 18 octobre dans le chat de reprise :
-75/75 contrôles fonctionnels réussis
-, dont références V6, un impact, expiration, absence de dégâts en esquive et derrière un mur, maintien des paramètres V5 et mort.
-Rapport
-·
-Mesures
-. Captures ralenties puis réassemblées à vitesse normale selon les horodatages du jeu ; aucune mesure FPS ni validation réseau déduite. Sources :
-Art/Aigle/Aigle_VFX_V6
-. Scripts :
-Saved/CodexTools/AigleVFXV6
-.
+
+Voir la V6 en jeu, de près et comparée à la V5.
+
+Le piqué utilise Animations/AerialV6/A_Aigle_Dive, 1,5 s, 91 clés, sans root motion. La posture suit l'inclinaison de la trajectoire V5 ; cou et tête s'allongent dans l'axe, ailes balayées en arrière et jambes repliées pendant le passage, puis sortie vers le vol.
+
+Les ressources Effets/AerialV6 ajoutent un vent hélicoïdal blanc/bleuté et des lignes de vitesse. EagleUpdateAerialFX suit la direction du passage et masque l'effet hors attaque. EagleSpawnAerialImpact crée un éclat uniquement si les dégâts acceptés sont positifs ; durée de vie 0,26 s. Le mesh de vent n'a pas de collision. L'aigle vivant ne se pose plus et ne saute plus ; sa mort au sol reste disponible.
+
+Nouvelle campagne du 18 octobre dans le chat de reprise : 75/75 contrôles fonctionnels réussis, dont références V6, un impact, expiration, absence de dégâts en esquive et derrière un mur, maintien des paramètres V5 et mort. Rapport · Mesures. Captures ralenties puis réassemblées à vitesse normale selon les horodatages du jeu ; aucune mesure FPS ni validation réseau déduite. Sources : Art/Aigle/Aigle_VFX_V6. Scripts : Saved/CodexTools/AigleVFXV6.
+
 Base de déplacement V5 · vol permanent et long piqué rapide
-Voir la capture du passage et les nouveaux réglages
-.
-EagleGroundEnabled=false
-.
-EagleStateThink
-ne route plus vers les états de pose/marche/bond ;
-EagleBeginLand
-revient à une pause aérienne et
-EagleConsiderLanding
-,
-EagleGroundChoose
-,
-EagleHop
-sont neutralisés. L’Animation Blueprint n’utilise plus les Blend Spaces et poses terrestres du vivant. Les anciens assets restent archivés. Les états de mort 14/15 restent actifs.
+
+Voir la capture du passage et les nouveaux réglages.
+
+EagleGroundEnabled=false. EagleStateThink ne route plus vers les états de pose/marche/bond ; EagleBeginLand revient à une pause aérienne et EagleConsiderLanding, EagleGroundChoose, EagleHop sont neutralisés. L’Animation Blueprint n’utilise plus les Blend Spaces et poses terrestres du vivant. Les anciens assets restent archivés. Les états de mort 14/15 restent actifs.
+
 Patrouille : rayon 1 600 cm, délai de trajet 30 s. Détection : 2 400 cm avec ligne de vue. Limite autour de l’ancrage : 4 800 cm. Vol lent 180 et poursuite 520 cm/s conservés.
+
 Préparation du piqué à 1 400 cm avant la cible et 600 cm au-dessus du niveau rasant ; approche à 950 cm/s, accélération 1 400 cm/s², délai de sécurité 9 s, attente de 0,18 s. Passage de −1 400 à +1 700 cm en 1,5 s. La hauteur relative descend par smoothstep sur t=0..0,24, reste basse jusqu’à t=0,80, puis remonte par smoothstep. La cible de déplacement est à 130 cm au-dessus de la surface tracée, plus ce relèvement ; cela tient compte de la capsule et de la pose des serres. Les transitions de hauteur ont une pente nulle au raccord.
+
 La position du passage est évaluée directement à partir du temps écoulé, avec déplacement balayé de la capsule ; la vitesse de poursuite d’une cible intermédiaire n’est plus utilisée, afin d’éviter les dépassements lors de ralentissements. EaglePassVelocity mémorise le déplacement prévu divisé par le temps de la frame pour orienter le corps et la poussée. Le composant de mouvement reste en vol, arrêté pendant cette trajectoire pilotée, puis reprend le vol ordinaire en sortie. Le balayage sphérique de 52 cm reste actif à chaque déplacement ; un obstacle annule l’attaque et renvoie l’aigle vers son ancrage en vol, sans jouer un décollage terrestre. Marge de sortie 0,12 s. Le suivi latéral est limité à ±180 cm, à 320 cm/s, uniquement avant t=0,40, avec ligne de vue et cible encore devant. La rotation progressive est conservée et suit la direction du déplacement calculé, avec un maximum de 300 degrés/s pendant le passage.
+
 Impact unique entre t=0,18 et 0,84, portée segment/cible 145 cm, ligne de vue obligatoire, dégâts inchangés à 20. Impulsion de l’avatar portée à 650 cm/s horizontalement et 210 cm/s vers le haut. Le recul mesuré à l’arrêt sur plateforme dégagée est 3.02 m ; ce n’est pas une distance garantie sur tous les terrains. Aucune impulsion lors d’une esquive ou derrière un mur.
-Clip actif :
-Animations/PiqueV5/A_Aigle_Dive
-, 1,5 s, 91 clés, même squelette, sans root motion. L’ABP fait une entrée de 0,08 s sur le passage. Les vols corrigés restent dans
-SolEtPiqueV4
-et
-BS_Aigle_Locomotion_V4
-; la mort reste dans
-SolEtPique
-. Source de la nouvelle attaque :
-Art/Aigle/Aigle_Pique_V5/Aigle_Pique_Rasant_V5.blend
-. Source des vols V4 conservée à son emplacement précédent. Barre de vie rehaussée et cou V4 conservés.
-65 contrôles fonctionnels réussis en solo.
-Rapport complet
-·
-Mesures de trajectoire
-·
-Validation du clip
-. Scripts :
-Saved/CodexTools/AigleV5
-. Aucun benchmark FPS ni validation réseau revendiqués.
+
+Clip actif : Animations/PiqueV5/A_Aigle_Dive, 1,5 s, 91 clés, même squelette, sans root motion. L’ABP fait une entrée de 0,08 s sur le passage. Les vols corrigés restent dans SolEtPiqueV4 et BS_Aigle_Locomotion_V4 ; la mort reste dans SolEtPique. Source de la nouvelle attaque : Art/Aigle/Aigle_Pique_V5/Aigle_Pique_Rasant_V5.blend. Source des vols V4 conservée à son emplacement précédent. Barre de vie rehaussée et cou V4 conservés.
+
+65 contrôles fonctionnels réussis en solo. Rapport complet · Mesures de trajectoire · Validation du clip. Scripts : Saved/CodexTools/AigleV5. Aucun benchmark FPS ni validation réseau revendiqués.
+
 Historique V4 · posture, vie et piqué guidé
-Comparaison des poses
-. Le cou est incliné de 16° de plus vers l’avant au sol, 10° en vol et 8° au centre du piqué, avec compensation de la tête et transitions pendant la pose/décollage. Neuf clips utilisent
-Animations/SolEtPiqueV4
-; les Blend Spaces se terminent par
-_V4
-. La mort reste issue de
-SolEtPique
-. Maître :
-Art/Aigle/Aigle_Sol_V4/Aigle_Sol_Vol_Combat_V4.blend
-.
-Le tag
-EagleHealthRaised
-sélectionne un décalage HUD de 78 cm au-dessus du socket
-head
-, contre 28 cm pour les autres mobs. Les deux HUD Canvas,
-BP_HUD_Endurance
-et
-BP_HUD_InventoryBar
-, sont adaptés. La barre de l’aigle est donc relevée de 50 cm.
-EagleGuideDive
-corrige latéralement la trajectoire jusqu’à t=0,46, avec ligne de vue et cible au moins 80 cm en avant. Limite
-EagleDiveGuideLimit=180
-cm, vitesse de correction
-EagleDiveGuideSpeed=220
-cm/s. Dès le contact ou la fin de cette phase, l’offset se fige : pas de demi-tour pour rattraper une esquive.
-EagleFaceDive
-oriente le corps vers le passage dès la préparation, puis vers la trajectoire en piqué ; la rotation est limitée à 540°/s en préparation et 300°/s pendant le passage. L’orientation automatique du CharacterMovement reprend hors de ces états. Le recul suit désormais la vitesse horizontale réelle de l’aigle.
-65 contrôles fonctionnels passés : suivi et rotation à droite/gauche, correction bornée et progressive, engagement près de l’impact, dégâts uniques, esquive, obstacle, sol et mort.
-Rapport runtime
-·
-Configuration des deux HUD
-. Scripts :
-Saved/CodexTools/AigleV4
-. Aucun benchmark ni validation réseau déduits de ces essais solo.
-Contrôle complémentaire : 35 validations à 10 images/s ciblées, avec attaque complète et mur fin ; cadence basse effectivement observée dans les horodatages.
-Rapport
-. Cela vérifie la résistance aux longues frames, pas les performances du jeu.
+
+Comparaison des poses. Le cou est incliné de 16° de plus vers l’avant au sol, 10° en vol et 8° au centre du piqué, avec compensation de la tête et transitions pendant la pose/décollage. Neuf clips utilisent Animations/SolEtPiqueV4 ; les Blend Spaces se terminent par _V4. La mort reste issue de SolEtPique. Maître : Art/Aigle/Aigle_Sol_V4/Aigle_Sol_Vol_Combat_V4.blend.
+
+Le tag EagleHealthRaised sélectionne un décalage HUD de 78 cm au-dessus du socket head, contre 28 cm pour les autres mobs. Les deux HUD Canvas, BP_HUD_Endurance et BP_HUD_InventoryBar, sont adaptés. La barre de l’aigle est donc relevée de 50 cm.
+
+EagleGuideDive corrige latéralement la trajectoire jusqu’à t=0,46, avec ligne de vue et cible au moins 80 cm en avant. Limite EagleDiveGuideLimit=180 cm, vitesse de correction EagleDiveGuideSpeed=220 cm/s. Dès le contact ou la fin de cette phase, l’offset se fige : pas de demi-tour pour rattraper une esquive. EagleFaceDive oriente le corps vers le passage dès la préparation, puis vers la trajectoire en piqué ; la rotation est limitée à 540°/s en préparation et 300°/s pendant le passage. L’orientation automatique du CharacterMovement reprend hors de ces états. Le recul suit désormais la vitesse horizontale réelle de l’aigle.
+
+65 contrôles fonctionnels passés : suivi et rotation à droite/gauche, correction bornée et progressive, engagement près de l’impact, dégâts uniques, esquive, obstacle, sol et mort. Rapport runtime · Configuration des deux HUD. Scripts : Saved/CodexTools/AigleV4. Aucun benchmark ni validation réseau déduits de ces essais solo.
+
+Contrôle complémentaire : 35 validations à 10 images/s ciblées, avec attaque complète et mur fin ; cadence basse effectivement observée dans les horodatages. Rapport. Cela vérifie la résistance aux longues frames, pas les performances du jeu.
+
 État livré
+
 Le modèle téléchargé AigleStylk.glb est retouché et animé dans la direction artistique du loup et du grizzly. Il possède un squelette propre à l’oiseau, un vol stationnaire, un vol lent et rapide, et une attaque en piqué rasant avec poussée. Depuis la V5, l’aigle vivant ne se pose plus au sol, ne marche plus et ne sautille plus. Une première IA issue de la base Blueprint du loup est placée dans le monde solo. Les fonctions terrestres du loup sont remplacées pour cette espèce.
-Avant/après et animations
-·
-Fiche d’intégration
+
+Avant/après et animations · Fiche d’intégration
 Prototype solo de combat et de locomotion. Attaque, dégâts reçus et mort sont intégrés. Le recrutement, la sauvegarde et la réplication de ce nouvel aigle restent à faire. Le modèle et son vol doivent encore être validés visuellement par Florian.
+
 Retouches et modèle source
-Source conservée sans modification dans
-Art/Aigle/Aigle_Cimes_V1/Original_Tencent.glb
-, avec empreinte SHA-256 dans Audit_Source.json. Le fichier Aigle_Source.blend et les trois textures originales 4K permettent de revenir au téléchargement.
-Remplacement des surfaces oculaires mal reconstruites : iris ambrés, pupilles sombres et contours continus, sans reflet blanc peint dans la couleur.
-Nettoyage de la cire dorée et de la partie cornée sombre du bec ; conservation de la silhouette et de la bouche fermée.
-Atténuation des bavures sur les serres et homogénéisation de leur teinte sombre.
-Rééquilibrage des plumes dorsales vers le brun chaud, tout en conservant les bandes claires de la référence.
-Retrait de la normal map générée, qui amplifiait des imperfections. Le relief sculpté des plumes reste géométrique.
-Couleurs stockées sur les sommets et quatre matériaux : plumes, bec, serres, yeux. Le matériau Unreal décode les couleurs sRGB avant Substrate ; quatre instances règlent la rugosité et le reflet.
-Le maître détaillé garde les retouches dans
-Aigle_Corrige.blend
-. La copie animée contient 203 825 triangles, contre 1 499 952 sur l’original. La réduction protège le visage et les serres. Sur l’échantillon de contrôle, l’écart de surface au 95e percentile est de 0,000473 unité source, soit environ 1,28 mm à l’échelle de jeu. Ce chiffre est une mesure géométrique échantillonnée, pas une certification visuelle de toutes les poses.
+
+Source conservée sans modification dans Art/Aigle/Aigle_Cimes_V1/Original_Tencent.glb, avec empreinte SHA-256 dans Audit_Source.json. Le fichier Aigle_Source.blend et les trois textures originales 4K permettent de revenir au téléchargement.
+
+- Remplacement des surfaces oculaires mal reconstruites : iris ambrés, pupilles sombres et contours continus, sans reflet blanc peint dans la couleur.
+
+- Nettoyage de la cire dorée et de la partie cornée sombre du bec ; conservation de la silhouette et de la bouche fermée.
+
+- Atténuation des bavures sur les serres et homogénéisation de leur teinte sombre.
+
+- Rééquilibrage des plumes dorsales vers le brun chaud, tout en conservant les bandes claires de la référence.
+
+- Retrait de la normal map générée, qui amplifiait des imperfections. Le relief sculpté des plumes reste géométrique.
+
+- Couleurs stockées sur les sommets et quatre matériaux : plumes, bec, serres, yeux. Le matériau Unreal décode les couleurs sRGB avant Substrate ; quatre instances règlent la rugosité et le reflet.
+
+Le maître détaillé garde les retouches dans Aigle_Corrige.blend. La copie animée contient 203 825 triangles, contre 1 499 952 sur l’original. La réduction protège le visage et les serres. Sur l’échantillon de contrôle, l’écart de surface au 95e percentile est de 0,000473 unité source, soit environ 1,28 mm à l’échelle de jeu. Ce chiffre est une mesure géométrique échantillonnée, pas une certification visuelle de toutes les poses.
+
 Fichiers actuels
-Fichier
-Usage
-Aigle_Sol_Vol_Combat_V4.blend
-Source des trois boucles aériennes V4 ; actions terrestres archivées. Le piqué actif vient de Art/Aigle/Aigle_Pique_V5/Aigle_Pique_Rasant_V5.blend.
-Aigle_Squelette.blend
-Pose de référence, yeux séparés, groupes de poids éditables.
-Aigle_Corrige.blend
-Maître de retouche détaillé avant réduction.
-SK_Aigle_Cimes.fbx
-Maillage en pose neutre avec squelette et couleurs.
-A_Aigle_IdleFly / FlySlow / FlyFast.fbx
-Trois animations distinctes à 60 échantillons/s.
-Assets Unreal dans
-/Game/ElemntsForGame/Mobs/Aigle/CimesV2
-: SkeletalMesh/SK_Aigle_Cimes, son Skeleton, Animations/Locomotion, Materials, IA/BP_IA_Aigle, IA/Animation/ABP_Aigle et BS_Aigle_Locomotion. Les anciens assets Aigle et MT_Aigle ne sont pas remplacés.
+
+| Fichier | Usage
+
+| Aigle_Sol_Vol_Combat_V4.blend | Source des trois boucles aériennes V4 ; actions terrestres archivées. Le piqué actif vient de Art/Aigle/Aigle_Pique_V5/Aigle_Pique_Rasant_V5.blend.
+
+| Aigle_Squelette.blend | Pose de référence, yeux séparés, groupes de poids éditables.
+
+| Aigle_Corrige.blend | Maître de retouche détaillé avant réduction.
+
+| SK_Aigle_Cimes.fbx | Maillage en pose neutre avec squelette et couleurs.
+
+| A_Aigle_IdleFly / FlySlow / FlyFast.fbx | Trois animations distinctes à 60 échantillons/s.
+
+Assets Unreal dans /Game/ElemntsForGame/Mobs/Aigle/CimesV2 : SkeletalMesh/SK_Aigle_Cimes, son Skeleton, Animations/Locomotion, Materials, IA/BP_IA_Aigle, IA/Animation/ABP_Aigle et BS_Aigle_Locomotion. Les anciens assets Aigle et MT_Aigle ne sont pas remplacés.
+
 Squelette et animation
+
 24 os Blender : root, body, neck, head, beak, trois segments de queue, quatre segments par aile, cuisse, tibia, pied et doigts de chaque côté. Les yeux suivent la tête ; le bec reste fermé. Les os des ailes sont pondérés progressivement depuis les épaules et les articulations. Tous les sommets ont des poids normalisés, limités à quatre influences.
+
 Envergure en pose de référence : environ 3 m ; hauteur neutre environ 1,41 m. Échelle intégrée aux sommets et os en centimètres, acteur à l’échelle 1. Les trois animations gardent la racine fixe. Le mouvement vertical subtil est dans le corps, sans déplacement du personnage par root motion.
-Animation
-Durée
-Vitesse de déplacement
-IdleFly · stationnaire
-1,2 s / 73 clés
-0 cm/s
-FlySlow · vol lent
-1,6 s / 97 clés
-180 cm/s
-FlyFast · vol rapide
-0,8 s / 49 clés
-520 cm/s
+
+| Animation | Durée | Vitesse de déplacement
+
+| IdleFly · stationnaire | 1,2 s / 73 clés | 0 cm/s
+
+| FlySlow · vol lent | 1,6 s / 97 clés | 180 cm/s
+
+| FlyFast · vol rapide | 0,8 s / 49 clés | 520 cm/s
+
 Le Blend Space lit la norme 3D de GetVelocity, y compris les montées. L’interpolation des poids est réglée à 6/s. Les battements partagent leur phase de référence ; le corps s’incline davantage avec la vitesse, la tête compense et la queue reste plus horizontale. Les extrémités des ailes suivent avec un léger retard. Contrôle des raccords : erreur de matrice nulle entre début et fin, pas maximal d’articulation inférieur à 4,1° à 60 Hz.
+
 Les contrôles de déformation échantillonnent les arêtes. Sur les poses testées, les percentiles 1–99 restent approximativement entre 0,79 et 1,23 fois leur longueur neutre. Les valeurs extrêmes sont conservées dans le rapport pour les prochaines retouches de poids ; elles ne remplacent pas la validation artistique des battements.
+
 IA de vol issue du loup
+
 BP_IA_Aigle dérive de BP_IA_Loup, mais remplace BeginPlay et Tick sans appeler les routines de combat, de saut ou de correction du sol du parent. PawnSensing du parent et les références de montages de griffure/morsure sont désactivés. Les assets du loup ne sont pas modifiés.
+
 Le déplacement utilise CharacterMovement en MOVE_Flying, gravité 1 (ignorée en MOVE_Flying), accélération 650 cm/s², freinage aérien 800 cm/s², vitesse de rotation 145°/s et MaxStepHeight à 22 cm. La capsule corporelle mesure 50 cm de rayon et 62 cm de demi-hauteur. Les plumes ne bloquent pas directement le joueur.
-État
-Règle
-0 · Stationnaire
-Pause de 2 à 3,5 s, vitesse nulle.
-1 · Patrouille lente
-Destination à 1 600 cm de l’ancrage, hauteur proche de celui-ci, 180 cm/s. Nouvelle pause si arrivé ou après 30 s.
-2 · Poursuite rapide
-Joueur local visible à moins de 2 400 cm, dans la zone d’ancrage. Vitesse maximale 520 cm/s, cible de vol 220 cm au-dessus du centre du joueur.
-3 · Observation
-Arrêt à moins de 300 cm de la cible aérienne, reprise au-delà de 370 cm. Une attaque disponible déclenche la préparation du piqué.
-4 · Retour
-Cible libérée si hors de la zone de 4 800 cm ou invisible pendant 3 s. Retour lent vers l’ancrage.
+
+| État | Règle
+
+| 0 · Stationnaire | Pause de 2 à 3,5 s, vitesse nulle.
+
+| 1 · Patrouille lente | Destination à 1 600 cm de l’ancrage, hauteur proche de celui-ci, 180 cm/s. Nouvelle pause si arrivé ou après 30 s.
+
+| 2 · Poursuite rapide | Joueur local visible à moins de 2 400 cm, dans la zone d’ancrage. Vitesse maximale 520 cm/s, cible de vol 220 cm au-dessus du centre du joueur.
+
+| 3 · Observation | Arrêt à moins de 300 cm de la cible aérienne, reprise au-delà de 370 cm. Une attaque disponible déclenche la préparation du piqué.
+
+| 4 · Retour | Cible libérée si hors de la zone de 4 800 cm ou invisible pendant 3 s. Retour lent vers l’ancrage.
+
 Les décisions et sondes sont espacées de 0,15 s. AddMovementInput alimente le vol ordinaire à chaque image. Pendant le piqué V5, le déplacement suit directement la courbe temporelle avec balayage de collision. La vitesse est réduite près d’une destination pour freiner progressivement. Une sphère de 155 cm anticipe les obstacles devant l’aigle ; il choisit une montée décalée, puis un côté libre ou l’autre. Si toutes ces directions sont bloquées, il s’arrête et réessaie. Une sonde verticale maintient une cible d’au moins 250 cm au-dessus de la surface détectée.
 Évitement local de première passe : adapté aux espaces ouverts et aux obstacles simples, pas une navigation volumétrique complète. Les passages étroits, plafonds, branches complexes, itinéraires en cul-de-sac et multiplication des aigles nécessitent encore des essais. Pas de téléportation pour franchir une paroi.
 Réglages exposés : EagleAIEnabled, EagleDetectionEnabled, EaglePatrolRadius, EagleAcquireDistance, EagleLeashDistance. EagleManualControl et EagleFlyTo(Point, Speed) permettent un trajet piloté pour les tests ou de futures commandes d’allié. Le prototype cible le joueur solo local et ne remplace pas la classe réseau des mobs.
-Référence moteur :
-Character Movement
-et
-Add Movement Input
-, documentation officielle Epic.
+
+Référence moteur : Character Movement et Add Movement Input, documentation officielle Epic.
+
 Historique V3 : piqué rapide et pauses visibles · 18 octobre
-Comparaison et vidéo des sautillements spontanés
-.
+
+Comparaison et vidéo des sautillements spontanés.
+
 Correction : la poursuite déclenchée à 13 m passait avant toute occasion d’atterrir ; au sol, la même acquisition provoquait immédiatement le décollage. Le test V2 appelait directement les fonctions de pose et de bond et ne détectait pas cette priorité incorrecte. Le test V3 laisse d’abord l’IA agir seule avec le joueur proche.
+
 EagleConsiderLanding offre une pause avant acquisition/poursuite dès que EagleNextLand est dépassé, avec au moins 360 cm de distance horizontale au joueur (ou détection désactivée). La cible est effacée lors de l’entrée en atterrissage. Une pause peut durer environ 12 s au sol ; la prochaine occasion arrive 10 s après le décollage. Pendant la pause, le danger est limité à 280 cm avec ligne de vue ; une blessure déclenche aussi le départ et interdit une nouvelle pose pendant 5 s. Ces seuils permettent l’observation à 5–8 m.
+
 Les actions au sol suivent deux bonds puis une marche ; fin du tirage aléatoire à 30 %. Un bond vérifie l’obstacle et le sol en avant, prépare l’impulsion pendant 0,10 s, puis utilise 140 cm/s vers l’avant et 210 cm/s verticalement. La fin de pause n’interrompt pas un bond en cours. Le point de marche est tiré une seule fois par tentative et conservé ; jusqu’à trois essais recherchent une destination à plus de 80 cm. Si aucun point de marche accessible n’est trouvé, l’aigle reste en pause et reprend ses petits bonds au lieu de décoller prématurément.
+
 EagleDiveDuration=1,8 s au lieu de 3 s ; préparation 0,25 s au lieu de 0,45 s ; approche 650 cm/s ; accélération du piqué 6 000 cm/s², plafond 1 500 cm/s, suivi de trajectoire à 12/s. La phase de sortie garde 0,18 s de marge. Dégâts 20 et impulsion de l’avatar 230/110 cm/s conservés, avec un seul contact par passage, ligne de vue et abandon devant obstacle.
+
 Neuf animations retouchées : stationnaire, vols lent/rapide, attente et marche au sol, bond, pose, décollage et piqué. Battements légèrement asymétriques dans le temps, oscillations de tête/corps réduites, queue alignée avec le passage, appuis progressifs et genoux moins verrouillés au sol. Raccourcissement du segment d’aile ramené de 22 % à 18 %. Les plumes du modèle généré limitent encore le repli complet des ailes ; la pose reste semi-fermée pour réduire les croisements.
+
 Assets courants : Animations/SolEtPiqueV3 et IA/Animation/BS_Aigle_Sol_V3, BS_Aigle_Locomotion_V3. ABP_Aigle utilise ces versions ; l’animation Death reste issue de SolEtPique. Le maître actuel est Aigle_Sol_Vol_Combat_V3.blend. Scripts reproductibles : Saved/CodexTools/AigleV3/build.py, animations.py, import.py, abp.py, test.py.
-49 contrôles passés, dont pose spontanée avec joueur présent, au moins deux bonds spontanés, fuite à l’approche, trajet de piqué sous 2,2 s avec sa sortie, impact unique, poussée, esquive, obstacle et mort. Première pause à 11.9 s, 4 entrées en bond observées.
-Rapport et mesures
-;
-Raccords des animations
-. Aucun test multijoueur ni benchmark FPS.
+
+49 contrôles passés, dont pose spontanée avec joueur présent, au moins deux bonds spontanés, fuite à l’approche, trajet de piqué sous 2,2 s avec sa sortie, impact unique, poussée, esquive, obstacle et mort. Première pause à 11.9 s, 4 entrées en bond observées. Rapport et mesures ; Raccords des animations. Aucun test multijoueur ni benchmark FPS.
+
 Historique : sol et piqué V2 (17 octobre)
-Aperçu des animations et captures
-. Source : Art/Aigle/Aigle_Sol_V3/Aigle_Sol_Vol_Combat_V3.blend. Les anciens fichiers restent conservés.
-Action
-Durée
-Fonction
-GroundIdle
-3 s
-Pause au sol, ailes rabattues
-GroundWalk
-1 s
-Marche à 42 cm/s, Blend Space BS_Aigle_Sol
-GroundHop
-0,7 s
-Saut court, impulsion 120 cm/s vers l’avant et 230 cm/s vers le haut
-Land / Takeoff
-1,2 s chacun
-Pose et décollage avec préparation de 0,22 s
-Dive
-3 s
-Passage rasant, serres vers l’avant, remontée
-Death
-1,5 s
-Mort au sol après chute, corps conservé 3 s supplémentaires
+
+Aperçu des animations et captures. Source : Art/Aigle/Aigle_Sol_V3/Aigle_Sol_Vol_Combat_V3.blend. Les anciens fichiers restent conservés.
+
+| Action | Durée | Fonction
+
+| GroundIdle | 3 s | Pause au sol, ailes rabattues
+
+| GroundWalk | 1 s | Marche à 42 cm/s, Blend Space BS_Aigle_Sol
+
+| GroundHop | 0,7 s | Saut court, impulsion 120 cm/s vers l’avant et 230 cm/s vers le haut
+
+| Land / Takeoff | 1,2 s chacun | Pose et décollage avec préparation de 0,22 s
+
+| Dive | 3 s | Passage rasant, serres vers l’avant, remontée
+
+| Death | 1,5 s | Mort au sol après chute, corps conservé 3 s supplémentaires
+
 Animations sans root motion, échantillonnées à 60 Hz. La racine reste fixe ; CharacterMovement déplace l’acteur. Les ailes sont rabattues et leur segment supérieur raccourci de 22 % dans les poses au sol pour réduire l’encombrement des plumes du modèle généré. Ce compromis de pose devra encore être validé artistiquement.
+
 États ajoutés : 5 approche du sol, 6 pose, 7 attente, 8 marche, 9 saut, 10 décollage, 11 placement du piqué, 12 préparation, 13 piqué, 14 chute après mort, 15 mort au sol. Le mouvement terrestre utilise le navmesh pour choisir une destination proche ; un trajet impossible provoque un décollage. GravityScale=1 et DefaultLandMovementMode=Walking assurent la réception des sauts. La phase aérienne conserve MOVE_Flying.
+
 Piqué : centre fixé à la préparation au-dessus du sol (140 cm), demi-portée 650 cm, relèvement 420 cm, trajectoire z=420×(2t−1)² et x=1300×(t−0,5). Préparation immobile 0,45 s, passage 3 s, sortie vers 3,25 s, recharge 6 s à la fin. L’acteur suit cette cible avec accélération, sans téléportation. Une sonde sphérique de 52 cm détecte les obstacles et annule le passage. Le sol contraint la cible verticale à au moins 120 cm.
+
 Contact : distance de la cible au segment parcouru inférieure à 145 cm, ligne de vue, t entre 0,25 et 0,8, un seul impact par passage. Dégâts de base : 20. Après dégâts effectivement acceptés, LaunchCharacter ajoute 230 cm/s horizontalement dans le sens du piqué et 110 cm/s verticalement. Un personnage dont le mouvement est désactivé n’est pas projeté. Réglages exposés : EagleKnockbackSpeed et EagleKnockbackLift. Recul mesuré à l’arrêt : 56.7 cm ; déplacement initial et collisions peuvent modifier cette distance.
+
 Les traits de vitesse sont un maillage additif réutilisé du loup, animé par le temps et visible uniquement pendant le piqué. L’annulation, la mort et la fin du passage masquent l’effet. L’accélération est remise de 2 200 à 650 cm/s² après une attaque terminée ou annulée.
+
 Vie : loup 100 PV, ours 300 PV, aigle 150 PV. L’aigle accepte désormais les dégâts via son propre Event AnyDamage ; à zéro, il arrête son IA, chute jusqu’au sol puis joue sa mort. Les routines de mort/recrutement du quadrupède ne sont pas appelées. Le corps disparaît 3 s après la fin de son animation au sol ; une chute sans sol a un délai de sécurité de 20 s.
-Contrôles V2 : 42 validations passées dans une session solo avec rendu. Rapport :
-Validation_Runtime.json
-. Les essais incluent la poussée unique, l’absence de poussée lors d’une esquive ou derrière un obstacle, la marche, les transitions et la mort. Le combat est testé sur une plateforme isolée en altitude ; il reste à valider les cas de terrain complexes et plusieurs aigles en jeu réel.
+
+Contrôles V2 : 42 validations passées dans une session solo avec rendu. Rapport : Validation_Runtime.json. Les essais incluent la poussée unique, l’absence de poussée lors d’une esquive ou derrière un obstacle, la marche, les transitions et la mort. Le combat est testé sur une plateforme isolée en altitude ; il reste à valider les cas de terrain complexes et plusieurs aigles en jeu réel.
+
 Scripts reproductibles : Saved/CodexTools/AigleSolV2 (animations.py, death_animation.py, import.py, import_death.py, build.py, abp.py, test.py). Fermer proprement l’éditeur avant reconstruction des Blueprints, après avoir enregistré les modifications souhaitées. Les tests neutralisent les autres mobs seulement dans la session PIE, jamais dans la map sauvegardée.
+
 Essayer dans la base solo
-Map
-/Game/Level/L_Base_Nexus
-, acteur
-Aigle_Cimes_Anime
-, dossier
-Base/Aigle_Prototype
-, point de départ X −450, Y −650, Z 320 cm. Il est placé à proximité du grizzly et de la zone de départ pour inspecter le rendu. La map avant ajout est dans Saved/CodexTools/AigleV1/Backup.
-Lancer le mode Solo pour quitter le menu initial.
-S’éloigner pour observer la patrouille lente.
-Revenir à découvert dans un rayon de 24 m : il rejoint le joueur, prépare son piqué puis frappe si le passage n’est pas esquivé.
-Sortir de sa zone : il revient à son point de départ.
-Pour examiner seulement ses déplacements, désactiver EagleDetectionEnabled sur l’instance.
+
+Map /Game/Level/L_Base_Nexus, acteur Aigle_Cimes_Anime, dossier Base/Aigle_Prototype, point de départ X −450, Y −650, Z 320 cm. Il est placé à proximité du grizzly et de la zone de départ pour inspecter le rendu. La map avant ajout est dans Saved/CodexTools/AigleV1/Backup.
+
+- Lancer le mode Solo pour quitter le menu initial.
+
+- S’éloigner pour observer la patrouille lente.
+
+- Revenir à découvert dans un rayon de 24 m : il rejoint le joueur, prépare son piqué puis frappe si le passage n’est pas esquivé.
+
+- Sortir de sa zone : il revient à son point de départ.
+
+- Pour examiner seulement ses déplacements, désactiver EagleDetectionEnabled sur l’instance.
+
 Vérifications et limites
+
 Historique V1 : 32 contrôles fonctionnels validés en session PIE solo avec rendu : acteur unique, contrôleur, animation, mode aérien, vitesse de patrouille, hauteur, acquisition, poursuite rapide, arrêt sans dérive, retour, trajets lents et rapides, transition de vitesse et franchissement d’une paroi par un espace libre. Les loups et l’ours sont neutralisés uniquement dans la session d’essai. Les déplacements contrôlés sont testés en altitude pour les isoler du décor.
+
 La commande de vol à vitesse nulle arrête immédiatement le mouvement afin d’éviter un dernier déplacement résiduel. Le maintien de la position est contrôlé pendant deux secondes après cette commande.
+
 203 825 triangles sont vérifiés après import. Remove Degenerates reste désactivé pour conserver les centres des pupilles. Les trois animations et le Blend Space utilisent le même squelette. Les avertissements de compilation du Blueprint loup déjà présents ne sont pas des erreurs de compilation des fonctions aériennes ajoutées.
-Résultats et trajectoires en jeu
-Vérification des assets et placement
-Réduction, os et poids
-Déformations échantillonnées
-Boucles et vitesses
+
+- Résultats et trajectoires en jeu
+
+- Vérification des assets et placement
+
+- Réduction, os et poids
+
+- Déformations échantillonnées
+
+- Boucles et vitesses
+
 Aucun benchmark de FPS, aucun test Steam et aucun exécutable n’ont été produits pour cette étape.
+
 Étapes suivantes
+
 Après validation visuelle : affiner les poses de vol, puis recrutement, comportement allié, vagues, sauvegarde et réseau. Il reste à prévoir des LOD et une retopologie de production selon le nombre d’oiseaux souhaité. Le modèle reste relativement dense malgré la réduction.
+
 Reproduction : Saved/CodexTools/AigleV1 contient audit.py, details.py, retouch.py, rig.py, animate.py, import_assets.py, build_ai.py, place_verify.py et test_runtime.py. L’import évite de remplacer les assets déjà valides ; après modification des FBX, lancer un réimport explicite en conservant couleurs, normales et petits triangles.
+
 Combat et vol V9 · Pièce source du piqué V6 conservée · Solo
 
-Avant / après de posture : Art/Combat_Creatures_V2/Aigle/Avant_Apres_V9/Apercu.html. Rendus au même cadrage, ancienne animation SolEtPiqueV4 et VolV9 actuelle ; comparaison du duvet à pose V9 identique.
+Avant / après de la posture
 
+Comparer les deux versions à cadrage identique : ancienne animation de vol, posture V9 actuelle et vue permettant d’isoler le duvet. Captures reconstruites dans Unreal le 19 octobre au soir ; corps plus horizontal et pattes repliées. Le duvet reste discret.
 
-combat-polish-v3 — 20 octobre 2026
+20 octobre — Combat et visée
+
 L’aigle vole moins vite : vitesses de patrouille, poursuite, préparation et retour réduites de 25 %. Le piqué dure 2,5 s et le passage de largage 2 s. Après 20 s en vol, attaques comprises, il interrompt son action et commence son atterrissage. Il reste ensuite 8 s complètes au sol, vulnérable, même après un coup. Le compteur repart uniquement après ce repos ; un atterrissage raté ne recharge pas son endurance. Les 20 s précèdent la descente physique : celle-ci n’est pas une téléportation. L’option de repos est activée au démarrage, y compris pour l’aigle déjà placé.
 
+Captures et validation
 
-ÉQUILIBRAGE V4 — 20 octobre 2026
+20 octobre — Équilibrage et réanimation V4
+
 L’aigle vole moins vite : vitesses de patrouille, poursuite, préparation et retour réduites de 25 %. Le piqué dure 2,5 s et le passage de largage 2 s. Après 20 s en vol, attaques comprises, il interrompt son action et commence son atterrissage. Il reste ensuite 8 s complètes au sol, vulnérable, même après un coup. Le compteur repart uniquement après ce repos ; un atterrissage raté ne recharge pas son endurance. Les 20 s précèdent la descente physique : celle-ci n’est pas une téléportation. L’option de repos est activée au démarrage, y compris pour l’aigle déjà placé.
+
 Validation solo : 35 contrôles réussis, deux cycles complets de l’aigle avec dégâts pendant le repos, loup touché par les griffes et contre-attaque après contournement. 1400 images de réanimation échantillonnées. Aucun benchmark FPS ni essai réseau dans ce lot. Rapports : Art/Combat_Equilibrage_V4/Validation_Finale.json. Sauvegardes récupérables : Saved/CodexTools/CombatBalanceV4/Backup. Le module natif RitualPrewarmV1 reste inchangé. Aucun exécutable distribuable créé.
 
-
-21 OCTOBRE 2026 — VIGNETTES FIDÈLES COUR V19 (ÉTAT COURANT)
-Les premières photos studio V19 ont été rejetées par Florian : leur éclairage ajouté, exposition et bloom personnalisés grisaient le pelage et atténuaient les effets par rapport au jeu. Elles ne sont plus des références de fidélité. Les nouvelles captures utilisent les trois alliés réellement réanimés dans L_Base_Nexus, échelles natives (loup1,5 ; ours/aigle hérités), Tick/animations/effets actifs, sans lumière supplémentaire, pose figée ou changement de matériau/scalar. FOV90 et PostProcessSettings/BlendWeight copiés de la vraie caméra joueur. Recadrage HighResShot natif, sans retouche des pixels. Seule protection de fixture : alliés invulnérables pour survivre aux prises, dans la PIE temporaire seulement.
-PNG canoniques remplacés par copies exactes des captures sous Art/Aigle_Ombral_V19/Vignettes_Cour_Reelle ; anciennes versions et trois uassets sauvegardés sous Saved/CodexTools/EagleOmbralV19/Backup/BeforeFidelityCorrection_20261021. Les trois textures UI T_LoupOmbral_Tete/T_OursOmbral_Tete/T_AigleOmbral_Tete sont réimportées avec max512+mipmaps/filtrage trilinear. Aucun matériau ou modèle de loup/ours en jeu changé. Audit réel du recrutement10/10 : ornements, flammes, brume, matériaux, LeaderPose et dissolution conservés ; la différence signalée était dans la prise de vue. Conditions, hashes et preuves dans Validation_Cour_Reelle_Finale.json. Aperçu Art/Aigle_Ombral_V19/Apercu.html.
-
-
-
-21 OCTOBRE 2026 — PORTAIL FISSURÉ V19 (HISTORIQUE, REMPLACÉ PAR V20)
-La disparition finale des trois portails d’invocation solo est remplacée par une fermeture de0,7s : fissures cyan/Voronoi, séparation et extinction de32éclats instanciés. Matériaux dédiés M_RituelPortail_Fissure_V19/M_RituelEclats_V19 ; ancien M_RituelPortail conservé. PreparerSortiePortail dans BP_IA_Loup cache les SkeletalMeshComponent du proxy et arrête son Tick avant de rendre le véritable allié visible, programme une seule fermeture et libère ActeurRituel. FermerPortail des trois acteurs rituels applique PortailExitStart/Active ; Time GPU anime le portail et les éclats sans Tick. Relais original6,2s conservé, tail0,7s, lifetime de sécurité7,25s. Éclats sans collision/ombre, invisibles avant sortie ; aucun changement au coût/chance, aux modèles/animations des créatures ou au réseau (son Niagara3s est séparé).
-Validation : 60 contrôles réussis sur trois vrais recrutements solo, invariants contrôlés sur toutes les images de fermeture, acteurs et composants supprimés après fin. Preuve logique V19 conservée : Saved/CodexTools/PortalClosureV19/Validation_Final_Unpaused.json (sans pause, aucune prise). Prises séparées : Capture_Sequence.json (12 PNG, instant figé brièvement pour chaque capture). Les rapports des premiers cadrages ou acquittements échoués sont des diagnostics remplacés. Sources/sauvegardes : Saved/CodexTools/PortalClosureV19 ; captures et rapports publiés : Art/Portail_Fissure_V19/Apercu.html. Pas de benchmark FPS ni d’essai réseau de cette fermeture, aucun changement C++ ni distribuable.
-
+Captures et résultats

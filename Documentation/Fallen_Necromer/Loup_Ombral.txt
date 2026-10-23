@@ -1,0 +1,33 @@
+Loup ombral
+
+Loup ombral · apparence, comportement d’allié et collection. État du 23 octobre 2026.
+
+Apparence ombrale
+
+Museau allongé, grandes oreilles et fourrure en mèches ; corps bleu nuit, yeux et contours cyan. Le modèle 3D et le portrait illustré sont distincts : le portrait garde le style anime approuvé.
+
+[Image : Loup ombral dans le véritable menu 3D — capture V27. Les valeurs appartiennent à une collection de test ; le fond KO a été retouché depuis cette capture.] ../../Art/Projet_V27/Validation/Loup_V27_UI.png
+
+Loup ombral dans le véritable menu 3D — capture V27. Les valeurs appartiennent à une collection de test ; le fond KO a été retouché depuis cette capture. Cliquez sur l’image pour l’agrandir.
+
+IA de l’allié ombral
+
+Au sol, le loup suit la formation de son propriétaire, rejoint une cible ennemie autorisée et utilise griffes ou morsure au contact. La poursuite et les déplacements passent par la navigation terrestre. Les vérifications de portée, de hauteur et de visibilité conditionnent les impacts.
+
+En réseau, les ordres et la réaction à une menace du propriétaire sont traités par le serveur. Si le propriétaire se déconnecte ou est KO, le loup cesse la poursuite et attend ; il ne change pas de maître. Le système solo conserve ses décisions Blueprint, le réseau sa simulation native : partager le modèle ne signifie pas que toutes leurs temporisations sont identiques.
+
+Attaques et progression
+
+Le répertoire est détaillé dans Attaques et les raccords dans Animations. La fiche de la collection affiche les dégâts de cette ombre, son niveau, son expérience acquise et l’XP restante. Les valeurs de base d’une espèce ne remplacent pas les statistiques de la fiche.
+
+Équipe, réserve et KO
+
+I ouvre la collection commune au solo et au multijoueur : trois places d’équipe et vingt en réserve. Une recrue rejoint la réserve si l’équipe est pleine. Clic droit ou glisser-déposer permet les transferts ; les fiches gardent leur identifiant, leur niveau, leur XP et leurs PV. Une ombre en réserve ne reste pas active sur le terrain.
+
+Un KO reste une ombre de la collection, avec zéro PV. Déplacement, sauvegarde et déploiement ne le réaniment pas. La prévisualisation 3D peut rester en idle même pour une fiche KO : elle représente son apparence, pas un allié vivant dans la partie. La suppression, simple ou multiple, est définitive après confirmation.
+
+Invocation et présentation
+
+Le recrutement applique l’apparence ombrale ; le rappel et l’invocation utilisent la dissolution et le portail. La surface sombre du portail se fissure avant de disparaître. L’aperçu du menu est une copie séparée : le zoom et la rotation du socle ne changent pas la taille de l’allié dans le monde.
+
+Modèle naturel · IA générale · Gestion des ombres · Méthode des portraits

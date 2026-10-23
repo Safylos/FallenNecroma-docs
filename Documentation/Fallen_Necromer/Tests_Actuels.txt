@@ -1,35 +1,52 @@
+Contrôles des portraits KO · 23 octobre 2026
+
+Compilation Unreal réussie. Quatre tests natifs de cartes d’alliés réussis, dont la conservation d’une fiche KO sans acteur. Dix-huit contrôles de présentation en session solo isolée : absence de teinte sur les vivants, trois espèces KO visibles dans le HUD et le menu, conservation des identifiants, transfert aller-retour d’un ours KO sans réanimation. Captures examinées après réduction du voile rouge à 24 %.
+
+Le HUD réseau utilise la même conversion des fiches et le même dessin de carte. Cette retouche ne constitue pas une nouvelle campagne complète de partie multijoueur ou de mort au combat ; les essais V27 ci-dessous gardent leur portée.
+
+État courant · V27
+
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
 
 Contrôles automatisés V27 : Menu 18/18, Resources 10/10, Network 38/38, Capacity 50/50. Chargement et compilation de 1233 packages conservés ; aucune dépendance manquante ni ancien chemin dans cet audit. Les essais réseau utilisent des pairs PIE locaux et un délai de paquets simulé de 80 ms. Ils ne remplacent pas une partie entre deux PC via Internet/Steam et ne prouvent pas une égalité de FPS avec le solo. Aucun nouvel exécutable distribuable n’a été produit.
 
-Guide courant : Projet_V27.html
+Organisation, captures et validation V27 · Gestion des ombres
 
---- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+Guide détaillé et historique antérieur à V27
 
-Transitions et combat V20 — état courant
-Aigle : raccords sol/vol et après réanimation, ouverture des ailes puis montée progressive.
-Ours : reste debout, marche et pivote entre ses combos quand la cible reste proche. Redescente distincte à la perte ou à l’éloignement de la cible. Deux griffes de 18 dégâts et cadence conservées.
-Avatar : deuxième mouvement d’épée plus compact ; préparation haute, impacts, appuis et autres frappes conservés.
-Portail : la surface bleu nuit se fissure et se sépare réellement (voir la section dédiée).
-Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
-Aperçu général · Cycle de l’aigle · Ours debout · Épée avant/après
-
-Aperçu : Art/Transitions_Combat_V20/Apercu.html
-
-Documentation / Suivi / Vérifications actuelles
-ÉTAT DU 19 OCTOBRE 2026
+ÉTAT DU 21 OCTOBRE 2026
 
 Vérifications actuelles
 
 Résultats datés, scénarios couverts et limites de ce que l’on peut en conclure.
 
-21 OCTOBRE 2026 — PORTAIL SOMBRE V20 (ÉTAT COURANT, SOLO)
-La surface noire/bleu nuit du portail reste la même depuis l’ouverture : des fissures lumineuses la traversent, puis ses 20 morceaux sombres s’écartent et se dissipent en 0,7 seconde. Les éclats cyan accompagnent la fracture de la surface ; ils ne la remplacent plus. Le loup, l’ours et l’aigle terminent leur invocation au moment habituel, vers 6,2 secondes, pendant que le portail finit seul sa fermeture.
-Un seul maillage de 594 triangles réunit les 20 cellules et leurs fines tranches. Animation dans le matériau avec Time/PortailExitStart/Active, sans Tick CPU, simulation physique, collision, ombre ni ray tracing. SurfaceSombreV20 est présente dès le début dans BP_InvocationRituelle, BP_InvocationOurs et BP_InvocationAigle ; le seul émetteur Portal001 est désactivé sur leur composant avant activation. Le système Niagara et M_Portal d’origine, leurs autres effets et la préparation au chargement restent conservés. Le matériau dédié est M_PortailSombre_Fracture_V20.
-Validation réelle séparée des images : 75 contrôles réussis sur 75, trois morts/recrutements solo sans forcer leur résultat, aucune pause ni capture pendant le banc logique. Les invariants sont vérifiés sur toutes les images observées de fermeture : même surface et origine temporelle, proxies cachés, véritable allié visible, Tick arrêté et suppression complète. Douze PNG natifs de 1 280 × 688 pixels ont été pris et inspectés dans un banc distinct, avec des instants figés uniquement pour photographier intact/fissures/morceaux séparés/sol dégagé. Ce lot ne constitue ni un benchmark global des FPS ni une validation réseau.
-Portée : solo seulement ; le rituel réseau est distinct et inchangé. Aucun changement au coût, à la chance, aux emplacements d’alliés, au code C++ ou aux cartes. Sources, copies récupérables avant mutation et rapports : Saved/CodexTools/PortalClosureV20 (Validation_Final_Unpaused.json, Capture_Sequence.json, Backup_Manifest.json et Final_Asset_State.json). Aperçu actuel : Art/Portail_Surface_Sombre_V20/Apercu.html.
-Historique conservé : V19 ajoutait surtout les fissures et 32 petits éclats cyan, mais retirait le fond sombre au départ de la fermeture. V20 remplace cette présentation après la précision de Florian. Les 60 contrôles et les captures de cette étape restent des preuves datées sous Saved/CodexTools/PortalClosureV19 et Art/Portail_Fissure_V19 ; ils ne décrivent plus le rendu courant.
+Transitions et combat V20 — état courant
 
+- Aigle : raccords sol/vol et après réanimation, ouverture des ailes puis montée progressive.
+
+- Ours : reste debout, marche et pivote entre ses combos quand la cible reste proche. Redescente distincte à la perte ou à l’éloignement de la cible. Deux griffes de 18 dégâts et cadence conservées.
+
+- Avatar : deuxième mouvement d’épée plus compact ; préparation haute, impacts, appuis et autres frappes conservés.
+
+- Portail : la surface bleu nuit se fissure et se sépare réellement (voir la section dédiée).
+
+Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
+
+Aperçu général · Cycle de l’aigle · Ours debout · Épée avant/après
+
+21 octobre — Le portail sombre se fissure et se sépare · V20
+
+La surface noire/bleu nuit reste la même depuis l’ouverture. Des fissures lumineuses la traversent, puis ses 20 morceaux sombres s’écartent et se dissipent en 0,7 seconde. Les petits éclats cyan accompagnent désormais la fracture du disque lui-même. Le véritable allié est libéré au moment habituel, vers 6,2 secondes.
+
+Un seul maillage de 594 triangles réunit les vingt cellules et leurs fines tranches. Leur mouvement utilise l’horloge du matériau sur le GPU, sans Tick de déplacement sur le processeur, simulation physique, collision, ombre ni ray tracing. La même surface est présente dans les trois rituels dès leur début ; seul leur émetteur sombre Portal001 est désactivé sur chaque composant. Le système Niagara et son matériau d’origine restent conservés, ainsi que la préparation au chargement.
+
+75 contrôles réussis sur 75 : trois vraies morts et réanimations solo, sans résultat forcé, sans pause et sans capture pendant ce banc logique. Toutes les images observées de fermeture contrôlent les proxies cachés, le véritable allié visible, la continuité de surface et d’horloge, l’arrêt du Tick et la suppression de l’effet. Les 12 PNG natifs de 1 280 × 688 pixels viennent d’un banc distinct, figé brièvement pour photographier les quatre étapes. Ils ont tous été inspectés.
+
+Solo seulement. Le rituel réseau utilise un effet distinct, inchangé ici. Ce contrôle ne mesure pas les FPS globaux et ne constitue pas une validation multijoueur. Les coûts, probabilités et limites d’alliés sont conservés ; aucune source C++ ni carte n’a été modifiée pour cette fermeture.
+
+Voir les trois séquences actuelles · Preuve logique sans pause · Captures séparées · Copies récupérables avant modification.
+
+Historique remplacé : la V19 ajoutait les fissures et les 32 petits éclats cyan, mais retirait le disque sombre au départ de la fermeture. La V20 corrige précisément cette surface. Les images V19 et ses 60 contrôles datés sont conservés comme historique.
 
 20 octobre — Aggro, interface et FPS V14
 
@@ -49,15 +66,15 @@ Quatre ours et quatre aigles ajoutés à l’extérieur des forts. Combat, pelag
 
 Créatures et nécromancie — 19 octobre 2026
 
-31 contrôles ours et loup : orientation, deux contacts de griffe, esquive indépendante, obstacle, conservation de la charge, dégâts, mort et sélection du cadavre. Le rapport précise le correctif de la scène de test du loup.
+- 31 contrôles ours et loup : orientation, deux contacts de griffe, esquive indépendante, obstacle, conservation de la charge, dégâts, mort et sélection du cadavre. Le rapport précise le correctif de la scène de test du loup.
 
-167 contrôles de nécromancie : espèce ours, coût, propriétaire, rituel et groupe mixte après rappel/redéploiement.
+- 167 contrôles de nécromancie : espèce ours, coût, propriétaire, rituel et groupe mixte après rappel/redéploiement.
 
-Campagne aigle et œuf : perception, poursuite, attaque, obstacle, dégâts, projections et durée de vie des effets. Contrôle visuel complémentaire pour la nouvelle explosion et les traces sur les vêtements.
+- Campagne aigle et œuf : perception, poursuite, attaque, obstacle, dégâts, projections et durée de vie des effets. Contrôle visuel complémentaire pour la nouvelle explosion et les traces sur les vêtements.
 
-21 contrôles de la mort de l’aigle : dégâts mortels, chute, réception, ailes et duvet immobilisés, yeux fermés, arrêt des attaques et disparition après 4,5 secondes au sol.
+- 21 contrôles de la mort de l’aigle : dégâts mortels, chute, réception, ailes et duvet immobilisés, yeux fermés, arrêt des attaques et disparition après 4,5 secondes au sol.
 
-Appuis de l’ours allié après rappel : le rituel héritait d’un décalage du loup de 41 cm, désormais corrigé uniquement lorsque nécessaire. Les mesures stabilisées comparent ours sauvage et allié sur le même sol.
+- Appuis de l’ours allié après rappel : le rituel héritait d’un décalage du loup de 41 cm, désormais corrigé uniquement lorsque nécessaire. Les mesures stabilisées comparent ours sauvage et allié sur le même sol.
 
 Les vidéos de démonstration utilisent des captures au temps de jeu et sont remontées à vitesse normale. Elles ne mesurent pas les performances. Les contrôles de comportement à 30/60 images/s ne prouvent pas un débit de rendu de 144 images/s.
 
@@ -71,32 +88,32 @@ Campagne du 18 octobre 2026 : coûts, refus, régénération et réplication des
 
 43/43 contrôles fonctionnels réussis dans une session solo de test avec rendu. Rapport détaillé et trajectoires · Vidéos en jeu.
 
-Aigle : piqué ralenti, dégât unique, obstacle dans la sortie, créature masquant la route, obstacle ajouté pendant l’attaque aux cibles 30 et 60 images/s, dégagement et altitude variable.
+- Aigle : piqué ralenti, dégât unique, obstacle dans la sortie, créature masquant la route, obstacle ajouté pendant l’attaque aux cibles 30 et 60 images/s, dégagement et altitude variable.
 
-Ours : anticipation, charge, freinage, dégâts uniques, projection verticale et horizontale, esquive, blocage par mur, retour et effet sans collision.
+- Ours : anticipation, charge, freinage, dégâts uniques, projection verticale et horizontale, esquive, blocage par mur, retour et effet sans collision.
 
 Les vidéos sont enregistrées avec un temps de jeu ralenti puis reconstruites à vitesse normale. Les cibles 30/60 images/s servent à contrôler le comportement ; ce ne sont pas des benchmarks.
 
 2. Campagnes précédentes
 
-CampagneRésultat documentéPortée
+| Campagne | Résultat documenté | Portée
 
-Aigle V6, 18 octobre75 contrôlesVersion antérieure au ralentissement et au nouveau dégagement V7.
+| Aigle V6, 18 octobre | 75 contrôles | Version antérieure au ralentissement et au nouveau dégagement V7.
 
-Ours repos V2, 18 octobre34 contrôlesRepos, clignement, marche, course et première IA ; antérieur à la charge.
+| Ours repos V2, 18 octobre | 34 contrôles | Repos, clignement, marche, course et première IA ; antérieur à la charge.
 
-Multijoueur, 16 octobre147 assertions et 4 contrôles natifsSessions locales avec latence et pertes simulées.
+| Multijoueur, 16 octobre | 147 assertions et 4 contrôles natifs | Sessions locales avec latence et pertes simulées.
 
-Avatar et combats V7Voir le rapport dédiéRapport historique et vidéos.
+| Avatar et combats V7 | Voir le rapport dédié | Rapport historique et vidéos.
 
 3. Vérifications restant à faire
 
-Longues parties dans le décor réel : coins étroits, plafonds, terrain irrégulier et plusieurs animaux simultanés.
+- Longues parties dans le décor réel : coins étroits, plafonds, terrain irrégulier et plusieurs animaux simultanés.
 
-Appréciation visuelle et équilibrage des dégâts, de la poussée et du temps laissé pour esquiver.
+- Appréciation visuelle et équilibrage des dégâts, de la poussée et du temps laissé pour esquiver.
 
-Deux PC et comptes Steam distincts, invitations, perte de connexion et reprise après crash de l’hôte.
+- Deux PC et comptes Steam distincts, invitations, perte de connexion et reprise après crash de l’hôte.
 
-Performances mesurées dans une scène représentative sans application concurrente perturbant la mesure.
+- Performances mesurées dans une scène représentative sans application concurrente perturbant la mesure.
 
 Projet local · Référence au 18 octobre 2026 · Les résultats historiques gardent leur date.

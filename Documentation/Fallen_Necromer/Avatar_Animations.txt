@@ -1,18 +1,27 @@
-Avatar · Animations et déplacement
+Avatar · Animations et déplacement. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Locomotion et combat
+
 Les poses distinguent marche, course, accroupissement et phases de saut. Pendant une attaque en mouvement, la locomotion du bas du corps doit continuer pendant que le haut du corps joue le geste d’arme. Les animations ne doivent pas déplacer seules le personnage.
 
 Raccords d’épée
+
 Chaque mouvement doit avoir une anticipation, un impact, un suivi et une sortie cohérents. Les corrections du deuxième geste visent le recul du bras et de l’épaule. Couper ou accélérer un clip sans reprendre les fenêtres de dégâts et les raccords peut casser le combo.
 
 Vérification après modification
+
 Contrôler les quatre tenues, les attaques à l’arrêt et en marche, le relâchement pendant chaque coup et les boucles maintenues. Les poses communes doivent aussi être vérifiées depuis un invité en multijoueur. Les retouches du squelette et des vêtements se préparent dans Blender.
 
-RÉFÉRENCES ET DÉTAILS
-Déplacement, saut et accroupissement — Avatar.html#s6
-Correction du deuxième geste — Avatar.html#epee-epaule-v20
-Procédure de modification des animations — Avatar.html#s12
-Retoucher une animation dans Blender — Blender_Avatar.html#s6
+Références et détails
 
-Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
+Les comptes rendus conservent leur date et leurs anciens chemins. L’état V27 prévaut sur leurs limites antérieures ; ces pages ne constituent pas une nouvelle campagne de tests du jeu.
+
+- Déplacement, saut et accroupissement
+
+- Correction du deuxième geste
+
+- Procédure de modification des animations
+
+- Retoucher une animation dans Blender
+
+Organisation documentaire du 23 octobre 2026 · État du projet V27.
