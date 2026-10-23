@@ -1,0 +1,194 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
+
+L’avatar dispose de 2 000 points d’endurance et récupère 45 points par seconde dans les états qui autorisent déjà la récupération. Les coûts d’action restent inchangés. Après trois secondes sans subir de dégâts, il récupère un point de vie par seconde, sans dépasser ses PV maximum. De nouveaux dégâts réinitialisent ce délai ; la pause solo ne le fait pas avancer.
+
+En multijoueur, le serveur valide les transferts et suppressions de la collection personnelle. Les autres joueurs ne peuvent pas déplacer vos ombres. Les alliés en réserve ne restent pas simulés sur le terrain. Le menu ne met pas la partie réseau en pause. Les identifiants, niveaux, XP et KO sont conservés dans la sauvegarde et lors de la reconnexion. Les animations de l’ours et de l’aigle et les matériaux ombraux utilisent les mêmes assets que le solo.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+Contrôles automatisés V27 : Menu 18/18, Resources 10/10, Network 38/38, Capacity 50/50. Chargement et compilation de 1233 packages conservés ; aucune dépendance manquante ni ancien chemin dans cet audit. Les essais réseau utilisent des pairs PIE locaux et un délai de paquets simulé de 80 ms. Ils ne remplacent pas une partie entre deux PC via Internet/Steam et ne prouvent pas une égalité de FPS avec le solo. Aucun nouvel exécutable distribuable n’a été produit.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+22 octobre 2026 — Gestion des ombres V23 (solo)
+I ouvre la collection : trois places d’équipe et vingt cases de réserve en bas à gauche, portraits V21/niveaux, aperçu 3D, statistiques, échanges et suppression multiple confirmée. Le quatrième recrutement rejoint la réserve. Collection sauvegardée et niveaux restaurés. Le menu réseau reste à venir. Voir Gestion_Ombres.html et Gestion_Ombres.txt. Corrections épée/ours/caméra : Combat_Camera_V22.html. Git dans Unreal reste désactivé à la demande de Florian ; dépôt conservé.
+
+FALLEN NECROMER — ÉTAT DU PROJET
+22 OCTOBRE 2026
+
+Documentation / Projet / État du projet
+
+ÉTAT DU 22 OCTOBRE 2026
+
+État du projet
+
+Ce qui est utilisable, ce qui reste partiel et ce qui a réellement été vérifié.
+
+Interface et portraits ombraux V21
+
+Loup A bouche entrouverte, ours B plus frontal et aigle corrigé V2 : gros plans de tête fantasy/anime bleu nuit et cyan, fidèles aux modèles. Masters natifs 1 254 × 1 254 préservés, dérivés UI 512 × 512, anciens portraits V19 conservés. Aucun modèle, pelage ou animation de créature modifié par ce lot de portraits.
+
+Cartes ALLIÉS compactes de 196 × 52 pixels, portraits de 44 pixels à la référence 720p, groupe remonté en haut à droite. Trois emplacements, noms ombraux, niveau, vie et expérience ; état en réserve et place libre conservés.
+
+Le compteur FPS est en haut à gauche, indépendant du HUD. Il reste présent dans le menu principal et pendant la pause ; son calcul suit le temps réel et continue quand la simulation est arrêtée. L’ancien compteur solo est désactivé en mémoire pour éviter le doublon.
+
+Les textes du Pacte d’ombre suivent la véritable créature ciblée : « Réanimer le loup », « Réanimer l’ours » ou « Réanimer l’aigle », avec titre adapté au nom. Leur mesure et leur centrage utilisent le même texte. Les 26 contrôles de la vraie fonction Blueprint InstructionRecrutement passent sur les trois cadavres réels ; les avertissements de portée, réanimation en cours, trois alliés maximum, mana insuffisant et panneau non visé sont conservés, ainsi que le retour vide pour une cible invalide. Ces appels utilisent des entrées de fixture et ne déclenchent pas de recrutement.
+
+La caméra protège la vue locale quand son objectif entre dans le volume du personnage : corps, vêtements, cheveux et équipement proches sont filtrés ensemble, puis leurs drapeaux antérieurs sont restaurés après dégagement. Le retrait contre un mur reste immédiat, le retour amorti ; une sonde démarrant dans le décor recherche une position sûre. Caméra solo : 39/39 contrôles réussis, 24 poses normales côté cour sans chevauchement de la caméra et protection active dans 16 d’entre elles. Les flancs extérieurs dans les remparts et le cas 15 avant/après restent des diagnostics contraints, exclus des preuves de déplacement normal. Aucune validation de caméra réseau ni mesure globale de FPS dans ce banc.
+
+Preuves : 37 contrôles solo sur une fixture de trois alliés possédés et 12 contrôles du vrai menu principal réussis. Les textures V21 chargées au démarrage et leurs dérivés 512 × 512 ont été contrôlés. La réserve est simulée par visibilité/emplacement ; ce lot ne rejoue pas le recrutement ou le rappel T/Y. Interface réseau : 22 contrôles réussis dans deux PIE locales, hôte et invité. À la demande de Florian, le panneau « Retour au menu »/Tab est ancré en bas à droite, séparé des cartes alliées en haut à droite, y compris en petit viewport. Les trois textures V21 sont observées chargées au démarrage ; les portraits hôte/invité sont inspectés dans les six JPEG natifs et leurs références sont relues dans les sources LoadPortraits et Card.Portrait. Les tableaux privés du HUD sont inaccessibles depuis Python : leur lecture directe n’est pas annoncée comme une preuve. Appartenance répliquée, réserve, place libre, menu et compteur FPS sont contrôlés. Les alliés appartiennent à une fixture créée par le serveur : ce lot ne valide ni le recrutement de l’aigle en réseau, ni son combat. Aucun essai Steam entre deux PC, test de latence ou benchmark de performances. Quatre tests Automation natifs réussis : limites des cartes, compacité, séparation du panneau en bas à droite et textes selon l’espèce réelle. Le test de séparation couvre neuf résolutions ; il vérifie les calculs de disposition, distinctement des captures réelles hôte/invité. Deux captures natives de la vraie fenêtre PIE, interface Slate comprise, montrent les trois cartes puis l’état en réserve avec un emplacement libre. Module UnrealEditor-AvatarRuntime-HudPortraitsV21d.dll activé et état final vérifié.
+
+Import des trois textures · Solo 37/37 · Menu 12/12 · Automation 4/4 · Captures natives de cartes · Réseau · Caméra · Textes de recrutement · Activation finale · Comparaison caméra et limites · Six captures réseau inspectées.
+
+Guide et méthode réutilisable · Galerie et prises natives. Aucun benchmark global FPS, aucun nouvel exécutable distribuable.
+
+Transitions et combat V20 — état courant
+
+- Aigle : raccords sol/vol et après réanimation, ouverture des ailes puis montée progressive.
+- Ours : reste debout, marche et pivote entre ses combos quand la cible reste proche. Redescente distincte à la perte ou à l’éloignement de la cible. Deux griffes de 18 dégâts et cadence conservées.
+- Avatar : deuxième mouvement d’épée plus compact ; préparation haute, impacts, appuis et autres frappes conservés.
+- Portail : la surface bleu nuit se fissure et se sépare réellement (voir la section dédiée).
+
+Vérifications solo : 21 contrôles du cycle naturel de l’aigle ; 50 contrôles de recrutement, rappel et redéploiement ; 36 contrôles ours sauvage/allié ; 140 contrôles des poses d’épée et 4 essais de commandes ; 75 contrôles de fermeture du portail sans pause. Les prises visuelles sont séparées des tests de logique. Pas de benchmark FPS ni de validation réseau pour les nouveaux comportements V20.
+
+Aperçu général · Cycle de l’aigle · Ours debout · Épée avant/après
+
+21 octobre — Le portail sombre se fissure et se sépare · V20
+
+La surface noire/bleu nuit reste la même depuis l’ouverture. Des fissures lumineuses la traversent, puis ses 20 morceaux sombres s’écartent et se dissipent en 0,7 seconde. Les petits éclats cyan accompagnent désormais la fracture du disque lui-même. Le véritable allié est libéré au moment habituel, vers 6,2 secondes.
+
+Un seul maillage de 594 triangles réunit les vingt cellules et leurs fines tranches. Leur mouvement utilise l’horloge du matériau sur le GPU, sans Tick de déplacement sur le processeur, simulation physique, collision, ombre ni ray tracing. La même surface est présente dans les trois rituels dès leur début ; seul leur émetteur sombre Portal001 est désactivé sur chaque composant. Le système Niagara et son matériau d’origine restent conservés, ainsi que la préparation au chargement.
+
+75 contrôles réussis sur 75 : trois vraies morts et réanimations solo, sans résultat forcé, sans pause et sans capture pendant ce banc logique. Toutes les images observées de fermeture contrôlent les proxies cachés, le véritable allié visible, la continuité de surface et d’horloge, l’arrêt du Tick et la suppression de l’effet. Les 12 PNG natifs de 1 280 × 688 pixels viennent d’un banc distinct, figé brièvement pour photographier les quatre étapes. Ils ont tous été inspectés.
+
+Solo seulement. Le rituel réseau utilise un effet distinct, inchangé ici. Ce contrôle ne mesure pas les FPS globaux et ne constitue pas une validation multijoueur. Les coûts, probabilités et limites d’alliés sont conservés ; aucune source C++ ni carte n’a été modifiée pour cette fermeture.
+
+Voir les trois séquences actuelles · Preuve logique sans pause · Captures séparées · Copies récupérables avant modification.
+
+Historique remplacé : la V19 ajoutait les fissures et les 32 petits éclats cyan, mais retirait le disque sombre au départ de la fermeture. La V20 corrige précisément cette surface. Les images V19 et ses 60 contrôles datés sont conservés comme historique.
+
+Textures préparées au démarrage
+
+Le compteur 234 vu au démarrage représente un lot de textures qu’Unreal préparait à cet instant. La texture MatInstActSprite citée dans la capture est une icône interne de l’éditeur. Ce nombre ne mesure ni les textures inutilisées ni leur coût en jeu.
+
+L’inventaire actuel compte 1052 packages de textures du projet. Les références fortes de L_Base_Nexus en atteignent 134 ; le parcours élargi aux menus, cartes et références connues en atteint 229. Les 823 autres ne sont pas pour autant prouvées inutilisées : des références dynamiques peuvent leur donner accès.
+
+Audit de métadonnées et des objets déjà chargés après ouverture de l’éditeur, sans suppression ni chargement supplémentaire d’asset. Ce relevé ne reconstitue pas le lot de la capture et ne mesure pas la mémoire GPU ou les FPS. Rapport et limites.
+
+Historique V19 : fissures et éclats, remplacé par V20
+
+Cette première fermeture est remplacée par la fracture de la surface sombre V20. Les preuves et le rendu de cette étape restent consultables.
+
+Le portail solo se fissure puis se disperse en éclats cyan pendant 0,7 seconde. Le mob reprend ses mouvements au même moment qu’avant ; les effets temporaires sont ensuite supprimés. Vérifié sur loup, ours et aigle.
+
+Voir la fermeture et les contrôles.
+
+Historique V19 : portraits capturés en jeu
+
+La direction des portraits d’interface est remplacée par les illustrations V21 choisies. Les captures V19 restent une référence d’identité des modèles ; elles ne décrivent plus le nouveau style retenu.
+
+Les portraits du loup, de l’ours et de l’aigle ont été repris après de vrais recrutements dans la cour, avec leurs effets animés et les réglages de la caméra joueur. Les anciennes prises de studio atténuaient les effets et grisaient le pelage. Les textures de l’interface de cette étape reprenaient les captures du jeu ; les matériaux du loup et de l’ours restent conservés.
+
+Voir les trois portraits corrigés.
+
+21 octobre — Aigle ombral et réanimation V19
+
+L’aigle solo reprend les vrais matériaux et effets du loup/ours : corps sombre, contour cyan, nervures, flammes et brume. Nouvelles vignettes loup, ours et aigle avec effets visibles. Hauteur de révélation corrigée pour que la tête se forme progressivement avant la fin du rituel.
+
+Réanimation temporairement garantie pour les créatures réanimables, coûts et limite d’alliés conservés. Captures et vérifications V19.
+
+21 octobre — Interface et compagnons solo V18
+
+Polices harmonisées avec contour sombre, cartes d’alliés et barres de vie redessinées, dégâts plus grands et animés. Noms : Loup ombral, Ours ombral et Aigle ombral. Portraits des vrais modèles, textures adaptées à leur petite taille.
+
+Griffes de l’ours reconstruites avec un plan de flexion cohérent. Aigle ombral recrutable, suivi aérien, piqué/œuf, progression et rappel/invocation ; repos solo de 3 secondes après 20 secondes de vol. Rendu et vérifications V18. Cette étape cible le solo, sans nouvel exécutable distribué.
+
+20 octobre — Aggro, interface et FPS V14
+
+ 
+
+Les trois jauges circulaires du solo (vie, endurance et mana) sont présentes en multijoueur, avec les mêmes matériaux, proportions et placement. Elles lisent les ressources du joueur local, calculées par le serveur. Les portraits d’alliés, leur niveau, leur vie, leur expérience et les trois emplacements reprennent les matériaux et la disposition du solo. Les commandes du salon passent derrière Tab pendant la partie pour dégager l’interface.
+
+ 
+
+Le loup détecte à 15 m au lieu de 12 m ; sa mémoire est actualisée tant qu’il voit sa cible, ce qui corrige la perte artificielle après 12 secondes. L’aigle détecte à 36 m horizontalement au lieu de 22 m en distance 3D, avec une mémoire visuelle de 9 s. L’ours conserve sa portée réseau de 15 m, déjà supérieure aux 11 m du Blueprint solo. Les trois utilisent le contrôle de visibilité du contrôleur IA, comme le solo, et le symbole rouge 3D « ! » du solo. Les murs opaques continuent de bloquer la détection. L’alerte est transmise immédiatement aux invités ; les alliés nécromanciens n’affichent pas d’alerte hostile.
+
+ 
+
+FPS V14 (historique, placement remplacé par V21 en haut à gauche) : compteur commun alors visible en haut à droite, en solo, salon, multijoueur, menus et pause. Un seul affichage par viewport, échantillonné sur 0,25 seconde de temps réel, indépendant de la vitesse de simulation. L’ancien compteur solo est masqué uniquement pendant l’exécution lorsque son remplacement est attaché ; le Blueprint solo n’est pas modifié.
+
+ 
+
+Les règles de ressources étaient déjà présentes : endurance 200, course −12,5/s, récupération 15/s, saut 20 ; mana 100, récupération 5/min, élimination +5, réanimation −25. Les nouveaux contrôles couvrent leur consommation réelle et leur affichage chez l’invité.
+
+ 
+
+33 contrôles réussis : hôte et invité avec 60 ms simulés par trajet et 3 % de pertes pour les fonctions réseau, plus vérifications FPS solo et salon. Ce lot ne constitue pas un nouveau benchmark ni un essai Steam entre deux PC. Le comportement de meute, les modes quatre forts/vagues et certaines interactions restent différents. Captures et résultats V14.
+
+Multijoueur — mise à jour du 20 octobre 2026
+
+Quatre ours et quatre aigles ajoutés à l’extérieur des forts. Combat, pelage, effets d’œuf, arc, inventaire, rappel et relevé du joueur rapprochés du solo ; prédiction locale de la visée. État actuel, tests, performances et différences restantes. Cette mise à jour remplace les anciennes mentions « ours/aigle absents du multi » et « arc limité au lobby ».
+
+Actuel · plumage de l’aigle V12 — 20 octobre 2026
+
+Le plumage V12 remplace le duvet V11 jugé trop rayé. Cause corrigée : le matériau du duvet omettait le décodage sRGB vers linéaire présent sur le corps. Les petites plumes reprennent maintenant la même albédo. Nouvelles cartes courtes et orientées, masquées en plusieurs brins, plus fines sur la tête et le tronc, concentrées sur le col. Longueurs 0,65 à 2,42 cm ; faible effet de velours. Les grandes plumes ont un microrelief stable en coordonnées de peau au repos, filtré à distance. Le bec, les serres et les yeux gardent leurs matériaux. Trois LOD de 16 800 / 5 600 / 1 400 triangles, contre 23 400 / 7 800 / 1 950 pour V11, sans simulation, collision, ombre ni ray tracing du duvet. Le corps, le squelette et les règles de combat ne sont pas réimportés. Le Blueprint et l’aigle placé dans L_Base_Nexus sont mis à jour. L’aigle placé conservait encore un remplacement local par le duvet V9 ; ce remplacement a été corrigé explicitement. Les comportements de repos au sol et les animations antérieures sont conservés.
+
+Comparatif et animation du plumage · Mesures du rendu.
+
+Actuel · pattes, griffes et duvet — 20 octobre 2026
+
+Aigle : pose au sol rétablie dans l’AnimGraph, pattes dépliées pendant les 8 secondes de repos ; duvet V11 plus présent, avec trois niveaux de détail. Ours : deux coups croisés plus amples, contacts bas et suivi debout conservés. 22 contrôles réussis sur les sources et en solo. Aucun benchmark FPS ni essai réseau dans ce lot. Comparatif réel de trois variantes de duvet, à pose, cadrage et éclairage identiques.
+
+Comparatif visuel : base, ancien duvet et nouveau duvet · Validation V5.
+
+Solo et multijoueur : audit et premier lot
+
+La comparaison détaillée distingue les fonctions déjà reprises, les manques et les différences de mode. Ce premier lot aligne les coûts d’endurance de l’esquive et de l’attaque lourde, la régénération en l’air et le mana passif. Le lot V13 ajoute les poings, l’arc sur les forts, le ramassage/lancer, les ordres T/Y, l’ours et l’aigle. Voir le bilan actuel de parité.
+
+1. Fonctionnalités actuelles
+
+SystèmeSoloMultijoueurAvatarQuatre tenues, studio, palettes, clignements et mouvements.Apparence persistée et mouvements répliqués.Combat et inventaireÉpée, poings, arc, flèches, ramassage et lancer.Poings, arc, flèches, ramassage et lancer serveur présents depuis V13 ; les différences restantes sont détaillées dans la page de parité.Loups et alliésIA, recrutement, suivi, rappel T et déploiement Y.IA native distincte ; recrutement serveur, commande F. T/Y restent à porter.OursCharge pourpre, double griffe en X, orientation fluide, dégâts, mort sur le flanc et recrutement Ombre céleste ; rappel T et déploiement Y.Non intégré.AigleVol à altitude variable, posture plus naturelle, piqué et largage d’œuf explosif jaune. Projections sur sol, avatar et créatures. Mort avec chute puis affaissement, ailes relâchées et yeux fermés.Non intégré.Base et vaguesNexus, remparts, porte et vagues de six ennemis.Hub et quatre forts ; pas de vagues solo.SauvegardeProfil d’apparence ; pas de sauvegarde complète de campagne.Partie sauvegardée par l’hôte, reprise avec le même hôte et identité Steam.
+
+Réanimation de l’avatar solo validée : 3 s entre mort et retour à la plaque, puis animation de relevé de 2,8 s. Aucun déplacement ni attaque avant sa fin ; caméra et pause conservées. 71 contrôles en jeu couvrent notamment les morts au sol et en l’air, les tentatives de déplacement et la reprise des commandes. Voir la vidéo du cycle
+
+2. Limites connues
+
+- La fin de session de l’hôte coupe la partie des invités ; aucune migration d’hôte.
+- Les tests réseau locaux ne valident pas encore deux comptes Steam sur deux PC via Internet.
+- Ours et aigle présents en solo et multijoueur depuis V13. L’ours est endommageable et recrutable ; l’aigle est recrutable en solo depuis V18 ; son recrutement réseau reste à porter.
+- Les animaux restent denses : aucune promesse de performances globales ni de nombre maximal de créatures.
+- Les scripts locaux dans Saved/CodexTools sont exclus de Git : ils ne sont pas garantis dans un autre clone.
+
+3. Suite proposée, sans lancement automatique
+
+Consolider les sources artistiques, compléter une boucle solo avec sauvegarde, harmoniser les règles solo/réseau, puis effectuer des essais Steam réels et un profilage représentatif. Ces pistes constituent des recommandations ; elles ne sont pas des fonctionnalités livrées.
+
+4. Retrouver les décisions
+
+Contexte global · Chronologie des décisions · Rapports historiques.
+
+Un numéro de version plus élevé ne suffit pas à identifier une source active. Vérifier la référence de l’asset dans Unreal avant tout réimport.
+
+Projet local · Référence au 18 octobre 2026 · Les résultats historiques gardent leur date.
+
+20 octobre — Combat et visée
+
+Corrections du 20 octobre : contacts des griffes de l’ours allié, portrait d’allié ours, repos vulnérable de cinq secondes pour l’aigle et caméra de visée haute. Optimisation limitée de la charge d’arc mesurée ; les grosses chutes de FPS restent à reproduire en conditions de combat. Voir l’aperçu de validation.
+
+Captures et validation
+
+À-coup au début de la réanimation
+
+Réanimation des mobs : à-coup reproduit à la première invocation. La création du rituel prenait 195.8 ms, avec une image à 199,5 ms. Niagara compilait son système lors de cette première apparition. Les deux systèmes d’invocation sont désormais chargés, préparés et conservés en mémoire dès le chargement de L_Base_Nexus, avant le menu et les commandes de combat. La compilation éventuelle en session éditeur/standalone est attendue à ce moment ; les PSO sont préparés également. Le rendu, le nombre de particules, le pelage et les règles de recrutement sont inchangés. Après correction, première création mesurée à 5.2 ms ; quatre invocations complètes loup/ours avec nettoyage mémoire entre essais, image la plus longue 24.1 ms. Essais en session séparée en 2560 × 1440, scène contrôlée ; ne pas extrapoler une garantie de FPS en combat. Rapports : Art/Combat_Polish_V3/Ritual_Profile.json, Ritual_Prepared.json et RitualPrepared_Measures.json. La préparation ajoute un coût ponctuel au chargement. Portée : directeur solo de la carte de base, réseau non modifié.
+
+20 octobre — Équilibrage et réanimation V4
+
+L’aigle vole moins vite : vitesses de patrouille, poursuite, préparation et retour réduites de 25 %. Le piqué dure 2,5 s et le passage de largage 2 s. Après 20 s en vol, attaques comprises, il interrompt son action et commence son atterrissage. Il reste ensuite 8 s complètes au sol, vulnérable, même après un coup. Le compteur repart uniquement après ce repos ; un atterrissage raté ne recharge pas son endurance. Les 20 s précèdent la descente physique : celle-ci n’est pas une téléportation. L’option de repos est activée au démarrage, y compris pour l’aigle déjà placé. L’ours suit sa cible debout entre les coups, jusqu’à 110 cm/s. Sa rotation est limitée à 300°/s hors contact et 140°/s pendant les griffes, sans retournement instantané. L’évitement automatique des autres créatures est suspendu pendant ce combo, puis restauré ; les collisions physiques restent actives. La reprise après le combo passe de 0,7 à 0,4 s. L’animation A_Ours_Griffes_Basses conserve les deux coups en X mais abaisse les pattes d’environ 30 cm au contact et 24 cm en fin de balayage. Deux fenêtres de dégâts indépendantes de 18 points, portée physique des griffes et contrôle des obstacles conservés. L’ancienne animation reste disponible. Le système d’alerte hérité ne crée plus ni ne restaure de matériau de mob sauvage sur un allié ou pendant son invocation. Les palettes nécromanciennes restent identiques avant, pendant et après le relais du rituel vers le mob contrôlé. Deux recrutements réels, ours puis loup, contrôlés image par image : aucun retour du matériau sauvage sur l’allié, cadavre source retiré et allié visible à la fin.
+
+Validation solo : 35 contrôles réussis, deux cycles complets de l’aigle avec dégâts pendant le repos, loup touché par les griffes et contre-attaque après contournement. 1400 images de réanimation échantillonnées. Aucun benchmark FPS ni essai réseau dans ce lot. Rapports : Art/Combat_Equilibrage_V4/Validation_Finale.json. Sauvegardes récupérables : Saved/CodexTools/CombatBalanceV4/Backup. Le module natif RitualPrewarmV1 reste inchangé. Aucun exécutable distribuable créé.
+
+Captures et résultats

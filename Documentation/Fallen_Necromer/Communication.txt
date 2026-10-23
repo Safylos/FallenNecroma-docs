@@ -1,0 +1,42 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+RÉFÉRENCE · 16 OCTOBRE 2026
+Vidéos et communication
+Plan chronologique, scripts des épisodes et choix de montage à conserver.
+État du montage
+L’épisode 1 V5 est mis de côté en attendant la voix enregistrée par Florian. Il dure environ 32,17 secondes. Il n’est pas à publier tel quel. Les anciennes voix IA, versions longues et sous-titres restent des archives, pas la direction retenue.
+Ouvrir
+l’aperçu de l’épisode 1 V5
+ou
+le plan chronologique
+. Les scripts existants des sept épisodes sont accessibles dans le catalogue central.
+Règles de réalisation actuelles
+Une vidéo par semaine d’avancée, dans l’ordre chronologique.
+Montrer le travail réel : UE5, Blender, modèles, squelette, mains et articulations.
+Avatar centré, plans nets, cadrage vertical lisible et habillage discret.
+Pas de voix IA ni de sous-titres incrustés dans la direction actuelle ; adapter ensuite les plans à la vraie voix.
+Rythme dynamique : base d’environ 30–35 s, plans de 1–4 s et mouvements de caméra, sans accélérer l’eau ou les particules.
+Mettre l’eau, ses changements de couleur et le vent/feuilles en valeur par des plans proches.
+Pas d’éléments de semaines ultérieures dans le corps de l’épisode ; conserver le teaser suivant déjà approuvé.
+Identifier une reconstitution d’ancien bug comme une nouvelle prise, sans la présenter comme une archive originale.
+Référence complète :
+Guide_Montage_TikTok.txt
+.
+Crédits fournis
+Rimaye :
+tutoriel d’eau stylisée
+;
+tutoriel vent et feuilles
+. Ces liens sont ceux fournis par Florian pour le projet.
+Démonstrations multijoueur
+Les deux démonstrations de combat sont des aperçus techniques séparés du montage TikTok. Elles montrent le jeu exécuté localement avec deux participants, et ne constituent pas un test Internet à deux machines. Voir
+vérifications et vidéos
+.

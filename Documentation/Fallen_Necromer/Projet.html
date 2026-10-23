@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="fr"><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Ouvrir et transmettre le projet — Fallen Necromer</title><link href="style.css" rel="stylesheet"/><body><a class="skip-link" href="#contenu">Aller au contenu</a><nav class="top"><button aria-controls="navigation" aria-expanded="false" class="menu-toggle" type="button">☰ Menu</button><a href="index.html">FALLEN NECROMER · DOCUMENTATION</a><span><a href="Catalogue.html">Tous les documents</a><a href="Verification_V7.html">Vérifications et vidéos</a><button onclick="window.print()">Imprimer / PDF</button></span></nav><div class="layout"><aside class="sidebar" id="navigation"><nav aria-label="Rubriques de la documentation"><details class="nav-group" open=""><summary>Projet</summary><ul><li><a href="index.html">Accueil</a></li><li><a href="Etat_Projet.html">État et limites</a></li><li><a aria-current="page" href="Projet.html">Installation et transmission</a></li><li><a href="Maintenance.html">Sources et maintenance</a></li></ul></details><details class="nav-group"><summary>Jouer</summary><ul><li><a href="Commandes.html">Commandes</a></li><li><a href="Solo.html">Solo et nexus</a></li><li><a href="Multijoueur.html">Multijoueur</a></li><li><a href="Parite_Solo_Multijoueur.html">Solo ↔ multijoueur</a></li></ul></details><details class="nav-group"><summary>Personnage</summary><ul><li><a href="Avatar.html">Avatar et combat</a></li><li><a href="Blender_Avatar.html">Retouches dans Blender</a></li></ul></details><details class="nav-group"><summary>Bestiaire</summary><ul><li><a href="Loups.html">Loups et alliés</a></li><li><a href="Ours.html">Ours · modèle</a></li><li><a href="Ours_Animation_IA.html">Ours · animations et charge</a></li><li><a href="Aigle.html">Aigle · vol et piqué</a></li></ul></details><details class="nav-group"><summary>Monde</summary><ul><li><a href="Environnement.html">Cartes et remparts</a></li></ul></details><details class="nav-group"><summary>Suivi</summary><ul><li><a href="Optimisation_1440p.html">Optimisation 1440p</a></li><li><a href="Tests_Actuels.html">Vérifications actuelles</a></li><li><a href="Communication.html">Vidéos et communication</a></li></ul></details><details class="nav-group"><summary>Références</summary><ul><li><a href="Catalogue.html">Catalogue des archives</a></li><li><a href="Annexes.html">Annexes et relevés</a></li><li><a href="Verification_V7.html">Ancienne campagne V7</a></li></ul></details></nav><nav aria-label="Dans cette page" class="page-toc"><p>Dans cette page</p><a class="depth-2" href="#s0">Guide de projet remis à jour</a><a class="depth-2" href="#rubrique-2">Fallen Necromer</a><a class="depth-2" href="#rubrique-3">Récupérer et ouvrir le projet</a><a class="depth-2" href="#rubrique-4">Cartes</a><a class="depth-2" href="#rubrique-5">Organisation</a><a class="depth-2" href="#rubrique-6">Versionnement</a><a class="depth-3" href="#rubrique-7">Dépôt allégé</a></nav></aside><main id="contenu"><!-- V27-CURRENT --><section id="etat-v27"><h2>État courant · V27</h2><p>Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.</p><p>Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.</p><p>La documentation reste en HTML et TXT. L’onglet Code de GitHub montre le fichier HTML comme du code source. GitHub Pages peut afficher ce HTML comme un site, sans le convertir ; aucune publication Pages n’est activée par ce lot. Référence officielle : https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages</p><p><a href="Projet_V27.html">Organisation, captures et validation V27</a> · <a href="Gestion_Ombres.html">Gestion des ombres</a></p></section><details class="history-v27"><summary>Guide détaillé et historique antérieur à V27</summary><nav aria-label="Fil d’Ariane" class="breadcrumbs"><a href="index.html">Documentation</a><span aria-hidden="true"> / </span><span>Projet</span><span aria-hidden="true"> / </span><span>Ouvrir et transmettre le projet</span></nav><header><p class="eyebrow">RÉFÉRENCE · 16 OCTOBRE 2026</p><h1>Ouvrir et transmettre le projet</h1><p class="lead">Installation, cartes, organisation, Git LFS et limites des copies locales.</p></header><section id="s0"><h2>Guide de projet remis à jour</h2><h2 id="rubrique-2">Fallen Necromer</h2>
+<p>Projet Unreal Engine <strong>5.8</strong>. Le fichier du projet conserve son nom actuel :
+<code>Test3rPersonProject.uproject</code>.</p>
+<p>La documentation de référence est centralisée dans
+<a href="index.html">Documentation/Fallen_Necromer/index.html</a>.
+Elle comprend l’avatar, les corrections dans Blender, les loups, le solo, le
+multijoueur, les maps, les vidéos et un catalogue des anciens rapports.
+État de référence : 16 octobre 2026. Les noms internes « Necroma » sont conservés
+lorsqu’ils identifient le dépôt, un chemin ou une sauvegarde.</p>
+<h2 id="rubrique-3">Récupérer et ouvrir le projet</h2>
+<p>Installer Git, Git LFS et Unreal Engine 5.8, puis :</p>
+<pre><code class="language-sh">git lfs install
+git clone https://github.com/Safylos/FallenNecroma.git
+cd FallenNecroma
+git lfs pull
+</code></pre>
+<p>Ouvrir <code>Test3rPersonProject.uproject</code>. Les shaders et caches se reconstruisent
+localement au premier lancement. L'accès au dépôt nécessite un compte autorisé
+s'il est privé. Ne pas utiliser le téléchargement ZIP à la place d'un clone LFS.</p>
+<h2 id="rubrique-4">Cartes</h2>
+<ul>
+<li><code>Content/Level/L_Base_Nexus.umap</code> : niveau principal du solo, base et vagues.</li>
+<li><code>Content/Multiplayer/Maps/L_Hub_Multijoueur.umap</code> : salon et entraînement multijoueur.</li>
+<li><code>Content/Multiplayer/Maps/L_Quatre_Forts.umap</code> : partie multijoueur à quatre forts.</li>
+<li><code>Content/Level/L_MondePrincipal.umap</code> : première map, conservée comme référence.</li>
+<li><code>Content/Level/L_EntrainementLoups.umap</code> : carte d'entraînement et de test des loups.</li>
+<li><code>Content/Level/L_Presentation_Necromancie.umap</code> : comparaison des loups spectraux.</li>
+</ul>
+<h2 id="rubrique-5">Organisation</h2>
+<ul>
+<li><code>Content</code> : Blueprints, cartes, modèles, animations, textures et effets Unreal.</li>
+<li><code>Config</code> : configuration partagée du projet.</li>
+<li><code>Art</code>, <code>SourceArt</code>, <code>SourceAssets</code> : sources artistiques et fichiers d'import.</li>
+<li><code>Documentation/Fallen_Necromer</code> : guides actuels, relevés et catalogue central.</li>
+<li><code>Docs</code>, autres dossiers de <code>Documentation</code> : sources et rapports historiques.</li>
+<li><code>Exports</code> : exports conservés du travail artistique.</li>
+</ul>
+<p>L'IA des loups se trouve dans <code>Content/ElemntsForGame/Mobs/Loup/IA</code>.
+Le guide loup actuel est <code>Documentation/Fallen_Necromer/Loups.html</code>.
+Le document <code>Docs/Mana_et_loup_necromancien.md</code> est conservé comme historique ;
+les règles actuelles de recrutement et les différences entre solo et réseau
+sont décrites dans les guides centraux.</p>
+<h2 id="rubrique-6">Versionnement</h2>
+<p>Les fichiers Unreal et les sources binaires sont suivis par <strong>Git LFS</strong> via
+<code>.gitattributes</code>. Installer LFS avant tout ajout ou clone. Le premier envoi est
+volumineux ; vérifier le quota de stockage et de transfert LFS du compte GitHub.</p>
+<p><code>Saved</code>, <code>Intermediate</code>, <code>DerivedDataCache</code>, les fichiers de session de l'éditeur
+et les sauvegardes automatiques Blender sont exclus. Ils restent sur la machine.
+Les scripts de travail actuellement conservés sous <code>Saved/CodexTools</code> sont donc
+locaux et ne font pas partie du dépôt partagé.</p>
+<h3 id="rubrique-7">Dépôt allégé</h3>
+<p>Le <code>.gitignore</code> exclut aussi les anciennes sources du loup V2 et les éléments
+inutilisés de certains packs (cartes de démonstration, textures, modèles et
+archives). Les exclusions Unreal ont été contrôlées avec les références de
+packages, y compris les références souples : les dépendances des éléments
+conservés restent suivies, même si elles sont rangées dans <code>Corbeille</code>.</p>
+<p>La liste exacte est conservée dans <code>Docs/Git_Exclusions.json</code>. Les fichiers
+exclus restent sur le PC d'origine ; un clone Git ne les contient pas. Les
+sources et cartes réellement disponibles après un clone dépendent des règles
+actuelles et des fichiers effectivement suivis. L’ancien contrôle du dépôt
+allégé ne valide pas automatiquement les nouvelles maps multijoueur et leurs
+dépendances : refaire ce contrôle avant de transmettre un clone à un autre PC.</p>
+<p>Avant d'utiliser une ressource ignorée dans le jeu, retirer la règle concernée
+du <code>.gitignore</code>, puis ajouter cette ressource <strong>et ses dépendances</strong> à Git.
+Cette sélection ne garantit pas les futurs chargements construits à partir de
+chemins textuels : une nouvelle dépendance nécessite un nouveau contrôle.</p>
+<p>Pour travailler à plusieurs, éviter de modifier simultanément le même Blueprint
+ou la même carte : ces fichiers binaires ne se fusionnent pas comme du texte.</p></section><footer>Références relues dans le projet local. Les archives conservent leur date et ne remplacent pas les guides actuels. Aucun exécutable distribuable créé.</footer></details><!-- V27-END --></main></div><script defer="True" src="navigation.js"></script></body></html>

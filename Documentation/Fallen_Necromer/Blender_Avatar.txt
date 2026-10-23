@@ -1,0 +1,183 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+RÉFÉRENCE · 16 OCTOBRE 2026
+Corriger l’avatar dans Blender
+Procédure actuelle, sources par tenue, poids, morphs, animation, export et validation dans le jeu.
+Choisir la bonne source avant de retoucher
+Un ancien export peut être correct dans Blender tout en écrasant une correction récente du jeu. Voici les sources déclarées par les quatre Skeletal Meshes actuellement chargés dans Unreal. La date du nom de dossier ne suffit pas : c’est le lien d’import de l’asset qui fait foi.
+Tenue
+FBX déclaré par Unreal
+Blender associé
+Originale
+SKM_Avatar_Originale_DeformationV7.fbx
+Avatar_Originale_DeformationV7.blend
+Tunique
+SKM_Avatar_Tunique_Combat.fbx
+Avatar_Tunique_Combat.blend
+Veste
+SKM_Avatar_Veste_Col.fbx
+Avatar_Veste_Col.blend
+Combinaison
+SKM_Avatar_Combinaison.fbx
+Avatar_combinaison_Export.blend
+Le fichier
+Avatar_Jeu_Actuel.blend
+est une consolidation du 9 octobre. Il reste utile pour explorer les actions, mais il est antérieur au combo quatre coups, aux dernières déformations du torse et à la correction du col de veste. Ne pas le réexporter globalement en le supposant synchronisé.
+Comprendre ce qui appartient à Blender et à Unreal
+À modifier
+Où intervenir
+Forme du corps ou de la tenue, vide au col
+Maillage Blender, puis réimport du Skeletal Mesh.
+Torsion, creux ou déchirure pendant une pose
+Poids, morph correctif ou animation ; comparer le maillage en pose neutre et en mouvement.
+Trajectoire du bras, amplitude, appui
+Action Blender / séquence Unreal ; conserver la cohérence avec les courbes de correction.
+Transition entre deux coups, sortie vers la marche
+Montage, sections, fondus, AnimBP et code/Blueprint de commande dans Unreal.
+Couleur réglable de la tenue
+Paramètres des Material Instances et tables de zones de tenue ; éviter de repeindre une texture pour chaque couleur.
+Touche, coût, dégâts, temps de charge
+Gameplay solo ou natif réseau ; ce n’est pas enregistré dans une action Blender.
+VFX, attache de l’épée ou de l’arc
+Sockets, composants et effets Unreal ; un rendu Blender ne valide pas leur synchronisation.
+Préparer une retouche réversible
+Relever l’asset concerné et sa source d’import, la tenue, l’animation, la frame et l’angle où le défaut apparaît.
+Dupliquer le fichier .blend dans une nouvelle révision de SourceArt. Garder l’export actuellement utilisé.
+Prendre des vues avant de face, profil et dos, avec la même pose et le même cadrage pour l’après.
+Vérifier l’armature, la pose de référence, l’échelle, les slots de matériaux, les groupes de sommets et les shape keys.
+Limiter la modification à la région concernée. Un trou au col ne justifie pas une nouvelle topologie de tout le corps.
+Le squelette partagé de la garde-robe compte 65 os dans la livraison et les procédures actuelles. Garder les noms et la hiérarchie utilisés par le projet. Ne pas appliquer au hasard les transformations de l’armature ou une nouvelle pose de repos : cela peut casser les animations déjà adaptées.
+Corriger les poids sans créer de nouveaux défauts
+En Pose Mode, reproduire l’angle de bras, de hanche ou de jambe incriminé. En Weight Paint, identifier les os qui entraînent les sommets concernés. Normaliser les poids, nettoyer les influences minuscules et contrôler la limite d’influences du pipeline existant, jusqu’à 4 par sommet dans la livraison initiale.
+Au col, vérifier si le bas de la pièce suit trop le cou au lieu du haut du torse. Aux épaules, éviter de faire porter toute la déformation à un seul os. À la taille et à l’entrejambe, contrôler les influences du bassin et des cuisses de part et d’autre. Comparer systématiquement les côtés gauche et droit ; une symétrie forcée n’est pas toujours appropriée à une tenue asymétrique.
+Ne pas masquer une erreur de poids avec un gros déplacement de sommets dans une seule pose : la pose neutre, la course et l’accroupissement doivent aussi rester corrects.
+Préserver les shape keys et les courbes
+Les morphs servent au visage, au vent des cheveux et à certaines corrections de vêtements. La livraison initiale en avait 12 par tenue ; les corrections ultérieures peuvent en ajouter. Ne pas imposer le nombre historique à une tenue récente : comparer la liste réellement présente avant/après.
+Une modification de base doit rester compatible avec les shape keys. Conserver nombre et ordre des sommets si les correctifs en dépendent. Lorsqu’un même décalage doit concerner toutes les formes, le reporter de manière cohérente ; les scripts de correction du col font précisément cela. Éviter un modificateur destructif ou un remesh qui invalide les formes.
+Pour créer un correctif local : préparer une shape key dédiée, vérifier sa valeur 0 puis 1, tester les valeurs intermédiaires, puis raccorder dans Unreal la courbe qui l’active sur la bonne séquence. Une shape key créée dans Blender n’agit pas automatiquement dans le jeu.
+Exemple concret : le vide derrière le col
+La correction actuelle de la veste se trouve dans
+Veste_Col_V1
+. Le travail a abaissé progressivement la partie basse du col, avec un effet plus fort à l’arrière, reporté le décalage dans les formes et rééquilibré l’ancrage vers
+spine_03
+. La topologie a été conservée.
+Source de cette correction :
+fix_collar.py
+. Ce script contient des indices de sommets propres à cette version du modèle : ce n’est pas un outil universel à relancer sur n’importe quel maillage. Pour un nouveau défaut, reprendre le .blend corrigé, puis vérifier le cou en idle, marche, course, arc visé, saut et attaque.
+Retoucher une animation d’épée ou de déplacement
+Identifier la séquence réellement référencée par l’AnimBP ou le montage, pas uniquement un aperçu dont le nom semble récent.
+Conserver les poses utiles du mouvement source et retoucher la zone qui pose problème : amplitude du bras, orientation du poignet, bassin ou appui.
+Inspecter courbes et tangentes à l’entrée et à la sortie. Une pose finale identique ne suffit pas si sa vitesse change brutalement.
+Pour une boucle de combo, comparer fin du quatrième coup et début du premier, y compris tête, main libre, bassin, jambes et pointe de lame.
+Exporter l’action seule sur le squelette existant, puis contrôler les sections et courbes de morphs du montage.
+Tester un clic court, le relâchement pendant chacun des coups, le maintien, la marche simultanée et le saut. Le solo et le réseau ont des commandes distinctes.
+Le combo principal actuel est
+AM_Epee_ComboUneMain
+, à quatre mouvements. Le troisième mouvement supprimé dans certains essais n’est plus la référence active. Les vitesses, points de décision et boucles sont documentés dans
+Avatar
+et
+Multijoueur
+.
+Exporter le mesh avec les réglages éprouvés
+Les exports récents du torse et du col utilisent les réglages ci-dessous. Ils correspondent à ces sources existantes ; ne pas les appliquer à un modèle d’une autre échelle sans vérifier le résultat.
+Réglage FBX
+Valeur des scripts actuels
+Sélection
+Armature et mesh concernés uniquement
+Axes
+Forward −Z ; Up Y
+Échelle
+Global Scale 1 ; Apply Unit Scale ; FBX_SCALE_UNITS
+Leaf bones
+Désactivés
+Deform bones only
+Désactivé dans ces exports pour conserver les os attendus
+Armature node type
+NULL
+Modificateurs de mesh
+Non appliqués automatiquement dans ces exports avec shape keys
+Lissage / triangles
+FACE ; triangulation activée
+Animation pour un export de mesh
+Bake animation désactivé
+Médias
+Path Mode STRIP ; les matériaux Unreal restent à contrôler
+Réinitialiser les matrices de pose et les valeurs de morphs avant l’export du mesh. Ne pas confondre cela avec la suppression des actions du fichier de travail. Pour une animation seule, utiliser le pipeline de la séquence concernée et son échantillonnage ; ne pas exporter toutes les actions par inadvertance.
+Exemples vérifiés :
+export_cloth.py
+et
+fix_collar.py
+.
+Réimporter dans Unreal sans écraser les bons réglages
+Faire une copie de l’asset ou un point de restauration avant de remplacer la version utilisée.
+Ouvrir le Skeletal Mesh exact dans
+/Game/Avatar_GardeRobe_V2/Mesh
+et vérifier son fichier source.
+Réimporter vers cet asset avec son squelette partagé existant. Éviter de créer un second squelette par erreur.
+Conserver/importer les morph targets nécessaires et contrôler les messages d’import. Un import réussi ne garantit pas les courbes ou les matériaux.
+Comparer l’ordre et les affectations de matériaux, les normales, les UV, les LOD, les bounds, les sockets et le Physics Asset.
+Ouvrir les séquences et montages de référence. Vérifier les courbes de vêtements, l’attache d’arme et les positions de contact.
+Tester en PIE dans le studio, le solo puis sur les deux personnages réseau si la modification les concerne.
+Ne pas lancer un ancien importeur global pour une simple correction locale : les procédures du 4 octobre précèdent l’intégration PC, les nouveaux montages et plusieurs correctifs de tenue.
+Contrôle des points d’attache après réimport — 19 octobre 2026. Le profilage a trouvé 917 504 références de sockets sur le mesh de la tenue Originale, pour seulement 14 objets distincts : leur répétition ralentissait les armes et les projections jaunes attachées au personnage. Avant puis après chaque réimport du mesh, comparer le nombre, l’ordre et les propriétés des sockets. Supprimer uniquement les références répétées vers le même objet, en conservant la première occurrence. Les sockets distincts portant le même nom et les sockets du squelette partagé doivent rester intacts. L’importeur actuel install_cloth.py contrôle désormais cette égalité et retire ces seules répétitions avant la sauvegarde. Le helper audit_repair_sockets.py démarre en lecture seule ; toute réparation doit être précédée d’une sauvegarde de l’asset. Après un réimport manuel ou un autre importeur, effectuer le même contrôle avant de valider les armes, les impacts et les FPS.
+Créer une tenue supplémentaire
+Partir d’un corps et d’une armature compatibles ; séparer clairement les pièces visibles, préserver le corps nécessaire sous les ouvertures et éviter les couches qui se traversent. Préparer UV, textures et poids avant de créer les zones de couleur.
+Un identifiant stable de tenue doit correspondre à son mesh, ses matériaux et ses paramètres. Les identifiants actuels sont
+originale
+,
+tunique
+,
+veste
+et
+combinaison
+. Une tenue n’hérite pas automatiquement de zones de couleur inexistantes. Pour Tunique et Veste, torse et manches partagent OutfitMainColor ; les bordures utilisent TrimColor.
+La recette détaillée d’origine et son contrat de zones restent dans le catalogue. Pour l’état présent, vérifier les
+DA_Tenue_*
+, le composant d’apparence, le studio, la sauvegarde de palette et la réplication du choix de tenue. Ajouter un FBX au dossier ne suffit pas à l’ajouter au menu.
+Liste de vérification avant validation
+Vérification
+À observer
+Pose neutre, face/profil/dos
+Pas de vide au col, de bosse artificielle, de contour cassé ni de bras dans le corps.
+Idle, marche, course, accroupissement
+Genoux, entrejambe, coudes, taille et ourlets sans déchirure ni torsion excessive.
+Quatre coups et sorties
+Continuité du poignet et de la lame, pas de jambe qui saute une frame, correctifs de morphs présents.
+Arc, saut et esquive E
+L’arc ne traverse ni la tête ni le torse ; mains cohérentes avec la prise et la charge.
+Visage et cheveux
+Clignement, iris, peau, lèvres et vent conservés.
+Studio
+Zoom, rotation et éclairage permettent de distinguer un défaut de géométrie d’une ombre.
+Réseau
+Les autres joueurs voient la tenue, les couleurs et les mêmes animations, sans casser la sauvegarde.
+Avant/après
+Même pose, même caméra, même lumière et vitesse de lecture réelle.
+Tenir une fiche de modification avec source .blend, export FBX, asset Unreal, zone corrigée, clips contrôlés et limites restantes. Mettre à jour le tableau de sources de ce guide après chaque réimport qui change le fichier de référence.
+Dépannage rapide
+Symptôme
+Première piste
+Trou uniquement en mouvement
+Poids ou morph correctif absent, pas forcément topologie ouverte.
+Trou même au repos
+Géométrie, doublure, normales ou faces manquantes.
+Maillage qui explose
+Squelette, pose de référence, échelle ou correspondance des os.
+Correction visible seulement dans Blender
+Mauvais FBX source, import non effectué, morph ou courbe manquante.
+Couleur qui ne suit plus le menu
+Ordre des slots, mauvais matériau ou nom de paramètre.
+Ombre étrange sans trou réel
+Normales, AO, lumière, contacts et matériau avant de déplacer la géométrie.
+Animation différente en multi
+Montage ou état réseau distinct ; contrôler aussi AvatarNetworkAnimation et la logique de combat.
+Ancien fichier « actuel » contradictoire
+Consulter les sources de l’asset dans Unreal et le relevé daté, pas uniquement le nom du dossier.

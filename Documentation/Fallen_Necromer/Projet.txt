@@ -1,0 +1,127 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+La documentation reste en HTML et TXT. L’onglet Code de GitHub montre le fichier HTML comme du code source. GitHub Pages peut afficher ce HTML comme un site, sans le convertir ; aucune publication Pages n’est activée par ce lot. Référence officielle : https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+RÉFÉRENCE · 16 OCTOBRE 2026
+Ouvrir et transmettre le projet
+Installation, cartes, organisation, Git LFS et limites des copies locales.
+Guide de projet remis à jour
+Fallen Necromer
+Projet Unreal Engine
+5.8
+. Le fichier du projet conserve son nom actuel :
+Test3rPersonProject.uproject
+.
+La documentation de référence est centralisée dans
+Documentation/Fallen_Necromer/index.html
+.
+Elle comprend l’avatar, les corrections dans Blender, les loups, le solo, le
+multijoueur, les maps, les vidéos et un catalogue des anciens rapports.
+État de référence : 16 octobre 2026. Les noms internes « Necroma » sont conservés
+lorsqu’ils identifient le dépôt, un chemin ou une sauvegarde.
+Récupérer et ouvrir le projet
+Installer Git, Git LFS et Unreal Engine 5.8, puis :
+git lfs install
+git clone https://github.com/Safylos/FallenNecroma.git
+cd FallenNecroma
+git lfs pull
+Ouvrir
+Test3rPersonProject.uproject
+. Les shaders et caches se reconstruisent
+localement au premier lancement. L'accès au dépôt nécessite un compte autorisé
+s'il est privé. Ne pas utiliser le téléchargement ZIP à la place d'un clone LFS.
+Cartes
+Content/Level/L_Base_Nexus.umap
+: niveau principal du solo, base et vagues.
+Content/Multiplayer/Maps/L_Hub_Multijoueur.umap
+: salon et entraînement multijoueur.
+Content/Multiplayer/Maps/L_Quatre_Forts.umap
+: partie multijoueur à quatre forts.
+Content/Level/L_MondePrincipal.umap
+: première map, conservée comme référence.
+Content/Level/L_EntrainementLoups.umap
+: carte d'entraînement et de test des loups.
+Content/Level/L_Presentation_Necromancie.umap
+: comparaison des loups spectraux.
+Organisation
+Content
+: Blueprints, cartes, modèles, animations, textures et effets Unreal.
+Config
+: configuration partagée du projet.
+Art
+,
+SourceArt
+,
+SourceAssets
+: sources artistiques et fichiers d'import.
+Documentation/Fallen_Necromer
+: guides actuels, relevés et catalogue central.
+Docs
+, autres dossiers de
+Documentation
+: sources et rapports historiques.
+Exports
+: exports conservés du travail artistique.
+L'IA des loups se trouve dans
+Content/ElemntsForGame/Mobs/Loup/IA
+.
+Le guide loup actuel est
+Documentation/Fallen_Necromer/Loups.html
+.
+Le document
+Docs/Mana_et_loup_necromancien.md
+est conservé comme historique ;
+les règles actuelles de recrutement et les différences entre solo et réseau
+sont décrites dans les guides centraux.
+Versionnement
+Les fichiers Unreal et les sources binaires sont suivis par
+Git LFS
+via
+.gitattributes
+. Installer LFS avant tout ajout ou clone. Le premier envoi est
+volumineux ; vérifier le quota de stockage et de transfert LFS du compte GitHub.
+Saved
+,
+Intermediate
+,
+DerivedDataCache
+, les fichiers de session de l'éditeur
+et les sauvegardes automatiques Blender sont exclus. Ils restent sur la machine.
+Les scripts de travail actuellement conservés sous
+Saved/CodexTools
+sont donc
+locaux et ne font pas partie du dépôt partagé.
+Dépôt allégé
+Le
+.gitignore
+exclut aussi les anciennes sources du loup V2 et les éléments
+inutilisés de certains packs (cartes de démonstration, textures, modèles et
+archives). Les exclusions Unreal ont été contrôlées avec les références de
+packages, y compris les références souples : les dépendances des éléments
+conservés restent suivies, même si elles sont rangées dans
+Corbeille
+.
+La liste exacte est conservée dans
+Docs/Git_Exclusions.json
+. Les fichiers
+exclus restent sur le PC d'origine ; un clone Git ne les contient pas. Les
+sources et cartes réellement disponibles après un clone dépendent des règles
+actuelles et des fichiers effectivement suivis. L’ancien contrôle du dépôt
+allégé ne valide pas automatiquement les nouvelles maps multijoueur et leurs
+dépendances : refaire ce contrôle avant de transmettre un clone à un autre PC.
+Avant d'utiliser une ressource ignorée dans le jeu, retirer la règle concernée
+du
+.gitignore
+, puis ajouter cette ressource
+et ses dépendances
+à Git.
+Cette sélection ne garantit pas les futurs chargements construits à partir de
+chemins textuels : une nouvelle dépendance nécessite un nouveau contrôle.
+Pour travailler à plusieurs, éviter de modifier simultanément le même Blueprint
+ou la même carte : ces fichiers binaires ne se fusionnent pas comme du texte.

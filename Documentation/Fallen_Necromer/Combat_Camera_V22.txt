@@ -1,0 +1,21 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+22 octobre 2026 — Combat et caméra V22, solo
+
+Épée : le deuxième mouvement est resserré au niveau du bras droit. La main part moins derrière le buste et la sortie du coup est amortie. Le montage, les quatre contacts, la cadence, les jambes et la prise de l’épée sont conservés. Quatre essais réels de commandes réussis : un clic, deux clics, maintien et déplacement.
+
+Ours : la première montée debout atteint son maintien vers 0,55 s au lieu de 0,95 s. Les deux contacts à 1,18 et 1,68 s restent inchangés. L’ours conserve son suivi, ses pivots et ses coups bas. Trente-six contrôles réussis sur ours sauvage et allié, notamment contre un loup.
+
+Caméra : les créatures qui masquent le personnage deviennent progressivement transparentes pour la vue locale, pelage et ornements compris. Elles retrouvent leur apparence en quittant l’axe. Leurs collisions et leurs dégâts restent actifs ; les ombres portées sont préservées. Les protections des murs et escaliers sont conservées. Vingt contrôles réussis ; le cas du loup a été relevé sur une marche fictive car un loup au sol ne coupait pas naturellement le rayon de vue dans le cadrage choisi.
+
+Les essais utilisent une session solo temporaire avec des créatures positionnées et une IA gelée pour les comparaisons. Aucun benchmark global ni nouvel essai réseau. Aucun exécutable distribuable créé.
+
+Captures natives : Art/Combat_Camera_V22. Rapports et sauvegardes : Saved/CodexTools/CombatCameraV22. Retour récupérable avant modification des animations et des 64 matériaux parents. Le module V22a contient ces corrections ; elles sont incluses dans le module V23 ultérieur.

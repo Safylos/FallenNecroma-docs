@@ -1,0 +1,100 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
+
+Maintenir Pivoter entraîne progressivement la plateforme et le mob ensemble, autour du centre des appuis ; le décor et les lumières restent fixes. Maintenir Zoom + ou Zoom − zoome continuellement ; les boutons sont grisés aux limites. Le cadrage coordonne la crypte et le sujet, sans modifier la taille de l’allié dans le monde. La seule nouvelle chaussure plate est affichée devant Déplacement. Portraits, cadres dorés, badges KO rouges, dégâts compacts, fissures cyan et ambiance de crypte sont conservés.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+Documentation
+/
+Jouer
+/
+Commandes et repères
+CAMÉRA MISE À JOUR LE 21 OCTOBRE 2026
+Commandes et repères
+Les commandes documentées du solo, avec les différences réseau signalées.
+Résolution pendant la partie
+Échap → Résolution : cliquer pour alterner entre 1920 × 1080 et 2560 × 1440. Application immédiate et choix mémorisé. Le menu se réadapte à la taille de l’écran.
+Voir les captures et la vidéo
+.
+Réglages caméra et souris — mise à jour du 21 octobre 2026
+En solo comme en multijoueur : Échap → Caméra et souris. Les changements s’appliquent immédiatement et sont mémorisés sur ce PC pour les prochaines parties.
+- Sensibilité caméra : 10 à 300 %, valeur par défaut 100 %. Règle la vitesse de rotation hors visée.
+- Sensibilité en visée : 10 à 300 %, valeur par défaut 45 %. Se règle indépendamment de la sensibilité normale.
+- Inverser l’axe vertical : désactivé par défaut. Sans inversion, baisser la souris fait regarder vers le bas. Avec inversion, baisser la souris fait regarder vers le haut ; l’axe horizontal reste inchangé.
+- Rétablir les valeurs par défaut : remet 100 % / 45 % et désactive l’inversion, puis mémorise ces choix.
+Au contact d’un obstacle du décor, la caméra se rapproche pour éviter de traverser le mur ou le sol, puis revient progressivement à sa distance normale lorsque le passage se dégage. Les joueurs et les créatures ne repoussent plus la caméra. Les décalages de visée en hauteur sont conservés.
+Vérification : 18 contrôles réussis en solo et 18 côté invité multijoueur dans des sessions de test isolées : direction verticale, inversion, sensibilités indépendantes, sauvegarde, menu et collisions. Ces essais vérifient le fonctionnement ; ils ne mesurent pas les performances.
+Capture : Saved/CodexTools/MultiplayerFixV15/Camera_Menu_solo.png.
+Rapports : Saved/CodexTools/MultiplayerFixV15/camera_solo.json et camera_multi.json.
+1. Déplacement et menus
+Commande
+Action
+ZQSD
+Se déplacer
+Souris
+Orienter la caméra
+Maj
+Basculer la course
+Espace
+Sauter
+Ctrl gauche
+S’accroupir
+E
+Esquiver
+Échap
+Menu partagé et accès au studio
+Tab
+Accès au curseur, notamment dans le lobby
+La caméra solo peut maintenant regarder jusqu’à 85° vers le haut pour suivre ce qui passe au-dessus de l’avatar, même au sol. La limite vers le bas reste à 60°. Les collisions avec le sol et les murs restent actives ; les limites de visée du corps et la caméra du studio sont conservées.
+2. Combat et inventaire
+Contexte
+Commande
+Action
+Épée
+Clic gauche
+Un geste si clic court ; enchaînement de quatre gestes si maintien.
+Épée
+Clic droit
+Combo secondaire avec onde de choc.
+En l’air, épée
+Clic gauche
+Attaque plongeante, impact puis relèvement.
+Arc
+Clic droit
+Viser.
+Arc en visée
+Maintenir puis relâcher clic gauche
+Charger puis tirer.
+Inventaire
+Molette
+Changer d’emplacement.
+Objet
+A
+Préparer/lâcher/lancer ; la molette règle la distance pendant la préparation.
+3. Nécromancie, alliés et vagues
+Commande
+Solo
+Réseau
+R
+Tenter le recrutement du cadavre sélectionné : 25 mana, 50 %, une tentative, trois alliés maximum.
+Recrutement validé par le serveur ; réservé au tueur pendant 35 s.
+T : rappeler · Y : déployer
+Solo : rappeler / déployer ses alliés, trois maximum.
+Réseau : mêmes commandes pour ses propres alliés, trois maximum.
+F
+Voir les consignes propres au système utilisé.
+Donner une cible autorisée aux alliés.
+Verr. Maj, maintien 2 s
+Déclencher une vague.
+Pas de vagues solo en multijoueur.
+4. Repères de ressources
+Avatar : 300 PV, 100 mana, 200 endurance. Solo : mana +5/minute et +5 par élimination ; course −12,5 endurance/s et récupération 15/s. Les règles réseau ne sont pas encore toutes identiques. Voir
+Solo
+et
+Multijoueur
+pour les conditions détaillées.
+Projet local · Réglages caméra mis à jour le 21 octobre 2026 · Les autres repères et résultats historiques gardent leur date.

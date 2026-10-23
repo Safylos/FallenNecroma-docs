@@ -1,0 +1,35 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+4658 fichiers sont conservés dans Corbeille, soit 15.82 Gio. Ce dossier est exclu de Git. L’inventaire versionné contient les chemins d’origine, les tailles et les empreintes SHA-256. Les anciens chemins des sauvegardes sont redirigés vers les assets actuels. SideFX_Labs est conservé : les effets d’invocation en dépendent.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+RÉFÉRENCE · 16 OCTOBRE 2026
+Maps, remparts et environnement
+Repères actuels pour le niveau solo, les quatre forts, les matériaux et les accès.
+Maps utilisées
+L_Base_Nexus
+est la base solo actuelle.
+L_MondePrincipal
+conserve la première map. Le multijoueur entre dans
+L_Hub_Multijoueur
+, puis l’hôte emmène les joueurs dans
+L_Quatre_Forts
+. Ne pas modifier le mauvais niveau parce qu’un ancien document le qualifie de principal.
+Remparts et sources
+La révision de rempart utilisée comme base de travail est
+Remparts_Pierre.blend
+. Elle accompagne les corrections de sol plat, d’espacement des éléments, d’escaliers et de muret intérieur. Les aperçus V1/V2 et rapports sont conservés dans le catalogue.
+Avant une réimportation, relever les composants de l’acteur de rempart et ses matériaux. Conserver la logique de vie/destruction ; remplacer le mesh seul ne reconstruit pas les collisions ou les accès du NavMesh.
+Navigation et gameplay
+Vérifier hauteur des marches, pente et collision continue de l’escalier, raccord du palier et absence d’élément au milieu du chemin de ronde. Contrôler avec l’avatar puis les loups. Une rampe de collision invisible peut simplifier l’accès si elle reste cohérente avec la silhouette.
+Les vagues ciblent des surfaces réellement accessibles. Le guide solo décrit la vie des structures, leur affichage temporaire après dégâts et la distance de visée rapprochée. La sauvegarde multijoueur ne reconstruit que les structures identifiées dans son périmètre actuel.
+Herbe, eau et feuilles
+Les matériaux d’eau et les effets de vent/feuilles de la première map sont des ressources distinctes de la géométrie de fort. Les modifications de couleur de l’eau se font sur ses paramètres de matériau. Pour les démonstrations, conserver le temps réel afin de ne pas accélérer artificiellement l’herbe, l’eau ou les particules.
+Les tutoriels Rimaye fournis par Florian sont crédités dans
+Communication
+. Les anciennes captures ne prouvent pas que chaque réglage est identique sur les nouvelles maps.

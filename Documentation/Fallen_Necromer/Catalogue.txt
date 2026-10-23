@@ -1,0 +1,1613 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+RÉFÉRENCE · 16 OCTOBRE 2026
+Tous les documents
+Un seul point d’entrée pour les guides, procédures, rapports et aperçus.
+Catalogue consultable et filtrable
+318 documents et aperçus conservés. Les guides de référence synthétisent l’état actuel ; les rapports datés restent lisibles et reliés à leur remplacement. La recherche porte sur le titre, le thème et le chemin.
+Rechercher un document
+Aigle
+18/10/2026 · actuel
+Aigle V3 : piqué rapide et pauses au sol
+Comparaison et vidéo du comportement spontané.
+Aigle
+17/10/2026 · actuel
+Aigle : sol et piqué V2
+Animations, captures Unreal, contact et recul de l’avatar
+Documentation →
+Aigle
+17/10/2026 · actuel
+Aigle : avant/après et animations V1
+Guide actuel : Aigle.html ; source aérienne V1 conservée
+Aigle
+17/10/2026 · actuel
+Aigle des cimes : sol, vol et combat V3
+Guide actuel : Aigle.html ; source aérienne V1 conservée
+Loups
+24/09/2026 · archive
+Loup reconstruit dans Blender
+Art/Loup/Loup_Original_Blender/LIRE_MOI.md
+Référence actuelle →
+Loups
+23/09/2026 · archive
+Loup V2 â€” modÃ¨le retravaillÃ© dans Blender
+Art/Loup/LoupV2_Retravaille/LIRE_MOI.md
+Référence actuelle →
+Loups
+24/09/2026 · archive
+Loup V3 â€” revision du visage, 24 septembre 2026
+Art/Loup/LoupV3_Retouche/LIRE_MOI.md
+Référence actuelle →
+Loups
+24/09/2026 · archive
+Variante gris fonce
+Art/Loup/LoupV3_Retouche/Variante_Gris_Fonce/LIRE_MOI.md
+Référence actuelle →
+Loups
+23/09/2026 · archive
+Références de loup pour la première génération 3D
+Art/Loup/TencentReferences/LIRE_MOI.md
+Référence actuelle →
+Loups
+23/09/2026 · archive
+Loup A_Stylise — références multivues
+Art/Loup/TencentReferences/Multivues_A_Stylise/LIRE_MOI.md
+Référence actuelle →
+Loups
+23/09/2026 · archive
+Loup B_Realiste — références multivues
+Art/Loup/TencentReferences/Multivues_B_Realiste/LIRE_MOI.md
+Référence actuelle →
+Avatar / technique
+17/09/2026 · archive
+Animations de l’avatar — variantes et rangement
+Docs/Animations_avatar_variantes.md
+Référence actuelle →
+Avatar / technique
+19/09/2026 · archive
+Animations avec et sans épée
+Docs/Animations_avec_sans_epee.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+> Référence actuelle consolidée : [Guide complet des loups](Guide_complet_loups.md), vérifié le 27 septembre 2026. Ce document conserve aussi des informations historiques.
+Docs/Animations_loups_V3.md
+Référence actuelle →
+Avatar / technique
+11/10/2026 · archive
+Effet magique de l’arc
+Docs/Arc_effet_magique.md
+Référence actuelle →
+Avatar / technique
+11/10/2026 · archive
+Arc et affichage des dégâts
+Docs/Arc_et_degats.md
+Référence actuelle →
+Avatar / technique
+23/09/2026 · archive
+Tête pendant les attaques en déplacement
+Docs/Attaques_marche_tete.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Loup — retouche du saut de griffe et bilan des essais
+Docs/Bilan_loups_Griffe_Fluide.md
+Référence actuelle →
+Loups
+11/10/2026 · archive
+> Référence actuelle consolidée : [Guide complet des loups](Guide_complet_loups.md), vérifié le 27 septembre 2026. Ce document conserve aussi des informations historiques.
+Docs/Combat_joueur_loup.md
+Référence actuelle →
+Avatar / technique
+28/09/2026 · archive
+Combat à mains nues
+Docs/Combat_poings.md
+Référence actuelle →
+Avatar / technique
+22/09/2026 · archive
+Corrections du 22 septembre 2026
+Docs/Corrections_22_septembre_2026.md
+Référence actuelle →
+Avatar / technique
+22/09/2026 · archive
+Esquive avant — touche E
+Docs/Esquive_E.md
+Référence actuelle →
+Loups
+23/09/2026 · archive
+Fiche d’intégration — <Animal>
+Docs/Fiche_nouveau_mob_MODELE.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Guide complet des loups
+Docs/Guide_complet_loups.md
+Référence actuelle →
+Solo
+28/09/2026 · archive
+Sélection à la molette
+Docs/Inventaire_Molette.md
+Référence actuelle →
+Solo
+10/10/2026 · archive
+Items, ramassage et lancer
+Docs/Items_et_inventaire.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Niveau permanent de test des loups
+Docs/Laboratoire_loups.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+> Référence actuelle consolidée : [Guide complet des loups](Guide_complet_loups.md), vérifié le 27 septembre 2026. Ce document conserve aussi des informations historiques.
+Docs/Loup_Bond_Esquive.md
+Référence actuelle →
+Loups
+27/09/2026 · archive
+> Référence actuelle consolidée : [Guide complet des loups](Guide_complet_loups.md), vérifié le 27 septembre 2026. Ce document conserve aussi des informations historiques.
+Docs/Loup_refonte_modele.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Avatar, contacts avec les loups et réaction aux dégâts
+Docs/Loups/Avatar_contacts_camera_aggro.md
+Référence actuelle →
+Loups
+27/09/2026 · archive
+Loups : contact et placement avant l’attaque
+Docs/Loups/Contact_et_placement_sur_pente.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Déplacements naturels des loups
+Docs/Loups/Deplacements_naturels.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Fluidité du combat et franchissement des escaliers
+Docs/Loups/Fluidite_combat_et_escaliers.md
+Référence actuelle →
+Loups
+27/09/2026 · archive
+Inventaire des ressources du loup
+Docs/Loups/Inventaire_ressources.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Poursuite sur la grande rampe et croisements de la meute
+Docs/Loups/Poursuite_rampe_et_croisements.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Loups : appuis, anticipation et espace de combat
+Docs/Loups_Terrain_Anticipation.md
+Référence actuelle →
+Loups
+01/10/2026 · archive
+Mana et loup nécromancien
+Docs/Mana_et_loup_necromancien.md
+Référence actuelle →
+Loups
+27/09/2026 · archive
+> Référence actuelle consolidée : [Guide complet des loups](Guide_complet_loups.md), vérifié le 27 septembre 2026. Ce document conserve aussi des informations historiques.
+Docs/Mort_du_loup.md
+Référence actuelle →
+Environnement
+28/09/2026 · archive
+Niveaux du projet
+Docs/Niveaux.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+> Référence actuelle consolidée : [Guide complet des loups](Guide_complet_loups.md), vérifié le 27 septembre 2026. Ce document conserve aussi des informations historiques.
+Docs/Organisation_loup.md
+Référence actuelle →
+Loups
+23/09/2026 · archive
+Procédure commune — Ajouter un nouveau mob
+Docs/Procedure_ajout_mob.md
+Référence actuelle →
+Avatar / technique
+23/09/2026 · archive
+Saut en longueur et accroupissement : protection contre la pose figée
+Docs/Saut_accroupissement_pose_figee.md
+Référence actuelle →
+Avatar / technique
+23/09/2026 · archive
+Nœud Inertialization manquant lors des sauts rapprochés
+Docs/Saut_inertialisation.md
+Référence actuelle →
+Avatar / technique
+23/09/2026 · archive
+Sauts répétés : remise à zéro de l’animation
+Docs/Sauts_repetes_animation_figee.md
+Référence actuelle →
+Loups
+28/09/2026 · archive
+Loups : taille et rangement — 26 septembre 2026
+Docs/Taille_et_tri_loups.md
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+ACCROUPISSEMENT : CORRECTION DE LA DEFORMATION DU PANTALON
+Documentation/Avatar_GardeRobe_V2/Accroupi_Pantalon_V4.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+CORRECTION DU REGARD ET DU BAS DE TUNIQUE — 7 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Accroupi_Regard_Tunique_V3.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+ACCROUPI V9 — COPIE AMÉLIORÉE DE LA COMPARAISON 06
+Documentation/Avatar_GardeRobe_V2/Accroupi_V9_Depuis_Comparaison06.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+ACCROUPISSEMENT V2 — CTRL GAUCHE
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V2.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+MARCHE ACCROUPIE V3 — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V3.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+CORRECTION MARCHE ACCROUPIE V4 — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V4.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+MARCHE ACCROUPIE V5 — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V5.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+MARCHE ACCROUPIE V6 — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V6.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+MARCHE ACCROUPIE V7 — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V7.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+BRAS ACCROUPIS V8 — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Accroupissement_V8.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+ATTAQUE ROSE : GESTE IDENTIQUE AU COUP JAUNE
+Documentation/Avatar_GardeRobe_V2/Attaque_Rose_Geste_Jaune.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+ATTAQUE ROSE EN SENS OPPOSÉ ET ENCHAÎNEMENT MAINTENU
+Documentation/Avatar_GardeRobe_V2/Attaque_Rose_Miroir_Combo.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+CORRECTION DU 7 OCTOBRE 2026 — RYTHME ET EFFETS ROSES
+Documentation/Avatar_GardeRobe_V2/Attaque_Rose_Rythme_Effets.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+Audit visuel et PBR — 05/10/2026
+Documentation/Avatar_GardeRobe_V2/Audit_rendu_PBR.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+BAS DES VETEMENTS ACCROUPIS — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Bas_Vetements_Accroupis.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+VÊTEMENTS ACCROUPIS SANS ÉPÉE — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Bas_Vetements_Accroupis_V2.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+COMPARAISON DES ANIMATIONS ACCROUPIES — 7 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Comparaison_Accroupi_Packs_20261007.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+AISSELLES ET COULEUR TUNIQUE/MANCHES — 5 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Correction_aisselles_couleur_commune.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+BLOCAGE CAMÉRA / COMMANDES APRÈS TESTS
+Documentation/Avatar_GardeRobe_V2/Correction_Blocage_Editeur.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION BRAS, ÉPAULE, CONTACT AU SOL ET PRISE DE L’ÉPÉE
+Documentation/Avatar_GardeRobe_V2/Correction_bras_epaule_sol_prise_epee.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION COURSE / TUNIQUE / BRAS ARME — 5 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Correction_course_tunique_bras.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION DE LA DEFORMATION DES VETEMENTS — 5 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Correction_deformation_vetements.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION DE LA TENUE DE L'ÉPÉE — 05/10/2026
+Documentation/Avatar_GardeRobe_V2/Correction_epee.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION ÉTOILE, AISSELLES, CHUTE ET DOIGTS — 5 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Correction_etoile_chute_aisselles.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+FIN DE L’ATTAQUE CLIC DROIT
+Documentation/Avatar_GardeRobe_V2/Correction_Fin_Attaque.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION LOCOMOTION — 5 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Correction_marche.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION DES MATERIAUX PBR — 5 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Correction_PBR.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+CORRECTION DU RETOUR CAMERA APRES PERSONNALISATION
+Documentation/Avatar_GardeRobe_V2/Correction_Retour_Camera.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+CORRECTION COMPLEMENTAIRE DE LA TAILLE — 5 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Correction_taille_vetement.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+SAUTS, ATTAQUE CLIC DROIT ET MENU TAB
+Documentation/Avatar_GardeRobe_V2/Corrections_Sauts_Attaque_Tab.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+AVATAR MIXAMO V3 — VALIDE AVEC UN TELECHARGEMENT REEL
+Documentation/Avatar_GardeRobe_V2/Diagnostic_Mixamo_Import.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+CORRECTION DE LA FIN DE L'ATTAQUE ROSE — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Fin_Attaque_Rose.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+TRANSMISSION DU CONTEXTE — AVATAR FALLEN NECROMA
+Documentation/Avatar_GardeRobe_V2/Historique_autre_PC_20261005/01_SYNTHESE_DE_REPRISE.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+TRANSCRIPTION DES ÉCHANGES — AVATAR / FALLEN NECROMA
+Documentation/Avatar_GardeRobe_V2/Historique_autre_PC_20261005/02_TRANSCRIPTION_COMPLETE.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+MODE D'EMPLOI BLENDER SUR LE PC — AVATAR / FALLEN NECROMA
+Documentation/Avatar_GardeRobe_V2/Historique_autre_PC_20261005/03_MODE_EMPLOI_BLENDER_PC.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+Lis le fichier Avatar_Conversation_Complete_Pour_ChatGPT_2026-10-05.txt joint.
+Documentation/Avatar_GardeRobe_V2/Historique_autre_PC_20261005/04_PROMPT_REPRISE_PC.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+REPRISE DU CONTEXTE AUTRE PC — 05/10/2026
+Documentation/Avatar_GardeRobe_V2/Historique_autre_PC_20261005/ETAT_PC_ACTUEL.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+---
+Documentation/Avatar_GardeRobe_V2/Historique_autre_PC_20261005/Procedure_Reutilisable/avatar-tenues-unreal/SKILL.md
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+RANGEMENT DES RESSOURCES UTILISEES HORS CORBEILLE — 6 octobre 2026
+Documentation/Avatar_GardeRobe_V2/Rangement_Hors_Corbeille.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+INTEGRATION AVATAR GARDE-ROBE V2 — 5 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Rapport_integration.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+REGARD ACCROUPI — 7 OCTOBRE 2026
+Documentation/Avatar_GardeRobe_V2/Regard_Accroupi_V9.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+PRÉFÉRENCES DE FLORIAN — VIDÉOS DU JEU
+Documentation/Communication/Guide_Montage_TikTok.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+TikTok 01 — Exemple et kit de création
+Documentation/Communication/Kit_TikTok/Apercu.html
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Présentation technique créée le 14 octobre 2026 à partir du vrai modèle SK_Avatar_Legacy et de sa texture, exportés du projet Unreal. Le modèle est une ressource intégrée au protot
+Documentation/Communication/Kit_TikTok/Episode_01/Coulisses/Provenance.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — Avant d’invoquer des loups, il fallait déjà réussir à marcher. Voici les premiers pas du prototype : modèle 3D, squelette, animations dans UE5… et tests en jeu.
+Documentation/Communication/Kit_TikTok/Episode_01/Legende_TikTok.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+EXEMPLE TIKTOK 01 — LES PREMIERS PAS
+Documentation/Communication/Kit_TikTok/Episode_01/Lisez_moi.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — Avant les monstres, il fallait réussir à marcher
+Documentation/Communication/Kit_TikTok/Episode_01/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — LES PREMIERS PAS
+Documentation/Communication/Kit_TikTok/Episode_01/Voix_off_a_enregistrer.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — première map et articulations
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Apercu.html
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Vue explicative produite avec le modèle réel du premier avatar et son rig. Les rotations épaule, coude et poignet sont appliquées à ses véritables os : le mesh est déformé par les
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Coulisses/Provenance.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+TUTORIELS SUIVIS POUR LE DÉCOR
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Credits_et_sources.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — Un premier décor, un personnage et beaucoup de tests. Voilà comment mon prototype a commencé : terrain, végétation, eau stylisée, puis animations dans Blender et Unreal
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Legende_TikTok.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — VERSION 2
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Lisez_moi.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — PREMIÈRE MAP ET PREMIERS PAS
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — PREMIÈRE MAP ET PREMIERS PAS
+Documentation/Communication/Kit_TikTok/Episode_01_V2/Voix_off_a_enregistrer.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — vitesse réelle et avatar centré
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Apercu.html
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Démonstrations refaites à partir des animations conservées sous /Game/Corbeille/AncienAvatar/Animations : A_Walk_Recovered, Fast_Run__2__Recovered et Jumping_AnimShort. Vrai modèle
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Coulisses/Animations_Provenance.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Vue explicative produite avec le modèle réel du premier avatar et son rig. Les rotations épaule, coude et poignet sont appliquées à ses véritables os : le mesh est déformé par les
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Coulisses/Provenance.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+TUTORIELS SUIVIS POUR LE DÉCOR
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Credits_et_sources.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — Un premier décor, un personnage et beaucoup de tests. Voilà comment mon prototype a commencé : terrain, végétation, eau stylisée, puis animations dans Blender et Unreal
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Legende_TikTok.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+VERSION 3 — CADENCE ET CADRAGE
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Lisez_moi.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — VERSION 3
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — PREMIÈRE MAP ET PREMIERS PAS
+Documentation/Communication/Kit_TikTok/Episode_01_V3/Voix_off_a_enregistrer.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — eau et particules au premier plan
+Documentation/Communication/Kit_TikTok/Episode_01_V4/Apercu.html
+Référence actuelle →
+Communication
+14/10/2026 · archive
+TUTORIELS SUIVIS POUR LE DÉCOR
+Documentation/Communication/Kit_TikTok/Episode_01_V4/Credits_et_sources.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — Un premier décor, un personnage et beaucoup de tests. Voilà comment mon prototype a commencé : terrain, végétation, eau stylisée, puis animations dans Blender et Unreal
+Documentation/Communication/Kit_TikTok/Episode_01_V4/Legende_TikTok.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+VERSION 4 — EAU ET PARTICULES AU PREMIER PLAN
+Documentation/Communication/Kit_TikTok/Episode_01_V4/Lisez_moi.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — VERSION 4
+Documentation/Communication/Kit_TikTok/Episode_01_V4/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — V5, plus court et en mouvement
+Documentation/Communication/Kit_TikTok/Episode_01_V5/Apercu.html
+Référence actuelle →
+Communication
+14/10/2026 · archive
+TUTORIELS SUIVIS POUR LE DÉCOR
+Documentation/Communication/Kit_TikTok/Episode_01_V5/Credits_et_sources.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Épisode 1 — Un premier décor, un personnage et beaucoup de tests. Voilà comment mon prototype a commencé : terrain, végétation, eau stylisée, puis animations dans Blender et Unreal
+Documentation/Communication/Kit_TikTok/Episode_01_V5/Legende_TikTok.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Nouvelle base courte et dynamique : 32.17 secondes, contre 63.93 secondes en V4. Plans du corps de l’épisode de 1 à 4 secondes, cadrages en mouvement, transitions brèves, trois cou
+Documentation/Communication/Kit_TikTok/Episode_01_V5/Lisez_moi.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 1 — V5, MONTAGE PLUS COURT ET EN MOUVEMENT
+Documentation/Communication/Kit_TikTok/Episode_01_V5/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 2 — Le premier loup et la première épée
+Documentation/Communication/Kit_TikTok/Episode_02/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 3 — Les loups commencent à rendre les coups
+Documentation/Communication/Kit_TikTok/Episode_03/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 4 — Transformer un ennemi en allié
+Documentation/Communication/Kit_TikTok/Episode_04/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 5 — Un nouvel avatar pour le jeu
+Documentation/Communication/Kit_TikTok/Episode_05/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 6 — Un arc magique et un combat plus complet
+Documentation/Communication/Kit_TikTok/Episode_06/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+ÉPISODE 7 — La base subit son premier assaut
+Documentation/Communication/Kit_TikTok/Episode_07/Script_et_plans.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+NOTE DE MONTAGE — 14 OCTOBRE 2026
+Documentation/Communication/Kit_TikTok/Scripts_7_episodes.txt
+Référence actuelle →
+Communication
+14/10/2026 · archive
+Plan TikTok chronologique — Fallen Necroma
+Documentation/Communication/TikTok_Plan_Chronologique.html
+Référence actuelle →
+Communication
+14/10/2026 · archive
+PLAN TIKTOK CHRONOLOGIQUE DE FALLEN NECROMA
+Documentation/Communication/TikTok_Plan_Chronologique.txt
+Référence actuelle →
+Blender / garde-robe
+12/09/2026 · archive
+Procedure_Clignement_Yeux_Unreal
+Documentation/Procedure_Clignement_Yeux_Unreal.docx
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+AVATAR — LIVRAISON GARDE-ROBE V2 POUR UNREAL
+SourceArt/Avatar_GardeRobe_V2/01_COMMENCER_ICI.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+PROCÉDURE IA — EXPORTER LA GARDE-ROBE ET REMPLACER L'AVATAR DU JEU
+SourceArt/Avatar_GardeRobe_V2/02_PROCEDURE_IA.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+CONTRÔLES — CORRESPONDANCE BLENDER / UNREAL
+SourceArt/Avatar_GardeRobe_V2/03_CONTROLES.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+PROMPT À DONNER À L'IA D'INTÉGRATION UNREAL
+SourceArt/Avatar_GardeRobe_V2/04_PROMPT_POUR_IA.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+SOURCES ET REPÈRES — RÉVISION 2, 4 OCTOBRE 2026
+SourceArt/Avatar_GardeRobe_V2/05_SOURCES_TECHNIQUES.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+PROCÉDURE RÉUTILISABLE — PRÉPARER UNE NOUVELLE TENUE D'AVATAR
+SourceArt/Avatar_GardeRobe_V2/06_PROCEDURE_NOUVELLE_TENUE.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+REPRENDRE LE PROJET SUR UN AUTRE PC
+SourceArt/Avatar_GardeRobe_V2/07_REPRENDRE_SUR_AUTRE_PC.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+IMPORT UE — À EXÉCUTER SUR LE POSTE UNREAL
+SourceArt/Avatar_GardeRobe_V2/08_IMPORT_RAPIDE_UE.txt
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Anneaux de charge — avant / après
+SourceArt/Avatar_GardeRobe_V2/Arc_Anneaux_Nets_V3/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc — aura ajustée
+SourceArt/Avatar_GardeRobe_V2/Arc_Aura_Suivi_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc — cercle et aura rouge
+SourceArt/Avatar_GardeRobe_V2/Arc_Cercle_Aura_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc — charge directe
+SourceArt/Avatar_GardeRobe_V2/Arc_Charge_Directe_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+Create ONE game UI bow aiming reticle (crosshair), a production-ready isolated transparent PNG asset centered on a square canvas. Visual style: clean cartoon/anime fantasy RPG, sim
+SourceArt/Avatar_GardeRobe_V2/Arc_Crosshair_V1/Prompt.txt
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc et épée — poses corrigées
+SourceArt/Avatar_GardeRobe_V2/Arc_E_Appuis_Epee_V4/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Arc — jauge courbe
+SourceArt/Avatar_GardeRobe_V2/Arc_JaugeCourbe_V1/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Outil : image_gen intégré
+SourceArt/Avatar_GardeRobe_V2/Arc_JaugeCourbe_V1/Concepts/Jauge_Charge_Cartoon_Minimal_V3_Prompt.txt
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc magique — avant / après
+SourceArt/Avatar_GardeRobe_V2/Arc_Magique_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc magique — avant / après
+SourceArt/Avatar_GardeRobe_V2/Arc_Magique_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc — saut sans traversée du corps
+SourceArt/Avatar_GardeRobe_V2/Arc_Saut_Portage_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Arc noir — aperçu en jeu
+SourceArt/Avatar_GardeRobe_V2/Arc_V1/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Arc et affichage des dégâts
+SourceArt/Avatar_GardeRobe_V2/Arc_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc — course et nouvelles commandes
+SourceArt/Avatar_GardeRobe_V2/Arc_V2/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Arc — flèches et nouvelles commandes
+SourceArt/Avatar_GardeRobe_V2/Arc_V3/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Attaque aérienne — frappe plongeante
+SourceArt/Avatar_GardeRobe_V2/Attaque_Aerienne_Reference/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Attaque aérienne — transitions avant / après
+SourceArt/Avatar_GardeRobe_V2/Attaque_Aerienne_Transition_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Saut → frappe et combo clic droit — avant / après
+SourceArt/Avatar_GardeRobe_V2/Attaque_Aerienne_Transition_V3/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d’origine — nouvel avatar
+SourceArt/Avatar_GardeRobe_V2/Attaques_AncienAvatar_V7/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+ATTAQUES DE L'ANCIEN AVATAR — ESSAI V7
+SourceArt/Avatar_GardeRobe_V2/Attaques_AncienAvatar_V7/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+AVATAR DU JEU DANS BLENDER — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Blender_Jeu_Actuel/COMMENCER_ICI.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+SYNCHRONISATION BLENDER / VARIANTE DE FLAMMES — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Blender_Jeu_Actuel/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Avatar — combat actuel
+SourceArt/Avatar_GardeRobe_V2/Combat_Actuel_V6/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+AVATAR — COMBAT, RANGEMENT ET SYNCHRONISATION BLENDER
+SourceArt/Avatar_GardeRobe_V2/Combat_Actuel_V6/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Choisir le repos sans épée
+SourceArt/Avatar_GardeRobe_V2/Comparaison_Idle_SansEpee/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+COMPARAISON DES REPOS SANS ÉPÉE — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Comparaison_Idle_SansEpee/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+Panneau Avatar 1.1 — prévisualisation des animations — 05/10/2026
+SourceArt/Avatar_GardeRobe_V2/Controles/Panneau_Avatar/LIRE_MOI.txt
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+Avatar — raccord, vêtement et effets bleus
+SourceArt/Avatar_GardeRobe_V2/Corps_Raccord_V7/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+Avatar — posture accroupie, raccord, vêtements et teintes bleues
+SourceArt/Avatar_GardeRobe_V2/Corps_Raccord_V7/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+Avatar — comparaison V10
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V10/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+07/10/2026 · archive
+CORRECTIONS V10 — ACCROUPISSEMENT, COL ET TUNIQUE
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V10/RAPPORT_CORRECTIONS.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Tunique — correction des appuis
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V11/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+CORRECTION TUNIQUE V11 — 08/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V11/RAPPORT_CORRECTIONS.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Tunique V12 — tissu, reliure et pantalon
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V12/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+CORRECTIONS V12 — TUNIQUE ET PANTALON ACCROUPIS
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V12/Rapport_Corrections_V12.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Accroupi V13 — épaules et épée
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V13/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+CORRECTIONS ACCROUPI V13 — 08/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V13/Rapport_Corrections_V13.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Épaule et bras — V14
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V14/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+EPAULE / BRAS ACCROUPI — V14 — 8 OCTOBRE 2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V14/Rapport_Corrections_V14.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Épaule et bras — V15
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V15/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+EPAULE ACCROUPI AVEC EPEE — V15 — 08/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Accroupi_V15/Rapport_Corrections_V15.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Clic droit — premier coup
+SourceArt/Avatar_GardeRobe_V2/Corrections_ClicDroit_Appuis_V2/Comparaison.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Clic droit — stabilisation du premier coup — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_ClicDroit_Appuis_V2/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Combo épée — avant / après
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V1/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO D'EPEE EN HUIT — V1 — 8 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Combo épée — avant / après
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V2/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO ÉPÉE V2 — AMPLITUDE ET POIGNETS — 8 OCTOBRE 2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V2/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Combo en huit — V3
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V3/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO EN HUIT V3 — 8 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V3/Rapport_Combo8_V3.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Clic simple et combo arrondi — V4
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V4/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+CLIC GAUCHE SIMPLE ET COMBO ARRONDI — V4
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V4/Rapport_Combo8_V4.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Combo en huit — V5
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V5/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO EN HUIT — V5
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V5/Rapport_Combo8_V5.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Diagonales droites et retours arrondis — V6
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V6/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO EN HUIT — V6, DIAGONALES DROITES ET RETOURS ARRONDIS
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V6/Rapport_Combo8_V6.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Bras et poignets — V7
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V7/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO ÉPÉE — V7 : BRAS, ÉPAULES ET POIGNETS
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V7/Rapport_Combo8_V7.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Combo V8 — plus haut et plus ample
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V8/Comparaison_Combo8.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+COMBO EN HUIT — V8
+SourceArt/Avatar_GardeRobe_V2/Corrections_Combo8_V8/Rapport_Combo8_V8.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+C:\Users\Florian\Documents\Unreal Projects\Test3rPersonProject 5.8\Saved\Archives\Avant_Correction_Deformation_20261005_203055
+SourceArt/Avatar_GardeRobe_V2/Corrections_Deformation/Verification/backup_path.txt
+Référence actuelle →
+Blender / garde-robe
+05/10/2026 · archive
+C:\Users\Florian\Documents\Unreal Projects\Test3rPersonProject 5.8\Saved\Archives\Avant_Correction_Taille_20261005_210010
+SourceArt/Avatar_GardeRobe_V2/Corrections_Deformation/Verification/waist_backup_path.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Épée — enchaînement continu
+SourceArt/Avatar_GardeRobe_V2/Corrections_Enchainement_Epee_V9/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+V9 — FLUIDITE DES ATTAQUES ALTERNÉES
+SourceArt/Avatar_GardeRobe_V2/Corrections_Enchainement_Epee_V9/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+V6 — frappes plus amples
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Amplitude_V8/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+V8 — REPRISE DE LA V6 AVEC DAVANTAGE D'AMPLITUDE
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Amplitude_V8/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d'épée — avant / après
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+ATTAQUES CLIC GAUCHE — AVANT / APRES — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d'épée — bras et épaules affinés
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+ATTAQUES D'EPEE — BRAS ET EPAULES V2 — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V2/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d'épée — V3 en déplacement
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V3/Apercu_Deplacement.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d'épée — transition affinée
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V3/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+ATTAQUES D'EPEE — TRANSITION V3 — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V3/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d'épée — V4 en déplacement
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V4/Apercu_Deplacement.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Attaques d'épée — accompagnement du geste
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V4/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+ATTAQUES D'EPEE V4 — ACCOMPAGNEMENT DU GESTE
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V4/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Épée — inertie et retour en garde
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V5/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Épée — inertie et retour en garde
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V5/Comparaison_Combo.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+EPEE V5 — INERTIE ET RECUPERATION VERS L'IDLE
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V5/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Épée — correction du recul brusque
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V6/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Épée — correction du recul brusque
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V6/Comparaison_Combo.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+CORRECTION V6 — RECUL DU CORPS APRES LA FRAPPE
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Appuis_V6/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — vitesse et amplitude V10
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Portee_V10/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+V10 — vitesse de frappe et amplitude
+SourceArt/Avatar_GardeRobe_V2/Corrections_Epee_Portee_V10/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+Nouveaux sauts de l’avatar
+SourceArt/Avatar_GardeRobe_V2/Corrections_Sauts_V3/Apercu_Sauts.html
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+C:\Users\Florian\Documents\Unreal Projects\Test3rPersonProject 5.8\Saved\Backups\Avant_SautsV3_20261008_182623
+SourceArt/Avatar_GardeRobe_V2/Corrections_Sauts_V3/backup.txt
+Référence actuelle →
+Blender / garde-robe
+08/10/2026 · archive
+INTEGRATION DES SAUTS V3 — 8 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Corrections_Sauts_V3/Rapport_Integration.txt
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Éclairage — visibilité des effets rouges
+SourceArt/Avatar_GardeRobe_V2/Eclairage_Lisibilite_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Flammes noires · Avatar
+SourceArt/Avatar_GardeRobe_V2/Effet_FlammesNoires/Comparaison.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Effet FlammesNoires · 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Effet_FlammesNoires/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Flammes noires discrètes
+SourceArt/Avatar_GardeRobe_V2/Effet_FlammesNoires_Minimal/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+FLAMMES NOIRES MINIMALISTES — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Effet_FlammesNoires_Minimal/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Flammes rouge et noir
+SourceArt/Avatar_GardeRobe_V2/Effet_FlammesRougesNoires/Comparaison.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Variante FlammesRougesNoires — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Effet_FlammesRougesNoires/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — amplitude et élan
+SourceArt/Avatar_GardeRobe_V2/Epee_Amplitude_Dos_V3/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+ATTAQUES — AMPLITUDE, ELAN ET HAUT DU DOS — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Amplitude_Dos_V3/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — appui de la jambe droite
+SourceArt/Avatar_GardeRobe_V2/Epee_AppuiJambe_V10/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+APPUI DE LA JAMBE DROITE — V10 — 10 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Epee_AppuiJambe_V10/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — appuis et frappe basse
+SourceArt/Avatar_GardeRobe_V2/Epee_Appuis_Balayage_V7/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+CORRECTION APPUIS ET BALAYAGE BAS — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Appuis_Balayage_V7/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Attaques — appuis coordonnés au buste
+SourceArt/Avatar_GardeRobe_V2/Epee_Appuis_Coord_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+ATTAQUES CLIC GAUCHE — APPUI DU BAS DU CORPS COORDONNE AU BUSTE A L'ARRET — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Appuis_Coord_V2/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — appuis équilibrés
+SourceArt/Avatar_GardeRobe_V2/Epee_AppuisEquilibres_V11/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+APPUI GAUCHE — V11 — 10 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Epee_AppuisEquilibres_V11/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Épée — référence ArtStation
+SourceArt/Avatar_GardeRobe_V2/Epee_Artstation_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+11/10/2026 · archive
+Épée — référence ArtStation
+SourceArt/Avatar_GardeRobe_V2/Epee_Artstation_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — repos et balayage
+SourceArt/Avatar_GardeRobe_V2/Epee_Balayage_Fluide_V5/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+REPOS ARME ET ATTAQUES — BALAYAGE PLUS BAS ET PLUS LARGE — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Balayage_Fluide_V5/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — boucle plus continue
+SourceArt/Avatar_GardeRobe_V2/Epee_Boucle_Fluide_V6/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — durée du clic et sorties du combo
+SourceArt/Avatar_GardeRobe_V2/Epee_ClicDuree_V5/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — durée du clic gauche et sorties du combo
+SourceArt/Avatar_GardeRobe_V2/Epee_ClicDuree_V5/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+Épée — appuis et clics répétés
+SourceArt/Avatar_GardeRobe_V2/Epee_Clics_Marche_V4/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+Épée — essai des appuis stables et correction des clics répétés
+SourceArt/Avatar_GardeRobe_V2/Epee_Clics_Marche_V4/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — combo à quatre coups
+SourceArt/Avatar_GardeRobe_V2/Epee_ComboQuatreCoups_V1/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+12/10/2026 · archive
+Nouvelle attaque — One Hand Sword Combo
+SourceArt/Avatar_GardeRobe_V2/Epee_ComboUneMain_V1/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+12/10/2026 · archive
+Nouvelle attaque clic gauche : One Hand Sword Combo
+SourceArt/Avatar_GardeRobe_V2/Epee_ComboUneMain_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+12/10/2026 · archive
+Combo d’épée — vitesse et enchaînement V2
+SourceArt/Avatar_GardeRobe_V2/Epee_ComboUneMain_V2/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — combo à deux coups
+SourceArt/Avatar_GardeRobe_V2/Epee_DeuxCoups_V7/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+Épée — entrée et appuis
+SourceArt/Avatar_GardeRobe_V2/Epee_Entree_Idle_V6/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+14/10/2026 · archive
+ÉPÉE — ENTRÉE ET APPUIS
+SourceArt/Avatar_GardeRobe_V2/Epee_Entree_Idle_V6/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — épaules et enchaînement
+SourceArt/Avatar_GardeRobe_V2/Epee_Fluidite_V9/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+ÉPÉE — FLUIDITÉ V9 — 10 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Fluidite_V9/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — amplitude et élan
+SourceArt/Avatar_GardeRobe_V2/Epee_Preparation_Portee_V4/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+ATTAQUES — PREPARATION PLUS HAUTE ET COUP PROLONGE — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Preparation_Portee_V4/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — combo à deux coups
+SourceArt/Avatar_GardeRobe_V2/Epee_RaccordCompact_V8/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — nouvelle proposition V11
+SourceArt/Avatar_GardeRobe_V2/Epee_Reference_V11/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+NOUVELLE PROPOSITION ÉPÉE V11 — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Reference_V11/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Épée — revers d’origine
+SourceArt/Avatar_GardeRobe_V2/Epee_Revers_Origine_V2/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Attaques — rotation légère des appuis
+SourceArt/Avatar_GardeRobe_V2/Epee_Rotation_Appuis_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+ATTAQUES CLIC GAUCHE — ROTATION LEGERE DES APPUIS A L'ARRET — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Rotation_Appuis_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Sorties d’attaque, arc et alliés
+SourceArt/Avatar_GardeRobe_V2/Epee_Sorties_Marche_V3/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+13/10/2026 · archive
+Réglages appliqués — 13 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Sorties_Marche_V3/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — traînée jaune raccourcie
+SourceArt/Avatar_GardeRobe_V2/Epee_TraineeJaune_V8/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Traînée jaune raccourcie — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_TraineeJaune_V8/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+12/10/2026 · archive
+Épée — recul du bras et retour en garde
+SourceArt/Avatar_GardeRobe_V2/Epee_Transition_Amplitude_V4/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — passage progressif à la marche
+SourceArt/Avatar_GardeRobe_V2/Epee_Transition_Marche_V13/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+TRANSITION REPOS / MARCHE AVEC ÉPÉE — V13 — 10 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Epee_Transition_Marche_V13/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épée — passage progressif à la marche
+SourceArt/Avatar_GardeRobe_V2/Epee_Transition_Marche_V14/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Transition épée idle / marche V14
+SourceArt/Avatar_GardeRobe_V2/Epee_Transition_Marche_V14/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+V2 — attaques et marche
+SourceArt/Avatar_GardeRobe_V2/Epee_V2_Marche/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+ATTAQUES V2 + LOCOMOTION — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Epee_V2_Marche/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Repos 2 et attaques plus sobres
+SourceArt/Avatar_GardeRobe_V2/Idle2_Epee_Calme/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+REPOS N° 2 ET ATTAQUES CLIC GAUCHE PLUS SOBRES — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Idle2_Epee_Calme/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Repos sans épée — avant / après
+SourceArt/Avatar_GardeRobe_V2/Idle_Detendu_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+IDLE SANS EPEE — POSTURE DETENDUE — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Idle_Detendu_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Épaules — avant / après
+SourceArt/Avatar_GardeRobe_V2/Idle_Epaules_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+IDLE : RELIEF DES EPAULES DE LA TUNIQUE — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Idle_Epaules_V2/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Repos avec épée — bras dégagés
+SourceArt/Avatar_GardeRobe_V2/Idle_Epee_Degage_V12/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+REPOS AVEC ÉPÉE — BRAS DÉGAGÉS — V12 — 10 octobre 2026
+SourceArt/Avatar_GardeRobe_V2/Idle_Epee_Degage_V12/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+Posture — avant / après
+SourceArt/Avatar_GardeRobe_V2/Idle_Posture_V3/Comparaison_Avant_Apres.html
+Référence actuelle →
+Blender / garde-robe
+10/10/2026 · archive
+POSTURE DE REPOS SANS EPEE — 10/10/2026
+SourceArt/Avatar_GardeRobe_V2/Idle_Posture_V3/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+AVATAR MIXAMO V3 — VALIDE AVEC UN TELECHARGEMENT REEL
+SourceArt/Avatar_GardeRobe_V2/Mixamo_Compatibilite_V3/LIRE_MOI_V3.txt
+Référence actuelle →
+Blender / garde-robe
+06/10/2026 · archive
+La validation complete Mixamo -> Unreal est terminee. Le fichier TEST est identique a Avatar_Mixamo_UE_V3.fbx. Voir LIRE_MOI_V3.txt et Verification_V3.json.
+SourceArt/Avatar_GardeRobe_V2/Mixamo_Compatibilite_V3/LIRE_MOI_V3_TEST.txt
+Référence actuelle →
+Blender / garde-robe
+04/10/2026 · archive
+---
+SourceArt/Avatar_GardeRobe_V2/Procedure_Reutilisable/avatar-tenues-unreal/SKILL.md
+Référence actuelle →
+Blender / garde-robe
+15/10/2026 · archive
+Atelier d’avatar — Studio galactique
+SourceArt/Avatar_GardeRobe_V2/Studio_Galactique_V1/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+15/10/2026 · archive
+ATELIER D’AVATAR — STUDIO GALACTIQUE
+SourceArt/Avatar_GardeRobe_V2/Studio_Galactique_V1/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+15/10/2026 · archive
+Atelier d’avatar — netteté et caméra
+SourceArt/Avatar_GardeRobe_V2/Studio_Galactique_V2/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+15/10/2026 · archive
+ATELIER D’AVATAR — NETTETÉ, ÉCLAIRAGE ET CAMÉRA
+SourceArt/Avatar_GardeRobe_V2/Studio_Galactique_V2/Rapport.txt
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Visée des coups de poing
+SourceArt/Avatar_GardeRobe_V2/Visee_Poings_V2/Apercu.html
+Référence actuelle →
+Blender / garde-robe
+09/10/2026 · archive
+Visée des poings — 09/10/2026
+SourceArt/Avatar_GardeRobe_V2/Visee_Poings_V2/Rapport.txt
+Référence actuelle →
+Avatar / technique
+01/10/2026 · archive
+Avatar mature - correction de la tete et lissage des cheveux
+SourceArt/AvatarMature/CorrectionV2/LireMoi.txt
+Référence actuelle →
+Avatar / technique
+01/10/2026 · archive
+Avatar mature — nettoyage du 1 octobre 2026
+SourceArt/AvatarMature/CorrectionVisage/Notes_Correction.txt
+Référence actuelle →
+Avatar / technique
+02/10/2026 · archive
+Généré avec l'outil intégré image_gen.
+SourceArt/AvatarMature/ReferencesTeteV2/Consignes_Autres_Vues.txt
+Référence actuelle →
+Avatar / technique
+01/10/2026 · archive
+Image générée avec l'outil intégré image_gen.
+SourceArt/AvatarMature/ReferencesTeteV2/Generation_et_reperes.txt
+Référence actuelle →
+Avatar / technique
+02/10/2026 · archive
+Génération : outil intégré image_gen. Six vues issues des références V2, face V3 utilisée comme référence de couleur pour les autres vues.
+SourceArt/AvatarMature/ReferencesTeteV3/Generation_et_prompts.txt
+Référence actuelle →
+Environnement
+11/10/2026 · archive
+Map : /Game/Level/L_Base_Nexus
+SourceArt/Base_Nexus_Environnement_V1/Rapport.txt
+Référence actuelle →
+Environnement
+12/10/2026 · archive
+Map principale : /Game/Level/L_Base_Nexus
+SourceArt/Base_Nexus_Principal_V2/Rapport.txt
+Référence actuelle →
+Environnement
+12/10/2026 · archive
+Arc : verification des commandes terminee.
+SourceArt/Base_Nexus_Principal_V2/Verification_Arc.txt
+Référence actuelle →
+Solo
+14/10/2026 · archive
+Vagues et défense du Nexus
+SourceArt/Gameplay_Vagues_V1/Apercu.html
+Référence actuelle →
+Solo
+14/10/2026 · archive
+Vagues — Verr. Maj et nouveau viseur
+SourceArt/Gameplay_Vagues_V2/Apercu.html
+Référence actuelle →
+Multijoueur
+16/10/2026 · archive
+Combat multijoueur — deux vues
+SourceArt/Multijoueur_Combat_V7/Apercu.html
+Référence actuelle →
+Multijoueur
+15/10/2026 · archive
+Fallen Necroma — Lobby V2
+SourceArt/Multijoueur_Lobby_V2/Apercu.html
+Référence actuelle →
+Multijoueur
+15/10/2026 · archive
+Lobby — commandes, inventaire et arc
+SourceArt/Multijoueur_Lobby_V3/Apercu.html
+Référence actuelle →
+Multijoueur
+16/10/2026 · archive
+Fallen Necromer — Menus et lobby
+SourceArt/Multijoueur_Lobby_V4/Apercu.html
+Référence actuelle →
+Multijoueur
+16/10/2026 · archive
+FALLEN NECROMER — MENUS ET LOBBY V4
+SourceArt/Multijoueur_Lobby_V4/Rapport.txt
+Référence actuelle →
+Multijoueur
+16/10/2026 · archive
+Fallen Necromer — multijoueur
+SourceArt/Multijoueur_Pseudo_V5/Apercu.html
+Référence actuelle →
+Multijoueur
+16/10/2026 · archive
+Multijoueur — sauvegarde et fluidité
+SourceArt/Multijoueur_Sauvegarde_V6/Apercu.html
+Référence actuelle →
+Multijoueur
+15/10/2026 · archive
+Fallen Necroma · Multijoueur
+SourceArt/Multijoueur_V1/Apercu.html
+Référence actuelle →
+Avatar / technique
+14/10/2026 · archive
+Performances — avant / après
+SourceArt/Optimisation_Performances_V1/Comparatif.html
+Référence actuelle →
+Loups
+14/10/2026 · archive
+Recrutement des loups — vérification du 14 octobre 2026
+SourceArt/Recrutement_Loups_V2/Rapport.txt
+Référence actuelle →
+Loups
+15/10/2026 · archive
+Réanimation des loups — correction de la sélection
+SourceArt/Recrutement_Loups_V3/Rapport.txt
+Référence actuelle →
+Environnement
+15/10/2026 · archive
+Remparts en pierre — avant / après
+SourceArt/Remparts_Pierre_V1/Comparaison_Avant_Apres.html
+Référence actuelle →
+Environnement
+15/10/2026 · archive
+REMPARTS EN PIERRE — 15 OCTOBRE 2026
+SourceArt/Remparts_Pierre_V1/Rapport.txt
+Référence actuelle →
+Environnement
+15/10/2026 · archive
+Escaliers et muret intérieur — avant / après
+SourceArt/Remparts_Pierre_V2/Comparaison_Avant_Apres.html
+Référence actuelle →
+Environnement
+15/10/2026 · archive
+ESCALIERS ET MURET INTÉRIEUR — 15 OCTOBRE 2026
+SourceArt/Remparts_Pierre_V2/Rapport.txt
+Référence actuelle →

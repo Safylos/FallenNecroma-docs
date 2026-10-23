@@ -1,0 +1,48 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+4658 fichiers sont conservés dans Corbeille, soit 15.82 Gio. Ce dossier est exclu de Git. L’inventaire versionné contient les chemins d’origine, les tailles et les empreintes SHA-256. Les anciens chemins des sauvegardes sont redirigés vers les assets actuels. SideFX_Labs est conservé : les effets d’invocation en dépendent.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+ÉTAT DU 18 OCTOBRE 2026
+Modifier le projet sans perdre les corrections
+Les sources actives, les précautions de réimport et la manière de vérifier une modification.
+Sources du lot solo/multijoueur et aigle V8
+Les scripts locaux de ce lot sont aussi conservés dans
+cette archive de sources
+, avec leurs
+conditions de réutilisation
+. Les assets actifs restent dans Content et le code réseau dans Plugins/AvatarRuntime/Source. Cette archive ne contient aucun exécutable du jeu.
+1. Identifier la bonne source
+Dans Unreal, relever l’asset réellement utilisé par le Blueprint, son squelette, ses matériaux et le fichier d’import. Le fichier
+Blender_Jeu_Actuel/Avatar_Jeu_Actuel.blend
+du 9 octobre précède des correctifs : ne pas le réexporter globalement comme source à jour.
+Les quatre tenues partagent un squelette mais possèdent leurs propres retouches. Pour leurs sources et contrôles de déformation, consulter
+le guide Blender
+.
+2. Modifier et vérifier
+Garder une copie récupérable des assets concernés et relever les réglages avant modification.
+Modifier la source exacte en conservant axes, échelle, squelette, morphs et emplacements de matériaux.
+Réimporter seulement les ressources concernées et compiler leurs Blueprints.
+Essayer dans le mode concerné : un correctif du Blueprint solo n’est pas automatiquement repris par l’IA native réseau.
+Vérifier les transitions, dégâts uniques, collisions et retour à un état normal après interruption.
+Mettre à jour le guide courant et conserver les rapports précédents avec leur date.
+3. Outils et sauvegardes locales
+Dernière intervention :
+Saved/CodexTools/CreatureCombatV1
+. Sources de la charge :
+Art/Ours/Ours_Charge_V1/Ours_Charge.blend
+. Avant modification : copies dans
+Saved/CodexTools/CreatureCombatV1/Backup
+. Rapports :
+Art/CreatureCombatV1
+.
+Le dossier
+Saved
+est local et exclu de Git. Pour transmettre le travail, vérifier que les sources et les outils indispensables ont été conservés séparément. Ne pas supprimer un asset de « Corbeille » sans examiner ses références.
+4. Distinguer les sauvegardes
+Les sauvegardes de travail des fichiers, le profil d’apparence et la sauvegarde d’une partie multijoueur ont des fonctions différentes. Une sauvegarde multijoueur locale de l’hôte n’est ni une sauvegarde solo complète, ni une synchronisation Steam Cloud.

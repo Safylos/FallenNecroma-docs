@@ -1,0 +1,7 @@
+FALLEN NECROMER — DOCUMENTATION
+Ouvrir index.html.
+Menu gauche : Projet, Jouer, Personnage, Bestiaire, Monde, Suivi, Références.
+État actuel : Etat_Projet.html. Commandes : Commandes.html.
+Derniers résultats : Tests_Actuels.html. Sources et reprise : Maintenance.html.
+Chaque guide possède un sommaire hiérarchisé et une version texte.
+Les archives conservent leur contenu daté. Les médias restent liés au projet.

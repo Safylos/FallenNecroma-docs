@@ -1,0 +1,119 @@
+Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+
+Content/Avatar : personnage, personnalisation, armes et entrées ; Content/Mobs : modèles, animations, IA, alliés et réseau ; Content/UX : interface et HUD ; Content/Maps/Base : niveau solo et éléments de la base ; Content/Maps/Multijoueur : salon et quatre forts ; Content/Environnement : ressources de décor ; Content/Systemes : systèmes partagés. Le plugin natif reste dans Plugins/AvatarRuntime. Les sources artistiques restent dans Art, SourceArt et SourceAssets.
+
+Les références détaillées de cette rubrique sont conservées ci-dessous. Consulter la synthèse V27 pour les changements de comportement et leur validation.
+
+Guide courant : Projet_V27.html
+
+--- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
+
+RÉFÉRENCE · 16 OCTOBRE 2026
+Vérifications, mesures et vidéos
+Tests locaux reproductibles, résultats Steam observés et limites restant à vérifier à deux PC.
+Résultat et périmètre
+Campagne exécutée le 16 octobre 2026 dans un projet de test isolé, avec le code et les ressources actuels. Aucun exécutable distribuable n’a été créé. Les sauvegardes de test sont distinctes du jeu principal.
+147/147 assertions réussies dans cette campagne.
+Les tests listés ci-dessous sont réellement exécutés ; les limites Steam à deux comptes et les conditions de mesure restent explicites.
+Domaine
+Assertions réussies
+État / erreur
+four_player
+36/36
+Réussi
+parity
+31/31
+Réussi
+bow
+26/26
+Réussi
+arrow_idle
+6/6
+Réussi
+contact
+7/7
+Réussi
+save
+9/9
+Réussi
+restore
+21/21
+Réussi
+reconnect
+11/11
+Réussi
+Contrôles natifs complémentaires
+Test
+Résultat
+Avatar.Network.InviteCompatibility
+Réussi
+Avatar.Network.Nicknames
+Réussi
+Avatar.Network.RoomCodes
+Réussi
+Avatar.Network.SaveIntegrity
+Réussi
+Ces quatre tests contrôlent les codes de salon, les pseudos, la compatibilité des invitations et l’intégrité des sauvegardes. Ils s’ajoutent aux assertions de scénarios ci-dessus.
+Deux vues du même type de combat
+Combats dirigés dans deux sessions de test locales à deux participants. Aucune injection de dégâts pour ces prises : le serveur valide les attaques. On observe les combos, les traînées bleues, le coup spécial, l’onde de choc, la frappe aérienne et la mort. La seconde prise utilise la caméra de jeu à la troisième personne.
+Vue d’ensemble
+Vue depuis l’avatar
+Les images ont été calculées lentement pour les enregistrer proprement, puis assemblées selon les horodatages du jeu à 30 images/s. Le rythme de lecture correspond au temps du jeu ; il ne prouve pas 30 FPS en exécution réelle. Les captures sont muettes. Les relevés de HP et de commandes sont joints, ainsi que les fichiers de provenance.
+Ouvrir les vidéos seules
+Steam, compte, amis et salon
+Contrôle
+Résultat observé
+API Steam et compte connecté
+True / True
+Amis renvoyés par Steam
+6 ; tous hors ligne au relevé.
+Salon hôte ouvert
+True
+Option d’invitation disponible
+True
+Métadonnées du salon compatibles
+True
+Recherche Steam par code terminée
+True
+Transport du salon
+SteamSocketsNetDriver
+Les six amis hors ligne sont une explication plausible de la liste vide observée ; cela ne prouve pas le filtrage exact de l’overlay dans toutes les situations. Aucun message ni invitation n’a été envoyé à un contact pendant ce contrôle.
+Il manque encore un essai avec deux comptes Steam sur deux PC : apparition du salon chez l’invité, réception et acceptation de l’invitation, traversée du réseau domestique, arrivée dans le hub et voyage jusqu’aux forts. Steam exclut les salons déjà rejoints par le compte local de ses propres résultats : le succès de la requête seul ne démontre pas la découverte par un ami.
+Sauvegarde, reprise et reconnexion
+Le test de sauvegarde crée un point de reprise, modifie ensuite des valeurs sans les enregistrer et interrompt brutalement le processus de test. Un nouveau processus reprend les données sauvegardées. Les vérifications portent sur HP, mana, endurance, inventaire, emplacement d’inventaire, position, fort attribué, allié, vie des structures et structure détruite.
+Le test de reconnexion fait repartir un invité puis le fait revenir avec la même identité de test et un pseudo différent. L’allié doit attendre son propriétaire, puis lui être rattaché ; le retour ne doit pas créer un troisième enregistrement de joueur.
+Ces essais utilisent des identités réservées aux tests PIE. Le branchement de production utilise l’identité Steam ; aucun rattachement ne dépend de l’adresse IP. La récupération exacte d’un compte Steam après crash sur un deuxième PC reste à confirmer en conditions Internet.
+Animations, dégâts, recrutement et sommeil
+Les quatre joueurs rejoignent simultanément et obtiennent des forts distincts. Le test vérifie les montages et les effets sur chaque pair, les dégâts, l’ordre donné à un allié et son animation vue par tous. Deux attaquants peuvent viser le même loup ; un seul tueur est attribué, les autres ne peuvent pas voler le recrutement et plusieurs requêtes ne débitent pas plusieurs fois la mana.
+La campagne à quatre participants simule 60 ms de délai par trajet et 3 % de pertes. Les tests d’arc couvrent la visée, la charge, les projectiles, les dégâts, le changement d’arme, les menus et le respawn. Le test de parité compare locomotion, saut en course, vitesse, quatre coups, palette et sorties vers la marche.
+Un test dédié sépare effet visible et contact : obstacle devant la cible, cible hors portée, puis cible proche et dégagée. Il vérifie que les effets peuvent apparaître sans appliquer de dégâts invalides, puis que les dégâts valides parviennent au client victime.
+Le contrôle de sommeil des loups vérifie qu’ils se réveillent à l’approche d’un joueur et que la pertinence réseau dépend de chaque connexion. Il n’est pas nécessaire de simuler leur déplacement sur les clients pour réduire le trafic.
+Dépannages effectués et limites restantes
+Le lanceur de contrôle Steam était antérieur au pseudo obligatoire : il ouvrait directement le hub sans fournir ce champ, ce qui faisait échouer le démarrage du test. Il transmet désormais un pseudo valide comme le fait le menu. Le contrôle Steam a ensuite réussi. Il s’agit d’une correction du banc de test, pas d’un changement des règles de connexion.
+Le système de capture a également été adapté pour lire la bonne vue de jeu : les premiers essais prenaient parfois la vue de l’éditeur. Ces essais ont été écartés des vidéos finales. Le code de capture est limité au projet de test et n’est pas ajouté au gameplay.
+Les réglages obsolètes de documentation ont été corrigés : map principale, population placée, vitesses du loup, distinction solo/vague/réseau et sources Blender par tenue. Aucun défaut de gameplay supplémentaire n’a été corrigé silencieusement à partir d’une supposition.
+À terminer avec un autre PC : invitation Steam réelle, connexion simultanée depuis deux comptes, reprise après crash de l’hôte avec ces comptes, puis mesure du ping et des corrections de mouvement sur le vrai trajet Internet. Aucun de ces résultats n’est déduit des vidéos.
+Mesures de fluidité reportées
+Les mesures de performances sont reportées à la demande de Florian. Aucun résultat FPS n’est retenu pour cette campagne. Rocket League a été relancé le 16 octobre à 22 h 39, pendant les vérifications ; les captures vidéo étaient déjà terminées.
+Le scénario de mesure est prêt pour une prochaine séance : deux joueurs locaux, repos puis combat, avec et sans latence simulée, deux répétitions. Une première passe a aussi montré qu’il fallait recharger les HP uniquement dans le banc de mesure pour éviter que les respawns ne changent la scène. Ce correctif est prêt. Les tests fonctionnels réussis restent valides ; aucun gain de FPS n’est déduit de ces tests ou des vidéos.
+Rapports consultables
+arrow_idle_validation.json
+bow_validation.json
+capture_large.json
+capture_pov.json
+contact_validation.json
+four_player_validation.json
+hardware.json
+parity_validation.json
+performance_measurements.json
+reconnect_validation.json
+restore_validation.json
+save_validation.json
+steam_friends_diagnostic.json
+steam_smoke.json
+tests_natifs.json
+Guide loup remis à jour
+·
+Procédure Blender
+·
+Catalogue de tous les documents
