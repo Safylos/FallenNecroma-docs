@@ -40,3 +40,26 @@ details#historique-aigle{margin-top:28px;border:1px solid #34495e}
  .sidebar .nav-group a{padding:10px 12px}.page-toc{columns:1}main{padding-top:20px}
 }
 @media print{.sidebar,.breadcrumbs,.skip-link,.menu-toggle{display:none!important}.layout{display:block;margin:0;padding:0}main{padding:0}.top{display:none}.table{overflow:visible}.cards{display:block}.card{display:block;margin:8px 0;background:white;color:#111}.card h3{color:#111}}
+
+/* Unified guide hierarchy, October 2026. Navigation is static HTML on every page. */
+.nav-caption{margin:0 12px 18px;color:#76dbcf;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:750}
+.nav-group{margin:0 0 22px}
+.nav-group h2{font-size:11px;line-height:1.5;letter-spacing:1px;font-weight:750;text-transform:uppercase;color:#90adaf;padding:0 12px;margin:0 0 7px}
+.guide-heading{padding:8px 0 20px}.guide-heading h1{margin:12px 0}
+.guide-outline{margin:0 0 24px;padding:12px 16px;background:#101e2d;border:1px solid #293e50}
+.guide-outline summary{font-size:13px;font-weight:650}
+.guide-outline nav{display:grid;gap:8px;padding-top:14px;font-size:14px}
+.directory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.directory-group{background:#132435;border:1px solid #30485b;border-radius:10px;padding:18px 20px}
+.directory-group h3{font-size:16px;margin:0 0 12px;color:#e4f4ff}
+.directory-group ul{list-style:none;padding:0;margin:0}.directory-group li{margin:0}
+.directory-group a{display:block;font-size:14px;padding:5px 0}
+.breadcrumbs{overflow-wrap:anywhere}
+@media(max-width:900px){
+ .top{display:grid;grid-template-columns:auto 1fr;gap:8px 12px}
+ .site-title{font-size:10px;line-height:1.5}.top span{grid-column:1/-1;justify-content:flex-end;font-size:11px}
+ .nav-ready .nav-open .sidebar{position:fixed;top:var(--header-height);left:0;bottom:0;width:min(340px,92vw);height:calc(100dvh - var(--header-height));max-height:none;margin:0;z-index:10;box-shadow:16px 0 40px #0009;border-right:1px solid #304358}
+ .nav-open{overflow:hidden}.directory-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.guide-outline{display:none}.directory-group{break-inside:avoid;background:white}.directory-group h3{color:#172b3c}}
