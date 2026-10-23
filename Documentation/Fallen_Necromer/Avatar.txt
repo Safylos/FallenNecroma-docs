@@ -1,8 +1,12 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+État courant · V27
 
-L’avatar dispose de 2 000 points d’endurance et récupère 45 points par seconde dans les états qui autorisent déjà la récupération. Les coûts d’action restent inchangés. Après trois secondes sans subir de dégâts, il récupère un point de vie par seconde, sans dépasser ses PV maximum. De nouveaux dégâts réinitialisent ce délai ; la pause solo ne le fait pas avancer.
+Ce dossier sépare le modèle et les tenues, la personnalisation, les armes et attaques, les animations de déplacement et les retouches dans Blender.
 
-Guide courant : Projet_V27.html
+Dans V27, l’avatar dispose de 2 000 points d’endurance et récupère 45 points par seconde dans les états autorisés. Après trois secondes sans dégâts, il récupère un point de vie par seconde, sans dépasser ses PV maximum.
+
+Les commandes, les corrections de combat et de caméra et la comparaison solo / multijoueur complètent ces rubriques.
+
+Dossier et sous-pages : Avatar.html
 
 --- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
 

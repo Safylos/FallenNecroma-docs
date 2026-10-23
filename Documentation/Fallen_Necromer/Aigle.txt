@@ -1,10 +1,12 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+État courant · V27
 
-L’ours conserve sa posture debout à proximité de la cible, avec marche et rotation entre ses attaques. L’aigle se repose trois secondes et utilise les raccords de pose entre sol et vol, y compris après recrutement. Son réglage de base est désormais de 150 PV et 20 dégâts de piqué dans les deux modes. La surface sombre du portail possède son effet de fissuration et une courte fin de disparition. Les noms, portraits et styles d’interface approuvés sont partagés.
+Ce dossier rassemble la silhouette et le plumage de l’aigle, sa version ombrale, le piqué, le largage d’œuf, les transitions sol / vol et la poursuite aérienne.
 
-En multijoueur, le serveur valide les transferts et suppressions de la collection personnelle. Les autres joueurs ne peuvent pas déplacer vos ombres. Les alliés en réserve ne restent pas simulés sur le terrain. Le menu ne met pas la partie réseau en pause. Les identifiants, niveaux, XP et KO sont conservés dans la sauvegarde et lors de la reconnexion. Les animations de l’ours et de l’aigle et les matériaux ombraux utilisent les mêmes assets que le solo.
+Le réglage de base V27 est de 150 PV et 20 dégâts de piqué dans les deux modes. Le repos au sol dure trois secondes ; l’atterrissage, le décollage et la reprise après réanimation utilisent des raccords de pose.
 
-Guide courant : Projet_V27.html
+L’aigle recruté suit les règles communes d’équipe et de réserve de Gestion des ombres. La portée des validations est indiquée dans le bilan V27.
+
+Dossier et sous-pages : Aigle.html
 
 --- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
 

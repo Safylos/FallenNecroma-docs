@@ -1,10 +1,12 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+État courant · V27
 
-Le menu I est commun au solo et au multijoueur : trois places d’équipe, vingt places en réserve, portraits approuvés, niveaux, XP, PV et KO. Glisser-déposer pour déplacer ou échanger ; clic droit pour rejoindre la première case libre de l’autre espace. Équipe pleine, une nouvelle recrue rejoint la réserve. Une collection pleine refuse le recrutement sans dépenser de mana. La suppression simple ou multiple demande confirmation.
+Ce dossier rassemble les variantes du loup et sa version ombrale : modèle et visage, griffes et morsure, locomotion, perception, poursuite et comportement de meute.
 
-En multijoueur, le serveur valide les transferts et suppressions de la collection personnelle. Les autres joueurs ne peuvent pas déplacer vos ombres. Les alliés en réserve ne restent pas simulés sur le terrain. Le menu ne met pas la partie réseau en pause. Les identifiants, niveaux, XP et KO sont conservés dans la sauvegarde et lors de la reconnexion. Les animations de l’ours et de l’aigle et les matériaux ombraux utilisent les mêmes assets que le solo.
+Les versions blanche, gris foncé et noire partagent le modèle et le squelette. Le loup ombral rejoint la collection de son propriétaire ; niveau, expérience, PV et KO sont conservés dans la gestion des ombres.
 
-Guide courant : Projet_V27.html
+Les règles d’équipe et de réserve sont communes dans V27. Voir Gestion des ombres et Multijoueur pour la sauvegarde et la reconnexion.
+
+Dossier et sous-pages : Loups.html
 
 --- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
 

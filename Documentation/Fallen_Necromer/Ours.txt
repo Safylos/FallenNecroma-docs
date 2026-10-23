@@ -1,10 +1,12 @@
-Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
+État courant · V27
 
-L’ours conserve sa posture debout à proximité de la cible, avec marche et rotation entre ses attaques. L’aigle se repose trois secondes et utilise les raccords de pose entre sol et vol, y compris après recrutement. Son réglage de base est désormais de 150 PV et 20 dégâts de piqué dans les deux modes. La surface sombre du portail possède son effet de fissuration et une courte fin de disparition. Les noms, portraits et styles d’interface approuvés sont partagés.
+Ce dossier rassemble le modèle grizzly et sa version ombrale, les griffes croisées et la charge, les raccords d’animation et les décisions de l’IA.
 
-Maintenir Pivoter entraîne progressivement la plateforme et le mob ensemble, autour du centre des appuis ; le décor et les lumières restent fixes. Maintenir Zoom + ou Zoom − zoome continuellement ; les boutons sont grisés aux limites. Le cadrage coordonne la crypte et le sujet, sans modifier la taille de l’allié dans le monde. La seule nouvelle chaussure plate est affichée devant Déplacement. Portraits, cadres dorés, badges KO rouges, dégâts compacts, fissures cyan et ambiance de crypte sont conservés.
+L’ours conserve sa posture debout lorsque la cible reste proche : garde, marche et rotation entre les combos. Les animations et les matériaux ombraux sont partagés entre le solo et le multijoueur dans V27.
 
-Guide courant : Projet_V27.html
+Le recrutement, l’équipe de trois alliés et la réserve de vingt places sont décrits dans Gestion des ombres. Les limites des essais réseau restent précisées dans le bilan V27.
+
+Dossier et sous-pages : Ours.html
 
 --- GUIDE DÉTAILLÉ ET HISTORIQUE ANTÉRIEUR À V27 ---
 
