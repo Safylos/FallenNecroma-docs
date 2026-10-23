@@ -1,0 +1,18 @@
+Loup · Modèle et apparence
+
+Variantes de pelage
+Les loups blanc, gris foncé et noir partagent le même modèle et le même squelette. Leur couleur vient des matériaux ; elle ne suffit pas à définir une difficulté différente. Les matériaux de bouche, les iris, les morphs et l’ordre des emplacements de matériaux doivent être conservés lors d’un réimport.
+
+Visage et loup ombral
+Le clignement, la couleur des iris d’alerte et la fermeture des yeux à la mort sont des comportements distincts. La version ombrale associe un corps sombre, du pelage et des effets cyan. Son portrait est une illustration de tête approuvée, séparée du modèle utilisé en jeu.
+
+Retouches
+Vérifier les variantes concrètes, pas seulement le Blueprint parent : certains réglages faciaux sont activés dans les variantes. Contrôler les yeux, le raccord du pelage et les effets en mouvement après une modification.
+
+RÉFÉRENCES ET DÉTAILS
+Variantes, visage et matériaux — Loups.html#s3
+Pelage de l’ombre : référence datée — Loups.html#pelage-necromancie-v5
+Retouche du loup dans Blender — Loups.html#s13
+Méthode des portraits — Portraits_Ombraux.html
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

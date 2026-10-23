@@ -1,0 +1,17 @@
+Avatar · Modèle et tenues
+
+Squelette commun
+Les quatre tenues sont des modèles squelettiques complets partageant le même squelette d’avatar. Changer de tenue remplace le modèle en conservant le système d’animation ; ce n’est pas un assemblage libre de toutes les pièces.
+
+Tenues et couleurs
+Les tenues documentées sont Originale, Combinaison grise, Tunique simple et Veste. Chaque tenue conserve sa propre palette. Cheveux, iris et peau se règlent indépendamment des couleurs des vêtements.
+
+Retouche du modèle
+Une retouche doit préserver le squelette, les poids, les matériaux, les morphs et les raccords entre zones du vêtement. Le guide Blender détaille les précautions d’export et de réimport. Les anciens chemins techniques doivent être rapprochés du rangement actuel dans Content/Avatar.
+
+RÉFÉRENCES ET DÉTAILS
+Modèles et palettes par tenue — Avatar.html#s2
+Procédure complète de retouche — Blender_Avatar.html
+Organisation actuelle des assets — Projet_V27.html#guide-section-4
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

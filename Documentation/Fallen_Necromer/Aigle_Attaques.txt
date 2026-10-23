@@ -1,0 +1,17 @@
+Aigle · Attaques
+
+Piqué
+L’aigle prépare un passage, plonge vers la cible puis sort progressivement du piqué. La trajectoire doit rester compatible avec les obstacles et le dégagement. Le réglage de base V27 est de 150 PV et 20 dégâts de piqué dans les deux modes.
+
+Œuf explosif
+Le comportement de combat décrit dans le guide technique alterne piqué et largage d’un œuf. Après le lâcher, la trajectoire balistique peut être esquivée. L’impact produit une explosion jaune, des gouttes et des projections temporaires ; le décor solide intervient dans la protection contre les dégâts.
+
+Cadence et repos
+Le délai entre deux attaques n’est pas seulement un minuteur : il inclut le repositionnement et le passage. Le repos au sol de trois secondes appartient au cycle de vol ; il ne faut pas le confondre avec le temps de récupération d’une attaque.
+
+RÉFÉRENCES ET DÉTAILS
+Valeurs et portée V27 — Projet_V27.html#guide-section-3
+Piqué, œuf et contrôles datés du combat — Aigle.html#combat-v9
+Explosion et coquille — Aigle.html#oeuf-coquille-v3
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

@@ -63,3 +63,25 @@ details#historique-aigle{margin-top:28px;border:1px solid #34495e}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.guide-outline{display:none}.directory-group{break-inside:avoid;background:white}.directory-group h3{color:#172b3c}}
+
+/* Subject dossiers and directly accessible subpages. */
+.nav-branch{margin:0;padding:0;background:transparent;border-radius:0}
+.nav-branch>summary{display:flex;align-items:center;gap:3px;padding:0;list-style:none;letter-spacing:normal;text-transform:none;font-size:13px}
+.nav-branch>summary::-webkit-details-marker{display:none}
+.nav-branch>summary::before{content:'›';flex:0 0 14px;text-align:center;font-size:20px;color:#8faabc;transition:transform .15s}
+.nav-branch[open]>summary::before{transform:rotate(90deg)}
+.nav-branch>summary>a{flex:1;padding-left:8px}
+.nav-group .nav-children{margin:4px 0 8px 17px;padding-left:7px;border-left:1px solid #345064}
+.nav-children a{font-size:12px;padding:7px 9px;color:#9fb8cb}
+.nav-branch:has([aria-current=page])>summary>a{color:#a8ece2;font-weight:650}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.topic-card{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border:1px solid #345064;border-radius:10px;background:#132435;color:#dceef6;font-weight:600}
+.topic-card:hover{border-color:#7fe0d7;background:#1a3444;text-decoration:none}
+.topic-card span:last-child{color:#7fe0d7}
+.topic-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.topic-tabs a{font-size:12px;padding:7px 11px;border-radius:7px;border:1px solid #30485b;color:#afc5d5}
+.topic-tabs a[aria-current=page]{background:#20453f;color:#c9fff3;border-color:#639e94}
+.directory-group .directory-children{padding-left:14px;margin:2px 0 14px;border-left:1px solid #345064}
+.directory-children a{font-size:12px;color:#a9c3d3;padding:3px 0}
+@media(max-width:600px){.topic-grid{grid-template-columns:1fr}.topic-card{padding:15px 17px}.topic-tabs{gap:6px}}
+@media(prefers-reduced-motion:reduce){.nav-branch>summary::before{transition:none}}

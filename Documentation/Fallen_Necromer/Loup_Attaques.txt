@@ -1,0 +1,17 @@
+Loup · Attaques
+
+Griffes et morsure
+Le répertoire comprend une griffe droite, une griffe gauche, une morsure et des esquives. Le relevé du Blueprint parent décrit 10 dégâts par griffe et 25 pour la morsure ; ces valeurs de référence sont à distinguer des statistiques de l’allié affichées dans sa fiche et de leur évolution avec le niveau.
+
+Contact réel
+La fenêtre de frappe, la portée, l’écart de hauteur, la visibilité et l’état vivant de la cible interviennent dans l’impact. Les effets visuels et les dégâts sont séparés : un obstacle peut bloquer les dégâts alors que la traînée de griffe reste visible.
+
+Attaque en groupe
+L’IA gère l’approche, les changements d’angle, le retrait et l’attente entre loups. Les tours d’attaque de la meute appartiennent à la décision de combat ; la cadence des animations est décrite dans la rubrique Animations.
+
+RÉFÉRENCES ET DÉTAILS
+Dégâts, intervalles et contrôles de contact — Loups.html#s6
+Organisation des attaques de meute — Loups.html#s5
+Différences et portage solo / réseau — Parite_Solo_Multijoueur.html
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

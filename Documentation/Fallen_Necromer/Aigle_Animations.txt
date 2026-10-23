@@ -1,0 +1,17 @@
+Aigle · Animations
+
+Vol et piqué
+La posture de vol oriente la tête vers l’avant, allonge le corps et replie les pattes. Les battements, la préparation du piqué et la sortie doivent se raccorder sans changement brutal de silhouette.
+
+Atterrissage et décollage
+Le repli des ailes accompagne la descente puis le contact au sol. La pose finale d’atterrissage est conservée pendant le passage au repos. Au décollage, les ailes s’ouvrent alors que les pattes sont encore posées ; la montée accélère ensuite progressivement vers le vol.
+
+Après réanimation
+La pose au sol est préparée pendant la phase cachée du rituel. L’aigle visible passe ensuite par son décollage, au lieu d’apparaître directement en pose de vol. Le repos au sol est de trois secondes.
+
+RÉFÉRENCES ET DÉTAILS
+Raccords sol / vol et réanimation V20 — Aigle.html#transitions-combat-v20
+Vol continu et sortie de piqué — Aigle.html#vol-fluide-v8
+Animation de mort : référence datée — Aigle.html#mort-v10
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

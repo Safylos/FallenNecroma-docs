@@ -1,0 +1,18 @@
+Loup · Animations
+
+Repos et locomotion
+Le Blend Space relie repos, marche, marche rapide, transition, petit galop et course. Vitesse de déplacement et vitesse de lecture de l’animation sont deux paramètres différents : corriger le patinage demande de comparer la foulée à la distance réellement parcourue.
+
+Orientation et terrain
+Les changements de direction doivent suivre le mouvement sans faire marcher le loup à reculons. Les appuis sur les pentes et escaliers se contrôlent séparément. Une animation d’attaque corps entier peut temporairement prendre la priorité sur les corrections de terrain.
+
+Mort et réanimation
+La mort interrompt le combat et joue la chute. Le recrutement et le retour de l’allié doivent reprendre les matériaux ombraux et les bonnes poses sans réafficher brièvement l’apparence sauvage. Les étapes de recrutement sont documentées avec la gestion des alliés.
+
+RÉFÉRENCES ET DÉTAILS
+Blend Space et cadences — Loups.html#s4
+Changements de direction — Loups.html#direction-v2
+Pentes, escaliers et appuis — Loups.html#s7
+Mort et recrutement — Loups.html#s8
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

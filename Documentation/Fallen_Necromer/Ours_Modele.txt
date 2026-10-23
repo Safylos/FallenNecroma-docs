@@ -1,0 +1,17 @@
+Ours · Modèle et apparence
+
+Corps et pelage
+L’ours conserve son corps grizzly, son squelette à 24 os et un pelage qui suit les mêmes déformations. La passe V6 affine le duvet autour des yeux et corrige les poids du ventre : il suit le torse, plutôt que les avant-bras lorsque l’ours se redresse. Les paupières, la truffe et les griffes restent dégagées.
+
+Version ombrale
+L’Ours ombral reprend la silhouette et les animations de l’ours : corps bleu nuit, contour cyan, yeux lumineux, côtes et ornements spectraux. Le portrait illustré et le modèle 3D sont deux ressources distinctes ; la méthode des portraits est commune aux trois créatures.
+
+Retouches et niveaux de détail
+Le pelage possède trois niveaux de détail. Après une retouche des poids du corps, vérifier aussi le pelage, les ornements et le clignement. Les anciens chemins d’assets des comptes rendus précèdent le rangement V27 : se référer au dossier Content/Mobs et à l’organisation actuelle avant toute réimportation.
+
+RÉFÉRENCES ET DÉTAILS
+Modèle et pelage V6 : détails de fabrication — Ours.html#modele-pelage-v6
+Fabrication de l’ours ombral — Ours.html#ours-necromancie
+Portraits et direction artistique — Portraits_Ombraux.html
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

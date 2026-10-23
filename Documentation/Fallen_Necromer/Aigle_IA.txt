@@ -1,0 +1,18 @@
+Aigle · IA et alliés
+
+Acquisition et mémoire de cible
+L’aigle utilise la visibilité pour acquérir et poursuivre une cible. Après perte de vue, le comportement décrit conserve une mémoire de la dernière position vue ; il ne doit pas mettre à jour la position du joueur à travers un mur.
+
+Trajectoires et obstacles
+Le comportement prépare des passages pour le piqué et le survol. Un trajet obstrué peut être refusé et provoquer un dégagement ou un autre choix d’attaque. La navigation aérienne et les raccords de pose sont deux parties distinctes du système.
+
+Aigle allié et repos
+L’aigle ombral recruté rejoint l’équipe ou la réserve de son propriétaire. Son cycle comprend un repos au sol de trois secondes et les raccords de décollage, y compris après réanimation. Les règles de collection et de validation serveur sont communes aux autres ombres dans V27.
+
+RÉFÉRENCES ET DÉTAILS
+Perception, mémoire et poursuite : réglages datés — Aigle.html#combat-v9
+Obstacles et dégagement — Aigle.html#securite-v7
+Cycle de repos et reprise du vol — Aigle.html#transitions-combat-v20
+Aigle dans la collection — Gestion_Ombres.html
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

@@ -1,11 +1,10 @@
 FALLEN NECROMER — DOCUMENTATION
-Ouvrir index.html.
-Menu gauche commun aux 25 guides : Vue d’ensemble ; Jouer et gérer ses ombres ;
-Avatar et créatures ; Monde et développement ; Médias et archives.
-Chaque guide est directement accessible dans ce menu, sans passer par une sous-page.
-L’accueil présente aussi l’annuaire complet des guides. Sur téléphone, utiliser Guides.
-Le sommaire « Dans cette page » est séparé du menu ; les anciens essais restent datés.
-État actuel : Etat_Projet.html. Commandes : Commandes.html.
-Derniers résultats : Tests_Actuels.html. Sources et reprise : Maintenance.html.
-Chaque guide possède un sommaire hiérarchisé et une version texte.
-Les archives conservent leur contenu daté. Les médias restent liés au projet.
+Ouvrir index.html, ou https://safylos.github.io/FallenNecroma-docs/.
+41 pages HTML/TXT, organisées par dossiers et sous-pages.
+Vue d’ensemble ; Jouer et gérer ses ombres ; Avatar ; Bestiaire ; Monde et développement ; Médias et archives.
+Loup, Ours, Aigle : chaque dossier contient Modèle et apparence, Attaques, Animations, IA et alliés.
+Avatar : Modèle et tenues, Personnalisation, Attaques et armes, Animations et déplacement, Retouches dans Blender.
+La flèche déplie les sous-pages ; cliquer sur le nom ouvre la vue d’ensemble du dossier.
+La branche de la page ouverte reste dépliée. Le fil d’Ariane et les liens de rubriques permettent de revenir au parent ou de passer à une autre partie.
+Sur petit écran, ouvrir Guides. Le menu complet est conservé dans toutes les pages.
+Les comptes rendus historiques conservent leur contenu et leurs liens ; ils restent datés et ne remplacent pas l’état courant V27.

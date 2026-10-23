@@ -1,0 +1,17 @@
+Avatar · Personnalisation
+
+Ouvrir le studio
+Le menu Échap donne accès à la personnalisation de l’avatar. Le studio reçoit l’apparence du personnage dans une scène de présentation séparée ; il ne remplace pas le personnage qui se déplace et combat dans le monde.
+
+Tenue, couleurs et aperçu
+Le studio permet de choisir la tenue, de sélectionner une zone de couleur et de regarder l’apparence au repos, en marche ou en course. La rotation reste sur l’axe vertical et le zoom est borné pour éviter de traverser le personnage.
+
+Enregistrer l’apparence
+Les palettes restent attachées à chaque tenue. L’enregistrement écrit le profil ; le retour au jeu applique le résultat au personnage. Les réglages de lumière et de cadrage du studio ne modifient pas toute la carte de jeu.
+
+RÉFÉRENCES ET DÉTAILS
+Studio : commandes et présentation — Avatar.html#s4
+Profil d’apparence et petits mouvements — Avatar.html#s5
+Créer une tenue supplémentaire — Blender_Avatar.html#s9
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

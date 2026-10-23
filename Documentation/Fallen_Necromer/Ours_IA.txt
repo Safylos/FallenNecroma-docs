@@ -1,0 +1,18 @@
+Ours · IA et alliés
+
+Perception et poursuite
+L’ours patrouille autour de son point de départ, acquiert une cible visible, passe par l’alerte puis poursuit. Les contrôles de visibilité et la limite de poursuite évitent une chasse illimitée ou une acquisition à travers le décor. Les tables historiques détaillent les états et réglages de cette logique.
+
+Combat rapproché
+La décision d’attaquer est séparée de l’animation : cible valable, devant l’ours, visible et à portée. Après les griffes, la proximité de la cible permet de garder la posture debout. L’éloignement, la perte de vue ou une cible invalide entraînent le retour aux quatre appuis.
+
+Ours allié
+L’Ours ombral appartient au joueur qui le recrute. Sa place, son niveau, son expérience et ses PV font partie de la collection. Dans V27, une équipe pleine envoie la recrue en réserve ; les alliés en réserve ne restent pas simulés sur le terrain. En réseau, le serveur valide les opérations sur la collection du propriétaire.
+
+RÉFÉRENCES ET DÉTAILS
+États et réglages : référence historique — Ours_Animation_IA.html#ia
+Conditions de maintien debout — Ours_Animation_IA.html#debout-v20
+Collection, équipe et réserve — Gestion_Ombres.html
+Portage multijoueur V27 — Projet_V27.html#guide-section-3
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.

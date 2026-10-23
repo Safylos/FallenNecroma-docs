@@ -1,0 +1,18 @@
+Loup · IA et alliés
+
+De la perception à la meute
+Le loup acquiert une cible, s’alerte et poursuit. Son comportement combine approche, attaque, retrait, changement d’angle et attente en groupe. La gestion des contournements, de la proximité et des couloirs appartient à l’IA, pas au simple choix d’un clip de course.
+
+Propriétaire et reconnexion
+L’allié ne doit pas blesser son propriétaire. Si celui-ci se déconnecte, l’allié attend au lieu de passer au premier joueur disponible. L’identité persistante du compte permet de retrouver son propriétaire ; changer de pseudo ne change pas cette identité.
+
+Équipe et réserve
+La collection V27 comporte trois places d’équipe et vingt places de réserve. Les transferts et suppressions sont validés par le serveur en multijoueur. Niveau, expérience, PV et KO sont conservés ; les ombres en réserve ne restent pas actives sur le terrain.
+
+RÉFÉRENCES ET DÉTAILS
+Perception, poursuite et meute — Loups.html#s5
+Alliés et identité persistante — Loups.html#s9
+Réseau et coût de simulation — Loups.html#s11
+Gestion de la collection — Gestion_Ombres.html
+
+Organisation documentaire du 23 octobre 2026. Les comptes rendus conservent leur date ; l’état V27 prévaut. Aucune nouvelle validation du jeu dans ce lot.
