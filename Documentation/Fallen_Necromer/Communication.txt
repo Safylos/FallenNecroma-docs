@@ -1,3 +1,119 @@
+LE JOURNAL TIKTOK DE FALLEN NECROMER
+
+Planning du 6 novembre 2026. Les neuf épisodes suivent les dates du développement. Ils sont prévus au rythme d’un par semaine.
+
+Le premier montage vertical dure 32 secondes. Il suit les premiers pas du personnage et se termine par le teaser du loup. Les coupes et les sons seront ajustés après l’enregistrement de la voix.
+
+Le montage se prépare avec ffmpeg-skill v3.2.0 pour recadrer les prises au format vertical et ajuster les coupes à la voix. L’eau, le vent et les feuilles gardent leur vitesse réelle.
+
+
+
+SEMAINE 1 — Les débuts : ma première map et mon premier personnage
+
+Débuts connus, jusqu’au 11 septembre 2026
+
+« Avant de créer des monstres, il fallait déjà créer un monde et y faire marcher mon personnage. »
+
+0–2 s : vrai premier avatar dans Blender ; 2–11 s : map, feuilles, écume et trois couleurs de l’eau ; 11–25 s : modèle, épaule/coude/poignet, graphe Unreal et premiers mouvements ; 25–32 s : teaser du premier loup déjà conservé.
+
+Pour finir, « Prochain épisode : mon premier loup. »
+
+
+
+SEMAINE 2 — Mon premier loup et ma première épée
+
+12–18 septembre 2026
+
+« J’ai ajouté un loup. Maintenant, il faut réussir à faire courir ses quatre pattes. »
+
+0–3 s : loup en course ; 3–10 s : modèle puis squelette dans Blender ; 10–22 s : marche/course/poursuite ; 22–29 s : première épée et un geste lisible ; 29–33 s : face-à-face.
+
+Pour finir, « La prochaine fois, il ne va plus seulement me suivre. »
+
+
+
+SEMAINE 3 — Le loup rend les coups
+
+19–25 septembre 2026
+
+« Mon loup savait me suivre. Maintenant, il sait aussi me faire perdre de la vie. »
+
+0–3 s : attaque avec conséquence sur la vie ; 3–9 s : griffe/morsure et travail de mâchoire ; 9–18 s : ancien/nouveau loup ; 18–27 s : court échange et esquive du joueur ; 27–33 s : trois robes.
+
+Pour finir, « Blanc, gris ou noir : lequel vous préférez ? »
+
+
+
+SEMAINE 4 — Transformer un ennemi en allié
+
+26 septembre–2 octobre 2026
+
+« Ce loup vient d’essayer de me tuer. Maintenant, il se bat pour moi. »
+
+0–3 s : ennemi puis allié ; 3–12 s : cadavre, panneau, tentative et invocation ; 12–24 s : compagnon qui suit et combat ; 24–29 s : rappel et équipe ; 29–34 s : première base et Nexus.
+
+Pour finir, « Quelle créature aimeriez-vous recruter après le loup ? »
+
+
+
+SEMAINE 5 — Un nouvel avatar pour le jeu
+
+3–9 octobre 2026
+
+« J’ai changé mon personnage. Et il a fallu reprendre ses animations. »
+
+0–3 s : avant/après à pose proche ; 3–10 s : modèle dans Blender et passage Unreal ; 10–19 s : visage/cheveux et deux tenues ; 19–28 s : un défaut de déformation puis sa correction ; 28–33 s : mouvement final.
+
+Pour finir, « Vous choisiriez quelle tenue ? »
+
+
+
+SEMAINE 6 — Un arc et une base à défendre
+
+10–16 octobre 2026
+
+« J’ai une arme à distance. Mais maintenant, c’est ma base qu’il faut protéger. »
+
+0–3 s : menace sur le Nexus ; 3–9 s : une charge et un tir à l’arc ; 9–15 s : courte vue de réglage puis résultat ; 15–27 s : première vague, mur attaqué et allié en défense ; 27–34 s : base encore debout ou résultat réellement enregistré.
+
+Pour finir, « Et si plusieurs joueurs défendaient leur propre base ? »
+
+
+
+SEMAINE 7 — Faire vivre les créatures et jouer ensemble
+
+17–23 octobre 2026
+
+« Mon jeu doit maintenant faire vivre ses créatures sur plusieurs écrans. »
+
+0–3 s : même action vue sur deux postes locaux ; 3–10 s : courte vue de réglage réseau ; 10–22 s : exemple local de combat/compagnon ; 22–28 s : aperçu pelage et une créature ; 28–34 s : résultat et prochaine amélioration.
+
+Pour finir, « La prochaine étape : rendre les combats plus lisibles. »
+
+
+
+SEMAINE 8 — Un combat plus lisible et des déplacements plus naturels
+
+24–30 octobre 2026
+
+« Une attaque doit être agréable à jouer, mais aussi facile à lire. »
+
+0–3 s : avant/après d’un geste ; 3–11 s : retouche jambes/bras dans Blender ; 11–23 s : départ, frappe et retour à la garde en temps réel ; 23–29 s : bref contact avec traînée ; 29–34 s : résultat et ressenti recherché.
+
+Pour finir, « Qu’est-ce qui compte le plus pour vous : l’impact ou la liberté de mouvement ? »
+
+
+
+SEMAINE 9 — Le personnage et le combo passent une nouvelle étape
+
+31 octobre–6 novembre 2026
+
+« Trois coups d’épée, de nouvelles mains… et beaucoup de petits détails à corriger. »
+
+0–3 s : A/B/C en mouvement ; 3–10 s : main sur poignée et une retouche dans Blender ; 10–23 s : clic seul, Z maintenu puis reprise après C ; 23–29 s : bref avant/après du modèle proche/lointain ; 29–34 s : résultat solo et prochaine étape réseau.
+
+Pour finir, « Le prochain défi : retrouver ce ressenti chez les autres joueurs. »
+
 État courant · V27
 
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
