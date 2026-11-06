@@ -1,3 +1,13 @@
+Allocations des taches corporelles · 6 novembre 2026
+
+Statut : Sources intégrées, compilation UE 5.8 Development Editor Win64 réussie ; module installé pour le prochain lancement, sans remplacement de la version en mémoire. Les tableaux temporaires du découpage sont réutilisés pendant une création de tache, et le candidat est transféré au lieu de recopier son polygone. Les buffers ne sont pas conservés globalement. Aucun abaissement de géométrie, couleur, budget, durée ou gameplay n’est demandé.
+
+Contrôle hors moteur : 24 000 cas de découpage et barycentriques identiques, plus 4 096 candidats conservés. Le banc C++ autonome compte 81 920 puis 4 099 allocations sur 4 096 triangles internes. Ce comptage utilise son adaptateur de tableaux ; il ne mesure ni les allocations d’Unreal, ni la RAM en jeu, ni le gain FPS.
+
+Mesures antérieures relues : les captures solo récentes à 1100 × 800 sur RX 7900 XTX donnent un temps Game total médian de 9,32 à 12,14 ms et un GPU de 3,48 à 3,93 ms. Le plus gros poste Game exclusif nommé est l’interface/éditeur, à 3,78–5,17 ms médian ; ces chiffres ne prédisent pas le coût d’une version distribuable. Les images de 0,4 s du banc de capture du combo sont attribuées à ses lectures synchrones GPU, sans expliquer toutes les chutes ressenties hors capture. Le 24 octobre, une création de douze taches corporelles avait une médiane de 16,52 ms et un maximum de 52,18 ms ; la part du découpage dans ce coût n’a pas été isolée.
+
+La réduction récente du modèle diminue la passe principale d’environ 0,24 à 0,11 ms dans les mesures solo, mais les temps GPU totaux se recouvrent. Le problème historique des sockets répétées était déjà corrigé : ce n’est pas un nouveau gain de ce lot. Aucun profil en jeu, contrôle visuel ou essai réseau n’est rejoué aujourd’hui ; aucun gain FPS global ni objectif de 144 images/s en 1440p n’est établi. La comparaison avant/après sans capture synchrone reste à réaliser lors d’une session autorisée.
+
 État courant · V27
 
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.

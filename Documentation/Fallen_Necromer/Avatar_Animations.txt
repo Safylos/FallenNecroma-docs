@@ -1,3 +1,15 @@
+Combo debout solo · état du 6 novembre 2026
+
+Trois frappes Quaternius A/B/C, commandées par des clics distincts : un clic lance un geste, un clic accepté prépare au plus le suivant, et le maintien ne répète rien. C peut enchaîner vers A. Les descriptions antérieures ci-dessous restent historiques pour ce combo.
+
+En terrain libre, chaque coup avance de 5 cm sans commande avant, et jusqu’à 2,40 m avec Z. Relâcher ou reprendre Z module seulement la portion du pas restante. Q/D/S permettent de se replacer ; sans touche de déplacement, la caméra peut infléchir le cap. La proximité d’un ennemi, les murs et les rebords limitent la fente.
+
+Après la réception de C, une direction rend la marche ou la course au raccord de 0,69 s, avec une transition visuelle de 0,22 s. À l’arrêt, la transition vers la garde dure 0,28 s. Maj peut basculer la course pendant C. Un clic mémorisé conserve la priorité ; après reprise de marche, un nouveau clic peut relancer A pendant le retour visuel.
+
+Preuves antérieures, non rejouées pendant cette mise à jour : rapports solo AppuiCombo du 6 novembre à 21 h 35 et SortieTrois à 21 h 57. Les petits pas mesurés valent 4,98 à 5 cm ; aux réceptions, la dérive des pointes atteint au maximum 0,43 cm dans la mesure citée. Un contact initial à 30 images/s n’a pas infligé de dégâts ; les diagnostics suivants ont donné 20 dégâts, sans cause établie pour le raté initial. Aucune garantie exhaustive d’appuis ou de dégâts n’en découle. Ces preuves ne valident ni réseau, ni Internet, ni huit joueurs.
+
+Les anciens chiffres 25/20/15, 40/30/40 et 1,65 m décrivent des étapes remplacées. Aucun essai du jeu ni mesure de performances n’est réalisé pour cet entretien documentaire, à la demande de Florian.
+
 Avatar · Animations et déplacement. Une rubrique du dossier, avec ses références techniques dédiées.
 
 Locomotion et combat

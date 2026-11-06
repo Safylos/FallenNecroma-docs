@@ -1,3 +1,17 @@
+Combo debout réseau · sources du 6 novembre 2026
+
+Statut : Sources intégrées, compilation UE 5.8 Development Editor Win64 réussie ; module installé pour le prochain lancement, sans remplacement de la version en mémoire. Aucun essai moteur ou multijoueur n’a été rejoué pendant cette passe, à la demande de Florian.
+
+Le pawn multijoueur utilise les trois frappes A/B/C de la fiche du combo solo pour le clic gauche debout. Une pression lance un geste ; une pression acceptée prépare au plus le suivant, le maintien ne répète rien et C peut boucler vers A. Le chemin accroupi reste celui des deux coups historiques. Les mentions antérieures de deux coups debout réseau décrivent l’état remplacé.
+
+La cible de parité reprend le petit pas de 5 cm sans commande avant, jusqu’à 2,40 m avec avant, le guidage pendant la frappe et la reprise après C au raccord de 0,69 s. Le propriétaire prédit le premier geste ; le serveur décide de la portée, des dégâts et des 20 points d’endurance par geste accepté. L’état répliqué porte le motif de sortie mouvement/garde. Les corrections réseau doivent conserver la progression sans rejouer la fente.
+
+La phase des appuis distingue le premier clic des suites A→B, B→C et C→A ; son décalage est conservé pendant les corrections et le rejeu des mouvements. La présentation des impacts est déjà partagée après confirmation des dégâts. Le point esthétique est recherché sur le corps affiché ; ce port ne démontre pas une intersection géométrique exacte entre la lame et la cible.
+
+Contrôles hors moteur : le banc autonome du coordinateur réussit 281 assertions, dont 120 répétitions du maintien, et 30 contrôles statiques de branchements. Il reprend notamment les corps des suites de règles d’entrée/dégâts et de phase de pose avec des types adaptés. Ce n’est pas une exécution du moteur, de ses archives ou d’une partie réseau.
+
+Validation restante : joueur distant, hôte visible et observateur, prédiction refusée, clics en limite de fenêtre, latence et perte de paquets, obstacles, dégâts, endurance, appuis et transitions. Les quatre suites ajoutées n’ont pas été exécutées dans Unreal ; celles de sérialisation/correction et de chargement de la fiche restent entièrement à exercer dans le moteur. La présence du code ou sa compilation ne valide ni son rendu, ni Steam/Internet, ni huit joueurs. Les anciennes campagnes locales conservent leur date et leur portée.
+
 État courant · V27
 
 Version V27 · 23 octobre 2026. Les précisions ci-dessous constituent l’état courant ; les campagnes et versions précédentes restent consultables dans le volet historique.
