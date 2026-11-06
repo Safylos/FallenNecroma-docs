@@ -1,3 +1,9 @@
+Changement de direction vu par un autre joueur · 6 novembre 2026
+
+Dans le deuxième coup du combo, le joueur a quitté la direction avant pour tourner de 90°. Avant correction, le modèle affiché chez l’observateur dépassait de 36,10 cm la position la plus avancée du serveur sur l’axe relâché. En rejouant les mêmes commandes, ce dépassement est descendu à 0,33 cm. Pour la capsule de collision, il est passé de 47,78 à 1,65 cm.
+
+Le mouvement corrigé a été utilisé sur les 84 images observées des trois frappes. Six tests du moteur, le parcours complet de l’invité et celui du joueur hôte ont réussi. Les valeurs de dépassement décrivent le virage mesuré, dans une partie locale. Elles ne représentent pas la distance entre les deux joueurs à toute image.
+
 Combo debout réseau · sources du 6 novembre 2026
 
 Statut : Sources intégrées, compilation UE 5.8 Development Editor Win64 réussie ; module installé pour le prochain lancement, sans remplacement de la version en mémoire. Aucun essai moteur ou multijoueur n’a été rejoué pendant cette passe, sur demande.

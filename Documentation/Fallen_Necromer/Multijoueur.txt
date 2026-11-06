@@ -1,3 +1,9 @@
+Essai du combo dans Unreal · 6 novembre 2026
+
+L’invité a joué les trois frappes A, B et C dans une partie locale. Le joueur, le serveur et l’autre invité ont observé le même enchaînement. Sans commande de direction, le personnage avance de 5 cm par frappe, soit 15 cm pour le combo. Avec la commande avant, le premier coup a parcouru 2,37 m. Après le troisième coup, le personnage a repris son déplacement à 0,70 s et sa garde à 1,33 s dans le cas immobile.
+
+Les 76 contrôles du parcours de l’invité et les 19 contrôles du parcours de l’hôte ont réussi. Le contact testé a retiré 20 points de vie une seule fois. Ces essais ont utilisé des joueurs locaux. Le comportement avec de la latence et des pertes de paquets sur Internet reste à vérifier.
+
 Combo debout réseau · sources du 6 novembre 2026
 
 Statut : Sources intégrées, compilation UE 5.8 Development Editor Win64 réussie ; module installé pour le prochain lancement, sans remplacement de la version en mémoire. Aucun essai moteur ou multijoueur n’a été rejoué pendant cette passe, sur demande.

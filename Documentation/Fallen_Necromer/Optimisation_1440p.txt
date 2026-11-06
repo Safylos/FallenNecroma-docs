@@ -1,3 +1,11 @@
+Coût des impacts sur le personnage · mesure en moteur du 6 novembre 2026
+
+Une trace de sang dense sur le corps du personnage peut occuper le fil de jeu pendant plusieurs images. Deux comparaisons dans Unreal ont rejoué les quatre mêmes contacts, sur le même modèle et dans la même pose. Chaque version a reçu 96 impacts mesurés, avec une chauffe avant chaque série. L’ordre de passage des versions a été inversé pour la seconde comparaison.
+
+Le temps sous lequel 95 % des créations se sont terminées est passé de 184,62 à 133,96 ms dans la première comparaison, puis de 176,67 à 137,13 ms dans la seconde. Cela représente une baisse de 22 à 27 % sur cette mesure. Les médianes sont passées respectivement de 71,33 à 69,03 ms et de 91,36 à 72,25 ms. Une trace dense reste donc une source possible de saccade au contact.
+
+Les points d’impact et les triangles qui portaient la trace concordaient. La simplification a atteint son budget de temps dans ces essais et quatre impacts appariés par comparaison différaient d’un triangle final. Les durées mesurent la création d’une trace sur le personnage. Le gain global en images par seconde pendant un combat reste à mesurer.
+
 Allocations des taches corporelles · 6 novembre 2026
 
 Statut : Sources intégrées, compilation UE 5.8 Development Editor Win64 réussie ; module installé pour le prochain lancement, sans remplacement de la version en mémoire. Les tableaux temporaires du découpage sont réutilisés pendant une création de tache, et le candidat est transféré au lieu de recopier son polygone. Les buffers ne sont pas conservés globalement. Aucun abaissement de géométrie, couleur, budget, durée ou gameplay n’est demandé.
